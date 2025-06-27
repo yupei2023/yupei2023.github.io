@@ -1,30 +1,43 @@
 <!DOCTYPE html>
 <html lang="en-US">
-<head> <!--
+<head>
+    <!--
+    **************************************************************************
+    Title: About Me Page
+    Use:  Use simple words to introduce myself
+    Author:  Yupei Duan
+    School/Term: University of Missouri, Summer 2025
+    Developed: Jun 14, 2025
+    Tested:  Jun 26, 2025; Passed on Firefox and Chrome browsers.
+    **************************************************************************
+    -->
+    <meta charset="utf-8">
+    <title>About Me</title>
 
-*****************************************************************************
-
-Title: About Me Page
-
-Use:  Use simple words to introduce myself
-
-Author:  Yupei Duan
-
-School/Term: University of Missouri, Summer 2025
-
-Developed: Jun 14, 2025
-
-Tested:  Jun 14, 2025; Passed on Firefox and Chrome browsers.
-
-******************************************************************************
-
--->
-               <meta charset="utf-8">
-               <title>About Me</title>
+    <!-- resume link -->
+    <style>
+      .resume-link{
+        display:inline-block;         /* box model */
+        padding:0.6rem 1.2rem;        /* internal space */
+        margin:1rem 0;                /* external space */
+        background:#ffffff;           /* white button */
+        color:#000000;                /* black text */
+        border:2px solid #666666;     /* grey border */
+        text-decoration:none;
+        font-weight:600;
+        transition:background .25s, color .25s;
+      }
+      .resume-link:hover,
+      .resume-link:focus{
+        background:#000000;           /* invert on hover */
+        color:#ffffff;
+      }
+    </style>
 </head>
+
 <body>
-       <header>
-        <h1>Welcome. Take a quiet moment to explore—you may discover something that speaks to you.</h1> <!-- I will come up with another title for this -->
+    <header>
+        <h1>Welcome. Take a quiet moment to explore—you may discover something that speaks to you.</h1>
     </header>
 
     <nav>
@@ -33,21 +46,28 @@ Tested:  Jun 14, 2025; Passed on Firefox and Chrome browsers.
 
     <main>
         <br>
-    <h2>Researcher, Educator, and Learner</h2> <!-- I will come up with another title for this -->
-    <h2> Ph.D. Student in the School of Information Science and Learning Technologies </h2>
-    <h2> University of Missouri </h2>
-    <h3> Yupei Duan </h3>
-     <br>
-     <p> Hi everyone,</p>
-    <p> My name is Yupei Duan, and I’m currently a Ph.D. student in the School of Information Science and Learning Technologies (SISLT) at the University of Missouri. </p>
-   
-    <p> Two years ago, before starting my Ph.D. program, I worked as a middle school biology and science teacher, as well as an administrator in China. During that time, I discovered the tremendous potential of technology to help students learn more effectively and efficiently. Since beginning my Ph.D. studies, I have been exploring how <strong>Virtual Reality</strong> and <strong>Artificial Intelligence</strong> can support <strong>STEM learning</strong>. </p>
+        <h2>Researcher, Educator, and Learner</h2>
+        <h2> Ph.D. Student in the School of Information Science and Learning Technologies </h2>
+        <h2> University of Missouri </h2>
+        <h3> Yupei Duan </h3>
 
-    <p> In my instructional design work, I often incorporate game-based methods to increase the joy and engagement of learning. I hope to become both a qualified researcher and a supportive educator, helping more learners enjoy and succeed in STEM education with the aid of technology. </p>
-    <br>
-    <blockquote>
-        "I have never let my schooling interere with my education."---- <em> Mark Twain </em> 
-    </blockquote>
+        <!-- Resume link -->
+        <p>
+            <a href="Duan_Resume.pdf" class="resume-link" target="_blank" rel="noopener">
+                View my résumé (PDF)
+            </a>
+        </p>
+
+        <p> Hi everyone,</p>
+        <p> My name is Yupei Duan, and I’m currently a Ph.D. student in the School of Information Science and Learning Technologies (SISLT) at the University of Missouri. </p>
+
+        <p> Two years ago, before starting my Ph.D. program, I worked as a middle school biology and science teacher, as well as an administrator in China. During that time, I discovered the tremendous potential of technology to help students learn more effectively and efficiently. Since beginning my Ph.D. studies, I have been exploring how <strong>Virtual Reality</strong> and <strong>Artificial Intelligence</strong> can support <strong>STEM learning</strong>. </p>
+
+        <p> In my instructional design work, I often incorporate game-based methods to increase the joy and engagement of learning. I hope to become both a qualified researcher and a supportive educator, helping more learners enjoy and succeed in STEM education with the aid of technology. </p>
+        <br>
+        <blockquote>
+            "I have never let my schooling interere with my education."---- <em> Mark Twain </em> 
+        </blockquote>
     </main>
 
     <br>
