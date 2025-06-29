@@ -1,38 +1,68 @@
-/* ---------- DROP-DOWN (horizontal navbar) ---------- */
-nav li { position: relative; }           
+/* ──────────  MAIN NAV BAR  ───────────────────────── */
+nav{
+  background:#ffffff;
+  border-bottom:2px solid #666;
+}
+
+nav ul{
+  list-style:none;        /* removes bullets */
+  margin:0;
+  padding:0;
+  display:flex;           /* horizontal bar */
+}
+
+nav a{
+  display:block;
+  padding:0.75rem 1.5rem;
+  margin:0.25rem;
+  border:1px solid #666;
+  text-decoration:none;
+  color:#000;
+  font-weight:600;
+  transition:background .25s,color .25s;
+}
+
+nav a:hover,
+nav a:focus{
+  background:#000;
+  color:#fff;
+}
+
+/* ──────────  DROP-DOWN (horizontal navbar)  ───────── */
+nav li{ position:relative; }
 
 nav .dropdown{
-  list-style: none;
-  margin: 0;           
-  padding: 0;          
-  display: none;        
-  position: absolute;
-  top: 100%;         
-  left: 0;
-  background: #fff;
-  border: 1px solid #666;   
-  flex-direction: column;   
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:none;           /* hidden by default */
+  position:absolute;
+  top:100%;               /* appears below parent */
+  left:0;
+  background:#fff;
+  border:1px solid #666;
+  flex-direction:column;
 }
 
-/* show the menu on hover OR keyboard focus */
-nav li:hover  > .dropdown,
+nav li:hover > .dropdown,
 nav li:focus-within > .dropdown{
-  display: flex;      
+  display:flex;           /* reveal on hover/focus */
 }
 
-/* make drop-down links look the same as main links */
+/* make drop-down links match main links */
 nav .dropdown a{
-  display: block;               
-  padding: 0.75rem 1.5rem;      
-  margin: 0.25rem;              
-  border: 1px solid #666;       
-  text-decoration: none;
-  color: #000;
-  font-weight: 600;
-  transition: background .25s, color .25s;
+  display:block;
+  padding:0.75rem 1.5rem;
+  margin:0.25rem;
+  border:1px solid #666;
+  text-decoration:none;
+  color:#000;
+  font-weight:600;
+  transition:background .25s,color .25s;
 }
+
 nav .dropdown a:hover,
 nav .dropdown a:focus{
-  background: #000;
-  color: #fff;
+  background:#000;
+  color:#fff;
 }
