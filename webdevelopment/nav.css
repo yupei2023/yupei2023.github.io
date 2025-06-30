@@ -1,4 +1,4 @@
-/* ──────────  MAIN NAV BAR  ───────────────────────── */
+/*  MAIN NAV BAR */
 nav{
   background:#ffffff;
   border-bottom:2px solid #666;
@@ -28,7 +28,7 @@ nav a:focus{
   color:#fff;
 }
 
-/* ──────────  DROP-DOWN (horizontal navbar)  ───────── */
+/* DROP-DOWN (horizontal navbar) */
 nav li{ position:relative; }
 
 nav .dropdown{

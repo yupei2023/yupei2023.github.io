@@ -1,9 +1,9 @@
-/* ─────────── Global tweaks ─────────── */
+/* Global tweaks  */
 h1{
   color:#6633ff;                 /* purple headings site-wide */
 }
 
-/* ─────────── Reflection page styling ─────────── */
+/*  Reflection page styling */
 
 /* Box-model wrapper: one grey box, NO border */
 .reflection{
@@ -13,7 +13,7 @@ h1{
   background:#f8f8f8;            /* light grey */
 }
 
-/* 1️⃣ FIRST LETTER of the FIRST paragraph (class = intro) */
+/* FIRST LETTER of the FIRST paragraph (class = intro) */
 .reflection .intro::first-letter{
   font-size:260%;                /* bigger */
   font-weight:700;               /* bold */
@@ -21,14 +21,14 @@ h1{
   line-height:1;                 /* tighter drop-cap */
 }
 
-/* 2️⃣ FIRST LETTERS of ALL other paragraphs — default look */
+/* FIRST LETTERS of ALL other paragraphs — default look */
 .reflection p:not(.intro)::first-letter{
   font-size:inherit;
   font-weight:inherit;
   color:inherit;
 }
 
-/* 3️⃣ FIRST LINE of ALL paragraphs AFTER the first — indented */
+/* FIRST LINE of ALL paragraphs AFTER the first — indented */
 .reflection p:not(.intro){
   text-indent:2em;               /* block-level indent */
 }
@@ -38,4 +38,3 @@ h1{
   letter-spacing:.02em;          /* subtle tweak so pseudo-element is used */
 }
 
-/* ─────────────────────────────────────────────────────────── */
