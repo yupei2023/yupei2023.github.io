@@ -62,14 +62,16 @@ h1 {
 
 .video-container {
   max-width: 800px;
-  margin: 0 auto;        /* center the video frame */
+  margin: 0 auto;
 }
 
 .video-container iframe {
   width: 100%;
-  height: auto;
+  aspect-ratio: 16 / 9;    /* enforces 16:9 */
+  border: 0;
   display: block;
 }
+
 
 /* BIO (intro) SECTION: simple centered wrapper */
 .intro-container {
