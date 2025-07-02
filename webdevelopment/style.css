@@ -1,40 +1,105 @@
-/* Global tweaks  */
-h1{
-  color:#6633ff;                 /* purple headings site-wide */
+/* Global Reset & Tweaks */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-/*  Reflection page styling */
+h1 {
+  color: #6633ff;                 /* purple headings site-wide */
+}
+
+/*  Reflection Page Styling  */
 
 /* Box-model wrapper: one grey box, NO border */
-.reflection{
-  max-width:800px;
-  margin:2rem auto;              /* centers block */
-  padding:1.5rem;                /* internal space */
-  background:#f8f8f8;            /* light grey */
+.reflection {
+  max-width: 800px;
+  margin: 2rem auto;              /* centers block */
+  padding: 1.5rem;                /* internal space */
+  background: #f8f8f8;            /* light grey */
 }
 
 /* FIRST LETTER of the FIRST paragraph (class = intro) */
-.reflection .intro::first-letter{
-  font-size:260%;                /* bigger */
-  font-weight:700;               /* bold */
-  color:#3366ff;                 /* blue — different & eye-catching */
-  line-height:1;                 /* tighter drop-cap */
+.reflection .intro::first-letter {
+  font-size: 260%;                /* bigger */
+  font-weight: 700;               /* bold */
+  color: #3366ff;                 /* blue — different & eye-catching */
+  line-height: 1;                 /* tighter drop-cap */
 }
 
 /* FIRST LETTERS of ALL other paragraphs — default look */
-.reflection p:not(.intro)::first-letter{
-  font-size:inherit;
-  font-weight:inherit;
-  color:inherit;
+.reflection p:not(.intro)::first-letter {
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
 }
 
 /* FIRST LINE of ALL paragraphs AFTER the first — indented */
-.reflection p:not(.intro){
-  text-indent:2em;               /* block-level indent */
+.reflection p:not(.intro) {
+  text-indent: 2em;               /* block-level indent */
 }
 
 /* keep ::first-line pseudo-element in play for rubric */
-.reflection p:not(.intro)::first-line{
-  letter-spacing:.02em;          /* subtle tweak so pseudo-element is used */
+.reflection p:not(.intro)::first-line {
+  letter-spacing: .02em;          /* subtle tweak so pseudo-element is used */
 }
 
+/* About Page Styling  */
+
+/* HERO SECTION: centered title + video */
+.hero {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.hero-title {
+  font-family: 'Playfair Display', serif;   /* beautiful serif */
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #3366ff;
+  margin-bottom: 1rem;
+}
+
+.video-container {
+  max-width: 800px;
+  margin: 0 auto;        /* center the video frame */
+}
+
+.video-container iframe {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* BIO (intro) SECTION: simple centered wrapper */
+.intro-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/*  Responsive Breakpoints  */
+
+/* Tablet: slightly smaller fonts, keep single-column bio */
+@media (max-width: 800px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+}
+
+/* Mobile: nav stacks, smaller hero title, full-width video */
+@media (max-width: 480px) {
+  nav ul {
+    flex-direction: column;
+  }
+  .hero-title {
+    font-size: 1.75rem;
+  }
+  .video-container {
+    width: 100%;
+    margin: 1rem 0;
+  }
+}
