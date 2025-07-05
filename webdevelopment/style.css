@@ -1,4 +1,4 @@
-/* Global Reset & Tweaks */
+/*  Global Reset & Tweaks */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -6,54 +6,52 @@
 }
 
 h1 {
-  color: #6633ff;                 /* purple headings site-wide */
+  color: #6633ff; /* purple headings site-wide */
 }
 
-/*  Reflection Page Styling  */
-
-/* Box-model wrapper: one grey box, NO border */
+/* Reflection Page Styling */
+/* Box-model wrapper: one grey box, no border */
 .reflection {
   max-width: 800px;
-  margin: 2rem auto;              /* centers block */
-  padding: 1.5rem;                /* internal space */
-  background: #f8f8f8;            /* light grey */
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: #f8f8f8;
 }
 
-/* FIRST LETTER of the FIRST paragraph (class = intro) */
+/* first-letter drop cap on intro paragraph */
 .reflection .intro::first-letter {
-  font-size: 260%;                /* bigger */
-  font-weight: 700;               /* bold */
-  color: #3366ff;                 /* blue — different & eye-catching */
-  line-height: 1;                 /* tighter drop-cap */
+  font-size: 260%;
+  font-weight: 700;
+  color: #3366ff;
+  line-height: 1;
 }
 
-/* FIRST LETTERS of ALL other paragraphs — default look */
+/* reset first-letter on other paragraphs */
 .reflection p:not(.intro)::first-letter {
   font-size: inherit;
   font-weight: inherit;
   color: inherit;
 }
 
-/* FIRST LINE of ALL paragraphs AFTER the first — indented */
+/* indent all non-intro paragraphs */
 .reflection p:not(.intro) {
-  text-indent: 2em;               /* block-level indent */
+  text-indent: 2em;
 }
 
-/* keep ::first-line pseudo-element in play for rubric */
+/* keep ::first-line pseudo-element alive */
 .reflection p:not(.intro)::first-line {
-  letter-spacing: .02em;          /* subtle tweak so pseudo-element is used */
+  letter-spacing: .02em;
 }
 
-/* About Page Styling  */
-
-/* HERO SECTION: centered title + video */
+/*  About Page Styling */
+/* Hero: centered title + video */
 .hero {
   text-align: center;
   margin: 2rem 0;
 }
 
 .hero-title {
-  font-family: 'Playfair Display', serif;   /* beautiful serif */
+  font-family: 'Playfair Display', serif;
   font-size: 2.5rem;
   font-weight: 700;
   color: #3366ff;
@@ -67,13 +65,12 @@ h1 {
 
 .video-container iframe {
   width: 100%;
-  aspect-ratio: 16 / 9;    /* enforces 16:9 */
+  aspect-ratio: 16 / 9;
   border: 0;
   display: block;
 }
 
-
-/* BIO (intro) SECTION: simple centered wrapper */
+/* Intro (bio) section: simple column stack */
 .intro-container {
   max-width: 800px;
   margin: 2rem auto;
@@ -83,10 +80,10 @@ h1 {
   gap: 1.25rem;
 }
 
-/* Education Section */
+/* Education section: two-column grid */
 .education {
   display: grid;
-  grid-template-columns: 1fr 2fr; /* image column : list column */
+  grid-template-columns: 1fr 2fr;
   gap: 1.5rem;
   align-items: start;
   max-width: 800px;
@@ -94,58 +91,62 @@ h1 {
   padding: 0 1rem;
 }
 
-/* center the section heading in its column */
 .education h2 {
+  text-align: center; /* center “Education and Profession” */
   margin-bottom: 0.5rem;
-  text-align: center;             /* centered */
 }
 
-/* style the list */
 .education ul {
   list-style: disc inside;
   line-height: 1.5;
 }
 
-/* make the banner span both columns and center it */
+/* banner spans both columns, matches video width, centered */
 .education figure {
-  grid-column: 1 / -1;             /* span full width */
-  margin: 1.5rem auto 0;           /* ✨ auto left/right to center */
-  max-width: 800px;                /* ✨ cap to same width as video */
+  grid-column: 1 / -1;
+  margin: 1.5rem auto 0;
+  max-width: 800px;
 }
 
-/* ensure the banner image fills that space */
 .education img {
-  width: 100%;                     /* fill the figure’s width */
+  width: 100%;
   height: auto;
   display: block;
-  border-radius: 0.5rem;           /* optional rounded corners */
+  border-radius: 0.5rem;
 }
 
-/* Hamburger Menu */
-
-/* Hide toggle by default */
-.nav-toggle {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 2rem;
-  cursor: pointer;
+/*  Responsive Breakpoints */
+/* Tablet & below: ≤800px */
+@media (max-width: 800px) {
+  /* stack intro vertically */
+  .intro-container,
+  .education {
+    grid-template-columns: 1fr;
+  }
+  .hero-title {
+    font-size: 2rem;
+  }
 }
 
-/* Mobile view */
+/* Mobile & below: ≤480px */
 @media (max-width: 480px) {
-
-  /* Show the button */
+  /* collapse nav */
+  nav ul {
+    flex-direction: column;
+  }
+  /* show hamburger, hide links until toggle */
   .nav-toggle {
     display: block;
     position: absolute;
     top: 0.75rem;
     right: 1rem;
     z-index: 1000;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
     color: #000;
   }
-
-  /* Hide the menu by default */
   header.site-header nav ul {
     display: none;
     flex-direction: column;
@@ -153,41 +154,14 @@ h1 {
     width: 100%;
     margin-top: 0.5rem;
   }
-
-  /* When toggled, show it */
   header.site-header nav.open ul {
     display: flex;
   }
-}
-
-/* Tablet/Mobile: stack image above list */
-@media (max-width: 800px) {
-  .education {
-    grid-template-columns: 1fr;
+  /* hide project placeholders */
+  .mobile-hide {
+    display: none;
   }
-}
-
-/* ─── Responsive: stack columns on tablet/mobile ─── */
-@media (max-width: 800px) {
-  .education {
-    grid-template-columns: 1fr;    /* stack image & list */
-  }
-}
-
-/*  Responsive Breakpoints  */
-
-/* Tablet: slightly smaller fonts, keep single-column bio */
-@media (max-width: 800px) {
-  .hero-title {
-    font-size: 2rem;
-  }
-}
-
-/* Mobile: nav stacks, smaller hero title, full-width video */
-@media (max-width: 480px) {
-  nav ul {
-    flex-direction: column;
-  }
+  /* fine-tune hero/video */
   .hero-title {
     font-size: 1.75rem;
   }
