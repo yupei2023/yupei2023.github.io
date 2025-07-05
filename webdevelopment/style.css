@@ -86,7 +86,7 @@ h1 {
 /* Education Section */
 .education {
   display: grid;
-  grid-template-columns: 1fr 2fr;  /* image : list */
+  grid-template-columns: 1fr 2fr; /* image column : list column */
   gap: 1.5rem;
   align-items: start;
   max-width: 800px;
@@ -94,33 +94,41 @@ h1 {
   padding: 0 1rem;
 }
 
-.education figure {
-  margin: 0;                      /* reset default figure margin */
-}
-
-.education img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 0.5rem;          /* optional rounded corners */
-}
-
+/* center the section heading in its column */
 .education h2 {
   margin-bottom: 0.5rem;
+  text-align: center;             /* ✨ centered */
 }
 
+/* style the list */
 .education ul {
   list-style: disc inside;
   line-height: 1.5;
 }
 
-/* Tablet/Mobile: stack image above list */
-@media (max-width: 800px) {
-  .education {
-    grid-template-columns: 1fr;
-  }
+/* make the banner span both columns and center it */
+.education figure {
+  grid-column: 1 / -1;             /* ✨ span full width */
+  display: flex;                   /* ✨ for centering */
+  justify-content: center;         /* ✨ center horizontally */
+  margin: 1rem 0 0;                /* ✨ space above banner */
 }
 
+/* enlarge and constrain the banner */
+.education img {
+  max-width: 400px;                /* ✨ bump up size */
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 0.5rem;           /* optional */
+}
+
+/* ─── Responsive: stack columns on tablet/mobile ─── */
+@media (max-width: 800px) {
+  .education {
+    grid-template-columns: 1fr;    /* stack image & list */
+  }
+}
 
 /*  Responsive Breakpoints  */
 
