@@ -42,6 +42,7 @@
 <body>
   <!-- SITE HEADER -->
   <header class="site-header">
+     <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
@@ -91,10 +92,10 @@
       <li>University of Missouri</li>
       
     </ul>
-    <div style="text-align:center; margin-top:1rem;">
-        <img src="SISLT.png" alt="SISLT Logo" style="max-width:200px; height:auto;">
-      </div>
-    </section>
+   <figure>
+    <img src="SISLT.png" alt="SISLT Logo">
+  </figure>
+</section>
 
 
       <!-- Résumé link -->
@@ -121,5 +122,12 @@
     <p>Designed and Created by: Yupei Duan | yupei.duan@missouri.edu</p>
     <p>&copy; 2025 Yupei Duan. All rights reserved.</p>
   </footer>
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const nav    = document.querySelector('header.site-header nav');
+    toggle.addEventListener('click', () => {
+      nav.classList.toggle('open');
+    });
+  </script>
 </body>
 </html>

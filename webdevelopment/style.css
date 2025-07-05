@@ -97,7 +97,7 @@ h1 {
 /* center the section heading in its column */
 .education h2 {
   margin-bottom: 0.5rem;
-  text-align: center;             /* ✨ centered */
+  text-align: center;             /* centered */
 }
 
 /* style the list */
@@ -108,19 +108,63 @@ h1 {
 
 /* make the banner span both columns and center it */
 .education figure {
-  grid-column: 1 / -1;             /* ✨ span full width */
-  display: flex;                   /* ✨ for centering */
-  justify-content: center;         /* ✨ center horizontally */
-  margin: 1rem 0 0;                /* ✨ space above banner */
+  grid-column: 1 / -1;             /* span full width */
+  margin: 1.5rem auto 0;           /* ✨ auto left/right to center */
+  max-width: 800px;                /* ✨ cap to same width as video */
 }
 
-/* enlarge and constrain the banner */
+/* ensure the banner image fills that space */
 .education img {
-  max-width: 400px;                /* ✨ bump up size */
-  width: 100%;
+  width: 100%;                     /* fill the figure’s width */
   height: auto;
   display: block;
-  border-radius: 0.5rem;           /* optional */
+  border-radius: 0.5rem;           /* optional rounded corners */
+}
+
+/* Hamburger Menu */
+
+/* Hide toggle by default */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+/* Mobile view */
+@media (max-width: 480px) {
+
+  /* Show the button */
+  .nav-toggle {
+    display: block;
+    position: absolute;
+    top: 0.75rem;
+    right: 1rem;
+    z-index: 1000;
+    color: #000;
+  }
+
+  /* Hide the menu by default */
+  header.site-header nav ul {
+    display: none;
+    flex-direction: column;
+    background: #fff;
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  /* When toggled, show it */
+  header.site-header nav.open ul {
+    display: flex;
+  }
+}
+
+/* Tablet/Mobile: stack image above list */
+@media (max-width: 800px) {
+  .education {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ─── Responsive: stack columns on tablet/mobile ─── */
