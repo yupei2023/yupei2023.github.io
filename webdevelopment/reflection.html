@@ -1,93 +1,93 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-    <!--
-
-*****************************************************************************
-
-Title: Template Page
-
-Use:  Template Design
-
-Author:  Yupei Duan
-
-School/Term: University of Missouri, Summer 2025
-
-Developed: Jun 29, 2025
-
-Tested:  Jun 29, 2025; Passed on Firefox and Chrome browsers.
-
-******************************************************************************
-
--->
-    <!-- Updated 29 Jun 2025 – Added Reflection & Contact links -->
-
-  <meta charset="utf-8" />
+  <!--
+  *****************************************************************************
+  Title: Reflection Page
+  Use:  Teaching Philosophy / Personal Reflection
+  Author:  Yupei Duan
+  School/Term: University of Missouri, Summer 2025
+  Developed: Jun 29, 2025
+  Tested:  July 5, 2025; Passed on Firefox and Chrome browsers.
+  *****************************************************************************
+  -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- mobile viewport -->
   <title>Teaching Philosophy – Yupei Duan</title>
 
-  <!-- global + nav styles -->
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="nav.css">
 </head>
 
 <body>
+  <div class="container">  <!-- fluid page container -->
 
-  <!-- NAV -->
-  <nav>
-  <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="about.html">About</a></li>
+    <!-- SITE HEADER -->
+    <header class="site-header">  <!-- wrap nav in header -->
+      <button class="nav-toggle" aria-label="Toggle navigation">☰</button>  <!-- hamburger toggle -->
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
 
-    <!-- ▶️ Projects now comes right after About ◀️ -->
-    <li>
-      <a href="#project.html">Projects</a>   <!-- still a placeholder link -->
-      <ul class="dropdown">
-        <li><a href="#link1">Link 1</a></li>
-        <li><a href="#link2">Link 2</a></li>
-        <li><a href="#link3">Link 3</a></li>
-      </ul>
-    </li>
+          <!-- Projects dropdown -->
+          <li>
+            <a href="#project.html">Projects</a>
+            <ul class="dropdown">
+              <li class="mobile-hide"><a href="#link1">Link 1</a></li>   <!-- hide on mobile -->
+              <li class="mobile-hide"><a href="#link2">Link 2</a></li>
+              <li class="mobile-hide"><a href="#link3">Link 3</a></li>
+            </ul>
+          </li>
 
-    <!-- Real page -->
-    <li><a href="reflection.html">Reflection</a></li>
+          <li><a href="reflection.html" class="active" aria-current="page">Reflection</a></li>  <!-- active page -->
+          <li><a href="#contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
 
-    <!-- Placeholder -->
-    <li><a href="#contact.html">Contact</a></li>
-  </ul>
-</nav>
+    <!-- MAIN CONTENT -->
+    <main>
+      <article class="reflection">
+        <header>
+          <!-- move inline style into CSS class -->
+          <h1 class="reflection-title">Teaching Philosophy</h1>
+          <h2>Science as Sunshine</h2>
+        </header>
 
-  <main>
-    <article class="reflection">
+        <!-- first paragraph drop-cap styles via .intro in CSS -->
+        <p class="intro">
+          I am a passionate lover of science learning, and I want to share that love with others. To me, science is like sunshine—it brings brightness, warmth, and energy into my life. I hope to invite more people to experience the same brightness, warmth, and strength that come from learning science. Technology is my most powerful tool to help share this passion with a wider audience.
+        </p>
 
-      <header>
-        <h1 style="color:#3366ff;font-size:14px;font-weight:bold;">Teaching Philosophy</h1>
-        <h2>Science as Sunshine</h2>
-      </header>
+        <p>
+          I resonate deeply with John Dewey’s statement, “Education is life itself,” and I also draw inspiration from Han Yu, a great Chinese educator. Han believed that an excellent teacher should transmit wisdom, impart knowledge, and resolve doubts—principles I strive to uphold in my work.
+        </p>
 
-      <!-- first paragraph gets its own class -->
-      <p class="intro">
-        I am a passionate lover of science learning, and I want to share that love with others. To me, science is like sunshine—it brings brightness, warmth, and energy into my life. I hope to invite more people to experience the same brightness, warmth, and strength that come from learning science. Technology is my most powerful tool to help share this passion with a wider audience.
-      </p>
+        <p>
+          Moreover, I hope that the technologies we use can enhance learners’ motivation and engagement in ways that traditional methods cannot. In my view, ideal technology-enhanced education should meet the following four criteria: (1) interesting, useful, or meaningful knowledge is effectively disseminated; (2) knowledge transcends barriers of time, space, and cognition; (3) both learners and educators benefit from the process; (4) the transmission of conscience remains the core goal that distinguishes education from other industries.
+        </p>
 
-      <p>
-        I resonate deeply with John Dewey’s statement, “Education is life itself,” and I also draw inspiration from Han Yu, a great Chinese educator. Han believed that an excellent teacher should transmit wisdom, impart knowledge, and resolve doubts—principles I strive to uphold in my work.
-      </p>
+        <p>
+          Ultimately, my teaching philosophy can be summarized in three verbs: <strong>listen, iterate, liberate</strong>. By listening to students’ needs, iterating on instructional design through evidence, and liberating learners to become autonomous thinkers, I aim to make science education as warm and empowering for them as sunshine has been for me.
+        </p>
+      </article>
+    </main>
 
-      <p>
-        Moreover, I hope that the technologies we use can enhance learners’ motivation and engagement in ways that traditional methods cannot. In my view, ideal technology-enhanced education should meet the following four criteria: (1) interesting, useful, or meaningful knowledge is effectively disseminated; (2) knowledge transcends barriers of time, space, and cognition; (3) both learners and educators benefit from the process; (4) the transmission of conscience remains the core goal that distinguishes education from other industries.
-      </p>
+    <!-- SITE FOOTER -->
+    <footer>
+      <p>Designed &amp; Created by Yupei Duan | yupei.duan@missouri.edu</p>
+      <p>&copy; 2025 Yupei Duan. All rights reserved.</p>
+    </footer>
 
-      <p>
-        Ultimately, my teaching philosophy can be summarized in three verbs: <strong>listen, iterate, liberate</strong>. By listening to students’ needs, iterating on instructional design through evidence, and liberating learners to become autonomous thinkers, I aim to make science education as warm and empowering for them as sunshine has been for me.
-      </p>
-
-    </article>
-  </main>
-
-  <footer>
-    <p>Designed &amp; Created by Yupei Duan&nbsp;|&nbsp;yupei.duan@missouri.edu</p>
-    <p>&copy; 2025 Yupei Duan. All rights reserved.</p>
-  </footer>
-
+    <!-- MOBILE NAV TOGGLE SCRIPT -->
+    <script>
+      const toggle = document.querySelector('.nav-toggle');
+      const nav    = document.querySelector('header.site-header nav');
+      toggle.addEventListener('click', () => {
+        nav.classList.toggle('open');
+      });
+    </script>
+  </div>  <!-- end .container -->
 </body>
 </html>

@@ -1,55 +1,70 @@
-/*  Global Reset & Tweaks */
+/* Global Reset & Tweaks */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
+html {
+  font-size: 100%;       /* 16px baseline */
+}
+body {
+  line-height: 1.6;
+  font-family: Arial, sans-serif;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
 
+/* Fluid Container  */
+.container {
+  width: 90%;            /* near-full on small screens */
+  max-width: 1200px;     /* cap on large screens */
+  margin: 0 auto;        /* center horizontally */
+}
+
+/* Site‐wide Headings */
 h1 {
-  color: #6633ff; /* purple headings site-wide */
+  color: #6633ff;        /* purple headings */
+}
+
+/*  Index Page Layout */
+.index-main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+.index-main > * {
+  flex: 1 1 300px;       /* minimum 300px, then stretch */
 }
 
 /* Reflection Page Styling */
-/* Box-model wrapper: one grey box, no border */
 .reflection {
   max-width: 800px;
   margin: 2rem auto;
   padding: 1.5rem;
   background: #f8f8f8;
 }
-
-/* first-letter drop cap on intro paragraph */
 .reflection .intro::first-letter {
   font-size: 260%;
   font-weight: 700;
   color: #3366ff;
   line-height: 1;
 }
-
-/* reset first-letter on other paragraphs */
-.reflection p:not(.intro)::first-letter {
-  font-size: inherit;
-  font-weight: inherit;
-  color: inherit;
-}
-
-/* indent all non-intro paragraphs */
 .reflection p:not(.intro) {
   text-indent: 2em;
 }
-
-/* keep ::first-line pseudo-element alive */
 .reflection p:not(.intro)::first-line {
   letter-spacing: .02em;
 }
 
-/*  About Page Styling */
+/* About Page Styling */
 /* Hero: centered title + video */
 .hero {
   text-align: center;
   margin: 2rem 0;
 }
-
 .hero-title {
   font-family: 'Playfair Display', serif;
   font-size: 2.5rem;
@@ -57,20 +72,17 @@ h1 {
   color: #3366ff;
   margin-bottom: 1rem;
 }
-
 .video-container {
   max-width: 800px;
   margin: 0 auto;
 }
-
 .video-container iframe {
   width: 100%;
   aspect-ratio: 16 / 9;
   border: 0;
-  display: block;
 }
 
-/* Intro (bio) section: simple column stack */
+/* Bio (intro) section: simple vertical stack */
 .intro-container {
   max-width: 800px;
   margin: 2rem auto;
@@ -90,83 +102,92 @@ h1 {
   margin: 2rem auto;
   padding: 0 1rem;
 }
-
 .education h2 {
-  text-align: center; /* center “Education and Profession” */
-  margin-bottom: 0.5rem;
+  text-align: center;
+  margin-bottom: .5rem;
 }
-
 .education ul {
   list-style: disc inside;
   line-height: 1.5;
 }
-
-/* banner spans both columns, matches video width, centered */
 .education figure {
-  grid-column: 1 / -1;
+  grid-column: 1 / -1;      /* span full width */
   margin: 1.5rem auto 0;
   max-width: 800px;
+  display: flex;
+  justify-content: center;
 }
-
 .education img {
   width: 100%;
   height: auto;
-  display: block;
-  border-radius: 0.5rem;
+  border-radius: .5rem;
 }
 
-/*  Responsive Breakpoints */
+/* Centered résumé button */
+.resume-wrapper {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+/* Responsive Breakpoints */
 /* Tablet & below: ≤800px */
 @media (max-width: 800px) {
-  /* stack intro vertically */
-  .intro-container,
-  .education {
-    grid-template-columns: 1fr;
+  html {
+    font-size: 90%;         /* slightly smaller text */
   }
   .hero-title {
     font-size: 2rem;
+  }
+  .intro-container,
+  .education {
+    grid-template-columns: 1fr; /* stack columns */
   }
 }
 
 /* Mobile & below: ≤480px */
 @media (max-width: 480px) {
-  /* collapse nav */
+  html {
+    font-size: 85%;         /* even smaller text */
+  }
+  /* Collapse nav, show hamburger, hide placeholders */
   nav ul {
     flex-direction: column;
   }
-  /* show hamburger, hide links until toggle */
   .nav-toggle {
     display: block;
     position: absolute;
-    top: 0.75rem;
+    top: .75rem;
     right: 1rem;
-    z-index: 1000;
     background: none;
     border: none;
     font-size: 2rem;
     cursor: pointer;
-    color: #000;
+    z-index: 1000;
   }
   header.site-header nav ul {
     display: none;
     flex-direction: column;
     background: #fff;
     width: 100%;
-    margin-top: 0.5rem;
+    margin-top: .5rem;
   }
   header.site-header nav.open ul {
     display: flex;
   }
-  /* hide project placeholders */
   .mobile-hide {
     display: none;
   }
-  /* fine-tune hero/video */
+
+  /* Hero/video tweaks */
   .hero-title {
     font-size: 1.75rem;
   }
   .video-container {
-    width: 100%;
     margin: 1rem 0;
+  }
+
+  /* Index main stacks */
+  .index-main {
+    flex-direction: column;
   }
 }

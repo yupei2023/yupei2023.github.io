@@ -8,7 +8,7 @@
     Author:  Yupei Duan
     School/Term: University of Missouri, Summer 2025
     Developed: Jun 14, 2025
-    Tested:  July 1, 2025; Passed on Firefox and Chrome browsers.
+    Tested:  July 5, 2025; Passed on Firefox and Chrome browsers.
     **************************************************************************
     -->
     <meta charset="utf-8">
@@ -40,13 +40,15 @@
 </head>
 
 <body>
+   <div class="container">
   <!-- SITE HEADER -->
   <header class="site-header">
      <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
+        <li><a href="about.html" class="active" aria-current="page">About</a></li>  <!-- active class & accessibility -->
+
 
         <!-- Projects dropdown -->
         <li>
@@ -106,7 +108,7 @@
     </div>
 
      <section class="intro-container">
-      <p class="intro">Hi everyone,</p>  <!-- ✨ CHANGED: added class="intro" -->
+      <p class="intro">Hi everyone,</p>  <!-- class="intro" -->
       <p>My name is Yupei Duan, and I’m currently a Ph.D. student in the School of Information Science and Learning Technologies (SISLT) at the University of Missouri.</p>
       <p>Two years ago, before starting my Ph.D. program, I worked as a middle school biology and science teacher, as well as an administrator in China. During that time, I discovered the tremendous potential of technology to help students learn more effectively and efficiently. Since beginning my Ph.D. studies, I have been exploring how <strong>Virtual Reality</strong> and <strong>Artificial Intelligence</strong> can support <strong>STEM learning</strong>.</p>
       <p>In my instructional design work, I often incorporate game-based methods to increase the joy and engagement of learning. I hope to become both a qualified researcher and a supportive educator, helping more learners enjoy and succeed in STEM education with the aid of technology.</p>
@@ -129,5 +131,6 @@
       nav.classList.toggle('open');
     });
   </script>
+  </div>
 </body>
 </html>
