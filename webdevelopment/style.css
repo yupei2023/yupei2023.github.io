@@ -56,12 +56,14 @@ h1 {
 }
 
 .headshot {
-  width: 100%;
-  max-width: 200px;       /* keep headshot reasonably small */
-  border-radius: 50%;
+  width: 120px;              
+  height: 120px;             
+  object-fit: cover;         
+  border-radius: 50%;        
   display: block;
-  margin: 0 auto 1rem;    /* center + space below */
+  margin: 0 auto 1rem;       
 }
+
 
 .column-left h3 {
   font-size: 1.1rem;
