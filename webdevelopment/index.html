@@ -1,79 +1,91 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-    <!--
-    *****************************************************************************
-    Title: Index Page
-    Use:  Home Page
-    Author:  Yupei Duan
-    School/Term: University of Missouri, Summer 2025
-    Developed: Jun 14, 2025
-    Tested:  July 5, 2025; Passed on Firefox and Chrome browsers.
-    *****************************************************************************
-    -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <title>Index Page</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="nav.css">                                
+  <!--
+  *****************************************************************************
+  Title: Index Page
+  Use:  Home Page
+  Author:  Yupei Duan
+  School/Term: University of Missouri, Summer 2025
+  Developed: Jun 14, 2025
+  Tested:  July 5, 2025; Passed on Firefox and Chrome browsers.
+  *****************************************************************************
+  -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Index Page</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="nav.css">
 </head>
 
 <body>
-   <div class="container">
-  <!-- SITE HEADER -->
-  <header class="site-header">                                              
-    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>   
-    <nav>
-      <ul>
-        <li><a href="index.html" class="active">Home</a></li>               
-        <li><a href="about.html">About</a></li>
+  <div class="container">
 
-        <!-- Projects dropdown -->
-        <li>
-          <a href="#project.html">Projects</a>
-          <ul class="dropdown">
-            <li class="mobile-hide"><a href="#link1">Link 1</a></li>      
-            <li class="mobile-hide"><a href="#link2">Link 2</a></li>
-            <li class="mobile-hide"><a href="#link3">Link 3</a></li>
-          </ul>
-        </li>
+    <!-- SITE HEADER -->
+    <header class="site-header">
+      <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+      <nav>
+        <ul>
+          <li><a href="index.html" class="active" aria-current="page">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li>
+            <a href="#project.html">Projects</a>
+            <ul class="dropdown">
+              <li class="mobile-hide"><a href="#link1">Link 1</a></li>
+              <li class="mobile-hide"><a href="#link2">Link 2</a></li>
+              <li class="mobile-hide"><a href="#link3">Link 3</a></li>
+            </ul>
+          </li>
+          <li><a href="reflection.html">Reflection</a></li>
+          <li><a href="#contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
 
-        <li><a href="reflection.html">Reflection</a></li>
-        <li><a href="#contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+    <!-- MAIN CONTENT: two-column layout -->
+    <main class="index-main">
 
-  <!-- welcome header -->
-  <header>
-    <h1>Welcome. Take a quiet moment to explore—you may discover something that speaks to you.</h1>
-  </header>
+      <div class="columns">
 
-  <main>
-    <br>
-    <h2>What's on this website?</h2>
-    <br>
-    <p>My name is Yupei Duan, and I consider myself a learner, an educator, and a researcher—three roles that reflect both my past experiences and my aspirations for the future.</p>
-    <p>My journey has taken me from grade school to graduate school, and from a small village in China to the whole world. I have worked for many years as a middle school science teacher and administrator. Currently, I am a Ph.D. student and research assistant in the School of Information Science and Learning Technologies at the University of Missouri.</p>
-    <p>I am passionate about sharing scientific knowledge and helping learners engage with STEM subjects more effectively and efficiently—especially through the use of emerging technologies like Virtual Reality and Artificial Intelligence.</p>
-    <p>The questions <em>What?, Why?, and How?</em> constantly fuel my curiosity and drive my exploration of the world. Through this website, I hope to share that curiosity and passion with you.</p>
-  </main>
+        <!-- left column: headshot + categories -->
+        <aside class="column column-left">
+          <img src="Duan_headshot.jpg" alt="Yupei Duan Headshot" class="headshot"> 
+          <h3>Research Interests</h3>
+          <h3>Subject Areas</h3>
+          <h3>Methods</h3>
+        </aside>
 
-  <br>
+        <!-- right column: existing intro text -->
+        <section class="column column-right">
+          <header class="page-intro">
+            <h1>Welcome. Take a quiet moment to explore—you may discover something that speaks to you.</h1>
+          </header>
 
-  <footer>
-    <p>Designed and Created by: Yupei Duan | yupei.duan@missouri.edu</p>
-    <p>&copy; 2025 Yupei Duan. All rights reserved.</p>
-  </footer>
+          <h2>What's on this website?</h2>
+          <p>My name is Yupei Duan, and I consider myself a learner, an educator, and a researcher—three roles that reflect both my past experiences and my aspirations for the future.</p>
+          <p>My journey has taken me from grade school to graduate school, and from a small village in China to the whole world. I have worked for many years as a middle school science teacher and administrator. Currently, I am a Ph.D. student and research assistant in the School of Information Science and Learning Technologies at the University of Missouri.</p>
+          <p>I am passionate about sharing scientific knowledge and helping learners engage with STEM subjects more effectively and efficiently—especially through the use of emerging technologies like Virtual Reality and Artificial Intelligence.</p>
+          <p>The questions <em>What?, Why?, and How?</em> constantly fuel my curiosity and drive my exploration of the world. Through this website, I hope to share that curiosity and passion with you.</p>
+        </section>
 
-  <!-- JS to toggle mobile nav -->
-  <script>
-    const toggle = document.querySelector('.nav-toggle');
-    const nav    = document.querySelector('header.site-header nav');
-    toggle.addEventListener('click', () => {
-      nav.classList.toggle('open');
-    });
-  </script>
-  </div>
+      </div><!-- end .columns -->
+
+    </main>
+
+    <!-- SITE FOOTER -->
+    <footer>
+      <p>Designed and Created by: Yupei Duan | yupei.duan@missouri.edu</p>
+      <p>&copy; 2025 Yupei Duan. All rights reserved.</p>
+    </footer>
+
+    <!-- JS to toggle mobile nav -->
+    <script>
+      const toggle = document.querySelector('.nav-toggle');
+      const nav    = document.querySelector('header.site-header nav');
+      toggle.addEventListener('click', () => {
+        nav.classList.toggle('open');
+      });
+    </script>
+  </div> <!-- end .container -->
 </body>
 </html>

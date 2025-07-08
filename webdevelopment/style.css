@@ -29,14 +29,60 @@ h1 {
   color: #6633ff;        /* purple headings */
 }
 
-/*  Index Page Layout */
+/* Index Page Layout (UPDATED)  */
 .index-main {
+  /* legacy flex can remain, but our two-column grid lives inside .columns */
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
 }
 .index-main > * {
-  flex: 1 1 300px;       /* minimum 300px, then stretch */
+  flex: 1 1 300px;
+}
+
+/* two-column sidebar/content grid inside .columns */
+.columns {
+  display: grid;
+  /* left sidebar min-200px, right content takes 3× space */
+  grid-template-columns: minmax(200px, 1fr) 3fr;
+  gap: 2rem;
+  align-items: start;
+  margin: 2rem 0;
+}
+
+.column-left {
+  border-right: 1px solid #ddd;  /* subtle separator */
+  padding-right: 1rem;
+}
+
+.headshot {
+  width: 100%;
+  max-width: 200px;       /* keep headshot reasonably small */
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto 1rem;    /* center + space below */
+}
+
+.column-left h3 {
+  font-size: 1.1rem;
+  margin: 1rem 0 .5rem;
+  color: #333;
+}
+
+.column-right {
+  line-height: 1.6;
+}
+
+/* Tablet: stack columns */
+@media (max-width: 800px) {
+  .columns {
+    grid-template-columns: 1fr;
+  }
+  .column-left {
+    border-right: none;
+    padding-right: 0;
+    margin-bottom: 2rem;
+  }
 }
 
 /* Reflection Page Styling */
