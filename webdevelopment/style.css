@@ -1,3 +1,5 @@
+
+
 /* Global Reset & Tweaks */
 * {
   box-sizing: border-box;
@@ -8,6 +10,7 @@ html {
   font-size: 100%;       /* 16px baseline */
 }
 body {
+  font-family: 'Roboto', sans-serif;
   line-height: 1.6;
   font-family: Arial, sans-serif;
 }
@@ -59,7 +62,7 @@ h1 {
   width: 180px;              
   height: 180px;             
   object-fit: cover;         
-  border-radius: 80%;        
+  border-radius: 50%;        
   display: block;
   margin: 0 auto 1rem;       
 }
@@ -157,6 +160,7 @@ h1 {
 .education ul {
   list-style: disc inside;
   line-height: 1.5;
+  font-family: 'Geologica', serif;
 }
 .education figure {
   grid-column: 1 / -1;      /* span full width */
@@ -189,6 +193,7 @@ h1 {
   .intro-container,
   .education {
     grid-template-columns: 1fr; /* stack columns */
+    font-family: 'Roboto', sans-serif;
   }
 }
 
@@ -239,3 +244,37 @@ h1 {
     flex-direction: column;
   }
 }
+/* Print Styles (about.html) */
+@media print {
+  /* 1″ margins on all sides */
+  @page {
+    margin: 1in;
+  }
+
+  /* Hide everything by default */
+  body * {
+    display: none !important;
+  }
+
+  /* Reveal only the elements we want */
+  h1,
+  .intro-container p,
+  .education ul,
+  blockquote,
+  footer {
+    display: block !important;
+    /* force black & serif */
+    color: #000 !important;
+    font-family: serif !important;
+    /* remove extra padding/margin for one‐page fit */
+    margin: 0 0 0.5em 0 !important;
+    padding: 0 !important;
+  }
+
+  /* In case your .education section had an h2 or image, hide them */
+  .education h2,
+  .education figure {
+    display: none !important;
+  }
+}
+
