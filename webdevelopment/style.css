@@ -243,7 +243,7 @@ h1 {
     flex-direction: column;
   }
 }
-/* Print Styles for about.html  */
+/* Print Styles for about.html */
 
 /* 1″ margins on all sides */
 @page {
@@ -251,28 +251,31 @@ h1 {
 }
 
 @media print {
-  /* 1. hide absolutely everything */
+  /* hide everything by default */
   body * {
     display: none !important;
   }
 
-  /* 2. reveal only the pieces we need, force black serif & collapse spacing */
-  h1,                    /* your page’s H1 (e.g. “About Me” or your name) */
-  .intro-container,      /* the wrapper around your paragraphs */
-  .intro-container p,    /* your descriptive paragraphs */
-  .education,            /* wrapper around your list */
-  .education ul,         /* the actual education list */
-  blockquote,            /* your quote */
-  footer                 /* your footer/contact info */
-  {
+  /* reveal only:
+     • the page’s <h1>
+     • all <p> inside .intro-container
+     • the education <ul>
+     • the <blockquote>
+     • the <footer>
+     and force black serif text */
+  h1,
+  .intro-container p,
+  .education ul,
+  blockquote,
+  footer {
     display: block !important;
-    color: #000 !important;
+    color: #000  !important;
     font-family: serif !important;
-    margin: 0 0 0.5em 0 !important;
-    padding: 0 !important;
+    margin:        0 0 0.5em 0 !important;
+    padding:       0        !important;
   }
 
-  /* 3. hide any extra headings/images in the education section */
+  /* hide extra bits in the education section */
   .education h2,
   .education figure {
     display: none !important;
