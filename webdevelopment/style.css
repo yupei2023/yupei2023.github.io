@@ -243,35 +243,36 @@ h1 {
     flex-direction: column;
   }
 }
-/* Print Styles for about.html */
-/* 1" margins on all sides */
+/* Print Styles for about.html  */
+
+/* 1″ margins on all sides */
 @page {
   margin: 1in;
 }
 
 @media print {
-  /* hide everything by default */
+  /* 1. hide absolutely everything */
   body * {
     display: none !important;
   }
 
-  /* reveal only these elements */
-  h1.hero-name,         /* your name */
-  .intro-container,      /* wrapper for your description */
-  .intro-container p,    /* your paragraphs */
-  .education,            /* wrapper for your list */
-  .education ul,         /* the list itself */
+  /* 2. reveal only the pieces we need, force black serif & collapse spacing */
+  h1,                    /* your page’s H1 (e.g. “About Me” or your name) */
+  .intro-container,      /* the wrapper around your paragraphs */
+  .intro-container p,    /* your descriptive paragraphs */
+  .education,            /* wrapper around your list */
+  .education ul,         /* the actual education list */
   blockquote,            /* your quote */
-  footer                 /* contact info */
+  footer                 /* your footer/contact info */
   {
     display: block !important;
-    color: #000 !important;       /* force black text */
+    color: #000 !important;
     font-family: serif !important;
     margin: 0 0 0.5em 0 !important;
     padding: 0 !important;
   }
 
-  /* hide extra heading & logo inside education */
+  /* 3. hide any extra headings/images in the education section */
   .education h2,
   .education figure {
     display: none !important;
