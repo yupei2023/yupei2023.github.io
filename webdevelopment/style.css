@@ -251,11 +251,7 @@ h1 {
 }
 
 @media print {
-  /* hide everything by default */
-  body * {
-    display: none !important;
-  }
-
+  
   /* reveal only:
      • the page’s <h1>
      • all <p> inside .intro-container
