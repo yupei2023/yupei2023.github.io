@@ -10,10 +10,10 @@ html {
   font-size: 100%;       /* 16px baseline */
 }
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', Arial, sans-serif;
   line-height: 1.6;
-  font-family: Arial, sans-serif;
 }
+
 img {
   max-width: 100%;
   height: auto;
@@ -193,7 +193,6 @@ h1 {
   .intro-container,
   .education {
     grid-template-columns: 1fr; /* stack columns */
-    font-family: 'Roboto', sans-serif;
   }
 }
 
@@ -244,37 +243,37 @@ h1 {
     flex-direction: column;
   }
 }
-/* Print Styles (about.html) */
-@media print {
-  /* 1″ margins on all sides */
-  @page {
-    margin: 1in;
-  }
+/* Print Styles for about.html */
+/* 1" margins on all sides */
+@page {
+  margin: 1in;
+}
 
-  /* Hide everything by default */
+@media print {
+  /* hide everything by default */
   body * {
     display: none !important;
   }
 
-  /* Reveal only the elements we want */
-  h1,
-  .intro-container p,
-  .education ul,
-  blockquote,
-  footer {
+  /* reveal only these elements */
+  h1.hero-name,         /* your name */
+  .intro-container,      /* wrapper for your description */
+  .intro-container p,    /* your paragraphs */
+  .education,            /* wrapper for your list */
+  .education ul,         /* the list itself */
+  blockquote,            /* your quote */
+  footer                 /* contact info */
+  {
     display: block !important;
-    /* force black & serif */
-    color: #000 !important;
+    color: #000 !important;       /* force black text */
     font-family: serif !important;
-    /* remove extra padding/margin for one‐page fit */
     margin: 0 0 0.5em 0 !important;
     padding: 0 !important;
   }
 
-  /* In case your .education section had an h2 or image, hide them */
+  /* hide extra heading & logo inside education */
   .education h2,
   .education figure {
     display: none !important;
   }
 }
-
