@@ -243,7 +243,7 @@ h1 {
     flex-direction: column;
   }
 }
-/* Print Styles for about.html */
+/* ─── Print Styles for about.html ─── */
 
 /* 1″ margins on all sides */
 @page {
@@ -251,27 +251,23 @@ h1 {
 }
 
 @media print {
-   nav,
-  .hero,
-  .video-container {
+  /* 1) hide absolutely everything */
+  body * {
     display: none !important;
   }
 
-  h1,
-  .intro-container p,
-  .education ul,
-  blockquote,
-  footer {
+  /* 2) reveal only the pieces we need, in black serif, minimal spacing */
+  h1,                        /* your page’s H1 (your name) */
+  .intro-container p,        /* each paragraph of your bio */
+  .education h2,             /* the “Education and Profession” heading */
+  .education ul,             /* the actual education list */
+  blockquote,                /* your quote */
+  footer                     /* your footer/contact info */
+  {
     display: block !important;
-    color: #000  !important;
+    color: #000     !important; /* black text */
     font-family: serif !important;
-    margin:        0 0 0.5em 0 !important;
-    padding:       0        !important;
-  }
-
-  /* hide extra bits in the education section */
-  .education h2,
-  .education figure {
-    display: none !important;
+    margin: 0 0 0.5em 0 !important;
+    padding: 0           !important;
   }
 }
