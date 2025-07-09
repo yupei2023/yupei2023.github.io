@@ -251,12 +251,9 @@ h1 {
 }
 
 @media print {
-  /* 1) hide absolutely everything */
-  body * {
-    display: none !important;
-  }
+ 
 
-  /* 2) reveal only the pieces we need, in black serif, minimal spacing */
+  /* reveal only the pieces we need, in black serif, minimal spacing */
   h1,                        /* your page’s H1 (your name) */
   .intro-container p,        /* each paragraph of your bio */
   .education h2,             /* the “Education and Profession” heading */
