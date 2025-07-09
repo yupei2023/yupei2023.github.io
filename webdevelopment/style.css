@@ -251,14 +251,12 @@ h1 {
 }
 
 @media print {
-  
-  /* reveal only:
-     • the page’s <h1>
-     • all <p> inside .intro-container
-     • the education <ul>
-     • the <blockquote>
-     • the <footer>
-     and force black serif text */
+   nav,
+  .hero,
+  .video-container {
+    display: none !important;
+  }
+
   h1,
   .intro-container p,
   .education ul,
