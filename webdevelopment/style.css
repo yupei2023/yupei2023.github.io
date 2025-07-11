@@ -69,6 +69,13 @@ h1 {
 .home-footer .contact-item {
   margin: 0.5rem 0;
 }
+/* Footer Icon Hover Effect */
+.home-footer .footer-icon {
+  transition: transform 0.2s ease;  /* smooth animation */
+}
+.home-footer .footer-icon:hover {
+  transform: scale(1.5);            /* enlarge to 120% on hover */
+}
 
 /* Icon styling: fixed size, aligned with text */
 .home-footer .footer-icon {
