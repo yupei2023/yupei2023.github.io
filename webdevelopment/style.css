@@ -65,6 +65,19 @@ h1 {
   text-align: center;        
 }
 
+/* Contact‐item: spacing between lines */
+.home-footer .contact-item {
+  margin: 0.5rem 0;
+}
+
+/* Icon styling: fixed size, aligned with text */
+.home-footer .footer-icon {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
+
 /* two-column sidebar/content grid inside .columns */
 .columns {
   display: grid;
