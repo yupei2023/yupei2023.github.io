@@ -180,7 +180,14 @@ h1 {
   text-align: center;
   margin: 2rem 0;
 }
-
+/* footer icons — always apply */
+.footer-icon {
+  width: 1.5rem;        /* about 24px at a 16px root */
+  height: 1.5rem;
+  object-fit: contain;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
 /* Responsive Breakpoints */
 /* Tablet & below: ≤800px */
 @media (max-width: 800px) {
@@ -242,17 +249,6 @@ h1 {
   .index-main {
     flex-direction: column;
   }
-
-  /* footer icons */
-.footer-icon {
-  width: 1.2rem;           
-  height: auto;
-  vertical-align: middle;  
-  margin-right: 0.5rem;    
-}
-.contact-item {
-  margin: 0.5rem 0;       
-}
 
 }
 /* Print Styles for about.html */
