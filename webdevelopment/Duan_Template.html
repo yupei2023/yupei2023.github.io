@@ -1,81 +1,74 @@
 <!DOCTYPE html>
 <html lang="en-US">
-<head> <!--
-
-*****************************************************************************
-
-Title: Template Page
-
-Use:  Template Design
-
-Author:  Yupei Duan
-
-School/Term: University of Missouri, Summer 2025
-
-Developed: Jun 14, 2025
-
-Tested:  July 10, 2025; Passed on Firefox and Chrome browsers.
-
-******************************************************************************
-
--->
-               <meta charset="utf-8">
-               <title>Template</title>
-               <link rel="stylesheet" href="style.css">
-               <link rel="stylesheet" href="nav.css">
+<head>
+  <!--
+  *****************************************************************************
+  Title: Template Page
+  Use:  Template Design
+  Author:  Yupei Duan
+  School/Term: University of Missouri, Summer 2025
+  Developed: Jun 14, 2025
+  Tested:  July 12, 2025; Passed on Firefox and Chrome browsers.
+  *****************************************************************************
+  -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Template</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="nav.css">
 </head>
 <body>
+  <div class="container">
 
-<nav>
-  <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="about.html">About</a></li>
+    <!-- SITE HEADER + NAV -->
+    <header class="site-header">
+      <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
 
-    <!-- Projects -->
-    <li>
-      <a href="#project.html">Projects</a>   <!-- still a placeholder link -->
-      <ul class="dropdown">
-        <li><a href="#link1">Link 1</a></li>
-        <li><a href="#link2">Link 2</a></li>
-        <li><a href="#link3">Link 3</a></li>
-      </ul>
-    </li>
+          <!-- Projects dropdown -->
+          <li>
+            <a href="#project.html">Projects</a>
+            <ul class="dropdown">
+              <li><a href="#link1">Link 1</a></li>
+              <li><a href="#link2">Link 2</a></li>
+              <li><a href="#link3">Link 3</a></li>
+            </ul>
+          </li>
 
-    <!-- Real page -->
-    <li><a href="reflection.html">Reflection</a></li>
-
-    <!-- Placeholder -->
-    <li><a href="#contact.html">Contact</a></li>
-  </ul>
-</nav>
-
-
-       <header>
-        <h1>Welcome. Take a quiet moment to explore—you may discover something that speaks to you.</h1>
+          <li><a href="reflection.html">Reflection</a></li>
+          <li><a href="#contact.html">Contact</a></li>
+        </ul>
+      </nav>
     </header>
 
-    <nav>
-        <!-- Navigation links will be added later-->
-    </nav>
-
+    <!-- MAIN CONTENT (empty for now) -->
     <main>
-        
     </main>
 
-    <footer>
-  <p>Designed & Created by Yupei Duan</p>
-  <!-- phone -->
-  <p class="contact-item">
-   <img src="islt_7310/images/phone.gif" alt="Phone" class="footer-icon">
-   1+888-888-8888
- </p>
-  <!-- email -->
-   <p class="contact-item">
-   <img src="islt_7310/images/email.gif" alt="Email" class="footer-icon">
-   <a href="mailto:yupei.duan@missouri.edu">yupei.duan@missouri.edu</a>
-  </p> 
-  <p>&copy; 2025 Yupei Duan. All rights reserved.</p>
-</footer>
-  
+    <!-- SITE FOOTER -->
+    <footer class="home-footer">
+      <p>Designed &amp; Created by Yupei Duan</p>
+
+      <p class="contact-item">
+        <img src="islt_7310/images/phone.gif"
+             alt="Phone"
+             class="footer-icon">
+        1+888-888-8888
+      </p>
+
+      <p class="contact-item">
+        <img src="islt_7310/images/email.gif"
+             alt="Email"
+             class="footer-icon">
+        <a href="mailto:yupei.duan@missouri.edu">yupei.duan@missouri.edu</a>
+      </p>
+
+      <p>&copy; 2025 Yupei Duan. All rights reserved.</p>
+    </footer>
+
+  </div> <!-- /.container -->
 </body>
 </html>

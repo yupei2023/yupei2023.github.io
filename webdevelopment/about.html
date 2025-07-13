@@ -1,147 +1,136 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-    <!--
-    **************************************************************************
-    Title: About Me Page
-    Use:  Use simple words to introduce myself
-    Author:  Yupei Duan
-    School/Term: University of Missouri, Summer 2025
-    Developed: Jun 14, 2025
-    Tested:  July 5, 2025; Passed on Firefox and Chrome browsers.
-    **************************************************************************
-    -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me</title>
-    
-    <link rel="stylesheet" href="style.css"> 
-    <link rel="stylesheet" href="nav.css">
-   
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link 
-  href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" 
-  rel="stylesheet">
+  <!--
+  *****************************************************************************
+  Title: About Me Page
+  Use:  Use simple words to introduce myself
+  Author:  Yupei Duan
+  School/Term: University of Missouri, Summer 2025
+  Developed: Jun 14, 2025
+  Tested:  July 12, 2025; Passed on Firefox and Chrome browsers.
+  *****************************************************************************
+  -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Me</title>
+  
+  <link rel="stylesheet" href="style.css"> 
+  <link rel="stylesheet" href="nav.css">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link 
-  href="https://fonts.googleapis.com/css2?
-        family=Roboto:wght@400;700&
-        family=Geologica:wght@400;700&
-        display=swap" 
-  rel="stylesheet">
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Geologica:wght@400;700&display=swap" 
+    rel="stylesheet">
 
-
-    <!-- resume link -->
-    <style>
-      .resume-link{
-        display:inline-block;         
-        padding:0.6rem 1.2rem;        
-        margin:1rem 0;                
-        background:#ffffff;           
-        color:#000000;                
-        border:2px solid #666666;     
-        text-decoration:none;
-        font-weight:600;
-        transition:background .25s, color .25s;
-      }
-      .resume-link:hover,
-      .resume-link:focus{
-        background:#000000;           
-        color:#ffffff;
-      }
-    </style>
+  <!-- résumé button styling -->
+  <style>
+    .resume-link {
+      display: inline-block;         
+      padding: 0.6rem 1.2rem;        
+      margin: 1rem 0;                
+      background: #ffffff;           
+      color: #000000;                
+      border: 2px solid #666666;     
+      text-decoration: none;
+      font-weight: 600;
+      transition: background .25s, color .25s;
+    }
+    .resume-link:hover,
+    .resume-link:focus {
+      background: #000000;           
+      color: #ffffff;
+    }
+  </style>
 </head>
 
 <body>
-   <div class="container">
-  <!-- SITE HEADER -->
-  <header class="site-header">
-     <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html" class="active" aria-current="page">About</a></li>  <!-- active class & accessibility -->
+  <div class="container">
 
+    <!-- SITE HEADER -->
+    <header class="site-header">
+      <!-- hamburger toggle (CSS-only, no JS) -->
+      <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html" class="active" aria-current="page">About</a></li>
 
-        <!-- Projects dropdown -->
-        <li>
-          <a href="#project.html">Projects</a>
-          <ul class="dropdown">
-            <li class="mobile-hide"><a href="#link1">Project 1</a></li>
-            <li class="mobile-hide"><a href="#link2">Project 2</a></li>
-            <li class="mobile-hide"><a href="#link3">Project 3</a></li>
-          </ul>
-        </li>
+          <!-- Projects dropdown -->
+          <li>
+            <a href="#project.html">Projects</a>
+            <ul class="dropdown">
+              <li class="mobile-hide"><a href="#link1">Project 1</a></li>
+              <li class="mobile-hide"><a href="#link2">Project 2</a></li>
+              <li class="mobile-hide"><a href="#link3">Project 3</a></li>
+            </ul>
+          </li>
 
-        <li><a href="reflection.html">Reflection</a></li>
-        <li><a href="#contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+          <li><a href="reflection.html">Reflection</a></li>
+          <li><a href="#contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
 
-  <!-- MAIN CONTENT: hero + bio sections -->
-  <main class="about-main">
+    <!-- MAIN CONTENT -->
+    <main class="about-main">
 
-     <section class="intro-container">
-      <p class="intro">Hi everyone,</p>  <!-- class="intro" -->
-      <p>My name is Yupei Duan, and I’m currently a Ph.D. student in the School of Information Science and Learning Technologies (SISLT) at the University of Missouri.</p>
-      <p>Two years ago, before starting my Ph.D. program, I worked as a middle school biology and science teacher, as well as an administrator in China. During that time, I discovered the tremendous potential of technology to help students learn more effectively and efficiently. Since beginning my Ph.D. studies, I have been exploring how <strong>Virtual Reality</strong> and <strong>Artificial Intelligence</strong> can support <strong>STEM learning</strong>.</p>
-      <p>In my instructional design work, I often incorporate game-based methods to increase the joy and engagement of learning. I hope to become both a qualified researcher and a supportive educator, helping more learners enjoy and succeed in STEM education with the aid of technology.</p>
+      <!-- intro paragraphs -->
+      <section class="intro-container">
+        <p class="intro">Hi everyone,</p>
+        <p>My name is Yupei Duan, and I’m currently a Ph.D. student in the School of Information Science and Learning Technologies (SISLT) at the University of Missouri.</p>
+        <p>Two years ago, before starting my Ph.D. program, I worked as a middle school biology and science teacher, as well as an administrator in China. During that time, I discovered the tremendous potential of technology to help students learn more effectively and efficiently. Since beginning my Ph.D. studies, I have been exploring how <strong>Virtual Reality</strong> and <strong>Artificial Intelligence</strong> can support <strong>STEM learning</strong>.</p>
+        <p>In my instructional design work, I often incorporate game-based methods to increase the joy and engagement of learning. I hope to become both a qualified researcher and a supportive educator, helping more learners enjoy and succeed in STEM education with the aid of technology.</p>
 
-      <blockquote>
-        "I have never let my schooling interfere with my education." — <em>Mark Twain</em>
-      </blockquote>
-    </section>
+        <blockquote>
+          "I have never let my schooling interfere with my education." — <em>Mark Twain</em>
+        </blockquote>
+      </section>
 
-    <!-- HERO SECTION -->
-    <section class="hero">
-      <!-- H1 for main heading -->
-      <h1 class="hero-title">About Yupei Duan</h1>
-      <div class="video-container">
-        <iframe
-          src="https://www.youtube.com/embed/u9wiJOAIyPY"
-          title="About Me Video"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen>
-        </iframe>
+      <!-- hero + video -->
+      <section class="hero">
+        <h1 class="hero-title">About Yupei Duan</h1>
+        <div class="video-container">
+          <iframe
+            src="https://www.youtube.com/embed/u9wiJOAIyPY"
+            title="About Me Video"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </section>
+
+      <!-- résumé button -->
+      <div class="resume-wrapper">
+        <a href="Duan_Resume.pdf" class="resume-link" target="_blank" rel="noopener">
+          View my résumé (PDF)
+        </a>
       </div>
-    </section>
-    <!-- Résumé link -->
-    <div style="text-align:center; margin:2rem 0;">
-      <a href="Duan_Resume.pdf" class="resume-link" target="_blank" rel="noopener">
-        View my résumé (PDF)
-      </a>
-    </div>
-    <!-- BIO SECTION -->
-<section class="education">
-    <h2>Education and Profession</h2>
-    <ul>
-      
-      <li>Researcher, Educator, and Learner</li>
-      <li>Ph.D. Student in the School of Information Science and Learning Technologies</li>
-      <li>University of Missouri</li>
-      
-    </ul>
-   <figure>
-    <img src="SISLT.png" alt="SISLT Logo">
-  </figure>
-</section>
 
-  </main>
+      <!-- education list + banner -->
+      <section class="education">
+        <h2>Education and Profession</h2>
+        <ul>
+          <li>Researcher, Educator, and Learner</li>
+          <li>Ph.D. Student in the School of Information Science and Learning Technologies</li>
+          <li>University of Missouri</li>
+        </ul>
+        <figure>
+          <img src="SISLT.png" alt="SISLT Logo">
+        </figure>
+      </section>
 
-  <!-- SITE FOOTER -->
-  <footer>
-    <p>Designed and Created by: Yupei Duan | yupei.duan@missouri.edu</p>
-    <p>&copy; 2025 Yupei Duan. All rights reserved.</p>
-  </footer>
-  <script>
-    const toggle = document.querySelector('.nav-toggle');
-    const nav    = document.querySelector('header.site-header nav');
-    toggle.addEventListener('click', () => {
-      nav.classList.toggle('open');
-    });
-  </script>
+    </main>
+
+    <!-- SITE FOOTER -->
+    <footer>
+      <p>Designed and Created by: Yupei Duan | yupei.duan@missouri.edu</p>
+      <p>&copy; 2025 Yupei Duan. All rights reserved.</p>
+    </footer>
+
   </div>
 </body>
 </html>

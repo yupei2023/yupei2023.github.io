@@ -5,10 +5,10 @@ nav {
 }
 
 nav ul {
-  list-style: none;        
+  list-style: none;
   margin: 0;
   padding: 0;
-  display: flex;          
+  display: flex;            /* horizontal by default */
 }
 
 nav a {
@@ -19,7 +19,7 @@ nav a {
   text-decoration: none;
   color: #000;
   font-weight: 600;
-  transition: background .25s, color .25s;
+  transition: background 0.25s, color 0.25s;
 }
 
 nav a:hover,
@@ -29,15 +29,17 @@ nav a:focus {
 }
 
 /* DROP-DOWN (horizontal navbar) */
-nav li { position: relative; }
+nav li {
+  position: relative;
+}
 
 nav .dropdown {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: none;         
+  display: none;            /* hidden by default */
   position: absolute;
-  top: 100%;               
+  top: 100%;                /* appear below parent */
   left: 0;
   background: #fff;
   border: 1px solid #666;
@@ -46,19 +48,13 @@ nav .dropdown {
 
 nav li:hover > .dropdown,
 nav li:focus-within > .dropdown {
-  display: flex;           
+  display: flex;            /* reveal on hover/focus */
 }
 
-/* make drop-down links match main links */
 nav .dropdown a {
-  display: block;
   padding: 0.75rem 1.5rem;
   margin: 0.25rem;
   border: 1px solid #666;
-  text-decoration: none;
-  color: #000;
-  font-weight: 600;
-  transition: background .25s, color .25s;
 }
 
 nav .dropdown a:hover,
@@ -67,29 +63,32 @@ nav .dropdown a:focus {
   color: #fff;
 }
 
-/* Hamburger toggle button hidden by default */
+/*  CHECKBOX-HACK TOGGLE  */
+/* hidden real checkbox */
 .nav-toggle {
   display: none;
-  background: none;
-  border: none;
-  font-size: 2rem;
-  cursor: pointer;
 }
 
-/*  MOBILE STYLES (max-width: 480px)  */
-@media (max-width: 480px) {
+/* the “☰” label styled like a button */
+.nav-toggle-label {
+  display: none;            /* only show on mobile */
+  font-size: 2rem;
+  cursor: pointer;
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+  z-index: 1000;
+  color: #000;
+}
 
-  /* SHOW hamburger on mobile */
-  .nav-toggle {
+/* MOBILE STYLES (≤480px)  */
+@media (max-width: 480px) {
+  /* show hamburger icon */
+  .nav-toggle-label {
     display: block;
-    position: absolute;
-    top: 0.75rem;
-    right: 1rem;
-    z-index: 1000;
-    color: #000;
   }
 
-  /* hide nav links by default on mobile */
+  /* hide the menu by default */
   nav ul {
     display: none;
     flex-direction: column;
@@ -98,12 +97,12 @@ nav .dropdown a:focus {
     margin-top: 0.5rem;
   }
 
-  /* reveal nav when .open is toggled */
-  nav.open ul {
+  /* ✨ when checkbox is checked, show the menu ✨ */
+  .nav-toggle:checked ~ nav ul {
     display: flex;
   }
 
-  /* hide Project placeholders on mobile */
+  /* hide placeholder items under Projects */
   .mobile-hide {
     display: none;
   }

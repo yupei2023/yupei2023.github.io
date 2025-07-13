@@ -1,6 +1,4 @@
-
-
-/* Global Reset & Tweaks */
+/*  Global Reset & Tweaks  */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -13,28 +11,26 @@ body {
   font-family: 'Roboto', Arial, sans-serif;
   line-height: 1.6;
 }
-
 img {
   max-width: 100%;
   height: auto;
   display: block;
 }
 
-/* Fluid Container  */
+/*  Fluid Container */
 .container {
   width: 90%;            /* near-full on small screens */
   max-width: 1200px;     /* cap on large screens */
   margin: 0 auto;        /* center horizontally */
 }
 
-/* Site‐wide Headings */
+/* Site-wide Headings  */
 h1 {
   color: #6633ff;        /* purple headings */
 }
 
-/* Index Page Layout (UPDATED)  */
+/* Index Page Layout  */
 .index-main {
-  /* legacy flex can remain, but our two-column grid lives inside .columns */
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
@@ -42,88 +38,64 @@ h1 {
 .index-main > * {
   flex: 1 1 300px;
 }
-/* ── Footer icons ── */
+
+/* Footer Icons & Background  */
 .footer-icon {
-  display: inline-block;     
-  width: 1.5rem;             
-  height: 1.5rem;            
+  display: inline-block;
+  width: 1.5rem;         /* smaller, circular icons */
+  height: 1.5rem;
   object-fit: contain;
-  vertical-align: middle;    
-  margin-right: 0.5rem;      
+  vertical-align: middle;
+  margin-right: 0.5rem;
 }
 .contact-item {
   margin: 0.5rem 0;
 }
-
-/* Footer background on Home Page only */
 .home-footer {
-  /* ← change this path to wherever your image really is: */
   background: url('islt_7310/images/footer-bg.png') no-repeat center top;
-  background-size: cover;    
-  color: #fff;               
-  padding: 2rem 1rem;        
-  text-align: center;        
+  background-size: cover;
+  color: #fff;
+  padding: 2rem 1rem;
+  text-align: center;
 }
-
-/* Contact‐item: spacing between lines */
-.home-footer .contact-item {
-  margin: 0.5rem 0;
-}
-/* Footer Icon Hover Effect */
+/* Icon hover effect */
 .home-footer .footer-icon {
-  transition: transform 0.2s ease;  /* smooth animation */
+  transition: transform 0.2s ease;
 }
 .home-footer .footer-icon:hover {
-  transform: scale(1.5);            /* enlarge to 120% on hover */
+  transform: scale(1.2);
 }
 
-/* Icon styling: fixed size, aligned with text */
-.home-footer .footer-icon {
-  width: 24px;
-  height: 24px;
-  vertical-align: middle;
-  margin-right: 0.5rem;
-}
-
-/* two-column sidebar/content grid inside .columns */
+/* Two-column Grid (Index)  */
 .columns {
   display: grid;
-  /* left sidebar min-200px, right content takes 3× space */
   grid-template-columns: minmax(200px, 1fr) 3fr;
   gap: 2rem;
   align-items: start;
   margin: 2rem 0;
 }
-
 .column-left {
-  border-right: 1px solid #ddd;  /* subtle separator */
+  border-right: 1px solid #ddd;
   padding-right: 1rem;
 }
-
 .headshot {
   width: 250px;              
-  height: 250px;             
-  object-fit: contain;       
-  object-position: center;    
-  border-radius: 50%;         
+  height: 250px;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 50%;
   display: block;
   margin: 0 auto 1rem;
-  background: #fff;           
+  background: #fff;
 }
-
-
-
 .column-left h3 {
   font-size: 1.1rem;
   margin: 1rem 0 .5rem;
   color: #333;
 }
-
 .column-right {
   line-height: 1.6;
 }
-
-/* Tablet: stack columns */
 @media (max-width: 800px) {
   .columns {
     grid-template-columns: 1fr;
@@ -155,8 +127,7 @@ h1 {
   letter-spacing: .02em;
 }
 
-/* About Page Styling */
-/* Hero: centered title + video */
+/* About Page Styling  */
 .hero {
   text-align: center;
   margin: 2rem 0;
@@ -174,11 +145,9 @@ h1 {
 }
 .video-container iframe {
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 16/9;
   border: 0;
 }
-
-/* Bio (intro) section: simple vertical stack */
 .intro-container {
   max-width: 800px;
   margin: 2rem auto;
@@ -187,8 +156,6 @@ h1 {
   flex-direction: column;
   gap: 1.25rem;
 }
-
-/* Education section: two-column grid */
 .education {
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -208,7 +175,7 @@ h1 {
   font-family: 'Geologica', serif;
 }
 .education figure {
-  grid-column: 1 / -1;      /* span full width */
+  grid-column: 1 / -1;
   margin: 1.5rem auto 0;
   max-width: 800px;
   display: flex;
@@ -219,110 +186,49 @@ h1 {
   height: auto;
   border-radius: .5rem;
 }
-
-/* Centered résumé button */
 .resume-wrapper {
   text-align: center;
   margin: 2rem 0;
 }
 
 /* Responsive Breakpoints */
-/* Tablet & below: ≤800px */
+/* Tablet & below */
 @media (max-width: 800px) {
-  html {
-    font-size: 90%;         /* slightly smaller text */
-  }
-  .hero-title {
-    font-size: 2rem;
-  }
+  html { font-size: 90%; }
+  .hero-title { font-size: 2rem; }
   .intro-container,
-  .education {
-    grid-template-columns: 1fr; /* stack columns */
-  }
+  .education { grid-template-columns: 1fr; }
 }
-
-/* Mobile & below: ≤480px */
+/* Mobile & below */
 @media (max-width: 480px) {
-  html {
-    font-size: 85%;         /* even smaller text */
-  }
-  /* Collapse nav, show hamburger, hide placeholders */
-  nav ul {
-    flex-direction: column;
-  }
-  .nav-toggle {
-    display: block;
-    position: absolute;
-    top: .75rem;
-    right: 1rem;
-    background: none;
-    border: none;
-    font-size: 2rem;
-    cursor: pointer;
-    z-index: 1000;
-  }
-  header.site-header nav ul {
-    display: none;
-    flex-direction: column;
-    background: #fff;
-    width: 100%;
-    margin-top: .5rem;
-  }
-  header.site-header nav.open ul {
-    display: flex;
-  }
-  .mobile-hide {
-    display: none;
-  }
-
-  /* Hero/video tweaks */
-  .hero-title {
-    font-size: 1.75rem;
-  }
-  .video-container {
-    margin: 1rem 0;
-  }
-
-  /* Index main stacks */
-  .index-main {
-    flex-direction: column;
-  }
-
+  html { font-size: 85%; }
+  /* your nav collapse is now in nav.css via checkbox-hack */
+  .hero-title { font-size: 1.75rem; }
+  .video-container { margin: 1rem 0; }
+  .index-main { flex-direction: column; }
 }
-/* Print Styles for about.html */
 
-/* 1″ margins on all sides */
+/* Print Styles for about.html */
 @page {
   margin: 1in;
 }
-
 @media print {
-   nav,
-  .hero,
-  .video-container {
-    display: none !important;
-  }
-
+  /* hide non-print elements */
+  nav, .hero, .video-container { display: none !important; }
+  /* show only the essentials, force black serif */
   h1,
-  .education h2,
   .intro-container p,
+  .education h2,
   .education ul,
   blockquote,
   footer {
     display: block !important;
-    color: #000  !important;
+    color: #000 !important;
     font-family: serif !important;
-    margin:        0 0 0.5em 0 !important;
-    padding:       0        !important;
+    margin: 0 0 0.5em !important;
+    padding: 0 !important;
   }
-
-  /* hide extra bits in the education section */
-  
-  .education figure {
-    display: none !important;
-  }
+  .education figure { display: none !important; }
+  .resume-wrapper,
+  .footer-icon { display: none !important; }
 }
-.resume-wrapper,
-  .resume-link {
-    display: none !important;
-  }

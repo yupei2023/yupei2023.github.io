@@ -8,19 +8,20 @@
   Author:  Yupei Duan
   School/Term: University of Missouri, Summer 2025
   Developed: Jun 14, 2025
-  Tested:  July 5, 2025; Passed on Firefox and Chrome browsers.
+  Tested:  July 12, 2025; Passed on Firefox and Chrome browsers.
   *****************************************************************************
   -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Index Page</title>
+
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="nav.css">
- 
+
   <!-- Favicon -->
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <!-- optional PNG fallback -->
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon-32x32.png" type="image/png" sizes="32x32">
 </head>
 
 <body>
@@ -28,7 +29,11 @@
 
     <!-- SITE HEADER -->
     <header class="site-header">
-      <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+
+      <!-- hamburger toggle -->
+      <input type="checkbox" id="nav-toggle" class="nav-toggle">
+      <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation">☰</label>
+
       <nav>
         <ul>
           <li><a href="index.html" class="active" aria-current="page">Home</a></li>
@@ -47,14 +52,16 @@
       </nav>
     </header>
 
+
     <!-- MAIN CONTENT: two-column layout -->
     <main class="index-main">
-
       <div class="columns">
 
         <!-- left column: headshot + categories -->
         <aside class="column column-left">
-          <img src="Duan_headshot.jpg" alt="Yupei Duan Headshot" class="headshot"> 
+          <img src="Duan_headshot.jpg"
+               alt="Yupei Duan Headshot"
+               class="headshot">
           <h3>Research Interests</h3>
           <h3>Subject Areas</h3>
           <h3>Methods</h3>
@@ -74,38 +81,26 @@
         </section>
 
       </div><!-- end .columns -->
-
     </main>
+
 
     <!-- SITE FOOTER -->
     <footer class="home-footer">
-  <p class="contact-item">
-    <!-- phone icon before the number -->
-    <img src="islt_7310/images/phone.gif"
-         alt="Phone"
-         class="footer-icon">
-    1 + 888-888-8888
-  </p>
-  <p class="contact-item">
-    <!-- email icon before the address -->
-    <img src="islt_7310/images/email.gif"
-         alt="Email"
-         class="footer-icon">
-    <a href="mailto:yupei.duan@missouri.edu">yupei.duan@missouri.edu</a>
-  </p>
-  <p>&copy; 2025 Yupei Duan. All rights reserved.</p>
-</footer>
-
+      <p class="contact-item">
+        <img src="islt_7310/images/phone.gif"
+             alt="Phone"
+             class="footer-icon">
+        1 + 888-888-8888
+      </p>
+      <p class="contact-item">
+        <img src="islt_7310/images/email.gif"
+             alt="Email"
+             class="footer-icon">
+        <a href="mailto:yupei.duan@missouri.edu">yupei.duan@missouri.edu</a>
+      </p>
+      <p>&copy; 2025 Yupei Duan. All rights reserved.</p>
     </footer>
 
-    <!-- JS to toggle mobile nav -->
-    <script>
-      const toggle = document.querySelector('.nav-toggle');
-      const nav    = document.querySelector('header.site-header nav');
-      toggle.addEventListener('click', () => {
-        nav.classList.toggle('open');
-      });
-    </script>
   </div> <!-- end .container -->
-</body>ß 
+</body>
 </html>
