@@ -27,24 +27,22 @@
       <!-- CSS-only hamburger toggle -->
       <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
       <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li>
+      <a href="project.html">Projects</a>
+      <ul class="dropdown">
+        <li><a href="project.html#virtualgeo">VirtualGeo</a></li>
+        <li><a href="project.html#ivrlab">iVRLab</a></li>
+        <li><a href="project.html#ai-patient">AI-VSP Encounter</a></li>
+      </ul>
+    </li>
+    <li><a href="reflection.html">Reflection</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
 
-          <!-- Projects dropdown -->
-          <li>
-            <a href="#project.html">Projects</a>
-            <ul class="dropdown">
-              <li class="mobile-hide"><a href="#link1">Link 1</a></li>
-              <li class="mobile-hide"><a href="#link2">Link 2</a></li>
-              <li class="mobile-hide"><a href="#link3">Link 3</a></li>
-            </ul>
-          </li>
-
-          <li><a href="reflection.html" class="active" aria-current="page">Reflection</a></li>
-          <li><a href="#contact.html">Contact</a></li>
-        </ul>
-      </nav>
     </header>
 
     <!-- MAIN CONTENT -->
@@ -77,9 +75,20 @@
       </article>
     </main>
 
-    <!-- SITE FOOTER -->
-    <footer>
-      <p>Designed &amp; Created by: Yupei Duan&nbsp;|&nbsp;yupei.duan@missouri.edu</p>
+     <!-- SITE FOOTER -->
+    <footer class="home-footer">
+      <p class="contact-item">
+        <img src="islt_7310/images/phone.gif"
+             alt="Phone"
+             class="footer-icon">
+        1 + 888-888-8888
+      </p>
+      <p class="contact-item">
+        <img src="islt_7310/images/email.gif"
+             alt="Email"
+             class="footer-icon">
+        <a href="mailto:yupei.duan@missouri.edu">yupei.duan@missouri.edu</a>
+      </p>
       <p>&copy; 2025 Yupei Duan. All rights reserved.</p>
     </footer>
 
