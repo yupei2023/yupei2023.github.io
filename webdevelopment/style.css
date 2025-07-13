@@ -38,6 +38,51 @@ h1 {
 .index-main > * {
   flex: 1 1 300px;
 }
+/* Projects page styles */
+
+.project-section {
+  margin: 3rem 0;
+  padding: 0 1rem;
+}
+
+.project-title {
+  color: #3366ff;        /* Hex #3366ff */
+  font-size: 0.875rem;   /* 14px */
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.project-topic {
+  color: #000000;        /* Hex #000000 */
+  font-size: 0.875rem;   /* 14px */
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.project-intro {
+  color: #000000;        /* body text */
+  font-size: 0.75rem;    /* 12px */
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+/* center every figure and cap caption width */
+.project-section figure {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.project-section figcaption {
+  font-size: 0.75rem;
+  color: #555;
+  margin-top: 0.25rem;
+}
+
+/* existing .video-container is perfect: ensures 16:9, responsive */
+.video-container {
+  max-width: 800px;
+  margin: 1rem auto;
+}
 
 /* Footer Icons & Background  */
 .footer-icon {

@@ -4,23 +4,21 @@
   <!--
   *****************************************************************************
   Title: Projects Page
-  Use:  Showcase Projects
+  Use:  Showcase Projects on one page
   Author:  Yupei Duan
   School/Term: University of Missouri, Summer 2025
-  Developed: Jul 10, 2025
-  Tested:  Jul 10, 2025; Passed on Firefox and Chrome.
+  Developed: Jul 12, 2025
   *****************************************************************************
   -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projects – Yupei Duan</title>
-
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="nav.css">
 
-  <!-- Favicon -->
+  <!-- favicon -->
   <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" sizes="32x32" href="favicon-32x32.png" type="image/png">
 </head>
 
 <body>
@@ -32,7 +30,7 @@
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About</a></li>
           <li>
-            <a href="#virtualgeo">Projects</a>
+            <a href="#">Projects</a>
             <ul class="dropdown">
               <li><a href="#virtualgeo">Project VirtualGeo</a></li>
               <li><a href="#ivrlab">Project iVRLab</a></li>
@@ -46,34 +44,24 @@
     </header>
 
     <!-- MAIN CONTENT -->
-    <main class="project-main">
-
-      <h1>My Projects</h1>
-
-      <!-- ▶ Project 1: VirtualGeo -->
-      <section id="virtualgeo" class="project">
-        <h2>Project VirtualGeo</h2>
-        <p class="project-topic"><strong>Topic:</strong> Blending Mixed Reality and Generative AI to Teach Geography: An MR+GenAI Learning Environment</p>
-        <p class="project-intro">
-          This study examines “VirtualGeo”, a Mixed Reality and Generative AI platform designed to enhance U.S. geography knowledge among international students. By integrating immersive technologies, VirtualGeo allows students to engage with spatial content within an interactive digital landscape. Findings show significant gains in international students’ geographic understanding and underscore VirtualGeo's potential to support adaptive, student-centered learning. Implications suggest VirtualGeo as a scalable tool for online training, promoting broader access to geography and other spatial disciplines, and highlighting new possibilities for research, policy, and practice in digital education.
+    <main>
+      <!-- Project 1 -->
+      <section id="virtualgeo" class="project-section">
+        <h2 class="project-title">Project: VirtualGeo</h2>
+        <p class="project-topic">
+          Topic: Blending Mixed Reality and Generative AI to Teach Geography: An MR+GenAI Learning Environment
         </p>
-
+        <p class="project-intro">
+          This study examines “VirtualGeo”, a Mixed Reality and Generative AI platform designed to enhance U.S. geography knowledge among international students. By integrating immersive technologies, VirtualGeo allows students to engage with spatial content within an interactive digital landscape. Findings show significant gains in international students’ geographic understanding and underscore VirtualGeo's potential to support adaptive, student-centered learning. Implications suggest VirtualGeo as a scalable tool for online training, promoting broader access to geography and other spatial disciplines.
+        </p>
         <figure>
-          <img src="islt_7310/images/project/VirtualGeo1.png"
-               alt="Participant tracing the outline of Pennsylvania in VirtualGeo">
-          <figcaption>
-            Figure 1 | A participant is using VirtualGeo to trace the outline of the state of Pennsylvania.
-          </figcaption>
+          <img src="islt_7310/images/project/VirtualGeo1.png" alt="Tracing Pennsylvania outline">
+          <figcaption>Figure 1 | Participant tracing Pennsylvania’s outline.</figcaption>
         </figure>
-
         <figure>
-          <img src="islt_7310/images/project/VirtualGeo2.png"
-               alt="Participant using VirtualGeo to learn US geography immersively">
-          <figcaption>
-            Figure 2 | A participant uses VirtualGeo to learn US geographic knowledge immersively.
-          </figcaption>
+          <img src="islt_7310/images/project/VirtualGeo2.png" alt="Immersive geography learning">
+          <figcaption>Figure 2 | Immersive U.S. geography learning.</figcaption>
         </figure>
-
         <div class="video-container">
           <iframe
             src="https://www.youtube.com/embed/XcW26HMxCH4"
@@ -83,81 +71,83 @@
             allowfullscreen>
           </iframe>
         </div>
-
-        <h3>Limitations and Future Directions</h3>
+        <h3>Limitations &amp; Future Directions</h3>
         <ul>
-          <li>Small sample size limits generalizability.</li>
-          <li>Self-reported data may introduce bias.</li>
-          <li>Comfort and eye-strain issues affect usability.</li>
-          <li>Long-term retention not assessed.</li>
-          <li>Future work: larger diverse samples, longitudinal studies, mobile AR support.</li>
+          <li>Small sample limits generalizability</li>
+          <li>Self-reported data may introduce bias</li>
+          <li>Usability issues: discomfort, eye strain</li>
+          <li>Long-term retention not assessed</li>
+          <li>Future: larger samples; AR versions for wider access</li>
         </ul>
       </section>
 
-      <!-- ▶ Project 2: iVRLab -->
-      <section id="ivrlab" class="project">
-        <h2>Project iVRLab</h2>
-        <p class="project-topic"><strong>Topic:</strong> [Your iVRLab topic here]</p>
-        <p class="project-intro">
-          [Write a brief introduction to iVRLab: what it is, who it’s for, why you built it.]
+      <!-- Project 2 -->
+      <section id="ivrlab" class="project-section">
+        <h2 class="project-title">Project: iVRLab</h2>
+        <p class="project-topic">
+          Topic: Enhancing Student Self-Efficacy and Interest in Microelectronics through Immersive Virtual Reality
         </p>
-
-        <!-- Example artifact (replace with your own) -->
-        <figure>
-          <img src="islt_7310/images/project/iVRLab1.png"
-               alt="Screenshot from iVRLab environment">
-          <figcaption>
-            Figure 1 | A glance at the iVRLab mixed reality setup.
-          </figcaption>
-        </figure>
-
-        <!-- If you have a video demo, embed it the same way -->
-        <!--
-        <div class="video-container">
-          <iframe src="YOUR_IVRLAB_VIDEO_URL" ...></iframe>
-        </div>
-        -->
-
-        <h3>Key Features</h3>
-        <ul>
-          <li>Feature A description…</li>
-          <li>Feature B description…</li>
-          <li>Feature C description…</li>
-        </ul>
-      </section>
-
-      <!-- ▶ Project 3: AI-Virtual Patient Encounter -->
-      <section id="ai-patient" class="project">
-        <h2>Project AI-Virtual Patient Encounter</h2>
-        <p class="project-topic"><strong>Topic:</strong> [Your AI-Virtual Patient Encounter topic here]</p>
         <p class="project-intro">
-          [A short intro to your AI-Virtual Patient Encounter: purpose, audience, tech stack.]
+          This study investigates iVRLab, an immersive VR microfabrication training system, and its influence on college students’ self-efficacy and interest in microelectronics during a one-hour workshop. iVRLab simulates photolithography cleanroom operations, providing hands-on virtual experiences that merge theory with practice. A pre–post analysis revealed a significant rise in self-efficacy (M = 4.11 → 4.37, p = 0.0066). Correlations among engagement, embodiment, and immersion underscore the value of embodied VR learning.
         </p>
-
-        <!-- Example artifact -->
         <figure>
-          <img src="islt_7310/images/project/AI-Patient1.png"
-               alt="Virtual patient interface screenshot">
-          <figcaption>
-            Figure 1 | The AI-powered virtual patient interface.
-          </figcaption>
+          <img src="islt_7310/images/project/iVRLab1.png" alt="iVRLab tasks & tutorials">
+          <figcaption>Figure 1 | iVRLab: tasks-driven tutorials, canvas instructions, point scoring, object highlights.</figcaption>
         </figure>
-
-        <!-- Optional video embed -->
-        <!--
+        <figure>
+          <img src="islt_7310/images/project/iVRLab2.png" alt="Participants in iVRLab session">
+          <figcaption>Figure 2 | Participants in an iVRLab training session.</figcaption>
+        </figure>
         <div class="video-container">
-          <iframe src="YOUR_AI_PATIENT_VIDEO_URL" ...></iframe>
+          <iframe
+            src="https://www.youtube.com/embed/-wQY3Q47wX0"
+            title="iVRLab Demo"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
         </div>
-        -->
-
-        <h3>Planned Studies & Next Steps</h3>
+        <h3>Limitations &amp; Future Directions</h3>
         <ul>
-          <li>Study 1: evaluation with medical students.</li>
-          <li>Study 2: integration of natural language processing.</li>
-          <li>Future: mobile support, multi-lingual patients.</li>
+          <li>Small, homogeneous sample</li>
+          <li>Brief, single-session design</li>
+          <li>No control group for comparison</li>
+          <li>Technical issues: lag, headset discomfort</li>
+          <li>Future: longitudinal studies, broader STEM applications</li>
         </ul>
       </section>
 
+      <!-- Project 3 -->
+      <section id="ai-patient" class="project-section">
+        <h2 class="project-title">Project: AI-Virtual Patient Encounter</h2>
+        <p class="project-topic">
+          Topic: The Usability of an AI-Enhanced Virtual Standard Patient in Nursing Education
+        </p>
+        <p class="project-intro">
+          This study explores an AI-VSP system integrated with Meta Quest 2 to enhance nursing education. Addressing a nursing shortage, AI-VSPs offer scalable, cost-effective patient-encounter training. Usability testing with 63 nursing students yielded an SUS score of 81.6, indicating excellent usability. AI-VSP encounters create immersive practice opportunities, laying groundwork for future deliberate-practice research.
+        </p>
+        <figure>
+          <img src="islt_7310/images/project/AI-VSP1.png" alt="3D virtual clinic room">
+          <figcaption>Figure 1 | 3D virtual clinic room rendered in Unity.</figcaption>
+        </figure>
+        <figure>
+          <img src="islt_7310/images/project/AI-VSP2.png" alt="AI-VSP spatial classroom">
+          <figcaption>Figure 2 | AI-VSP hosted in a spatial classroom for full immersion.</figcaption>
+        </figure>
+        <div class="video-container">
+          <iframe
+            src="https://www.youtube.com/embed/dRUHsL3MA-s"
+            title="AI-VSP Demo"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <h3>Significance</h3>
+        <p class="project-intro">
+          This work demonstrates a cost-friendly, adaptable AI-VSP solution for nursing programs. Educators can tailor patient “personalities” and difficulty levels without deep tech knowledge. The gamified interface appeals to modern learners and promises broader adoption in under-resourced institutions.
+        </p>
+      </section>
     </main>
 
     <!-- SITE FOOTER -->
@@ -172,7 +162,6 @@
       </p>
       <p>&copy; 2025 Yupei Duan. All rights reserved.</p>
     </footer>
-
-  </div> <!-- /.container -->
+  </div>
 </body>
 </html>
