@@ -24,24 +24,31 @@
 <body>
   <div class="container">
     <!-- SITE HEADER -->
-    <header class="site-header">
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li>
-            <a href="#">Projects</a>
-            <ul class="dropdown">
-              <li><a href="#virtualgeo">Project VirtualGeo</a></li>
-              <li><a href="#ivrlab">Project iVRLab</a></li>
-              <li><a href="#ai-patient">AI-Virtual Patient Encounter</a></li>
-            </ul>
-          </li>
-          <li><a href="reflection.html">Reflection</a></li>
-          <li><a href="#contact">Contact</a></li>
+   <header class="site-header">
+  <!-- hidden checkbox -->
+  <input type="checkbox" id="nav-toggle" class="nav-toggle">
+
+  <!-- label becomes your ☰ button -->
+  <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation">☰</label>
+
+  <!-- nav -->
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li>
+        <a href="project.html">Projects</a>
+        <ul class="dropdown">
+          <li class="mobile-hide"><a href="project.html#virtualgeo">VirtualGeo</a></li>
+          <li class="mobile-hide"><a href="project.html#ivrlab">iVRLab</a></li>
+          <li class="mobile-hide"><a href="project.html#ai-patient">AI-VSP Encounter</a></li>
         </ul>
-      </nav>
-    </header>
+      </li>
+      <li><a href="reflection.html">Reflection</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
 
     <!-- MAIN CONTENT -->
     <main>

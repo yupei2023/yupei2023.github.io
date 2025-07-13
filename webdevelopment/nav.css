@@ -1,6 +1,11 @@
-/*  MAIN NAV BAR */
+/* ─── MAIN NAV BAR ─── */
+/* ensure header can position the label */
+header.site-header {
+  position: relative;
+}
+
 nav {
-  background: #ffffff;
+  background: #fff;
   border-bottom: 2px solid #666;
 }
 
@@ -8,7 +13,7 @@ nav ul {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: flex;            /* horizontal by default */
+  display: flex;           /* horizontal by default */
 }
 
 nav a {
@@ -21,57 +26,47 @@ nav a {
   font-weight: 600;
   transition: background 0.25s, color 0.25s;
 }
-
 nav a:hover,
 nav a:focus {
   background: #000;
   color: #fff;
 }
 
-/* DROP-DOWN (horizontal navbar) */
+/* DROP-DOWN (desktop) */
 nav li {
   position: relative;
 }
-
 nav .dropdown {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: none;            /* hidden by default */
   position: absolute;
-  top: 100%;                /* appear below parent */
+  top: 100%;
   left: 0;
   background: #fff;
   border: 1px solid #666;
+  display: none;
   flex-direction: column;
 }
-
 nav li:hover > .dropdown,
 nav li:focus-within > .dropdown {
-  display: flex;            /* reveal on hover/focus */
+  display: flex;
 }
-
 nav .dropdown a {
-  padding: 0.75rem 1.5rem;
   margin: 0.25rem;
-  border: 1px solid #666;
+  padding: 0.75rem 1.5rem;
 }
-
 nav .dropdown a:hover,
 nav .dropdown a:focus {
   background: #000;
   color: #fff;
 }
 
-/*  CHECKBOX-HACK TOGGLE  */
-/* hidden real checkbox */
+/* ─── CHECKBOX-HACK ─── */
+/* hide the real checkbox offscreen */
 .nav-toggle {
   display: none;
 }
-
-/* the “☰” label styled like a button */
+/* style the label as your hamburger button */
 .nav-toggle-label {
-  display: none;            /* only show on mobile */
+  display: none;           /* shown only on mobile */
   font-size: 2rem;
   cursor: pointer;
   position: absolute;
@@ -81,14 +76,13 @@ nav .dropdown a:focus {
   color: #000;
 }
 
-/* MOBILE STYLES (≤480px)  */
+/* ─── MOBILE STYLES (≤480px) ─── */
 @media (max-width: 480px) {
-  /* show hamburger icon */
+  /* show the hamburger toggle */
   .nav-toggle-label {
     display: block;
   }
-
-  /* hide the menu by default */
+  /* collapse the menu by default */
   nav ul {
     display: none;
     flex-direction: column;
@@ -96,13 +90,11 @@ nav .dropdown a:focus {
     width: 100%;
     margin-top: 0.5rem;
   }
-
-  /* ✨ when checkbox is checked, show the menu ✨ */
+  /* when the checkbox is checked, reveal the menu */
   .nav-toggle:checked ~ nav ul {
     display: flex;
   }
-
-  /* hide placeholder items under Projects */
+  /* hide any “Project 1/2/3” placeholders */
   .mobile-hide {
     display: none;
   }

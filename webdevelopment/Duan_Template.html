@@ -21,28 +21,31 @@
   <div class="container">
 
     <!-- SITE HEADER + NAV -->
-    <header class="site-header">
-      <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
+   <header class="site-header">
+  <!-- hidden checkbox -->
+  <input type="checkbox" id="nav-toggle" class="nav-toggle">
 
-          <!-- Projects dropdown -->
-          <li>
-            <a href="#project.html">Projects</a>
-            <ul class="dropdown">
-              <li><a href="#link1">Link 1</a></li>
-              <li><a href="#link2">Link 2</a></li>
-              <li><a href="#link3">Link 3</a></li>
-            </ul>
-          </li>
+  <!-- label becomes your ☰ button -->
+  <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation">☰</label>
 
-          <li><a href="reflection.html">Reflection</a></li>
-          <li><a href="#contact.html">Contact</a></li>
+  <!-- nav -->
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li>
+        <a href="project.html">Projects</a>
+        <ul class="dropdown">
+          <li class="mobile-hide"><a href="project.html#virtualgeo">VirtualGeo</a></li>
+          <li class="mobile-hide"><a href="project.html#ivrlab">iVRLab</a></li>
+          <li class="mobile-hide"><a href="project.html#ai-patient">AI-VSP Encounter</a></li>
         </ul>
-      </nav>
-    </header>
+      </li>
+      <li><a href="reflection.html">Reflection</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
 
     <!-- MAIN CONTENT (empty for now) -->
     <main>
