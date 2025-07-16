@@ -301,3 +301,52 @@ h1 {
 .project-section p:not(.project-intro)::first-line {
   letter-spacing: .02em;
 }
+
+/* ─── Education & Professional Experience Table ─── */
+.responsive-table {
+  overflow-x: auto;           /* allow horizontal scroll on narrow screens */
+  margin: 2rem 0;             /* space above & below */
+}
+
+.responsive-table table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #666;     /* outer border */
+}
+
+.responsive-table th,
+.responsive-table td {
+  padding: 0.5rem;
+  border: 1px solid #666;     /* cell borders */
+  text-align: left;
+}
+
+/* 1) color the header row and the very last row the same */
+.responsive-table thead tr,
+.responsive-table tbody tr:last-child {
+  background-color: #3366ff;
+  color: #fff;
+}
+
+/* 2) zebra-stripe only the “real” data rows */
+.responsive-table tbody tr:nth-child(even):not(:last-child) td {
+  background-color: #f8f8f8;
+}
+
+/* 3) table caption (accessible label) */
+.responsive-table figcaption {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #3366ff;
+  font-size: 1.1rem;
+}
+
+/* 4) hint at horizontal scroll on tablets */
+@media (max-width: 800px) {
+  .responsive-table {
+    margin-left: -1rem;
+    margin-right: -1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
