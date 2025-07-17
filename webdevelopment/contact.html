@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <!--
+  *****************************************************************************
+  Title: Contact Page
+  Use:  Contact Form
+  Author:  Yupei Duan
+  School/Term: University of Missouri, Summer 2025
+  Developed: Jul 13, 2025
+  *****************************************************************************
+  -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Me – Yupei Duan</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="nav.css">
+  <!--favicon omitted for brevity-->
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- SITE HEADER -->
+    <header class="site-header">
+      <input type="checkbox" id="nav-toggle" class="nav-toggle">
+      <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation">☰</label>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li>
+            <a href="project.html">Projects</a>
+            <ul class="dropdown">
+              <li class="mobile-hide"><a href="project.html#virtualgeo">VirtualGeo</a></li>
+              <li class="mobile-hide"><a href="project.html#ivrlab">iVRLab</a></li>
+              <li class="mobile-hide"><a href="project.html#ai-patient">AI-VSP Encounter</a></li>
+            </ul>
+          </li>
+          <li><a href="reflection.html">Reflection</a></li>
+          <li><a href="contact.html" class="active" aria-current="page">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+      <section class="contact-form">
+        <h1>Contact Me</h1>
+        <form action="mailto:yupei.duan@missouri.edu?Subject=Website%20Contact" method="post" enctype="text/plain">
+          
+          <label for="first-name">First Name:</label>
+          <input
+            type="text"
+            id="first-name"
+            name="first-name"
+            placeholder="Enter your first name"
+            required
+            autofocus>
+
+          <label for="last-name">Last Name:</label>
+          <input
+            type="text"
+            id="last-name"
+            name="last-name"
+            placeholder="Enter your last name"
+            required>
+
+          <label for="email">Email Address:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="you@example.com"
+            required>
+
+          <label for="message">Message:</label>
+          <textarea
+            id="message"
+            name="message"
+            placeholder="Type your message here..."
+            required></textarea>
+
+          <button type="submit">Send</button>
+        </form>
+      </section>
+    </main>
+
+    <!-- SITE FOOTER -->
+    <footer class="home-footer" id="contact">
+      <p class="contact-item">
+        <img src="islt_7310/images/phone.gif" alt="Phone" class="footer-icon">
+        +1 888-888-8888
+      </p>
+      <p class="contact-item">
+        <img src="islt_7310/images/email.gif" alt="Email" class="footer-icon">
+        <a href="mailto:yupei.duan@missouri.edu">yupei.duan@missouri.edu</a>
+      </p>
+      <p>&copy; 2025 Yupei Duan. All rights reserved.</p>
+    </footer>
+
+  </div> <!-- .container -->
+</body>
+</html>

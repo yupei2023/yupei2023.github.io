@@ -350,3 +350,64 @@ h1 {
     padding-right: 1rem;
   }
 }
+/* ─── Contact Form Styling ─── */
+.contact-form {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: #f8f8f8;
+  border-radius: 0.5rem;
+}
+.contact-form h1 {
+  margin-bottom: 1rem;
+  color: #3366ff;
+}
+.contact-form label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+}
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #666;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+}
+.contact-form textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+.contact-form button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background: #3366ff;
+  color: #fff;
+  border: none;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.25s;
+}
+.contact-form button:hover {
+  background: #2244cc;
+}
+
+/* ─── Responsive for Contact Form ─── */
+@media (max-width: 800px) {
+  .contact-form {
+    margin: 1rem auto;
+    padding: 1rem;
+  }
+}
+@media (max-width: 480px) {
+  .contact-form input,
+  .contact-form textarea,
+  .contact-form button {
+    font-size: 0.9rem;
+  }
+}
+
