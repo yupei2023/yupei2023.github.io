@@ -127,35 +127,32 @@ h1, h2, h3, h4, h5, h6 {
 /* ───────────────────────────────────────────────────────────────────────── */
 /*                              About Page Intro                            */
 /* ───────────────────────────────────────────────────────────────────────── */
+
 .intro-container {
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-start;
+  align-items: center;     /* center image/text on the cross-axis */
   gap: 1.5rem;
   max-width: 800px;
   margin: 2rem auto;
   padding: 0 1rem;
 }
+
 .about-headshot {
   flex-shrink: 0;
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
+  width: 250px;            /* larger circle */
+  height: 250px;
+  object-fit: cover;       
+  object-position: center; /* make sure the face is centered in the frame */
   border-radius: 50%;
-  background: #fff;
+  /* no margin needed here */
 }
+
 .intro-text {
   flex: 1;
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
-}
-/* ─── About Intro Headshot Fix ─── */
-.about-headshot {
-  object-fit: cover;             /* crop evenly */
-  object-position: center center;/* focus on the center of the image */
-  margin: 0 auto;                /* center horizontally in its flex/grid cell */
-  display: block;                /* ensure margin auto works */
 }
 
 /* ─── Center the résumé button ─── */
@@ -164,6 +161,7 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: center;       
   margin: 2rem 0;                
 }
+
 
 /* ───────────────────────────────────────────────────────────────────────── */
 /*                            About Page Video Hero                          */
