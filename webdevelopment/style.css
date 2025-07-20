@@ -150,6 +150,20 @@ h1, h2, h3, h4, h5, h6 {
   flex-direction: column;
   gap: 1.25rem;
 }
+/* ─── About Intro Headshot Fix ─── */
+.about-headshot {
+  object-fit: cover;             /* crop evenly */
+  object-position: center center;/* focus on the center of the image */
+  margin: 0 auto;                /* center horizontally in its flex/grid cell */
+  display: block;                /* ensure margin auto works */
+}
+
+/* ─── Center the résumé button ─── */
+.resume-wrapper {
+  display: flex;
+  justify-content: center;       
+  margin: 2rem 0;                
+}
 
 /* ───────────────────────────────────────────────────────────────────────── */
 /*                            About Page Video Hero                          */
