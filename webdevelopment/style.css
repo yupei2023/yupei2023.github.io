@@ -141,7 +141,7 @@ h1, h2, h3, h4, h5, h6 {
 .about-headshot {
   flex-shrink: 0;
   width: 250px;            /* larger circle */
-  height: 250px;
+  height: 400px;
   object-fit: cover;       
   object-position: center; /* make sure the face is centered in the frame */
   border-radius: 50%;
