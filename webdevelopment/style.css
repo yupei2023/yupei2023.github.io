@@ -65,46 +65,81 @@ h1 {
   transform: scale(1.2);
 }
 
-/* ─── Two-column Grid (Index) ─── */
-.columns {
-  display: grid;
-  grid-template-columns: minmax(200px, 1fr) 3fr;
-  gap: 2rem;
-  align-items: start;
+/* ─── Index “Card” Sections ─── */
+.card {
+  background: #f8f8f8;
+  border-radius: .5rem;
+  padding: 1.5rem;
   margin: 2rem 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
-.column-left {
-  border-right: 1px solid #ddd;
-  padding-right: 1rem;
+
+.card .card-content {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  align-items: center;
 }
-.headshot {
-  width: 250px;
-  height: 250px;
-  object-fit: contain;
-  object-position: center;
-  border-radius: 50%;
-  display: block;
-  margin: 0 auto 1rem;
-  background: #fff;
+
+.card .card-text h1 {
+  color: #3366ff;
+  font-size: 1.75rem;
+  margin-bottom: .5rem;
+  font-family: 'Playfair Display', serif;
 }
-.column-left h3 {
-  font-size: 1.1rem;
-  margin: 1rem 0 .5rem;
+
+.card .card-text p {
+  margin: 0;            /* reset */
+  font-size: 1rem;
   color: #333;
+  line-height: 1.5;
 }
-.column-right {
-  line-height: 1.6;
+
+/* Single-column card (no image) */
+.card--single {
+  background: #f8f8f8;
+  border-radius: .5rem;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
+
+.card--single h2 {
+  color: #3366ff;
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  font-family: 'Playfair Display', serif;
+}
+
+/* ensure paragraphs are separated by one blank line */
+.card--single p {
+  margin: 0 0 1rem;  /* bottom spacing */
+}
+
+.card--single p:last-of-type {
+  margin-bottom: 0;  /* no extra space after the final block */
+}
+
+/* image styling */
+.card .card-image img {
+  max-width: 150px;
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+}
+
+/* stack on mobile */
 @media (max-width: 800px) {
-  .columns {
+  .card .card-content {
     grid-template-columns: 1fr;
   }
-  .column-left {
-    border-right: none;
-    padding-right: 0;
-    margin-bottom: 2rem;
+  .card-image {
+    margin-top: 1rem;
+    text-align: center;
   }
 }
+
 
 /* ─── Reflection Page Styling ─── */
 .reflection {

@@ -8,99 +8,105 @@
   Author:  Yupei Duan
   School/Term: University of Missouri, Summer 2025
   Developed: Jun 14, 2025
-  Tested:  July 12, 2025; Passed on Firefox and Chrome browsers.
+  Tested:  July 20, 2025; Passed on Firefox and Chrome browsers.
   *****************************************************************************
   -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Index Page</title>
-
-  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="nav.css">
-
-  <!-- Favicon -->
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <link rel="icon" href="favicon-32x32.png" type="image/png" sizes="32x32">
+  <!-- Favicon, fonts, etc. -->
 </head>
 
 <body>
   <div class="container">
 
     <!-- SITE HEADER -->
-   <header class="site-header">
-  <!-- hidden checkbox -->
-  <input type="checkbox" id="nav-toggle" class="nav-toggle">
-
-  <!-- label becomes your ☰ button -->
-  <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation">☰</label>
-
-  <!-- nav -->
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li>
-        <a href="project.html">Projects</a>
-        <ul class="dropdown">
-          <li class="mobile-hide"><a href="project.html#virtualgeo">VirtualGeo</a></li>
-          <li class="mobile-hide"><a href="project.html#ivrlab">iVRLab</a></li>
-          <li class="mobile-hide"><a href="project.html#ai-patient">AI-VSP Encounter</a></li>
+    <header class="site-header">
+      <input type="checkbox" id="nav-toggle" class="nav-toggle">
+      <label for="nav-toggle" class="nav-toggle-label">☰</label>
+      <nav>
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li>
+            <a href="project.html">Projects</a>
+            <ul class="dropdown">
+              <li class="mobile-hide"><a href="project.html#virtualgeo">VirtualGeo</a></li>
+              <li class="mobile-hide"><a href="project.html#ivrlab">iVRLab</a></li>
+              <li class="mobile-hide"><a href="project.html#ai-patient">AI-VSP Encounter</a></li>
+            </ul>
+          </li>
+          <li><a href="reflection.html">Reflection</a></li>
+          <li><a href="contact.html">Contact</a></li>
         </ul>
-      </li>
-      <li><a href="reflection.html">Reflection</a></li>
-      <li><a href="contact.html" class="active" aria-current="page">Contact</a></li>
-    </ul>
-  </nav>
-</header>
-    <!-- MAIN CONTENT: two-column layout -->
-    <main class="index-main">
-      <div class="columns">
+      </nav>
+    </header>
 
-        <!-- left column: headshot + categories -->
-        <aside class="column column-left">
-          <img src="Duan_headshot.jpg"
-               alt="Yupei Duan Headshot"
-               class="headshot">
-          <h3>Research Interests</h3>
-          <h3>Subject Areas</h3>
-          <h3>Methods</h3>
-        </aside>
+    <!-- MAIN CONTENT -->
+    <main>
+  <!-- Card #1: Welcome -->
+  <section class="card">
+    <div class="card-content">
+      <div class="card-text">
+        <h1>Welcome!</h1>
+        <p>
+          Take a quiet moment to explore—you may discover something that speaks to you.
+        </p>
+      </div>
+      <div class="card-image">
+        <img src="islt_7310/images/logo.png" alt="Site Logo">
+      </div>
+    </div>
+  </section>
 
-        <!-- right column: existing intro text -->
-        <section class="column column-right">
-          <header class="page-intro">
-            <h1>Welcome. Take a quiet moment to explore—you may discover something that speaks to you.</h1>
-          </header>
+  <!-- Card #2: What's on this website? -->
+  <section class="card card--single">
+    <h2>What's on this website?</h2>
 
-          <h2>What's on this website?</h2>
-          <p>My name is Yupei Duan, and I consider myself a learner, an educator, and a researcher—three roles that reflect both my past experiences and my aspirations for the future.</p>
-          <p>My journey has taken me from grade school to graduate school, and from a small village in China to the whole world. I have worked for many years as a middle school science teacher and administrator. Currently, I am a Ph.D. student and research assistant in the School of Information Science and Learning Technologies at the University of Missouri.</p>
-          <p>I am passionate about sharing scientific knowledge and helping learners engage with STEM subjects more effectively and efficiently—especially through the use of emerging technologies like Virtual Reality and Artificial Intelligence.</p>
-          <p>The questions <em>What?, Why?, and How?</em> constantly fuel my curiosity and drive my exploration of the world. Through this website, I hope to share that curiosity and passion with you.</p>
-        </section>
+    <p>
+      My name is Yupei Duan, and I consider myself a learner, an educator, and a researcher—three 
+      roles that reflect both my past experiences and my aspirations for the future.
+    </p>
 
-      </div><!-- end .columns -->
-    </main>
+    <!-- blank line above, paragraph below -->
+    <p>
+      My journey has taken me from grade school to graduate school, and from a small village in China 
+      to the whole world. I have worked for many years as a middle school science teacher and administrator.
+      Currently, I am a Ph.D. student and research assistant in the School of Information Science and
+      Learning Technologies at the University of Missouri.
+    </p>
+    
+    <p>
+      I am passionate about sharing scientific knowledge and helping learners engage with STEM subjects
+      more effectively and efficiently—especially through the use of emerging technologies like Virtual 
+      Reality and Artificial Intelligence.
+    </p>
+
+    <p>
+      The questions <em>What?</em>, <em>Why?</em>, and <em>How?</em> constantly fuel my curiosity and 
+      drive my exploration of the world. Through this website, I hope to share that curiosity and passion 
+      with you.
+    </p>
+  </section>
+</main>
+
 
 
     <!-- SITE FOOTER -->
     <footer class="home-footer">
       <p class="contact-item">
-        <img src="islt_7310/images/phone.gif"
-             alt="Phone"
-             class="footer-icon">
-        1 + 888-888-8888
+        <img src="islt_7310/images/phone.gif" alt="Phone" class="footer-icon">
+        +1 888-888-8888
       </p>
       <p class="contact-item">
-        <img src="islt_7310/images/email.gif"
-             alt="Email"
-             class="footer-icon">
+        <img src="islt_7310/images/email.gif" alt="Email" class="footer-icon">
         <a href="mailto:yupei.duan@missouri.edu">yupei.duan@missouri.edu</a>
       </p>
       <p>&copy; 2025 Yupei Duan. All rights reserved.</p>
     </footer>
 
-  </div> <!-- end .container -->
+  </div>
 </body>
 </html>
