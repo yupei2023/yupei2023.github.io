@@ -13,6 +13,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projects – Yupei Duan</title>
+
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="nav.css">
 
@@ -23,35 +24,34 @@
 
 <body>
   <div class="container">
+
     <!-- SITE HEADER -->
-   <header class="site-header">
-  <!-- hidden checkbox -->
-  <input type="checkbox" id="nav-toggle" class="nav-toggle">
-
-  <!-- label becomes your ☰ button -->
-  <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation">☰</label>
-
-  <!-- nav -->
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li>
-        <a href="project.html">Projects</a>
-        <ul class="dropdown">
-          <li class="mobile-hide"><a href="project.html#virtualgeo">VirtualGeo</a></li>
-          <li class="mobile-hide"><a href="project.html#ivrlab">iVRLab</a></li>
-          <li class="mobile-hide"><a href="project.html#ai-patient">AI-VSP Encounter</a></li>
+    <header class="site-header">
+      <!-- hidden checkbox -->
+      <input type="checkbox" id="nav-toggle" class="nav-toggle">
+      <!-- label becomes your ☰ button -->
+      <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation">☰</label>
+      <!-- nav -->
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li>
+            <a href="project.html" class="active" aria-current="page">Projects</a>
+            <ul class="dropdown">
+              <li class="mobile-hide"><a href="project.html#virtualgeo">VirtualGeo</a></li>
+              <li class="mobile-hide"><a href="project.html#ivrlab">iVRLab</a></li>
+              <li class="mobile-hide"><a href="project.html#ai-patient">AI-VSP Encounter</a></li>
+            </ul>
+          </li>
+          <li><a href="reflection.html">Reflection</a></li>
+          <li><a href="contact.html">Contact</a></li>
         </ul>
-      </li>
-      <li><a href="reflection.html">Reflection</a></li>
-      <li><a href="contact.html" class="active" aria-current="page">Contact</a></li>
-    </ul>
-  </nav>
-</header>
+      </nav>
+    </header>
 
-    <!-- MAIN CONTENT -->
-    <main>
+    <!-- MAIN CONTENT: two-up grid on desktop, one-col on mobile -->
+    <main class="projects-grid">
       <!-- Project 1 -->
       <section id="virtualgeo" class="project-section">
         <h2 class="project-title">Project: VirtualGeo</h2>
@@ -160,19 +160,16 @@
     <!-- SITE FOOTER -->
     <footer class="home-footer">
       <p class="contact-item">
-        <img src="islt_7310/images/phone.gif"
-             alt="Phone"
-             class="footer-icon">
-        1 + 888-888-8888
+        <img src="islt_7310/images/phone.gif" alt="Phone" class="footer-icon">
+        +1 888-888-8888
       </p>
       <p class="contact-item">
-        <img src="islt_7310/images/email.gif"
-             alt="Email"
-             class="footer-icon">
+        <img src="islt_7310/images/email.gif" alt="Email" class="footer-icon">
         <a href="mailto:yupei.duan@missouri.edu">yupei.duan@missouri.edu</a>
       </p>
       <p>&copy; 2025 Yupei Duan. All rights reserved.</p>
     </footer>
-  </div>
+
+  </div> <!-- end .container -->
 </body>
 </html>
