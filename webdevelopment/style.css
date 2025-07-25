@@ -90,10 +90,10 @@ h1, h2, h3, h4, h5, h6 {
 .card--single {
   /* use for single‐column sections without an image */
 }
-.card--single h2 {
+.card--single h1 {
   font-family: 'Playfair Display', serif;
-  font-size: 1.25rem;
-  margin-bottom: 1rem;
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
 }
 .card--single p {
   margin-bottom: 1rem;
