@@ -9,6 +9,14 @@ menuButton?.addEventListener("click", () => {
   navigation.classList.toggle("is-open", !isOpen);
 });
 
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && navigation?.classList.contains("is-open")) {
+    navigation.classList.remove("is-open");
+    menuButton?.setAttribute("aria-expanded", "false");
+    menuButton?.focus();
+  }
+});
+
 navigation?.querySelectorAll("a").forEach((link) => {
   link.addEventListener("click", () => {
     navigation.classList.remove("is-open");
@@ -16,7 +24,8 @@ navigation?.querySelectorAll("a").forEach((link) => {
   });
 });
 
-document.querySelector("#year").textContent = new Date().getFullYear();
+const year = document.querySelector("#year");
+if (year) year.textContent = new Date().getFullYear();
 
 const revealTargets = document.querySelectorAll(
   ".section-heading, .focus-grid article, .project, .publication-list article, .timeline article, .about-copy"

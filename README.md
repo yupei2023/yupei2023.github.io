@@ -1,10 +1,24 @@
-# Yupei Duan · Academic Portfolio
+# Yupei Duan · Academic Website and Ph.D. Portfolio
 
-Personal academic portfolio for Yupei Duan, a learning scientist researching
-artificial intelligence, immersive technologies, and STEM education.
+Personal academic website for Yupei Duan, a learning technology researcher,
+educator, and designer working across artificial intelligence, immersive
+technologies, and STEM education.
 
 The site is built with accessible, dependency-free HTML, CSS, and JavaScript and
-is ready to publish with GitHub Pages.
+is designed for GitHub Pages.
+
+## Site structure
+
+- `/` — Academic homepage
+- `/research/` — Research agenda and project directory
+- `/portfolio/` — Evidence-based Ph.D. portfolio
+- `/scholarship/` — Publications and conference presentations
+- `/teaching/` — Teaching philosophy and experience
+- `/engagement/` — Science communication, service, and leadership
+- `/about/` — Biography, professional profiles, and contact
+
+The `webdevelopment/` directory preserves legacy course-project assets. Its old
+HTML entry points redirect visitors to the current site.
 
 ## Local preview
 
@@ -15,3 +29,10 @@ python3 -m http.server 8000
 ```
 
 Then visit `http://localhost:8000`.
+
+## Privacy and attribution
+
+The public site excludes student records, identifiable participant data,
+confidential manuscripts, reviewer comments, and unapproved intellectual
+property. Collaborative research is attributed conservatively, and
+Time2Reflect is represented without visual materials.
