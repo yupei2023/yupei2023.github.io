@@ -2,11 +2,14 @@ document.documentElement.classList.add("js");
 
 const menuButton = document.querySelector(".menu-toggle");
 const navigation = document.querySelector("#site-nav");
+const menuLabel = menuButton?.querySelector(".sr-only");
 
 menuButton?.addEventListener("click", () => {
   const isOpen = menuButton.getAttribute("aria-expanded") === "true";
   menuButton.setAttribute("aria-expanded", String(!isOpen));
   navigation.classList.toggle("is-open", !isOpen);
+  if (menuLabel) menuLabel.textContent = isOpen ? "Open navigation" : "Close navigation";
+  if (!isOpen) navigation?.querySelector("a")?.focus();
 });
 
 document.addEventListener("keydown", (event) => {
@@ -21,6 +24,7 @@ navigation?.querySelectorAll("a").forEach((link) => {
   link.addEventListener("click", () => {
     navigation.classList.remove("is-open");
     menuButton?.setAttribute("aria-expanded", "false");
+    if (menuLabel) menuLabel.textContent = "Open navigation";
   });
 });
 
