@@ -888,10 +888,11 @@ footer div { display: flex; justify-content: flex-end; gap: 1.5rem; }
 .service-details h3 { margin: 0 0 .75rem; font-family: var(--serif); font-size: 1.4rem; font-weight: 400; }
 .service-details p { margin: 0; color: var(--muted); }
 .certificate-links { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 2rem; }
-.certificate-links a { display: flex; min-height: 110px; padding: 1.5rem; border: 1px solid var(--line); background: var(--white); flex-direction: column; justify-content: space-between; text-decoration: none; }
+.certificate-links a { display: grid; min-height: 170px; padding: 1.5rem; border: 1px solid var(--line); background: var(--white); grid-template-rows: minmax(3.2rem, auto) 1fr auto; gap: .85rem; text-decoration: none; }
 .certificate-links a:hover, .certificate-links a:focus-visible { border-color: var(--green); }
 .certificate-links strong { font-family: var(--serif); font-size: 1.15rem; font-weight: 400; }
-.certificate-links span { color: var(--green); font-size: .75rem; font-weight: 700; }
+.certificate-links .certificate-org { color: var(--muted); font-size: .7rem; font-weight: 700; letter-spacing: .05em; line-height: 1.45; text-transform: uppercase; }
+.certificate-links .certificate-file { color: var(--green); font-size: .75rem; font-weight: 700; }
 .leadership-list { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--line); }
 .leadership-list article { padding: 2rem; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .leadership-list article:nth-child(odd) { padding-left: 0; }
@@ -962,7 +963,7 @@ footer div { display: flex; justify-content: flex-end; gap: 1.5rem; }
 .material-groups h3 { margin: 0 0 1.5rem; font-family: var(--serif); font-size: 1.55rem; font-weight: 400; }
 .material-groups a { display: flex; gap: 1rem; justify-content: space-between; padding: .75rem 0; border-top: 1px solid var(--line); font-size: .875rem; text-decoration: none; }
 .material-groups a:hover, .material-groups a:focus-visible { color: var(--green); }
-.material-groups a span { flex: 0 0 auto; color: var(--green); font-size: .75rem; font-weight: 700; }
+.material-groups a span { flex: 0 1 45%; color: var(--green); font-size: .75rem; font-weight: 700; text-align: right; }
 .research-gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 3rem; }
 .research-gallery figure { margin: 0; background: var(--paper); }
 .research-gallery img { width: 100%; height: 220px; object-fit: cover; }
@@ -1001,7 +1002,6 @@ footer div { display: flex; justify-content: flex-end; gap: 1.5rem; }
   margin: 0;
   background: rgba(255,255,255,.08);
 }
-.scholarship-gallery .gallery-wide { grid-column: 1 / -1; }
 .scholarship-gallery img {
   width: 100%;
   height: clamp(300px, 38vw, 560px);
@@ -1009,7 +1009,6 @@ footer div { display: flex; justify-content: flex-end; gap: 1.5rem; }
   background: #eef0e9;
   object-fit: contain;
 }
-.scholarship-gallery .gallery-wide img { height: auto; max-height: 720px; }
 .scholarship-gallery figcaption { padding: 1rem 1.15rem 1.25rem; color: var(--sage); font-size: .8rem; }
 .presentation-gallery-section .text-link { color: var(--white); }
 
@@ -1069,7 +1068,7 @@ footer div { display: flex; justify-content: flex-end; gap: 1.5rem; }
 }
 .cycle-arrow { position: absolute; z-index: 4; color: var(--yellow); font-size: 2rem; font-style: normal; }
 .arrow-one { top: 23%; right: 12%; transform: rotate(48deg); }
-.arrow-two { right: 47%; bottom: 1%; transform: rotate(145deg); }
+.arrow-two { right: 47%; bottom: 1%; transform: rotate(180deg); }
 .arrow-three { top: 23%; left: 12%; transform: rotate(-50deg); }
 .teaching-cycle > p { max-width: 430px; color: var(--muted); font-family: var(--serif); font-size: clamp(1.2rem, 2vw, 1.55rem); }
 
@@ -1165,6 +1164,5 @@ footer div { display: flex; justify-content: flex-end; gap: 1.5rem; }
   .residency-grid article { border-right: 0; }
   .competency-evidence-list article { grid-template-columns: 42px 1fr; gap: .75rem; }
   .home-project-grid, .research-gallery, .personal-gallery, .certificate-links, .scholarship-gallery { grid-template-columns: 1fr; }
-  .scholarship-gallery .gallery-wide { grid-column: auto; }
   .home-project-grid .project-copy { min-height: auto; }
 }
