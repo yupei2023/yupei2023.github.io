@@ -285,6 +285,23 @@ button { font: inherit; }
 .focus-grid p { max-width: 330px; margin: 0; color: var(--muted); font-size: .92rem; }
 
 .projects { background: var(--white); }
+.home-project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+}
+.home-project-grid .project {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-width: 0;
+}
+.home-project-grid .project-copy { min-height: 500px; }
+.home-project-grid .project-copy h3 {
+  margin-top: 1rem;
+  font-size: clamp(2.4rem, 4vw, 4rem);
+}
+.home-project-grid .project-literacy { margin: 0; }
+.home-project-grid .literacy-visual { min-height: 380px; }
 .project-featured {
   display: grid;
   grid-template-columns: minmax(0, 1.4fr) minmax(290px, .6fr);
@@ -951,6 +968,51 @@ footer div { display: flex; justify-content: flex-end; gap: 1.5rem; }
 .research-gallery img { width: 100%; height: 220px; object-fit: cover; }
 .research-gallery figcaption { padding: .85rem 1rem; color: var(--muted); font-size: .8rem; }
 
+.scholarship-hero { padding-bottom: clamp(4rem, 8vw, 7rem); }
+.scholarship-hero .page-deck a { color: var(--green); }
+.page-jump-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem;
+  margin-top: 2.5rem;
+}
+.page-jump-nav a {
+  padding: .55rem .9rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.page-jump-nav a:hover, .page-jump-nav a:focus-visible { border-color: var(--green); color: var(--green); }
+.scholarship-page section[id], .scholarship-page article[id] { scroll-margin-top: 7rem; }
+.accepted-band { background: var(--paper-deep); }
+.presentation-gallery-section { background: var(--green); color: var(--white); }
+.presentation-gallery-section .kicker, .presentation-gallery-section .split-heading > p { color: var(--sage); }
+.scholarship-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+.scholarship-gallery figure {
+  display: grid;
+  margin: 0;
+  background: rgba(255,255,255,.08);
+}
+.scholarship-gallery .gallery-wide { grid-column: 1 / -1; }
+.scholarship-gallery img {
+  width: 100%;
+  height: clamp(300px, 38vw, 560px);
+  padding: 1rem;
+  background: #eef0e9;
+  object-fit: contain;
+}
+.scholarship-gallery .gallery-wide img { height: auto; max-height: 720px; }
+.scholarship-gallery figcaption { padding: 1rem 1.15rem 1.25rem; color: var(--sage); font-size: .8rem; }
+.presentation-gallery-section .text-link { color: var(--white); }
+
 .teaching-cycle {
   display: grid;
   grid-template-columns: minmax(360px, .85fr) minmax(250px, .45fr);
@@ -1079,6 +1141,7 @@ footer div { display: flex; justify-content: flex-end; gap: 1.5rem; }
   .doctoral-journey i { text-align: center; transform: rotate(90deg); }
   .doctoral-journey span { min-height: 76px; border-radius: 999px; }
   .course-group-heading { align-items: start; flex-direction: column; gap: .75rem; }
+  .home-project-grid { grid-template-columns: 1fr; }
   .research-gallery { grid-template-columns: repeat(2, 1fr); }
   .residency-grid { grid-template-columns: 1fr 1fr; }
   .residency-grid article { border-bottom: 1px solid var(--line); }
@@ -1101,5 +1164,7 @@ footer div { display: flex; justify-content: flex-end; gap: 1.5rem; }
   .residency-grid { grid-template-columns: 1fr; }
   .residency-grid article { border-right: 0; }
   .competency-evidence-list article { grid-template-columns: 42px 1fr; gap: .75rem; }
-  .research-gallery, .personal-gallery, .certificate-links { grid-template-columns: 1fr; }
+  .home-project-grid, .research-gallery, .personal-gallery, .certificate-links, .scholarship-gallery { grid-template-columns: 1fr; }
+  .scholarship-gallery .gallery-wide { grid-column: auto; }
+  .home-project-grid .project-copy { min-height: auto; }
 }
