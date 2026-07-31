@@ -836,6 +836,11 @@ footer div { display: flex; justify-content: flex-end; gap: 1.5rem; }
 .accepted-grid p { margin: 0 0 3rem; color: var(--green); font-size: .67rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
 .accepted-grid h3 { margin: 0 0 1.5rem; font-family: var(--serif); font-size: 1.7rem; font-weight: 400; line-height: 1.2; }
 .accepted-grid span, .accepted-grid small { display: block; color: var(--muted); font-size: .76rem; }
+.status-publications { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin: 3rem 0 6rem; background: var(--line); }
+.status-publications article { min-height: 220px; padding: 2rem; background: var(--white); }
+.status-publications p { margin: 0 0 2rem; color: var(--green); font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.status-publications h3 { margin: 0 0 1rem; font-family: var(--serif); font-size: 1.5rem; font-weight: 400; }
+.status-publications span { color: var(--muted); font-size: .875rem; }
 .accepted-grid small { margin-top: 1.2rem; padding-top: 1.2rem; border-top: 1px solid var(--line); }
 .presentation-list, .experience-list { margin: 0; padding: 0; list-style: none; }
 .presentation-list li, .experience-list article { display: grid; grid-template-columns: 100px 1fr; gap: 2rem; padding: 2rem 0; border-top: 1px solid var(--line); }
@@ -861,6 +866,15 @@ footer div { display: flex; justify-content: flex-end; gap: 1.5rem; }
 .service-stats strong { display: block; font-family: var(--serif); font-size: 4rem; font-weight: 400; line-height: 1; }
 .service-stats span { display: block; margin-top: 2rem; color: var(--muted); font-size: .78rem; }
 .service-note { max-width: 700px; margin: 2rem 0 0; color: var(--muted); font-size: .74rem; }
+.service-details { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; margin-top: 2rem; background: var(--line); }
+.service-details article { padding: 2rem; background: var(--white); }
+.service-details h3 { margin: 0 0 .75rem; font-family: var(--serif); font-size: 1.4rem; font-weight: 400; }
+.service-details p { margin: 0; color: var(--muted); }
+.certificate-links { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 2rem; }
+.certificate-links a { display: flex; min-height: 110px; padding: 1.5rem; border: 1px solid var(--line); background: var(--white); flex-direction: column; justify-content: space-between; text-decoration: none; }
+.certificate-links a:hover, .certificate-links a:focus-visible { border-color: var(--green); }
+.certificate-links strong { font-family: var(--serif); font-size: 1.15rem; font-weight: 400; }
+.certificate-links span { color: var(--green); font-size: .75rem; font-weight: 700; }
 .leadership-list { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--line); }
 .leadership-list article { padding: 2rem; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .leadership-list article:nth-child(odd) { padding-left: 0; }
@@ -874,6 +888,11 @@ footer div { display: flex; justify-content: flex-end; gap: 1.5rem; }
 .bio-lead p { margin: 0; font-family: var(--serif); font-size: clamp(1.7rem, 3vw, 2.7rem); letter-spacing: -.03em; line-height: 1.25; }
 .bio-body p { max-width: 720px; margin: 0 0 1.5rem; color: var(--muted); }
 .about-links { background: var(--paper-deep); }
+.personal-gallery-section { background: var(--paper); }
+.personal-gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.personal-gallery figure { margin: 0; background: var(--white); }
+.personal-gallery img { width: 100%; height: clamp(260px, 34vw, 480px); object-fit: cover; }
+.personal-gallery figcaption { padding: .85rem 1rem; color: var(--muted); font-size: .8rem; }
 
 .concept-path {
   display: flex;
@@ -920,6 +939,17 @@ footer div { display: flex; justify-content: flex-end; gap: 1.5rem; }
   font-family: var(--serif);
   font-size: .88rem;
 }
+.research-materials { background: var(--white); }
+.material-groups { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); }
+.material-groups article { min-height: 220px; padding: 2rem; background: var(--paper); }
+.material-groups h3 { margin: 0 0 1.5rem; font-family: var(--serif); font-size: 1.55rem; font-weight: 400; }
+.material-groups a { display: flex; gap: 1rem; justify-content: space-between; padding: .75rem 0; border-top: 1px solid var(--line); font-size: .875rem; text-decoration: none; }
+.material-groups a:hover, .material-groups a:focus-visible { color: var(--green); }
+.material-groups a span { flex: 0 0 auto; color: var(--green); font-size: .75rem; font-weight: 700; }
+.research-gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 3rem; }
+.research-gallery figure { margin: 0; background: var(--paper); }
+.research-gallery img { width: 100%; height: 220px; object-fit: cover; }
+.research-gallery figcaption { padding: .85rem 1rem; color: var(--muted); font-size: .8rem; }
 
 .teaching-cycle {
   display: grid;
@@ -1028,7 +1058,7 @@ footer div { display: flex; justify-content: flex-end; gap: 1.5rem; }
 }
 
 @media (max-width: 900px) {
-  .pathways, .portfolio-principles, .belief-grid, .accepted-grid, .communication-grid, .service-stats { grid-template-columns: 1fr; }
+  .pathways, .portfolio-principles, .belief-grid, .accepted-grid, .communication-grid, .service-stats, .status-publications, .service-details, .material-groups { grid-template-columns: 1fr; }
   .pathways a, .pathways a:last-child { border-right: 0; border-bottom: 1px solid var(--line); }
   .portfolio-principles article, .portfolio-principles article:first-child, .belief-grid article, .belief-grid article:first-child { min-height: auto; padding: 2rem 0; border-right: 0; border-bottom: 1px solid var(--line); }
   .portfolio-principles h3, .belief-grid h3 { margin-top: 2rem; }
@@ -1049,6 +1079,7 @@ footer div { display: flex; justify-content: flex-end; gap: 1.5rem; }
   .doctoral-journey i { text-align: center; transform: rotate(90deg); }
   .doctoral-journey span { min-height: 76px; border-radius: 999px; }
   .course-group-heading { align-items: start; flex-direction: column; gap: .75rem; }
+  .research-gallery { grid-template-columns: repeat(2, 1fr); }
   .residency-grid { grid-template-columns: 1fr 1fr; }
   .residency-grid article { border-bottom: 1px solid var(--line); }
   .reflection-copy { grid-template-columns: 1fr; }
@@ -1070,4 +1101,5 @@ footer div { display: flex; justify-content: flex-end; gap: 1.5rem; }
   .residency-grid { grid-template-columns: 1fr; }
   .residency-grid article { border-right: 0; }
   .competency-evidence-list article { grid-template-columns: 42px 1fr; gap: .75rem; }
+  .research-gallery, .personal-gallery, .certificate-links { grid-template-columns: 1fr; }
 }

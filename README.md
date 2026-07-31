@@ -10,9 +10,8 @@ is designed for GitHub Pages.
 ## Site structure
 
 - `/` — Academic homepage
-- `/research/` — Research agenda and project directory
+- `/research/` — Research agenda, projects, publications, and presentations
 - `/portfolio/` — Evidence-based Ph.D. portfolio
-- `/scholarship/` — Publications and conference presentations
 - `/teaching/` — Teaching philosophy and experience
 - `/engagement/` — Science communication, service, and leadership
 - `/about/` — Biography, professional profiles, and contact
