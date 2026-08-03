@@ -962,6 +962,7 @@ footer div { display: flex; justify-content: flex-end; gap: 1.5rem; }
 .integrated-video p { color: var(--muted); font-size: .82rem; }
 .media-video-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--line); }
 .media-video-grid article { display: flex; min-width: 0; padding: 2rem; background: var(--white); flex-direction: column; }
+.media-video-grid article > div:first-child { display: flex; flex: 1; flex-direction: column; }
 .media-video-grid h4, .media-program-grid h4 { margin: .45rem 0 1rem; font-family: var(--serif); font-size: 1.45rem; font-weight: 400; line-height: 1.25; }
 .media-video-grid article > div > p:not(.media-meta), .media-program-grid p { color: var(--muted); font-size: .8rem; }
 .media-meta, .media-program-grid span { margin: 0; color: var(--green); font-size: .65rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
@@ -969,9 +970,11 @@ footer div { display: flex; justify-content: flex-end; gap: 1.5rem; }
 .episode-links { display: flex; gap: .45rem 1rem; margin-top: 1.25rem; flex-wrap: wrap; }
 .episode-links a { color: var(--green); font-size: .68rem; font-weight: 700; text-underline-offset: .2em; }
 .media-program-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; margin-top: 1px; background: var(--line); }
-.media-program-grid article { min-width: 0; background: var(--white); }
-.media-program-grid img { width: 100%; height: 210px; object-fit: cover; }
-.media-program-grid article > div { padding: 1.5rem; }
+.media-program-grid article { display: grid; min-width: 0; background: var(--white); grid-template-rows: clamp(190px, 21vw, 240px) 1fr; }
+.media-program-grid .media-image { width: 100%; height: 100%; background: var(--paper-deep); }
+.media-program-grid .media-image--cover { object-fit: cover; object-position: center 40%; }
+.media-program-grid .media-image--contain { padding: .75rem; object-fit: contain; }
+.media-program-grid article > div { display: flex; padding: 1.5rem; flex-direction: column; }
 .television-feature { display: flex; min-width: 0; flex-direction: column; }
 .television-feature > p { max-width: 620px; }
 .video-frame { position: relative; width: 100%; margin-top: auto; padding-top: 56.25%; overflow: hidden; background: var(--ink); }
