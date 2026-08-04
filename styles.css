@@ -378,6 +378,7 @@ button { font: inherit; }
 }
 .project-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
 .project-card .project-visual { min-height: 380px; }
+.home-project-grid .visual-geo img,
 .home-project-grid .visual-vr img { width: 76%; height: auto; aspect-ratio: 375 / 204; object-fit: cover; }
 .project-card .project-copy { min-height: 510px; }
 .project-literacy { margin-top: 2rem; margin-bottom: 0; }
@@ -875,6 +876,7 @@ footer div { display: flex; justify-content: flex-end; gap: 1.5rem; }
 .earlier-scholarship .publication-list article > a:hover,
 .earlier-scholarship .publication-list article > a:focus-visible { border-color: var(--green); background: var(--green-deep); color: var(--white); transform: none; }
 .accepted-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); }
+.upcoming-event-list { grid-template-columns: 1fr; }
 .accepted-grid article { min-height: 300px; padding: 2rem; background: var(--surface); }
 .accepted-grid p { margin: 0 0 3rem; color: var(--green); font-size: .67rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
 .accepted-grid h3 { margin: 0 0 1.5rem; font-family: var(--serif); font-size: 1.7rem; font-weight: 400; line-height: 1.2; }
@@ -1028,6 +1030,21 @@ footer div { display: flex; justify-content: flex-end; gap: 1.5rem; }
 .record-list a { color: var(--ink); text-underline-offset: .2em; }
 .record-list b { display: inline-block; margin-left: .4rem; color: var(--green); font-size: .62rem; }
 .professional-development { margin-top: 1px; }
+.service-record-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; background: transparent; }
+.service-record-card { overflow: hidden; border: 1px solid var(--line); border-radius: .35rem; background: var(--surface); }
+.service-record-grid > .service-record-card { padding: 0 1.5rem 1.5rem; }
+.service-record-card > h3,
+.professional-development > summary {
+  padding: 1rem 1.5rem;
+  background: var(--green-deep);
+  color: var(--white);
+}
+.service-record-card > h3 { margin: 0 -1.5rem 1rem; font-size: 1.25rem; }
+.professional-development > summary { margin: 0 0 1rem; }
+.professional-development { margin-top: 1rem; border-bottom: 1px solid var(--line); }
+.professional-development > summary { align-items: center; }
+.professional-development > summary strong { color: var(--white); }
+.professional-development > summary span { color: var(--sage); }
 .professional-development .record-list { padding: 0 1.5rem 1.5rem; columns: 2; column-gap: 3rem; }
 .professional-development .record-list li { break-inside: avoid; }
 .service-details { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; margin-top: 2rem; background: var(--line); }
