@@ -1000,10 +1000,7 @@ footer div { display: flex; justify-content: flex-end; gap: 1.5rem; }
 .media-video-grid article > div > p:not(.media-meta), .media-program-grid p { color: var(--muted); font-size: .8rem; }
 .media-meta, .media-program-grid span { margin: 0; color: var(--green); font-size: .65rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
 .media-video-grid .video-frame { margin-top: 1.5rem; }
-.media-video-grid--secondary { margin-top: 1px; }
-.media-video-grid .media-video-image { width: 100%; aspect-ratio: 16 / 9; margin-top: 1.5rem; object-fit: cover; object-position: center 40%; }
-.media-video-grid--secondary .science-night-card { align-self: start; }
-.media-video-grid--secondary .science-night-card .media-video-image { height: clamp(180px, 18vw, 230px); aspect-ratio: auto; }
+.media-video-grid--three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .episode-links { display: flex; gap: .45rem 1rem; margin-top: 1.25rem; flex-wrap: wrap; }
 .episode-links a { color: var(--green); font-size: .68rem; font-weight: 700; text-underline-offset: .2em; }
 .media-program-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; margin-top: 1px; background: var(--line); }
