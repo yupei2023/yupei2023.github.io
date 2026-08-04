@@ -1009,6 +1009,7 @@ footer div { display: flex; justify-content: flex-end; gap: 1.5rem; }
 .media-program-grid .media-image--contain { padding: .75rem; object-fit: contain; }
 .media-program-grid article > div { display: flex; min-height: 205px; padding: 1.5rem; flex-direction: column; order: 1; }
 .media-program-grid .media-image { height: clamp(210px, 22vw, 270px); order: 2; }
+.media-program-grid .media-program-video { margin-top: 0; order: 2; }
 .television-feature { display: flex; min-width: 0; flex-direction: column; }
 .television-feature > p { max-width: 620px; }
 .video-frame { position: relative; width: 100%; margin-top: auto; padding-top: 56.25%; overflow: hidden; background: var(--night); }
