@@ -1,5 +1,13 @@
 document.documentElement.classList.add("js");
 
+// Local design comparison: append ?theme=dark to preview the archived navy palette.
+if (new URLSearchParams(window.location.search).get("theme") === "dark") {
+  const activeStylesheet = document.querySelector('link[rel="stylesheet"][href$="styles.css"]');
+  if (activeStylesheet) {
+    activeStylesheet.href = activeStylesheet.href.replace(/styles\.css$/, "styles-dark-navy-archive.css");
+  }
+}
+
 const menuButton = document.querySelector(".menu-toggle");
 const navigation = document.querySelector("#site-nav");
 const menuLabel = menuButton?.querySelector(".sr-only");
@@ -27,6 +35,15 @@ navigation?.querySelectorAll("a").forEach((link) => {
     if (menuLabel) menuLabel.textContent = "Open navigation";
   });
 });
+
+const desktopNavigation = window.matchMedia("(min-width: 901px)");
+const resetMobileNavigation = (event) => {
+  if (!event.matches) return;
+  navigation?.classList.remove("is-open");
+  menuButton?.setAttribute("aria-expanded", "false");
+  if (menuLabel) menuLabel.textContent = "Open navigation";
+};
+desktopNavigation.addEventListener?.("change", resetMobileNavigation);
 
 const year = document.querySelector("#year");
 if (year) year.textContent = new Date().getFullYear();
