@@ -17,8 +17,8 @@ is designed for GitHub Pages.
 - `/engagement/` — Science communication, service, and leadership
 - `/about/` — Biography, professional profiles, and contact
 
-The `webdevelopment/` directory preserves legacy course-project assets. Its old
-HTML entry points redirect visitors to the current site.
+Current website media, fonts, and downloadable documents are organized under
+the `assets/` directory.
 
 ## Local preview
 

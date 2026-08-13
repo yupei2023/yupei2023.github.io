@@ -19,7 +19,7 @@ The website is designed to serve as the main online home for Yupei Duan’s acad
 ### Local source folder
 
 ```text
-/Users/future/Desktop/web/github-site
+/Users/future/github/future/myprojects/Website
 ```
 
 The local folder is the working copy used to revise and test the website. The GitHub repository stores the published source and its version history. GitHub Pages converts the repository into the public website.
@@ -44,7 +44,7 @@ github-site/
 │   └── index.html             # Teaching philosophy and experience
 ├── engagement/
 │   └── index.html             # Science communication, service, and leadership
-├── webdevelopment/            # Images, older pages, and supporting assets
+├── assets/                    # Images, fonts, documents, and supporting media
 ├── sitemap.xml                # Search-engine page map
 ├── robots.txt                 # Search-engine instructions
 ├── .nojekyll                  # GitHub Pages configuration
@@ -177,7 +177,7 @@ GitHub Pages then built and published the website. The first complete publicatio
 After reopening Codex, open this folder:
 
 ```text
-/Users/future/Desktop/web/github-site
+/Users/future/github/future/myprojects/Website
 ```
 
 Then use a request such as:
@@ -264,7 +264,7 @@ Keep the same filename unless all links to the CV are updated.
 
 ### Add an image
 
-1. Place the image in a suitable folder under `webdevelopment/`.
+1. Place the image in a suitable folder under `assets/`.
 2. Use a descriptive filename.
 3. Add it to the appropriate HTML page.
 4. Write meaningful alternative text.
@@ -277,7 +277,7 @@ Do not publish images containing identifiable research participants, student inf
 From Terminal:
 
 ```bash
-cd "/Users/future/Desktop/web/github-site"
+cd "/Users/future/github/future/myprojects/Website"
 ruby -run -e httpd . -p 8000
 ```
 
@@ -405,5 +405,4 @@ Before restoring an older version, ask Codex to inspect the current files and id
 
 Copy and use the following prompt when returning to the project:
 
-> Open `/Users/future/Desktop/web/github-site` and continue improving my academic website. Read `WEBSITE_DEVELOPMENT_GUIDE.md`, inspect the current Git status and latest commit, and review the relevant source files before making changes. Preserve existing work. Do not publish unless I explicitly approve publication.
-
+> Open `/Users/future/github/future/myprojects/Website` and continue improving my academic website. Read `WEBSITE_DEVELOPMENT_GUIDE.md`, inspect the current Git status and latest commit, and review the relevant source files before making changes. Preserve existing work. Do not publish unless I explicitly approve publication.

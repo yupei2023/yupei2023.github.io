@@ -1023,11 +1023,11 @@ Add “Last updated” dates to:
 - Engagement
 - CV
 
-## 10.4 Old and new site files coexist
+## 10.4 Old and new site files coexist — resolved August 12, 2026
 
 ### Problem
 
-The `webdevelopment/` folder contains legacy pages as well as current assets. This makes maintenance confusing and increases the risk of editing or linking to an outdated file.
+The former `webdevelopment/` folder contained legacy pages as well as current assets. Active assets have since been moved into `assets/`, and the obsolete legacy files have been removed.
 
 ### Required improvement
 
@@ -1038,7 +1038,7 @@ assets/
 legacy/
 ```
 
-Move active images, fonts, icons, and documents into `assets/`. Keep redirects or archived files clearly labeled.
+Active images, fonts, icons, and documents now live in `assets/`. No legacy redirects or archived website files remain in the live source tree.
 
 ## 10.5 Stylesheet contains obsolete selectors
 

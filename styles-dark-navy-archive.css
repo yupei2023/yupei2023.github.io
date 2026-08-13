@@ -1,12 +1,12 @@
 @font-face {
   font-family: "Lora";
-  src: url("webdevelopment/islt_7310/fonts/Lora.ttf") format("truetype");
+  src: url("assets/fonts/Lora.ttf") format("truetype");
   font-display: swap;
 }
 
 @font-face {
   font-family: "Geologica";
-  src: url("webdevelopment/islt_7310/fonts/Geologica.ttf") format("truetype");
+  src: url("assets/fonts/Geologica.ttf") format("truetype");
   font-display: swap;
 }
 
