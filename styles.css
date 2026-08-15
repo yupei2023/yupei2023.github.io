@@ -185,6 +185,10 @@ button { font: inherit; }
 .site-search__empty p { margin: .25rem 0 0; color: var(--muted); font-size: .82rem; }
 .site-search__privacy { margin: .8rem 0 0; padding-top: .7rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .62rem; text-align: center; }
 
+.analytics-note { border-top: 1px solid var(--line); }
+.analytics-note h2 { max-width: 760px; }
+.analytics-note > p:last-child { max-width: 760px; color: var(--muted); }
+
 @media (min-width: 901px) and (max-width: 1120px) {
   .nav-search span, .nav-search kbd { display: none; }
   .nav-search { padding-inline: .6rem; }

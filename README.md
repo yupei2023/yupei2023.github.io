@@ -36,3 +36,6 @@ The public site excludes student records, identifiable participant data,
 confidential manuscripts, reviewer comments, and unapproved intellectual
 property. Collaborative research is attributed conservatively, and
 Time2Reflect is represented without visual materials.
+
+The site uses Cloudflare Web Analytics for aggregate traffic and performance
+measurement. Analytics cookies and direct visitor identification are not used.
