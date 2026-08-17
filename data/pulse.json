@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "refreshed_at": "2026-08-17T02:43:57+00:00",
+  "refreshed_at": "2026-08-17T02:46:37+00:00",
   "selection_window_days": 45,
   "article_count": 10,
   "articles": [
@@ -27,49 +27,6 @@
       "reason": "Selected for its connection to stem learning and publication in a priority journal."
     },
     {
-      "id": "10.1002/tea.70063",
-      "title": "Care Praxis–Driven STEM Design for Sustainable and Just Communities in Middle School",
-      "authors": [
-        "Wisam Sedawi",
-        "Angela Calabrese Barton",
-        "Edna Tan"
-      ],
-      "journal": "Journal of Research in Science Teaching",
-      "issn_l": "0022-4308",
-      "publication_date": "2026-08-10",
-      "doi": "https://doi.org/10.1002/tea.70063",
-      "url": "https://doi.org/10.1002/tea.70063",
-      "access": "Open access",
-      "theme_id": "stem-learning",
-      "theme": "STEM learning",
-      "priority_tier": 1,
-      "score": 74,
-      "reason": "Selected for its connection to stem learning and publication in a priority journal."
-    },
-    {
-      "id": "10.1016/j.edurev.2026.100824",
-      "title": "The effectiveness of extended reality training programmes for improving psychomotor skill performance: A systematic review and meta-analysis",
-      "authors": [
-        "Samuel Paul Bateman",
-        "G. J. Meléndez‐Torres",
-        "David J. Harris",
-        "Gavin Buckingham",
-        "Mark Wilson",
-        "Samuel J. Vine"
-      ],
-      "journal": "Educational Research Review",
-      "issn_l": "1747-938X",
-      "publication_date": "2026-07-23",
-      "doi": "https://doi.org/10.1016/j.edurev.2026.100824",
-      "url": "https://doi.org/10.1016/j.edurev.2026.100824",
-      "access": "Open access",
-      "theme_id": "immersive-learning",
-      "theme": "Immersive learning",
-      "priority_tier": 1,
-      "score": 69,
-      "reason": "Selected for its connection to immersive learning and publication in a priority journal."
-    },
-    {
       "id": "10.1111/bjet.70081",
       "title": "Not all collaboration benefits from competition: Collaboration modes in a computational thinking game",
       "authors": [
@@ -86,6 +43,26 @@
       "theme": "STEM learning",
       "priority_tier": 1,
       "score": 68,
+      "reason": "Selected for its connection to stem learning and publication in a priority journal."
+    },
+    {
+      "id": "10.1002/tea.70063",
+      "title": "Care Praxis–Driven STEM Design for Sustainable and Just Communities in Middle School",
+      "authors": [
+        "Wisam Sedawi",
+        "Angela Calabrese Barton",
+        "Edna Tan"
+      ],
+      "journal": "Journal of Research in Science Teaching",
+      "issn_l": "0022-4308",
+      "publication_date": "2026-08-10",
+      "doi": "https://doi.org/10.1002/tea.70063",
+      "url": "https://doi.org/10.1002/tea.70063",
+      "access": "Open access",
+      "theme_id": "stem-learning",
+      "theme": "STEM learning",
+      "priority_tier": 1,
+      "score": 67,
       "reason": "Selected for its connection to stem learning and publication in a priority journal."
     },
     {
@@ -127,6 +104,29 @@
       "priority_tier": null,
       "score": 63,
       "reason": "Selected for its connection to immersive learning."
+    },
+    {
+      "id": "10.1016/j.edurev.2026.100824",
+      "title": "The effectiveness of extended reality training programmes for improving psychomotor skill performance: A systematic review and meta-analysis",
+      "authors": [
+        "Samuel Paul Bateman",
+        "G. J. Meléndez‐Torres",
+        "David J. Harris",
+        "Gavin Buckingham",
+        "Mark Wilson",
+        "Samuel J. Vine"
+      ],
+      "journal": "Educational Research Review",
+      "issn_l": "1747-938X",
+      "publication_date": "2026-07-23",
+      "doi": "https://doi.org/10.1016/j.edurev.2026.100824",
+      "url": "https://doi.org/10.1016/j.edurev.2026.100824",
+      "access": "Open access",
+      "theme_id": "immersive-learning",
+      "theme": "Immersive learning",
+      "priority_tier": 1,
+      "score": 62,
+      "reason": "Selected for its connection to immersive learning and publication in a priority journal."
     },
     {
       "id": "10.1007/s11423-025-10561-3",
