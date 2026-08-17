@@ -7,6 +7,10 @@ const setLanguage = (language) => {
   document.documentElement.dataset.language = isChinese ? "zh" : "en";
   languageButton?.setAttribute("aria-pressed", String(isChinese));
   languageButton?.setAttribute("aria-label", isChinese ? "Switch to English" : "切换至中文");
+  document.querySelectorAll("[data-localized-tool]").forEach((link) => {
+    const tool = link.dataset.localizedTool;
+    link.href = `${tool}/${isChinese ? "zh/" : ""}`;
+  });
   try {
     localStorage.setItem(languageKey, isChinese ? "zh" : "en");
   } catch (_) {

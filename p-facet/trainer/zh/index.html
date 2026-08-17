@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-Hans">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>P-FACET Trainer</title>
+<title>P-FACET 互动教程</title>
 <style>
   :root{
     --bg:#F7F5F1; --surface:#FFFFFF; --ink:#26241E; --muted:#6B6659;
@@ -156,67 +156,67 @@
 <body>
 
 <main>
-<div class="topbar"><a class="language-switch" href="zh/" lang="zh-Hans">中文</a></div>
+<div class="topbar"><a class="language-switch" href="../" lang="en">English</a></div>
 <header class="hero">
-  <div class="kicker">An 8-minute interactive tutorial</div>
-  <h1>When AI helps you, <span class="q">who is doing the thinking?</span></h1>
-  <p class="lede">AI can draft, solve, analyze, and design. Used one way, it replaces your thinking; used another, it sharpens it.
-  <b class="learner">P-FACET</b> is a six-phase routine for keeping the thinking that matters <b class="learner">yours</b> while still getting real help from <b class="ai">AI</b>. This page teaches you the routine by making you use it.</p>
+  <div class="kicker">8 分钟互动教程</div>
+  <h1>当 AI 帮助你时，<span class="q">究竟是谁在思考？</span></h1>
+  <p class="lede">AI 能够撰写、求解、分析和设计。一种用法会替代你的思考，另一种用法则能使思考更加深入。
+  <b class="learner">P-FACET</b> 是一个包含六个阶段的模型，让真正重要的思考仍然<b class="learner">由你完成</b>，同时也能获得 <b class="ai">AI</b> 的有效帮助。本页将通过互动练习带你掌握这一模型。</p>
   <div class="legend">
-    <span><span class="dot g"></span>learner-owned work</span>
-    <span><span class="dot b"></span>AI's bounded role</span>
-    <span><span class="dot a"></span>the problem that anchors it all</span>
+    <span><span class="dot g"></span>学习者主导的工作</span>
+    <span><span class="dot b"></span>AI 的有限角色</span>
+    <span><span class="dot a"></span>贯穿始终的核心问题</span>
   </div>
 </header>
 
 <!-- ============ 1. two students ============ -->
 <section>
-  <div class="eyebrow">Part 1 · The dilemma</div>
-  <h2>Same assignment, two very different learners</h2>
-  <p class="note">Both students hand in polished work. Click each card to see what an instructor — or a future employer — can actually tell about their learning.</p>
+  <div class="eyebrow">第 1 部分 · 两难处境</div>
+  <h2>同一项任务，两种截然不同的学习方式</h2>
+  <p class="note">两名学生都提交了看似完善的作品。点击卡片，看看教师或未来雇主究竟能从作品中判断出多少真实学习。</p>
   <div class="duo">
     <div class="student a">
-      <span class="tag">AI as task completion</span>
-      <h3>Student A</h3>
-      <div class="prompt">"Complete this assignment for me. Give me the final answer and explanation."</div>
-      <p style="font-size:14.5px; margin:0">Fast output. One prompt, one paste.</p>
-      <button class="reveal-btn" data-reveal="revA" aria-expanded="false">What did A learn? →</button>
-      <div class="reveal" id="revA">Unclear — possibly nothing. The framing, reasoning, and judgment all happened inside the AI. The polished product <em>conceals</em> rather than demonstrates learning.</div>
+      <span class="tag">让 AI 完成任务</span>
+      <h3>学生 A</h3>
+      <div class="prompt">“替我完成这项任务。给我最终答案和解释。”</div>
+      <p style="font-size:14.5px; margin:0">快速产出：一次提问，一次粘贴。</p>
+      <button class="reveal-btn" data-reveal="revA" aria-expanded="false">学生 A 学到了什么？→</button>
+      <div class="reveal" id="revA">无法确定——甚至可能什么也没有学到。问题界定、推理与判断都发生在 AI 内部。精致的成品<em>掩盖</em>了学习，而非证明学习。</div>
     </div>
     <div class="student b">
-      <span class="tag">Regulated AI use</span>
-      <h3>Student B</h3>
+      <span class="tag">受调节的 AI 使用</span>
+      <h3>学生 B</h3>
       <ol>
-        <li>Frames the task and criteria</li>
-        <li>Makes an initial attempt</li>
-        <li>Identifies a specific need</li>
-        <li>Asks AI for critique or alternatives</li>
-        <li>Evaluates, revises, and explains</li>
+        <li>界定任务和评价标准</li>
+        <li>先完成初步尝试</li>
+        <li>识别一个具体需要</li>
+        <li>请 AI 提供批评或替代方案</li>
+        <li>进行评估、修改并解释理由</li>
       </ol>
-      <button class="reveal-btn" data-reveal="revB" aria-expanded="false">What did B learn? →</button>
-      <div class="reveal" id="revB">Visible thinking, visible decisions. B's framing, first attempt, and revision rationale are all on the record — B used the same AI, but the cognitive work stayed learner-owned.</div>
+      <button class="reveal-btn" data-reveal="revB" aria-expanded="false">学生 B 学到了什么？→</button>
+      <div class="reveal" id="revB">思考可见，决策可见。学生 B 的问题界定、初步尝试和修改理由都有记录。虽然使用了同样的 AI，但认知工作仍由学习者主导。</div>
     </div>
   </div>
 </section>
 
 <!-- ============ 2. offloading sorter ============ -->
 <section>
-  <div class="eyebrow">Part 2 · The core skill</div>
-  <h2>Spot the four types of offloading</h2>
-  <p class="note">Handing work to a tool is called <em>cognitive offloading</em> — and it isn't automatically bad. Notes offload memory; calculators offload computation. What matters is <em>which</em> work you hand over. Classify each scenario: <b>Mechanical</b> (peripheral help), <b>Supportive</b> (thinking support), <b>Substitutive</b> (risky replacement), or <b>Regulated</b> (you govern the delegation and explain your decisions).</p>
+  <div class="eyebrow">第 2 部分 · 核心能力</div>
+  <h2>识别四种认知卸载</h2>
+  <p class="note">把一部分工作交给工具称为<em>认知卸载</em>，它并不必然有害。笔记帮助卸载记忆，计算器帮助卸载计算。关键在于你交出了<em>哪一种</em>工作。请判断每个情境属于：<b>机械型</b>（处理外围任务）、<b>支持型</b>（支持思考）、<b>替代型</b>（高风险替代）或<b>调节型</b>（你管理委托过程并解释决定）。</p>
   <div id="sorter"></div>
   <div class="score" id="scoreline"></div>
-  <div class="rule-card"><b>The rule that decides every case:</b> judge the AI's action against the <em>target cognitive work</em>. The same AI action can be mechanical in one task and substitutive in another — it depends on what the task was meant to teach <em>you</em>.</div>
+  <div class="rule-card"><b>判断所有情境的核心规则：</b>依据任务的<em>目标认知工作</em>来判断 AI 的作用。同一种 AI 行为，在一项任务中可能属于机械型，在另一项任务中却可能属于替代型——这取决于该任务原本要让<em>你</em>学会什么。</div>
 </section>
 
 <!-- ============ 3. the wheel ============ -->
 <section>
-  <div class="eyebrow">Part 3 · The model</div>
-  <h2>The P-FACET cycle</h2>
-  <p class="note">The <b style="color:var(--anchor)">Problem</b> anchors everything at the center. The five phases cycle around it — and you'll loop back and forth between them; it's a cycle, not a checklist. Notice: only <b style="color:var(--ai)">C</b> involves talking to AI directly. Click each phase.</p>
+  <div class="eyebrow">第 3 部分 · 模型</div>
+  <h2>P-FACET 循环</h2>
+  <p class="note"><b style="color:var(--anchor)">问题</b>始终位于中心，成为整个过程的锚点。其他五个阶段围绕它循环展开，你可以在阶段之间往返调整；它是循环，而不是清单。请注意：只有 <b style="color:var(--ai)">C</b> 阶段需要直接与 AI 对话。点击每个阶段查看详情。</p>
   <div class="wheelwrap">
     <figure class="wheel">
-      <svg viewBox="0 0 380 360" role="img" aria-label="P-FACET wheel: Problem-Centered Challenge at the center; Frame, Analogize and Attempt, Consult and Construct, Evaluate and Explain, and Transform and Transfer cycle around it. Only Consult and Construct involves direct AI consultation.">
+      <svg viewBox="0 0 380 360" role="img" aria-label="P-FACET 循环：以问题为中心的挑战位于中心；界定、类比与尝试、咨询与建构、评估与解释、转化与迁移围绕它循环。只有咨询与建构阶段需要直接与 AI 互动。">
         <defs>
           <marker id="arw" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
             <path d="M0,0 L8,4 L0,8 z" fill="currentColor" opacity="0.45"/>
@@ -239,39 +239,39 @@
           <line x1="84" y1="153" x2="142" y2="172"/>
         </g>
         <!-- center P -->
-        <g id="nodeP" class="node" tabindex="0" role="button" aria-label="Problem-Centered Challenge">
+        <g id="nodeP" class="node" tabindex="0" role="button" aria-label="以问题为中心的挑战">
           <circle cx="190" cy="188" r="50" fill="var(--anchor-soft)" stroke="var(--anchor)" stroke-width="3"/>
           <text x="190" y="182" text-anchor="middle" font-size="26" font-weight="700" fill="var(--anchor)" font-family="Georgia,serif">P</text>
-          <text x="190" y="202" text-anchor="middle" font-size="10.5" fill="var(--anchor)">Problem</text>
+          <text x="190" y="202" text-anchor="middle" font-size="10.5" fill="var(--anchor)">问题</text>
         </g>
         <!-- ring nodes -->
-        <g id="nodeF" class="node" tabindex="0" role="button" aria-label="Frame">
+        <g id="nodeF" class="node" tabindex="0" role="button" aria-label="界定">
           <circle cx="190" cy="62" r="40" fill="var(--learner-soft)" stroke="var(--learner)" stroke-width="2.5"/>
           <text x="190" y="58" text-anchor="middle" font-size="20" font-weight="700" fill="var(--learner)" font-family="Georgia,serif">F</text>
-          <text x="190" y="76" text-anchor="middle" font-size="10" fill="var(--learner)">Frame</text>
+          <text x="190" y="76" text-anchor="middle" font-size="10" fill="var(--learner)">界定</text>
         </g>
-        <g id="nodeA" class="node" tabindex="0" role="button" aria-label="Analogize and Attempt">
+        <g id="nodeA" class="node" tabindex="0" role="button" aria-label="类比与尝试">
           <circle cx="310" cy="150" r="40" fill="var(--learner-soft)" stroke="var(--learner)" stroke-width="2.5"/>
           <text x="310" y="146" text-anchor="middle" font-size="20" font-weight="700" fill="var(--learner)" font-family="Georgia,serif">A</text>
-          <text x="310" y="164" text-anchor="middle" font-size="10" fill="var(--learner)">Attempt</text>
+          <text x="310" y="164" text-anchor="middle" font-size="10" fill="var(--learner)">尝试</text>
         </g>
-        <g id="nodeC" class="node" tabindex="0" role="button" aria-label="Consult and Construct — the only phase with direct AI consultation">
+        <g id="nodeC" class="node" tabindex="0" role="button" aria-label="咨询与建构——唯一直接与 AI 互动的阶段">
           <circle cx="264" cy="292" r="40" fill="var(--ai-soft)" stroke="var(--ai)" stroke-width="2.5"/>
           <text x="264" y="288" text-anchor="middle" font-size="20" font-weight="700" fill="var(--ai)" font-family="Georgia,serif">C</text>
-          <text x="264" y="306" text-anchor="middle" font-size="10" fill="var(--ai)">Consult</text>
+          <text x="264" y="306" text-anchor="middle" font-size="10" fill="var(--ai)">咨询</text>
         </g>
-        <g id="nodeE" class="node" tabindex="0" role="button" aria-label="Evaluate and Explain">
+        <g id="nodeE" class="node" tabindex="0" role="button" aria-label="评估与解释">
           <circle cx="116" cy="292" r="40" fill="var(--learner-soft)" stroke="var(--learner)" stroke-width="2.5"/>
           <text x="116" y="288" text-anchor="middle" font-size="20" font-weight="700" fill="var(--learner)" font-family="Georgia,serif">E</text>
-          <text x="116" y="306" text-anchor="middle" font-size="10" fill="var(--learner)">Evaluate</text>
+          <text x="116" y="306" text-anchor="middle" font-size="10" fill="var(--learner)">评估</text>
         </g>
-        <g id="nodeT" class="node" tabindex="0" role="button" aria-label="Transform and Transfer">
+        <g id="nodeT" class="node" tabindex="0" role="button" aria-label="转化与迁移">
           <circle cx="70" cy="150" r="40" fill="var(--learner-soft)" stroke="var(--learner)" stroke-width="2.5"/>
           <text x="70" y="146" text-anchor="middle" font-size="20" font-weight="700" fill="var(--learner)" font-family="Georgia,serif">T</text>
-          <text x="70" y="164" text-anchor="middle" font-size="10" fill="var(--learner)">Transfer</text>
+          <text x="70" y="164" text-anchor="middle" font-size="10" fill="var(--learner)">迁移</text>
         </g>
       </svg>
-      <figcaption>Green phases are learner-led; blue C is the only direct AI contact; amber P anchors the cycle.</figcaption>
+      <figcaption>绿色阶段由学习者主导；蓝色 C 是唯一直接接触 AI 的阶段；琥珀色 P 是循环的核心锚点。</figcaption>
     </figure>
     <div class="phasecard" id="phasecard" aria-live="polite"></div>
   </div>
@@ -279,17 +279,17 @@
 
 <!-- ============ 4. worked example ============ -->
 <section>
-  <div class="eyebrow">Part 4 · See it run</div>
-  <h2>One task, start to finish</h2>
-  <p class="note">A student works on a real case task — <em>reduce campus food waste</em> — with AI available the whole time. Step through what regulated use sounds like.</p>
+  <div class="eyebrow">第 4 部分 · 完整示例</div>
+  <h2>一项任务，从开始到完成</h2>
+  <p class="note">一名学生正在完成真实案例任务——<em>减少校园食物浪费</em>——并且全程都可以使用 AI。逐步查看受调节的 AI 使用是什么样的。</p>
   <div class="stepper">
     <div class="steps-track" id="track"></div>
     <div class="step-phase" id="stphase"></div>
     <div class="step-quote serif" id="stquote"></div>
     <div class="step-note" id="stnote"></div>
     <div class="step-nav">
-      <button id="prevbtn">← Back</button>
-      <button id="nextbtn">Next →</button>
+      <button id="prevbtn">← 上一步</button>
+      <button id="nextbtn">下一步 →</button>
       <span class="count" id="stcount"></span>
     </div>
   </div>
@@ -297,35 +297,35 @@
 
 <!-- ============ 5. fix the prompt ============ -->
 <section>
-  <div class="eyebrow">Part 5 · Practice</div>
-  <h2>Fix the prompt</h2>
-  <p class="note">Each situation shows two ways to ask AI for help. Pick the request that keeps the core thinking yours. (These are the moments where most AI use silently turns substitutive.)</p>
+  <div class="eyebrow">第 5 部分 · 练习</div>
+  <h2>改进提示语</h2>
+  <p class="note">每个情境都提供两种向 AI 求助的方式。请选择能够让核心思考仍由你完成的请求。（AI 使用往往正是在这些时刻悄然变成认知替代。）</p>
   <div id="fixzone"></div>
 </section>
 
 <!-- ============ 6. pocket card ============ -->
 <section>
-  <div class="eyebrow">Part 6 · Keep this</div>
-  <h2>Your pocket card</h2>
-  <p class="note">Six questions to ask yourself, one per phase. If you can answer all six about a piece of work, your AI use was regulated — and your learning is visible.</p>
+  <div class="eyebrow">第 6 部分 · 随身卡片</div>
+  <h2>你的 P-FACET 随身卡片</h2>
+  <p class="note">每个阶段对应一个自我提问，共六个问题。如果你能够针对一项作品回答全部六个问题，你的 AI 使用就是受调节的，你的学习过程也清晰可见。</p>
   <div class="pocket">
     <table>
-      <tr><td class="k a">P</td><td><b>What problem am I solving, and why does it matter?</b></td></tr>
-      <tr><td class="k g">F</td><td><b>What will count as a successful response?</b> — goals, criteria, constraints, assumptions</td></tr>
-      <tr><td class="k g">A</td><td><b>What did I try or create before consulting AI?</b></td></tr>
-      <tr><td class="k b">C</td><td><b>What specific contribution do I need from AI right now?</b> — critique, alternatives, explanation, technical help</td></tr>
-      <tr><td class="k g">E</td><td><b>What criterion or evidence supports my decision</b> to accept, revise, reject, remix, or defer?</td></tr>
-      <tr><td class="k g">T</td><td><b>What changed, and how will I use this strategy elsewhere?</b></td></tr>
+      <tr><td class="k a">P</td><td><b>我正在解决什么问题？它为什么重要？</b></td></tr>
+      <tr><td class="k g">F</td><td><b>怎样的回答才算成功？</b>——目标、标准、限制条件与假设</td></tr>
+      <tr><td class="k g">A</td><td><b>在咨询 AI 之前，我已经尝试或创造了什么？</b></td></tr>
+      <tr><td class="k b">C</td><td><b>此刻我具体需要 AI 提供什么帮助？</b>——批评、替代方案、解释或技术帮助</td></tr>
+      <tr><td class="k g">E</td><td><b>哪些标准或证据支持我的决定</b>——接受、修改、拒绝、重组或暂缓？</td></tr>
+      <tr><td class="k g">T</td><td><b>发生了什么改变？我将如何在其他情境中使用这一策略？</b></td></tr>
     </table>
     <div class="supports">
-      <div class="yes"><h4>AI should support</h4><ul><li>alternatives</li><li>critique</li><li>explanation</li><li>technical help</li><li>reflection</li></ul></div>
-      <div class="no"><h4>AI should not replace</h4><ul><li>problem framing</li><li>core reasoning</li><li>judgment</li><li>authorship</li><li>revision &amp; transfer</li></ul></div>
+      <div class="yes"><h4>AI 应该提供支持</h4><ul><li>替代方案</li><li>批评</li><li>解释</li><li>技术帮助</li><li>反思</li></ul></div>
+      <div class="no"><h4>AI 不应该替代</h4><ul><li>问题界定</li><li>核心推理</li><li>判断</li><li>作者责任</li><li>修改与迁移</li></ul></div>
     </div>
   </div>
 </section>
 
 <footer>
-  The P-FACET Model © Yupei Duan &amp; Danielle Oprean, University of Missouri. The final question belongs to every learner: <em>who did the thinking?</em>
+  P-FACET 模型 © Yupei Duan 与 Danielle Oprean，密苏里大学。每位学习者最终都应追问：<em>究竟是谁在思考？</em>
 </footer>
 </main>
 
@@ -336,25 +336,25 @@ document.querySelectorAll('.reveal-btn').forEach(function(b){
     var r = document.getElementById(b.dataset.reveal);
     var open = r.classList.toggle('open');
     b.setAttribute('aria-expanded', open);
-    b.textContent = open ? 'Hide' : 'Show what they learned →';
+    b.textContent = open ? '收起' : (b.dataset.reveal === 'revA' ? '学生 A 学到了什么？→' : '学生 B 学到了什么？→');
   });
 });
 
 /* ---------- sorter quiz ---------- */
-var TYPES = ['Mechanical','Supportive','Substitutive','Regulated'];
+var TYPES = ['机械型','支持型','替代型','调节型'];
 var SCEN = [
-  {s:'AI reformats your reference list into APA style. Formatting is not what the assignment teaches.',
-   a:0, why:'Peripheral help — the tool handles a routine demand so your attention stays on the target work. (If the course taught citation style, this same act would be substitutive.)'},
-  {s:'You paste the assignment and ask AI for a finished essay with sources.',
-   a:2, why:'The central work — framing, arguing, judging — happens inside the AI. Fast output, invisible learning.'},
-  {s:'You ask AI to critique the logic of your draft against the rubric, without rewriting it.',
-   a:1, why:'Thinking support: AI challenges work you generated, and the representation stays yours.'},
-  {s:'After drafting your argument, you ask AI for two counterarguments, reject one for lacking evidence, revise a claim, and note why.',
-   a:3, why:'Regulated: you decided what to delegate, evaluated the output against evidence, and can explain every decision. This is the goal state.'},
-  {s:'Stuck on a graph in your lab report, you ask AI what the data means before naming a pattern yourself.',
-   a:2, why:'Interpreting the data is the target cognitive work of the task — delegating it before an attempt replaces the learning. Name the pattern first, then ask AI to challenge it.'},
-  {s:'AI flags a syntax error in your code while the algorithm design stays entirely yours.',
-   a:0, why:'Peripheral help — unless the syntax itself is what the course is teaching. Always judge against the target work.'}
+  {s:'AI 将你的参考文献列表重新排成 APA 格式，而格式并不是本任务的学习目标。',
+   a:0, why:'这是外围帮助——工具处理常规要求，使你的注意力留在目标认知工作上。（如果课程目标本身是学习引用格式，同一行为就可能属于替代型。）'},
+  {s:'你把任务说明粘贴给 AI，并要求它写出包含参考资料的完整论文。',
+   a:2, why:'问题界定、论证和判断等核心工作都发生在 AI 内部。产出很快，但学习过程不可见。'},
+  {s:'你请 AI 依据评分标准批评自己草稿中的逻辑，但明确要求它不要重写。',
+   a:1, why:'这是思考支持：AI 对你已经完成的作品提出挑战，而问题表征和作品仍属于你。'},
+  {s:'完成论点草稿后，你请 AI 提出两个反方观点；你因证据不足拒绝其中一个，修改另一项主张，并记录理由。',
+   a:3, why:'这是调节型使用：你决定委托什么，依据证据评估输出，并能解释每项决定。这是模型追求的状态。'},
+  {s:'你在实验报告的一张图表上遇到困难，还没有自己识别模式，就直接问 AI 数据意味着什么。',
+   a:2, why:'解释数据正是这项任务的目标认知工作。在尝试之前将它交给 AI，会替代学习。应先自己识别模式，再请 AI 提出挑战。'},
+  {s:'AI 指出你代码中的一个语法错误，而算法设计完全由你完成。',
+   a:0, why:'这是外围帮助——除非课程当前要教的正是语法。始终应依据目标认知工作进行判断。'}
 ];
 var answered = 0, correct = 0;
 var zone = document.getElementById('sorter');
@@ -371,11 +371,11 @@ SCEN.forEach(function(sc, i){
       b.className = right ? 'picked-right' : 'picked-wrong';
       if(!right){ ch.children[sc.a].classList.add('actual'); }
       fb.className = 'fb show ' + (right?'right':'wrong');
-      fb.innerHTML = '<span class="verdict">'+(right?'Correct — '+TYPES[sc.a]+'.':'It’s '+TYPES[sc.a]+'.')+'</span> '+sc.why;
+      fb.innerHTML = '<span class="verdict">'+(right?'正确——'+TYPES[sc.a]+'。':'正确分类是'+TYPES[sc.a]+'。')+'</span> '+sc.why;
       answered++; if(right) correct++;
       document.getElementById('scoreline').textContent =
-        answered===SCEN.length ? 'Score: '+correct+' / '+SCEN.length+(correct===SCEN.length?' — you’ve got the eye.':' — reread the rule below and you’ll catch the rest.')
-        : answered+' of '+SCEN.length+' answered';
+        answered===SCEN.length ? '得分：'+correct+' / '+SCEN.length+(correct===SCEN.length?'——你已经掌握了判断方法。':'——重新阅读下方规则，再试着判断其余情境。')
+        : '已回答 '+answered+' / '+SCEN.length;
     });
     ch.appendChild(b);
   });
@@ -384,36 +384,36 @@ SCEN.forEach(function(sc, i){
 
 /* ---------- wheel ---------- */
 var PHASES = {
-  P:{cls:'a', color:'var(--anchor)', name:'Problem-Centered Challenge', label:'The anchor',
-     you:['Recognize the problem in front of you','Identify why it matters','Set a personal learning goal'],
-     ai:'No AI here. The purpose is yours to own — a problem is a meaningful gap between what you understand and what you’re trying to achieve.',
-     ev:'You can state the problem and the intended outcome in your own words.',
-     ask:'“What problem am I solving, and why does it matter?”'},
-  F:{cls:'g', color:'var(--learner)', name:'Frame', label:'Learner-led',
-     you:['Define goal, audience, criteria, and constraints','Identify knowns, unknowns, and assumptions','Plan an initial approach'],
-     ai:'AI may ask you questions or test your assumptions — it never writes the frame for you. If AI frames the problem, it silently chooses your goals and values.',
-     ev:'Your goals, criteria, assumptions, and plan are written down and visible.',
-     ask:'“What will count as a successful response?”'},
-  A:{cls:'g', color:'var(--learner)', name:'Analogize and Attempt', label:'Learner-led',
-     you:['Recall relevant knowledge and similar examples','Compare patterns or approaches','Create a first draft, solution, model, or plan'],
-     ai:'AI provides examples only after your attempt. Your first try doesn’t need to be good — it reveals your reasoning and gives later feedback something to land on.',
-     ev:'A learner-generated first representation exists before any AI output.',
-     ask:'“What did I try or create before consulting AI?”'},
-  C:{cls:'b', color:'var(--ai)', name:'Consult and Construct', label:'The only direct AI contact',
-     you:['Identify one specific need in your work','Make a bounded AI request','Ask for alternatives, critique, explanation, or technical help'],
-     ai:'AI acts as consultant, critic, or technical helper — never as the author. A good request targets a gap in work you’ve already made; full-task delegation is the move to refuse.',
-     ev:'Your prompt names a specific gap in your own work.',
-     ask:'“What specific contribution do I need from AI right now?”'},
-  E:{cls:'g', color:'var(--learner)', name:'Evaluate and Explain', label:'Learner-led',
-     you:['Compare AI output with your criteria and evidence','Verify claims and test options','Accept, revise, reject, remix, or defer — and say why'],
-     ai:'AI can supply counterarguments and critique — but the verdict is yours. “I checked it” isn’t evaluation; naming the criterion or evidence behind your decision is.',
-     ev:'A justified accept / revise / reject / remix / defer decision.',
-     ask:'“What criterion or evidence supports my decision?”'},
-  T:{cls:'g', color:'var(--learner)', name:'Transform and Transfer', label:'Learner-led',
-     you:['Integrate your decisions into a product you own','Document what changed and why','Apply the strategy in a new context'],
-     ai:'AI can help you compare contexts — where else would this strategy work? The residue that matters is what you can do next time without the same support.',
-     ev:'Revised work, a change rationale, and a strategy for next time.',
-     ask:'“What changed, and how will I use this strategy elsewhere?”'}
+  P:{cls:'a', color:'var(--anchor)', name:'以问题为中心的挑战', label:'核心锚点',
+     you:['识别眼前的问题','说明它为什么重要','设定个人学习目标'],
+     ai:'此阶段不使用 AI。学习目的必须由你掌握——问题是你当前理解与希望实现的目标之间具有意义的差距。',
+     ev:'你能够用自己的语言说明问题和预期结果。',
+     ask:'“我正在解决什么问题？它为什么重要？”'},
+  F:{cls:'g', color:'var(--learner)', name:'界定', label:'学习者主导',
+     you:['明确目标、受众、标准和限制条件','识别已知、未知与假设','规划初步方法'],
+     ai:'AI 可以向你提问或检验你的假设，但不能替你完成问题界定。如果 AI 替你界定问题，它也会在无形中替你选择目标与价值。',
+     ev:'你的目标、标准、假设和计划已经写下并清晰可见。',
+     ask:'“怎样的回答才算成功？”'},
+  A:{cls:'g', color:'var(--learner)', name:'类比与尝试', label:'学习者主导',
+     you:['回忆相关知识和相似案例','比较不同模式或方法','创建初步草稿、解法、模型或计划'],
+     ai:'AI 只有在你尝试之后才提供示例。你的第一次尝试不必完美；它的价值在于呈现你的推理，并为后续反馈建立基础。',
+     ev:'在任何 AI 输出之前，已经存在由学习者生成的初步表征。',
+     ask:'“在咨询 AI 之前，我已经尝试或创造了什么？”'},
+  C:{cls:'b', color:'var(--ai)', name:'咨询与建构', label:'唯一直接接触 AI 的阶段',
+     you:['识别作品中的一个具体需要','提出有边界的 AI 请求','寻求替代方案、批评、解释或技术帮助'],
+     ai:'AI 是顾问、批评者或技术助手，而不是作者。好的请求针对你已有作品中的具体缺口；把整个任务交给 AI 是必须拒绝的做法。',
+     ev:'你的提示语明确指出自己作品中的一个具体缺口。',
+     ask:'“此刻我具体需要 AI 提供什么帮助？”'},
+  E:{cls:'g', color:'var(--learner)', name:'评估与解释', label:'学习者主导',
+     you:['依据你的标准和证据比较 AI 输出','核查主张并检验不同方案','接受、修改、拒绝、重组或暂缓，并说明理由'],
+     ai:'AI 可以提供反方观点和批评，但最终判断由你作出。“我检查过了”并不等于评估；你需要说出决定所依据的标准或证据。',
+     ev:'一项有理据的接受、修改、拒绝、重组或暂缓决定。',
+     ask:'“哪些标准或证据支持我的决定？”'},
+  T:{cls:'g', color:'var(--learner)', name:'转化与迁移', label:'学习者主导',
+     you:['把你的决定整合进由你拥有的作品','记录修改了什么以及为什么修改','把策略应用到新的情境'],
+     ai:'AI 可以帮助你比较不同情境：这一策略还可以在哪里使用？真正重要的学习成果，是下一次没有同样支持时你仍能做到什么。',
+     ev:'修改后的作品、修改理由，以及供下次使用的策略。',
+     ask:'“发生了什么改变？我将如何在其他情境中使用这一策略？”'}
 };
 var card = document.getElementById('phasecard');
 function showPhase(k){
@@ -424,10 +424,10 @@ function showPhase(k){
   card.innerHTML =
     '<div class="pl" style="color:'+p.color+'">'+p.label+'</div>'+
     '<h3>'+k+' · '+p.name+'</h3>'+
-    '<h4>You do</h4><ul><li>'+p.you.join('</li><li>')+'</li></ul>'+
-    '<h4>AI’s role</h4><div class="airole">'+p.ai+'</div>'+
-    '<h4>Evidence it happened</h4><ul><li>'+p.ev+'</li></ul>'+
-    '<div class="askline">Ask yourself: '+p.ask+'</div>';
+    '<h4>你要做什么</h4><ul><li>'+p.you.join('</li><li>')+'</li></ul>'+
+    '<h4>AI 的角色</h4><div class="airole">'+p.ai+'</div>'+
+    '<h4>完成这一阶段的证据</h4><ul><li>'+p.ev+'</li></ul>'+
+    '<div class="askline">问自己：'+p.ask+'</div>';
 }
 ['P','F','A','C','E','T'].forEach(function(k){
   var n = document.getElementById('node'+k);
@@ -438,16 +438,16 @@ showPhase('P');
 
 /* ---------- stepper ---------- */
 var STEPS = [
-  {ph:'F · Frame', q:'“Our goal is a feasible, evidence-based recommendation for reducing campus food waste.”',
-   n:'Goal, criteria (feasible, evidence-based), and scope set by the student — before any AI.'},
-  {ph:'A · Attempt', q:'The student identifies two causes and drafts an initial recommendation from course evidence.',
-   n:'The first representation is learner-made. It doesn’t need to be right; it needs to exist.'},
-  {ph:'C · Consult', q:'“Challenge my reasoning and suggest two counterarguments. Do not write the final recommendation.”',
-   n:'A bounded request: AI as critic, with the boundary stated inside the prompt itself.'},
-  {ph:'E · Evaluate', q:'“I rejected one claim because it lacked evidence, and revised another after checking the source.”',
-   n:'A justified decision — the criterion (evidence) is named, and the verdict stays with the learner.'},
-  {ph:'T · Transfer', q:'“Next time, I’ll use AI to test assumptions after drafting — not to produce the conclusion.”',
-   n:'The strategy is now portable. That sentence is the learning residue the whole cycle exists to produce.'}
+  {ph:'F · 界定', q:'“我们的目标是提出一个可行且有证据支持的校园食物浪费减少方案。”',
+   n:'在使用 AI 之前，学生先确定目标、标准（可行、有证据支持）和范围。'},
+  {ph:'A · 尝试', q:'学生根据课程证据识别出两个原因，并起草初步建议。',
+   n:'第一份问题表征由学习者完成。它不必完全正确，但必须先存在。'},
+  {ph:'C · 咨询', q:'“请挑战我的推理，并提出两个反方观点。不要替我撰写最终建议。”',
+   n:'这是有边界的请求：AI 充当批评者，且边界直接写在提示语中。'},
+  {ph:'E · 评估', q:'“我因缺乏证据拒绝了一项主张，并在核查资料来源后修改了另一项主张。”',
+   n:'这是有理据的决定：学生明确指出证据标准，最终判断仍由学习者作出。'},
+  {ph:'T · 迁移', q:'“下次我会在完成草稿后用 AI 检验假设，而不是让它产生结论。”',
+   n:'这一策略现在可以迁移。能够说出这句话，正是整个循环希望留下的学习成果。'}
 ];
 var cur = 0;
 var track = document.getElementById('track');
@@ -470,22 +470,22 @@ renderStep();
 
 /* ---------- fix the prompt ---------- */
 var FIX = [
-  {ctx:'Writing — an argumentative essay is due.',
-   good:'“Here’s my claim and my three pieces of evidence. Critique the logic and point out weak transitions — don’t rewrite anything.”',
-   bad:'“Write a persuasive essay on this topic with an intro, three body paragraphs, and a conclusion.”',
-   why:'The good prompt hands AI a critic’s role over work you made. The bad one delegates framing, reasoning, and authorship in one line.'},
-  {ctx:'Data analysis — a lab report asks you to interpret a graph.',
-   good:'“I think this graph shows seasonal spikes driven by temperature. Challenge my reading — what other explanations fit the data?”',
-   bad:'“What does this graph mean? Explain the trend for my report.”',
-   why:'Naming the pattern first is the target cognitive work. After your attempt, AI as challenger strengthens the interpretation instead of replacing it.'},
-  {ctx:'Problem set — a multi-step calculation has you stuck.',
-   good:'“Here’s my setup and first two steps. Don’t solve it — tell me whether my setup has an error, and give one hint.”',
-   bad:'“Solve this problem and show all the steps so I can follow along.”',
-   why:'“Show all steps so I can follow” feels like learning but skips the struggle that produces it. An error-check plus one hint keeps the solving yours.'},
-  {ctx:'Design project — the final poster is due Friday.',
-   good:'“Here are my criteria and two rough sketches. Compare them against the criteria — what trade-offs am I missing?”',
-   bad:'“Create a polished final poster for my project. Make it look professional.”',
-   why:'Criteria and alternatives are the designer’s judgment. AI comparing your options against your criteria is support; AI producing the artifact is substitution.'}
+  {ctx:'写作——一篇议论文即将到期。',
+   good:'“这是我的主张和三项证据。请批评其中的逻辑，并指出衔接薄弱之处，但不要重写任何内容。”',
+   bad:'“围绕这个主题写一篇有说服力的论文，包括引言、三个正文段落和结论。”',
+   why:'好的提示语让 AI 批评你已经完成的作品；不合适的提示语则在一句话中交出了问题界定、推理与作者责任。'},
+  {ctx:'数据分析——实验报告要求你解释一张图表。',
+   good:'“我认为这张图显示了由温度驱动的季节性峰值。请挑战我的解释：还有哪些解释符合这些数据？”',
+   bad:'“这张图是什么意思？请替我的报告解释这一趋势。”',
+   why:'先识别模式正是这项任务的目标认知工作。完成尝试后，让 AI 作为挑战者能够加强解释，而不是替代解释。'},
+  {ctx:'习题——一道多步骤计算题让你陷入困难。',
+   good:'“这是我的解题设置和前两步。不要直接求解；请告诉我设置是否有误，并只给一个提示。”',
+   bad:'“请解出这道题并展示所有步骤，让我能够跟着做。”',
+   why:'“展示所有步骤让我跟着做”看似在学习，却跳过了产生理解所需的探索。检查错误并只给一个提示，才能让求解仍由你完成。'},
+  {ctx:'设计项目——最终海报将在周五提交。',
+   good:'“这是我的评价标准和两份草图。请依据标准比较它们：我忽略了哪些取舍？”',
+   bad:'“为我的项目制作一张精美的最终海报，让它看起来很专业。”',
+   why:'标准和方案选择体现设计者的判断。AI 依据你的标准比较你的方案属于支持；AI 直接制作成品则属于替代。'}
 ];
 var fz = document.getElementById('fixzone');
 FIX.forEach(function(f, i){
@@ -503,7 +503,7 @@ FIX.forEach(function(f, i){
       });
       var right = txt===f.good;
       fb.className='fb show '+(right?'right':'wrong');
-      fb.innerHTML='<span class="verdict">'+(right?'Right.':'The other one.')+'</span> '+f.why;
+      fb.innerHTML='<span class="verdict">'+(right?'正确。':'应选择另一个提示语。')+'</span> '+f.why;
     });
     c.appendChild(b);
   });
