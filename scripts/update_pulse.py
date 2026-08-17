@@ -321,6 +321,7 @@ def write_outputs(articles: list[dict], topics: dict, today: date):
     _, after = remainder.split(END_MARKER, 1)
     rendered = render_feed(articles, today)
     PAGE_PATH.write_text(before + rendered + after, encoding="utf-8")
+    DATA_PATH.parent.mkdir(parents=True, exist_ok=True)
     DATA_PATH.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
