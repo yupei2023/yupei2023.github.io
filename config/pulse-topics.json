@@ -1,0 +1,89 @@
+{
+  "window_days": 45,
+  "article_count": 10,
+  "minimum_priority_journal_articles": 4,
+  "maximum_per_theme": 3,
+  "maximum_per_journal": 2,
+  "themes": [
+    {
+      "id": "ai-literacy",
+      "label": "AI literacy",
+      "queries": [
+        "artificial intelligence literacy education",
+        "generative AI information literacy learning"
+      ],
+      "phrases": [
+        "ai literacy",
+        "artificial intelligence literacy",
+        "information literacy",
+        "question formulation",
+        "critical evaluation"
+      ],
+      "keywords": ["verification", "misinformation", "prompting", "questioning", "judgment"]
+    },
+    {
+      "id": "learner-agency",
+      "label": "Learner agency",
+      "queries": [
+        "generative AI learner agency education",
+        "artificial intelligence reflection learning"
+      ],
+      "phrases": [
+        "learner agency",
+        "student agency",
+        "human centered ai",
+        "human-centered ai",
+        "reflective learning"
+      ],
+      "keywords": ["reflection", "responsibility", "autonomy", "metacognition", "decision making"]
+    },
+    {
+      "id": "immersive-learning",
+      "label": "Immersive learning",
+      "queries": [
+        "virtual reality education learning",
+        "augmented reality mixed reality education"
+      ],
+      "phrases": [
+        "immersive learning",
+        "virtual reality",
+        "augmented reality",
+        "mixed reality",
+        "extended reality"
+      ],
+      "keywords": ["vr", "ar", "xr", "simulation", "presence", "embodied"]
+    },
+    {
+      "id": "stem-learning",
+      "label": "STEM learning",
+      "queries": [
+        "technology enhanced STEM education",
+        "game based science learning education"
+      ],
+      "phrases": [
+        "stem education",
+        "science education",
+        "game based learning",
+        "game-based learning",
+        "spatial learning"
+      ],
+      "keywords": ["biology", "geography", "engineering", "microelectronics", "gamification"]
+    },
+    {
+      "id": "learning-design",
+      "label": "Learning design",
+      "queries": [
+        "learning experience design usability education",
+        "eye tracking educational technology learning"
+      ],
+      "phrases": [
+        "learning design",
+        "instructional design",
+        "learning experience design",
+        "educational technology",
+        "eye tracking"
+      ],
+      "keywords": ["usability", "interaction", "co-design", "mixed methods", "user experience"]
+    }
+  ]
+}

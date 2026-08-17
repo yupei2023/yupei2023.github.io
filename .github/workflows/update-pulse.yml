@@ -1,0 +1,61 @@
+name: Update Pulse
+
+on:
+  schedule:
+    - cron: "17 7 * * 1"
+      timezone: "America/Chicago"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: pulse-weekly-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      OPENALEX_API_KEY: ${{ secrets.OPENALEX_API_KEY }}
+    steps:
+      - name: Check out the website
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run Pulse unit tests
+        run: python -m unittest discover -s tests -p "test_pulse.py" -v
+
+      - name: Generate the weekly edition
+        run: python scripts/update_pulse.py
+
+      - name: Validate generated data and HTML
+        run: python scripts/validate_pulse.py
+
+      - name: Save the edition
+        id: save
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/pulse.json pulse/index.html
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "Update Pulse for $(date -u +%Y-%m-%d)"
+            git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Request a GitHub Pages rebuild
+        if: steps.save.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          sleep 10
+          gh api --method POST "repos/${GITHUB_REPOSITORY}/pages/builds"

@@ -31,6 +31,15 @@ python3 -m http.server 8000
 
 Then visit `http://localhost:8000`.
 
+## Pulse automation
+
+`/pulse/` is refreshed by `.github/workflows/update-pulse.yml` every Monday at
+7:17 a.m. America/Chicago. The workflow uses `scripts/update_pulse.py`, the
+research themes in `config/pulse-topics.json`, and the reviewed journal list in
+`config/pulse-journals.json`. It requires the repository Actions secret
+`OPENALEX_API_KEY`. Generated records are stored in `data/pulse.json`; invalid
+or incomplete runs fail before replacing the previous edition.
+
 ## Privacy and attribution
 
 The public site excludes student records, identifiable participant data,
