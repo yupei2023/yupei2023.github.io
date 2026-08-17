@@ -102,7 +102,9 @@ def theme_scores(work: dict, themes: list[dict], origins: set[str]) -> dict[str,
     corpus = f"{title} {abstract} {topic_text}"
     scores = {}
     for theme in themes:
-        score = 4 if theme["id"] in origins else 0
+        # A search hit is only a lead, not proof of relevance. Keep this bonus
+        # small so a work still needs a strong phrase or title-level keyword.
+        score = 2 if theme["id"] in origins else 0
         for phrase in theme["phrases"]:
             term = normalized(phrase)
             if term in title:
