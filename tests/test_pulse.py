@@ -46,6 +46,17 @@ class PulseTests(unittest.TestCase):
         self.assertEqual(article["access"], "Open access")
         self.assertEqual(article["theme_id"], "immersive-learning")
 
+    def test_similar_journal_names_do_not_collide(self):
+        work = self.work(3, issn="0926-7220", journal_name="Science & Education")
+        article = PULSE.article_from_work(work, self.topics["themes"], {"immersive-learning"}, self.by_issn, self.by_name, date(2026, 8, 16))
+        self.assertIsNone(article["priority_tier"])
+
+    def test_publisher_markup_is_removed_from_titles(self):
+        work = self.work(4)
+        work["title"] = "Virtual reality <scp>STEM</scp> learning"
+        article = PULSE.article_from_work(work, self.topics["themes"], {"immersive-learning"}, self.by_issn, self.by_name, date(2026, 8, 16))
+        self.assertEqual(article["title"], "Virtual reality STEM learning")
+
     def test_selection_is_unique_and_limited(self):
         candidates = []
         phrases = ["virtual reality", "ai literacy", "learner agency", "stem education", "learning design"]

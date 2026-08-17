@@ -33,7 +33,14 @@ def load_json(path: Path):
 
 
 def normalized(value: str | None) -> str:
-    return re.sub(r"[^a-z0-9]+", " ", (value or "").lower()).strip()
+    value = (value or "").lower().replace("&", " and ")
+    return re.sub(r"[^a-z0-9]+", " ", value).strip()
+
+
+def clean_metadata(value: str | None) -> str:
+    value = html.unescape(value or "")
+    value = re.sub(r"<[^>]+>", "", value)
+    return re.sub(r"\s+", " ", value).strip()
 
 
 def reconstruct_abstract(inverted: dict | None) -> str:
@@ -120,7 +127,7 @@ def stable_id(work: dict) -> str:
 def authors_for(work: dict) -> list[str]:
     names = []
     for authorship in work.get("authorships") or []:
-        name = (authorship.get("author") or {}).get("display_name")
+        name = clean_metadata((authorship.get("author") or {}).get("display_name"))
         if name:
             names.append(name)
     return names
@@ -143,7 +150,7 @@ def article_url(work: dict) -> tuple[str, str]:
 def article_from_work(work: dict, themes: list[dict], origins: set[str], by_issn: dict, by_name: dict, today: date) -> dict | None:
     if work.get("is_retracted") or work.get("type") not in ALLOWED_TYPES:
         return None
-    title = (work.get("title") or work.get("display_name") or "").strip()
+    title = clean_metadata(work.get("title") or work.get("display_name"))
     published_raw = work.get("publication_date")
     if not title or not published_raw:
         return None
@@ -179,7 +186,7 @@ def article_from_work(work: dict, themes: list[dict], origins: set[str], by_issn
         "id": stable_id(work),
         "title": title,
         "authors": authors,
-        "journal": source.get("display_name") or "Scholarly source",
+        "journal": clean_metadata(source.get("display_name")) or "Scholarly source",
         "issn_l": source.get("issn_l"),
         "publication_date": published.isoformat(),
         "doi": work.get("doi"),
