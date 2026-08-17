@@ -99,7 +99,8 @@ def theme_scores(work: dict, themes: list[dict], origins: set[str]) -> dict[str,
     title = normalized(work.get("title") or work.get("display_name"))
     abstract = normalized(reconstruct_abstract(work.get("abstract_inverted_index")))
     topic_text = normalized(" ".join(topic.get("display_name", "") for topic in work.get("topics") or []))
-    corpus = f"{title} {abstract} {topic_text}"
+    substantive_text = f"{title} {abstract}"
+    supporting_text = f"{substantive_text} {topic_text}"
     scores = {}
     for theme in themes:
         # A search hit is only a lead, not proof of relevance. Keep this bonus
@@ -109,13 +110,13 @@ def theme_scores(work: dict, themes: list[dict], origins: set[str]) -> dict[str,
             term = normalized(phrase)
             if term in title:
                 score += 12
-            elif term in corpus:
+            elif term in substantive_text:
                 score += 7
         for keyword in theme["keywords"]:
             term = normalized(keyword)
             if re.search(rf"\b{re.escape(term)}\b", title):
                 score += 5
-            elif re.search(rf"\b{re.escape(term)}\b", corpus):
+            elif re.search(rf"\b{re.escape(term)}\b", supporting_text):
                 score += 2
         scores[theme["id"]] = score
     return scores

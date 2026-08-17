@@ -57,6 +57,19 @@ class PulseTests(unittest.TestCase):
         article = PULSE.article_from_work(work, self.topics["themes"], {"immersive-learning"}, self.by_issn, self.by_name, date(2026, 8, 16))
         self.assertEqual(article["title"], "Virtual reality STEM learning")
 
+    def test_topic_taxonomy_alone_does_not_prove_relevance(self):
+        work = self.work(5, theme_phrase="Early mathematics interventions")
+        work["topics"] = [{"display_name": "Learning design"}]
+        article = PULSE.article_from_work(
+            work,
+            self.topics["themes"],
+            {"learning-design"},
+            self.by_issn,
+            self.by_name,
+            date(2026, 8, 16),
+        )
+        self.assertIsNone(article)
+
     def test_selection_is_unique_and_limited(self):
         candidates = []
         phrases = ["virtual reality", "ai literacy", "learner agency", "stem education", "learning design"]
