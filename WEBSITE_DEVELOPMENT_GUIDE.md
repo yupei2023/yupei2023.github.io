@@ -40,6 +40,8 @@ github-site/
 │   └── index.html             # Ph.D. portfolio and program of study
 ├── scholarship/
 │   └── index.html             # Publications and presentations
+├── pulse/
+│   └── index.html             # Weekly research discovery and literature monitoring
 ├── teaching/
 │   └── index.html             # Teaching philosophy and experience
 ├── engagement/

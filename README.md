@@ -12,6 +12,7 @@ is designed for GitHub Pages.
 - `/` — Academic homepage
 - `/research/` — Research agenda, projects, methods, and contributions
 - `/scholarship/` — Publications, manuscripts, presentations, and scholarly materials
+- `/pulse/` — Weekly research discovery and literature monitoring
 - `/portfolio/` — Evidence-based Ph.D. portfolio
 - `/teaching/` — Teaching philosophy and experience
 - `/engagement/` — Science communication, service, and leadership

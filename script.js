@@ -77,6 +77,7 @@ const searchPages = [
   { path: "", label: "Home" },
   { path: "research/", label: "Research" },
   { path: "scholarship/", label: "Scholarship" },
+  { path: "pulse/", label: "Pulse" },
   { path: "teaching/", label: "Teaching" },
   { path: "engagement/", label: "Engagement" },
   { path: "portfolio/", label: "Ph.D. Portfolio" },
