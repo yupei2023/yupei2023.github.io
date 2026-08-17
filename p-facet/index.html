@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="P-FACET is a six-phase model that helps educators and learners use generative AI while preserving learner thinking, judgment, and transfer.">
+  <meta name="theme-color" content="#f4f7fa">
+  <meta property="og:title" content="P-FACET · Yupei Duan">
+  <meta property="og:description" content="A practical model for deciding what learners should do themselves and where AI can provide bounded support.">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://yupei2023.github.io/p-facet/">
+  <title>P-FACET · Yupei Duan</title>
+  <link rel="icon" href="../assets/site/favicon.ico">
+  <link rel="stylesheet" href="../styles.css">
+  <script src="../script.js" defer></script>
+  <script src="p-facet.js" defer></script>
+</head>
+<body class="inner-page pfacet-page">
+  <a class="skip-link" href="#main"><span data-lang="en">Skip to content</span><span data-lang="zh">跳至主要内容</span></a>
+  <header class="site-header">
+    <a class="wordmark" href="../index.html" aria-label="Yupei Duan, home"><span>YD</span><strong>Yupei Duan</strong></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span class="sr-only">Open navigation</span></button>
+    <nav id="site-nav" aria-label="Main navigation">
+      <a href="../research/">Research</a>
+      <a href="../scholarship/">Scholarship</a>
+      <a href="../teaching/">Teaching</a>
+      <a href="../engagement/">Engagement</a>
+      <a href="../pulse/">Pulse</a>
+      <a href="../portfolio/">Ph.D. Portfolio</a>
+      <a class="nav-contact" href="../about/">About</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <header class="page-hero pfacet-hero">
+      <div class="pfacet-hero__topline">
+        <p class="kicker">P-FACET</p>
+        <button class="language-toggle" id="language-toggle" type="button" aria-pressed="false">
+          <span data-lang="en">中文</span><span data-lang="zh">English</span>
+        </button>
+      </div>
+      <h1><span data-lang="en">When AI helps you, who is doing the thinking?</span><span data-lang="zh">当 AI 帮助你时，究竟是谁在思考？</span></h1>
+      <p class="page-deck">
+        <span data-lang="en">P-FACET is a six-phase routine for using generative AI without giving away the thinking that matters.</span>
+        <span data-lang="zh">P-FACET 是一个包含六个阶段的生成式 AI 使用模型，帮助学习者借助 AI，同时保留真正重要的思考过程。</span>
+      </p>
+      <div class="pfacet-hero__actions">
+        <a class="button button-dark" href="quick-start/"><span data-lang="en">Try the 3-minute Quick Start</span><span data-lang="zh">开始 3 分钟快速指南</span> <span aria-hidden="true">→</span></a>
+        <a class="text-link" href="trainer/"><span data-lang="en">Explore the 8-minute Trainer</span><span data-lang="zh">体验 8 分钟互动教程</span> <span aria-hidden="true">→</span></a>
+      </div>
+    </header>
+
+    <section class="page-section pfacet-thesis" aria-labelledby="model-title">
+      <div class="section-heading split-heading">
+        <div><p class="kicker"><span data-lang="en">The model</span><span data-lang="zh">模型介绍</span></p><h2 id="model-title"><span data-lang="en">Keep cognition visible and learner-owned.</span><span data-lang="zh">让思考过程可见，并由学习者掌控。</span></h2></div>
+        <p><span data-lang="en">Generative AI can frame problems, draft explanations, propose solutions, and revise work. P-FACET helps educators and learners decide which cognitive acts must remain human-led—and how AI can provide bounded, productive support.</span><span data-lang="zh">生成式 AI 可以界定问题、撰写解释、提出方案并修改作品。P-FACET 帮助教育者与学习者判断：哪些认知活动必须由人主导，以及 AI 应如何提供有边界、有效的支持。</span></p>
+      </div>
+
+      <div class="pfacet-cycle" aria-label="P-FACET model phases">
+        <article class="pfacet-anchor"><span>P</span><div><h3><span data-lang="en">Problem-Centered Challenge</span><span data-lang="zh">以问题为中心的挑战</span></h3><p><span data-lang="en">Anchor the work in an authentic problem, purpose, and learning goal.</span><span data-lang="zh">以真实问题、明确目的和学习目标作为整个过程的核心。</span></p></div></article>
+        <div class="pfacet-phases">
+          <article><span>F</span><h3><span data-lang="en">Frame</span><span data-lang="zh">界定</span></h3><p><span data-lang="en">Define goals, constraints, assumptions, stakeholders, and criteria.</span><span data-lang="zh">明确目标、限制条件、假设、利益相关者与评价标准。</span></p></article>
+          <article><span>A</span><h3><span data-lang="en">Analogize &amp; Attempt</span><span data-lang="zh">类比与尝试</span></h3><p><span data-lang="en">Connect prior knowledge and make a human-first attempt.</span><span data-lang="zh">联系已有知识，并先独立完成初步尝试。</span></p></article>
+          <article class="pfacet-ai"><span>C</span><h3><span data-lang="en">Consult &amp; Construct</span><span data-lang="zh">咨询与建构</span></h3><p><span data-lang="en">Ask AI for bounded help: critique, alternatives, questions, or hints.</span><span data-lang="zh">向 AI 寻求有边界的帮助，如批评、替代方案、问题或提示。</span></p></article>
+          <article><span>E</span><h3><span data-lang="en">Evaluate &amp; Explain</span><span data-lang="zh">评估与解释</span></h3><p><span data-lang="en">Verify outputs, apply evidence, and justify what you accept or reject.</span><span data-lang="zh">核查 AI 输出、运用证据，并说明接受、修改或拒绝的理由。</span></p></article>
+          <article><span>T</span><h3><span data-lang="en">Transform &amp; Transfer</span><span data-lang="zh">转化与迁移</span></h3><p><span data-lang="en">Revise the work and carry the strategy into a new context.</span><span data-lang="zh">转化和完善成果，并将形成的策略迁移到新的情境。</span></p></article>
+        </div>
+      </div>
+      <p class="pfacet-cycle__note"><span data-lang="en"><strong>P</strong> remains the anchor. F-A-C-E-T is an iterative cycle, not a mechanical checklist. Only <strong>C</strong> requires direct AI consultation.</span><span data-lang="zh"><strong>P</strong> 始终是核心锚点。F-A-C-E-T 是一个可反复迭代的循环，而不是机械清单。只有 <strong>C</strong> 阶段需要直接与 AI 互动。</span></p>
+    </section>
+
+    <section class="page-section pfacet-audiences" aria-labelledby="audiences-title">
+      <div class="section-heading"><p class="kicker"><span data-lang="en">Two perspectives</span><span data-lang="zh">双重视角</span></p><h2 id="audiences-title"><span data-lang="en">A shared language for teaching and learning with AI.</span><span data-lang="zh">为 AI 时代的教与学建立共同语言。</span></h2></div>
+      <div class="pfacet-audience-grid">
+        <article>
+          <span class="pfacet-audience-grid__label"><span data-lang="en">For educators</span><span data-lang="zh">面向教育者</span></span>
+          <h3><span data-lang="en">Design for evidence of thinking.</span><span data-lang="zh">围绕思考证据进行教学设计。</span></h3>
+          <p><span data-lang="en">Identify the cognitive work an assignment is meant to develop. Use P-FACET to set appropriate boundaries for AI, prompt explanation and verification, and assess process alongside product.</span><span data-lang="zh">识别一项学习任务真正要培养的认知能力。运用 P-FACET 设定适当的 AI 使用边界，引导学习者解释与核查，并同时评价过程与结果。</span></p>
+          <ul><li><span data-lang="en">Clarify what must remain learner-owned</span><span data-lang="zh">明确哪些思考必须由学习者完成</span></li><li><span data-lang="en">Make framing, judgment, and revision visible</span><span data-lang="zh">让问题界定、判断与修改过程可见</span></li><li><span data-lang="en">Distinguish support from substitution</span><span data-lang="zh">区分认知支持与认知替代</span></li></ul>
+          <a class="text-link" href="trainer/"><span data-lang="en">Preview the learner experience</span><span data-lang="zh">预览学习者的互动体验</span> <span aria-hidden="true">→</span></a>
+        </article>
+        <article>
+          <span class="pfacet-audience-grid__label"><span data-lang="en">For learners</span><span data-lang="zh">面向学习者</span></span>
+          <h3><span data-lang="en">Use AI without surrendering agency.</span><span data-lang="zh">借助 AI，同时保持学习自主性。</span></h3>
+          <p><span data-lang="en">Begin with your own representation and attempt. Consult AI for a specific need, evaluate its response with evidence, transform the work, and explain what you can use again.</span><span data-lang="zh">从自己的理解与尝试出发，针对具体需要向 AI 咨询；运用证据评估其回答，转化成果，并说明哪些方法能够再次使用。</span></p>
+          <ul><li><span data-lang="en">Attempt before asking AI</span><span data-lang="zh">先尝试，再向 AI 提问</span></li><li><span data-lang="en">Request critique, options, or hints—not the whole task</span><span data-lang="zh">寻求批评、选项或提示，而非让 AI 完成整个任务</span></li><li><span data-lang="en">Accept, revise, or reject with reasons</span><span data-lang="zh">有理由地接受、修改或拒绝 AI 输出</span></li></ul>
+          <a class="text-link" href="quick-start/"><span data-lang="en">Use P-FACET on an assignment</span><span data-lang="zh">在学习任务中使用 P-FACET</span> <span aria-hidden="true">→</span></a>
+        </article>
+      </div>
+    </section>
+
+    <section class="page-section pfacet-tools" aria-labelledby="tools-title">
+      <div class="section-heading split-heading">
+        <div><p class="kicker"><span data-lang="en">Interactive tools</span><span data-lang="zh">互动工具</span></p><h2 id="tools-title"><span data-lang="en">Choose the path that fits your time.</span><span data-lang="zh">根据你的时间选择学习路径。</span></h2></div>
+        <p><span data-lang="en">Both tools run privately in your browser, require no account, and send no responses to a server.</span><span data-lang="zh">两个工具均直接在浏览器中运行，无需账户，也不会将你的回答发送到服务器。</span></p>
+      </div>
+      <div class="pfacet-tool-grid">
+        <a href="quick-start/"><span class="pfacet-tool-grid__time">3 <small>MIN</small></span><div><p class="kicker"><span data-lang="en">Fast path</span><span data-lang="zh">快速路径</span></p><h3>P-FACET Quick Start</h3><p><span data-lang="en">Six phase cards, reusable prompt starters, and a live checklist for your current assignment.</span><span data-lang="zh">六个阶段卡片、可复用的提示语，以及适用于当前学习任务的互动检查清单。</span></p><strong><span data-lang="en">Open Quick Start</span><span data-lang="zh">打开快速指南</span> →</strong></div></a>
+        <a href="trainer/"><span class="pfacet-tool-grid__time">8 <small>MIN</small></span><div><p class="kicker"><span data-lang="en">Deep path</span><span data-lang="zh">深入路径</span></p><h3>P-FACET Trainer</h3><p><span data-lang="en">Scenarios, an offloading quiz, an interactive model, a worked example, and prompt practice.</span><span data-lang="zh">包含情境案例、认知卸载测验、互动模型、完整示例与提示语练习。</span></p><strong><span data-lang="en">Open Trainer</span><span data-lang="zh">打开互动教程</span> →</strong></div></a>
+      </div>
+    </section>
+
+    <section class="page-cta pfacet-closing">
+      <p class="kicker"><span data-lang="en">The question to carry forward</span><span data-lang="zh">始终要追问的问题</span></p>
+      <h2><span data-lang="en">Who did the thinking?</span><span data-lang="zh">究竟是谁在思考？</span></h2>
+      <p><span data-lang="en">The P-FACET Model © Yupei Duan &amp; Danielle Oprean, University of Missouri.</span><span data-lang="zh">P-FACET 模型 © Yupei Duan 与 Danielle Oprean，密苏里大学。</span></p>
+    </section>
+  </main>
+
+  <footer><p>© <span id="year">2026</span> Yupei Duan</p><p><span data-lang="en">P-FACET · Human-led learning with AI</span><span data-lang="zh">P-FACET · 以人为主导的 AI 学习</span></p><div><a href="../index.html"><span data-lang="en">Home</span><span data-lang="zh">首页</span></a><a href="#main"><span data-lang="en">Back to top ↑</span><span data-lang="zh">返回顶部 ↑</span></a></div></footer>
+  <!-- Cloudflare Web Analytics -->
+  <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"df816ceb687245e1b86e687f66f93395"}'></script>
+  <!-- End Cloudflare Web Analytics -->
+</body>
+</html>

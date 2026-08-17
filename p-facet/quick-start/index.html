@@ -1,0 +1,166 @@
+<title>P-FACET Quick Start</title>
+<style>
+  :root{
+    --bg:#F7F5F1; --surface:#FFFFFF; --ink:#26241E; --muted:#6B6659;
+    --line:#E2DDD2; --learner:#2E6B4E; --learner-soft:#E4EEE8;
+    --ai:#4A6FA5; --ai-soft:#E6ECF5; --anchor:#C2892D; --anchor-soft:#F5EAD6;
+    --risk:#A84B3A; --risk-soft:#F3E2DD; --chip:#EFECE4;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#211F1B; --surface:#2A2823; --ink:#EAE6DC; --muted:#A39D8E;
+      --line:#3B382F; --learner:#6FB392; --learner-soft:#26352D;
+      --ai:#8AA7D6; --ai-soft:#28303E; --anchor:#D9A855; --anchor-soft:#3A3122;
+      --risk:#D08A79; --risk-soft:#3C2B26; --chip:#333028;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#211F1B; --surface:#2A2823; --ink:#EAE6DC; --muted:#A39D8E;
+    --line:#3B382F; --learner:#6FB392; --learner-soft:#26352D;
+    --ai:#8AA7D6; --ai-soft:#28303E; --anchor:#D9A855; --anchor-soft:#3A3122;
+    --risk:#D08A79; --risk-soft:#3C2B26; --chip:#333028;
+  }
+  *{box-sizing:border-box}
+  body{margin:0; background:var(--bg); color:var(--ink); line-height:1.6; font-size:16.5px;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+  main{max-width:720px; margin:0 auto; padding:0 20px 80px}
+  header{padding:60px 0 26px}
+  .kicker{font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:14px}
+  h1{font-family:"Iowan Old Style",Palatino,"Palatino Linotype","Book Antiqua",Georgia,serif;
+     font-size:clamp(30px,5.5vw,44px); line-height:1.1; margin:0 0 14px; font-weight:600; text-wrap:balance}
+  h1 em{color:var(--anchor); font-style:normal}
+  .lede{font-size:17.5px; max-width:56ch}
+  .lede b.g{color:var(--learner)} .lede b.b{color:var(--ai)}
+  /* strip */
+  .strip{display:flex; gap:5px; margin:26px 0 0}
+  .strip span{flex:1; text-align:center; font-family:"Iowan Old Style",Palatino,Georgia,serif; font-weight:700;
+    font-size:17px; padding:9px 0; border-radius:7px; background:var(--learner-soft); color:var(--learner)}
+  .strip span.p{background:var(--anchor-soft); color:var(--anchor)}
+  .strip span.c{background:var(--ai-soft); color:var(--ai)}
+  /* steps */
+  .step{background:var(--surface); border:1px solid var(--line); border-radius:11px; padding:22px 24px; margin-top:18px;
+        border-left:5px solid var(--learner)}
+  .step.p{border-left-color:var(--anchor)} .step.c{border-left-color:var(--ai)}
+  .step .head{display:flex; align-items:baseline; gap:12px; margin-bottom:8px}
+  .step .lt{font-family:"Iowan Old Style",Palatino,Georgia,serif; font-size:26px; font-weight:700; color:var(--learner)}
+  .step.p .lt{color:var(--anchor)} .step.c .lt{color:var(--ai)}
+  .step h2{margin:0; font-size:18.5px; font-weight:650}
+  .step .who{margin-left:auto; font-size:11px; letter-spacing:.1em; text-transform:uppercase; font-weight:700; color:var(--learner); white-space:nowrap}
+  .step.p .who{color:var(--anchor)} .step.c .who{color:var(--ai)}
+  .step .do{margin:0 0 10px; font-size:15.5px}
+  .airule{font-size:14px; border-left:3px solid var(--ai); background:var(--ai-soft); padding:8px 13px; border-radius:0 7px 7px 0; margin:10px 0}
+  .airule.none{border-left-color:var(--risk); background:var(--risk-soft)}
+  .ask{font-family:"Iowan Old Style",Palatino,Georgia,serif; font-style:italic; color:var(--anchor); font-size:15.5px; margin-top:10px}
+  .starters{margin-top:12px}
+  .starters .sl{font-size:11.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); font-weight:700; margin-bottom:6px}
+  .starter{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:12.8px; line-height:1.5;
+    background:var(--chip); border:1px solid var(--line); border-radius:8px; padding:9px 12px; margin-bottom:7px}
+  /* checklist */
+  section.run{margin-top:52px}
+  .eyebrow{font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--anchor); font-weight:700; margin-bottom:8px}
+  h3.rt{font-family:"Iowan Old Style",Palatino,Georgia,serif; font-size:24px; margin:0 0 8px; font-weight:600}
+  .note{color:var(--muted); max-width:60ch; margin:0 0 18px; font-size:15px}
+  .check{background:var(--surface); border:1px solid var(--line); border-radius:11px; padding:20px 22px}
+  .check label{display:flex; gap:12px; align-items:flex-start; padding:10px 4px; border-bottom:1px solid var(--line); cursor:pointer; font-size:15px}
+  .check label:last-of-type{border-bottom:none}
+  .check input{margin-top:4px; width:17px; height:17px; accent-color:var(--learner); flex-shrink:0; cursor:pointer}
+  .check b{font-family:"Iowan Old Style",Palatino,Georgia,serif; font-size:16.5px; color:var(--learner)}
+  .check label.lp b{color:var(--anchor)} .check label.lc b{color:var(--ai)}
+  .done-msg{display:none; margin-top:14px; padding:13px 16px; border-radius:9px; background:var(--learner-soft); color:var(--learner); font-size:15px; font-weight:600}
+  .done-msg.show{display:block}
+  .progress{margin-top:12px; font-size:13.5px; color:var(--muted); font-variant-numeric:tabular-nums}
+  footer{margin-top:56px; padding-top:20px; border-top:1px solid var(--line); font-size:13px; color:var(--muted); max-width:64ch}
+  input:focus-visible{outline:2px solid var(--anchor); outline-offset:2px}
+  @media (prefers-reduced-motion: reduce){*{transition:none !important}}
+</style>
+
+<main>
+<header>
+  <div class="kicker">Quick start · 3 minutes</div>
+  <h1>How to use <em>P-FACET</em> when you work with AI</h1>
+  <p class="lede">Six moves, in a cycle. <b class="g">Green moves are yours</b> — that's where the learning happens. <b class="b">Blue is the one move where you talk to AI</b>, and even there, you set the boundary. Loop back whenever you need to.</p>
+  <div class="strip" aria-hidden="true">
+    <span class="p">P</span><span>F</span><span>A</span><span class="c">C</span><span>E</span><span>T</span>
+  </div>
+</header>
+
+<div class="step p">
+  <div class="head"><span class="lt">P</span><h2>Start from the problem</h2><span class="who">You</span></div>
+  <p class="do">Name the problem you're solving, why it matters, and what you personally want to learn from it.</p>
+  <div class="airule none">No AI yet — the purpose stays yours.</div>
+  <div class="ask">Ask yourself: "What problem am I solving, and why does it matter?"</div>
+</div>
+
+<div class="step">
+  <div class="head"><span class="lt">F</span><h2>Frame it</h2><span class="who">You</span></div>
+  <p class="do">Write down your goal, who it's for, what success looks like (criteria), your constraints, and your assumptions.</p>
+  <div class="airule">AI may ask you questions or poke at your assumptions — it never writes the frame for you.</div>
+  <div class="ask">Ask yourself: "What will count as a successful response?"</div>
+</div>
+
+<div class="step">
+  <div class="head"><span class="lt">A</span><h2>Attempt it first</h2><span class="who">You</span></div>
+  <p class="do">Recall what you know, think of similar problems, and make a first draft, sketch, solution, or plan. It doesn't need to be good — it needs to exist.</p>
+  <div class="airule">AI shows examples only <b>after</b> your attempt.</div>
+  <div class="ask">Ask yourself: "What did I try before consulting AI?"</div>
+</div>
+
+<div class="step c">
+  <div class="head"><span class="lt">C</span><h2>Consult — with a boundary</h2><span class="who">You + AI</span></div>
+  <p class="do">Find the one specific gap in your work, then make a bounded request: critique, alternatives, an explanation, or technical help. Never hand over the whole task.</p>
+  <div class="starters">
+    <div class="sl">Prompt starters that keep the thinking yours</div>
+    <div class="starter">"Here's my draft. Critique the logic against my criteria — don't rewrite it."</div>
+    <div class="starter">"Here's my interpretation. Challenge it — what other explanations fit?"</div>
+    <div class="starter">"Here's my setup and first steps. Don't solve it — flag any error and give one hint."</div>
+    <div class="starter">"Here are my criteria and two options. Compare them — what trade-offs am I missing?"</div>
+  </div>
+  <div class="ask">Ask yourself: "What specific contribution do I need from AI right now?"</div>
+</div>
+
+<div class="step">
+  <div class="head"><span class="lt">E</span><h2>Evaluate and explain</h2><span class="who">You</span></div>
+  <p class="do">Check AI's output against your criteria and real evidence. Then decide — accept, revise, reject, remix, or defer — and write down <em>why</em>. "I checked it" doesn't count; naming your evidence does.</p>
+  <div class="airule">AI can offer counterarguments — the verdict is yours.</div>
+  <div class="ask">Ask yourself: "What criterion or evidence supports my decision?"</div>
+</div>
+
+<div class="step">
+  <div class="head"><span class="lt">T</span><h2>Transform and transfer</h2><span class="who">You</span></div>
+  <p class="do">Fold your decisions into work you own, note what changed and why, and name where you'll use this strategy next time.</p>
+  <div class="airule">AI can help you compare contexts — where else would this work?</div>
+  <div class="ask">Ask yourself: "What changed, and how will I use this strategy elsewhere?"</div>
+</div>
+
+<section class="run">
+  <div class="eyebrow">Use it right now</div>
+  <h3 class="rt">Walk a real task through the cycle</h3>
+  <p class="note">Open the assignment you're working on today. Tick each box only when you can honestly answer the question — that's the whole method.</p>
+  <div class="check">
+    <label class="lp"><input type="checkbox"><span><b>P</b> — I can state the problem and why it matters.</span></label>
+    <label><input type="checkbox"><span><b>F</b> — My goal, criteria, constraints, and assumptions are written down.</span></label>
+    <label><input type="checkbox"><span><b>A</b> — I made a first attempt before asking AI anything.</span></label>
+    <label class="lc"><input type="checkbox"><span><b>C</b> — My AI request targets one specific gap and sets a boundary.</span></label>
+    <label><input type="checkbox"><span><b>E</b> — I can name the evidence behind what I accepted, revised, or rejected.</span></label>
+    <label><input type="checkbox"><span><b>T</b> — I know what changed and where I'll use this strategy next.</span></label>
+    <div class="progress" id="prog">0 of 6</div>
+    <div class="done-msg" id="donemsg">All six — your AI use was regulated, and the thinking on record is yours. That's P-FACET.</div>
+  </div>
+</section>
+
+<footer>
+  The P-FACET Model © Yupei Duan &amp; Danielle Oprean, University of Missouri. One question decides everything: <em>who did the thinking?</em>
+</footer>
+</main>
+
+<script>
+var boxes = document.querySelectorAll('.check input');
+function upd(){
+  var n = 0;
+  boxes.forEach(function(b){ if(b.checked) n++; });
+  document.getElementById('prog').textContent = n + ' of 6';
+  document.getElementById('donemsg').classList.toggle('show', n === boxes.length);
+}
+boxes.forEach(function(b){ b.addEventListener('change', upd); });
+upd();
+</script>

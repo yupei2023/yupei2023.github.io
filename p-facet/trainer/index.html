@@ -1,0 +1,501 @@
+<title>P-FACET Trainer</title>
+<style>
+  :root{
+    --bg:#F7F5F1; --surface:#FFFFFF; --ink:#26241E; --muted:#6B6659;
+    --line:#E2DDD2; --learner:#2E6B4E; --learner-soft:#E4EEE8;
+    --ai:#4A6FA5; --ai-soft:#E6ECF5; --anchor:#C2892D; --anchor-soft:#F5EAD6;
+    --risk:#A84B3A; --risk-soft:#F3E2DD; --ok:#2E6B4E;
+    --chip:#EFECE4;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#211F1B; --surface:#2A2823; --ink:#EAE6DC; --muted:#A39D8E;
+      --line:#3B382F; --learner:#6FB392; --learner-soft:#26352D;
+      --ai:#8AA7D6; --ai-soft:#28303E; --anchor:#D9A855; --anchor-soft:#3A3122;
+      --risk:#D08A79; --risk-soft:#3C2B26; --ok:#6FB392;
+      --chip:#333028;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#211F1B; --surface:#2A2823; --ink:#EAE6DC; --muted:#A39D8E;
+    --line:#3B382F; --learner:#6FB392; --learner-soft:#26352D;
+    --ai:#8AA7D6; --ai-soft:#28303E; --anchor:#D9A855; --anchor-soft:#3A3122;
+    --risk:#D08A79; --risk-soft:#3C2B26; --ok:#6FB392;
+    --chip:#333028;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    line-height:1.6; font-size:16.5px;
+  }
+  .serif{font-family:"Iowan Old Style",Palatino,"Palatino Linotype","Book Antiqua",Georgia,serif}
+  main{max-width:860px; margin:0 auto; padding:0 22px 90px}
+  a{color:var(--ai)}
+  /* ---------- hero ---------- */
+  header.hero{padding:74px 0 30px; border-bottom:1px solid var(--line)}
+  .kicker{font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:18px}
+  h1{font-family:"Iowan Old Style",Palatino,"Palatino Linotype","Book Antiqua",Georgia,serif;
+     font-size:clamp(34px,6vw,54px); line-height:1.08; margin:0 0 20px; font-weight:600; text-wrap:balance}
+  h1 .q{color:var(--anchor)}
+  .lede{font-size:19px; max-width:60ch; color:var(--ink)}
+  .lede b.learner{color:var(--learner)} .lede b.ai{color:var(--ai)}
+  .legend{display:flex; gap:18px; flex-wrap:wrap; margin-top:26px; font-size:13.5px; color:var(--muted)}
+  .legend span{display:inline-flex; align-items:center; gap:7px}
+  .dot{width:11px; height:11px; border-radius:50%; display:inline-block}
+  .dot.g{background:var(--learner)} .dot.b{background:var(--ai)} .dot.a{background:var(--anchor)}
+  /* ---------- sections ---------- */
+  section{padding:56px 0 8px}
+  .eyebrow{font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--anchor); font-weight:700; margin-bottom:8px}
+  h2{font-family:"Iowan Old Style",Palatino,"Palatino Linotype","Book Antiqua",Georgia,serif;
+     font-size:clamp(24px,3.6vw,32px); margin:0 0 12px; font-weight:600; text-wrap:balance}
+  .note{color:var(--muted); max-width:66ch; margin:0 0 26px}
+  /* ---------- two students ---------- */
+  .duo{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+  @media (max-width:640px){.duo{grid-template-columns:1fr}}
+  .student{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:20px 20px 16px}
+  .student h3{margin:0 0 4px; font-size:16px}
+  .student .tag{font-size:11.5px; letter-spacing:.1em; text-transform:uppercase; font-weight:700}
+  .student.a .tag{color:var(--risk)} .student.b .tag{color:var(--learner)}
+  .prompt{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:13.5px;
+          background:var(--chip); border-radius:8px; padding:12px 14px; margin:12px 0}
+  .student ol{margin:12px 0 0; padding-left:20px; font-size:14.5px}
+  .student ol li{margin-bottom:4px}
+  .reveal-btn{margin-top:14px; border:1px solid var(--line); background:none; color:var(--ink);
+              padding:8px 14px; border-radius:7px; font-size:13.5px; cursor:pointer}
+  .reveal-btn:hover{border-color:var(--muted)}
+  .reveal-btn:focus-visible,button:focus-visible{outline:2px solid var(--anchor); outline-offset:2px}
+  .reveal{display:none; margin-top:12px; font-size:14.5px; border-top:1px dashed var(--line); padding-top:12px}
+  .reveal.open{display:block}
+  .student.a .reveal{color:var(--risk)} .student.b .reveal{color:var(--learner)}
+  /* ---------- sorter quiz ---------- */
+  .scenario{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:18px 20px; margin-bottom:14px}
+  .scenario p.s{margin:0 0 12px; font-size:15.5px}
+  .choices{display:flex; gap:8px; flex-wrap:wrap}
+  .choices button{border:1px solid var(--line); background:var(--chip); color:var(--ink);
+    padding:7px 13px; border-radius:20px; font-size:13.5px; cursor:pointer}
+  .choices button:hover{border-color:var(--muted)}
+  .choices button.picked-right{background:var(--learner-soft); border-color:var(--learner); color:var(--learner); font-weight:600}
+  .choices button.picked-wrong{background:var(--risk-soft); border-color:var(--risk); color:var(--risk)}
+  .choices button.actual{border-color:var(--learner); color:var(--learner); font-weight:600}
+  .choices button:disabled{cursor:default; opacity:.85}
+  .fb{display:none; margin-top:10px; font-size:14px; padding-top:10px; border-top:1px dashed var(--line)}
+  .fb.show{display:block}
+  .fb .verdict{font-weight:700}
+  .fb.right .verdict{color:var(--ok)} .fb.wrong .verdict{color:var(--risk)}
+  .score{margin-top:6px; font-size:14px; color:var(--muted); font-variant-numeric:tabular-nums}
+  .rule-card{background:var(--anchor-soft); border-radius:10px; padding:16px 20px; margin-top:20px; font-size:15px}
+  .rule-card b{color:var(--anchor)}
+  /* ---------- wheel ---------- */
+  .wheelwrap{display:grid; grid-template-columns:minmax(260px,380px) 1fr; gap:26px; align-items:start}
+  @media (max-width:760px){.wheelwrap{grid-template-columns:1fr}}
+  figure.wheel{margin:0; background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:14px}
+  figure.wheel svg{max-width:100%; height:auto; display:block}
+  figure.wheel figcaption{font-size:12.5px; color:var(--muted); text-align:center; margin-top:8px}
+  .phasecard{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:22px 24px; min-height:340px}
+  .phasecard .pl{font-size:11.5px; letter-spacing:.12em; text-transform:uppercase; font-weight:700; margin-bottom:2px}
+  .phasecard h3{font-family:"Iowan Old Style",Palatino,Georgia,serif; margin:0 0 14px; font-size:22px}
+  .phasecard h4{font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin:16px 0 6px}
+  .phasecard ul{margin:0; padding-left:19px; font-size:14.5px}
+  .phasecard li{margin-bottom:3px}
+  .airole{border-left:3px solid var(--ai); background:var(--ai-soft); padding:9px 13px; border-radius:0 7px 7px 0; font-size:14px; margin-top:6px}
+  .askline{font-family:"Iowan Old Style",Palatino,Georgia,serif; font-style:italic; font-size:16px; color:var(--anchor); margin-top:16px}
+  .node{cursor:pointer}
+  .node circle{transition:stroke-width .15s}
+  .node:hover circle{stroke-width:4}
+  .node.active circle{stroke-width:4.5}
+  /* ---------- stepper ---------- */
+  .stepper{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:24px}
+  .steps-track{display:flex; gap:6px; margin-bottom:18px}
+  .steps-track span{flex:1; height:5px; border-radius:3px; background:var(--chip)}
+  .steps-track span.done{background:var(--learner)}
+  .steps-track span.cur{background:var(--anchor)}
+  .step-phase{font-size:12px; letter-spacing:.12em; text-transform:uppercase; font-weight:700; color:var(--anchor)}
+  .step-quote{font-family:"Iowan Old Style",Palatino,Georgia,serif; font-size:19px; line-height:1.45; margin:10px 0 8px; min-height:84px}
+  .step-note{font-size:14px; color:var(--muted); min-height:44px}
+  .step-nav{display:flex; gap:10px; margin-top:16px; align-items:center}
+  .step-nav button{border:1px solid var(--line); background:var(--chip); color:var(--ink); padding:8px 16px; border-radius:7px; font-size:14px; cursor:pointer}
+  .step-nav button:disabled{opacity:.4; cursor:default}
+  .step-nav .count{margin-left:auto; font-size:13px; color:var(--muted); font-variant-numeric:tabular-nums}
+  /* ---------- fix the prompt ---------- */
+  .fixcard{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:18px 20px; margin-bottom:16px}
+  .fixcard .ctx{font-size:14px; color:var(--muted); margin-bottom:12px}
+  .opt{display:block; width:100%; text-align:left; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+       font-size:13px; line-height:1.5; background:var(--chip); color:var(--ink); border:1px solid var(--line);
+       border-radius:8px; padding:11px 14px; margin-bottom:9px; cursor:pointer}
+  .opt:hover{border-color:var(--muted)}
+  .opt.good{background:var(--learner-soft); border-color:var(--learner)}
+  .opt.bad{background:var(--risk-soft); border-color:var(--risk)}
+  .opt:disabled{cursor:default}
+  /* ---------- pocket card ---------- */
+  .pocket{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:26px 28px}
+  .pocket table{width:100%; border-collapse:collapse; font-size:14.5px}
+  .pocket td{padding:9px 10px 9px 0; border-bottom:1px solid var(--line); vertical-align:top}
+  .pocket td.k{font-weight:700; width:34px; font-family:"Iowan Old Style",Palatino,Georgia,serif; font-size:17px}
+  .pocket td.k.g{color:var(--learner)} .pocket td.k.b{color:var(--ai)} .pocket td.k.a{color:var(--anchor)}
+  .pocket tr:last-child td{border-bottom:none}
+  .supports{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:22px}
+  @media (max-width:560px){.supports{grid-template-columns:1fr}}
+  .supports div{border-radius:9px; padding:15px 18px; font-size:14.5px}
+  .supports .yes{background:var(--ai-soft)} .supports .no{background:var(--risk-soft)}
+  .supports h4{margin:0 0 8px; font-size:13px; letter-spacing:.08em; text-transform:uppercase}
+  .supports .yes h4{color:var(--ai)} .supports .no h4{color:var(--risk)}
+  .supports ul{margin:0; padding-left:18px}
+  footer{margin-top:66px; padding-top:22px; border-top:1px solid var(--line); font-size:13px; color:var(--muted); max-width:70ch}
+  @media (prefers-reduced-motion: reduce){*{transition:none !important}}
+</style>
+
+<main>
+<header class="hero">
+  <div class="kicker">An 8-minute interactive tutorial</div>
+  <h1>When AI helps you, <span class="q">who is doing the thinking?</span></h1>
+  <p class="lede">AI can draft, solve, analyze, and design. Used one way, it replaces your thinking; used another, it sharpens it.
+  <b class="learner">P-FACET</b> is a six-phase routine for keeping the thinking that matters <b class="learner">yours</b> while still getting real help from <b class="ai">AI</b>. This page teaches you the routine by making you use it.</p>
+  <div class="legend">
+    <span><span class="dot g"></span>learner-owned work</span>
+    <span><span class="dot b"></span>AI's bounded role</span>
+    <span><span class="dot a"></span>the problem that anchors it all</span>
+  </div>
+</header>
+
+<!-- ============ 1. two students ============ -->
+<section>
+  <div class="eyebrow">Part 1 · The dilemma</div>
+  <h2>Same assignment, two very different learners</h2>
+  <p class="note">Both students hand in polished work. Click each card to see what an instructor — or a future employer — can actually tell about their learning.</p>
+  <div class="duo">
+    <div class="student a">
+      <span class="tag">AI as task completion</span>
+      <h3>Student A</h3>
+      <div class="prompt">"Complete this assignment for me. Give me the final answer and explanation."</div>
+      <p style="font-size:14.5px; margin:0">Fast output. One prompt, one paste.</p>
+      <button class="reveal-btn" data-reveal="revA" aria-expanded="false">What did A learn? →</button>
+      <div class="reveal" id="revA">Unclear — possibly nothing. The framing, reasoning, and judgment all happened inside the AI. The polished product <em>conceals</em> rather than demonstrates learning.</div>
+    </div>
+    <div class="student b">
+      <span class="tag">Regulated AI use</span>
+      <h3>Student B</h3>
+      <ol>
+        <li>Frames the task and criteria</li>
+        <li>Makes an initial attempt</li>
+        <li>Identifies a specific need</li>
+        <li>Asks AI for critique or alternatives</li>
+        <li>Evaluates, revises, and explains</li>
+      </ol>
+      <button class="reveal-btn" data-reveal="revB" aria-expanded="false">What did B learn? →</button>
+      <div class="reveal" id="revB">Visible thinking, visible decisions. B's framing, first attempt, and revision rationale are all on the record — B used the same AI, but the cognitive work stayed learner-owned.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2. offloading sorter ============ -->
+<section>
+  <div class="eyebrow">Part 2 · The core skill</div>
+  <h2>Spot the four types of offloading</h2>
+  <p class="note">Handing work to a tool is called <em>cognitive offloading</em> — and it isn't automatically bad. Notes offload memory; calculators offload computation. What matters is <em>which</em> work you hand over. Classify each scenario: <b>Mechanical</b> (peripheral help), <b>Supportive</b> (thinking support), <b>Substitutive</b> (risky replacement), or <b>Regulated</b> (you govern the delegation and explain your decisions).</p>
+  <div id="sorter"></div>
+  <div class="score" id="scoreline"></div>
+  <div class="rule-card"><b>The rule that decides every case:</b> judge the AI's action against the <em>target cognitive work</em>. The same AI action can be mechanical in one task and substitutive in another — it depends on what the task was meant to teach <em>you</em>.</div>
+</section>
+
+<!-- ============ 3. the wheel ============ -->
+<section>
+  <div class="eyebrow">Part 3 · The model</div>
+  <h2>The P-FACET cycle</h2>
+  <p class="note">The <b style="color:var(--anchor)">Problem</b> anchors everything at the center. The five phases cycle around it — and you'll loop back and forth between them; it's a cycle, not a checklist. Notice: only <b style="color:var(--ai)">C</b> involves talking to AI directly. Click each phase.</p>
+  <div class="wheelwrap">
+    <figure class="wheel">
+      <svg viewBox="0 0 380 360" role="img" aria-label="P-FACET wheel: Problem-Centered Challenge at the center; Frame, Analogize and Attempt, Consult and Construct, Evaluate and Explain, and Transform and Transfer cycle around it. Only Consult and Construct involves direct AI consultation.">
+        <defs>
+          <marker id="arw" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L8,4 L0,8 z" fill="currentColor" opacity="0.45"/>
+          </marker>
+        </defs>
+        <!-- cycle ring arcs F->A->C->E->T->F -->
+        <g fill="none" stroke="currentColor" stroke-opacity="0.35" stroke-width="1.6">
+          <path d="M 219 68 A 128 128 0 0 1 305 131" marker-end="url(#arw)"/>
+          <path d="M 313 176 A 128 128 0 0 1 280 268" marker-end="url(#arw)"/>
+          <path d="M 240 296 A 128 128 0 0 1 140 296" marker-end="url(#arw)"/>
+          <path d="M 100 268 A 128 128 0 0 1 67 176" marker-end="url(#arw)"/>
+          <path d="M 75 131 A 128 128 0 0 1 161 68" marker-end="url(#arw)"/>
+        </g>
+        <!-- spokes -->
+        <g stroke="currentColor" stroke-opacity="0.15" stroke-width="1.2">
+          <line x1="190" y1="102" x2="190" y2="140"/>
+          <line x1="296" y1="153" x2="238" y2="172"/>
+          <line x1="255" y1="279" x2="220" y2="228"/>
+          <line x1="125" y1="279" x2="160" y2="228"/>
+          <line x1="84" y1="153" x2="142" y2="172"/>
+        </g>
+        <!-- center P -->
+        <g id="nodeP" class="node" tabindex="0" role="button" aria-label="Problem-Centered Challenge">
+          <circle cx="190" cy="188" r="50" fill="var(--anchor-soft)" stroke="var(--anchor)" stroke-width="3"/>
+          <text x="190" y="182" text-anchor="middle" font-size="26" font-weight="700" fill="var(--anchor)" font-family="Georgia,serif">P</text>
+          <text x="190" y="202" text-anchor="middle" font-size="10.5" fill="var(--anchor)">Problem</text>
+        </g>
+        <!-- ring nodes -->
+        <g id="nodeF" class="node" tabindex="0" role="button" aria-label="Frame">
+          <circle cx="190" cy="62" r="40" fill="var(--learner-soft)" stroke="var(--learner)" stroke-width="2.5"/>
+          <text x="190" y="58" text-anchor="middle" font-size="20" font-weight="700" fill="var(--learner)" font-family="Georgia,serif">F</text>
+          <text x="190" y="76" text-anchor="middle" font-size="10" fill="var(--learner)">Frame</text>
+        </g>
+        <g id="nodeA" class="node" tabindex="0" role="button" aria-label="Analogize and Attempt">
+          <circle cx="310" cy="150" r="40" fill="var(--learner-soft)" stroke="var(--learner)" stroke-width="2.5"/>
+          <text x="310" y="146" text-anchor="middle" font-size="20" font-weight="700" fill="var(--learner)" font-family="Georgia,serif">A</text>
+          <text x="310" y="164" text-anchor="middle" font-size="10" fill="var(--learner)">Attempt</text>
+        </g>
+        <g id="nodeC" class="node" tabindex="0" role="button" aria-label="Consult and Construct — the only phase with direct AI consultation">
+          <circle cx="264" cy="292" r="40" fill="var(--ai-soft)" stroke="var(--ai)" stroke-width="2.5"/>
+          <text x="264" y="288" text-anchor="middle" font-size="20" font-weight="700" fill="var(--ai)" font-family="Georgia,serif">C</text>
+          <text x="264" y="306" text-anchor="middle" font-size="10" fill="var(--ai)">Consult</text>
+        </g>
+        <g id="nodeE" class="node" tabindex="0" role="button" aria-label="Evaluate and Explain">
+          <circle cx="116" cy="292" r="40" fill="var(--learner-soft)" stroke="var(--learner)" stroke-width="2.5"/>
+          <text x="116" y="288" text-anchor="middle" font-size="20" font-weight="700" fill="var(--learner)" font-family="Georgia,serif">E</text>
+          <text x="116" y="306" text-anchor="middle" font-size="10" fill="var(--learner)">Evaluate</text>
+        </g>
+        <g id="nodeT" class="node" tabindex="0" role="button" aria-label="Transform and Transfer">
+          <circle cx="70" cy="150" r="40" fill="var(--learner-soft)" stroke="var(--learner)" stroke-width="2.5"/>
+          <text x="70" y="146" text-anchor="middle" font-size="20" font-weight="700" fill="var(--learner)" font-family="Georgia,serif">T</text>
+          <text x="70" y="164" text-anchor="middle" font-size="10" fill="var(--learner)">Transfer</text>
+        </g>
+      </svg>
+      <figcaption>Green phases are learner-led; blue C is the only direct AI contact; amber P anchors the cycle.</figcaption>
+    </figure>
+    <div class="phasecard" id="phasecard" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- ============ 4. worked example ============ -->
+<section>
+  <div class="eyebrow">Part 4 · See it run</div>
+  <h2>One task, start to finish</h2>
+  <p class="note">A student works on a real case task — <em>reduce campus food waste</em> — with AI available the whole time. Step through what regulated use sounds like.</p>
+  <div class="stepper">
+    <div class="steps-track" id="track"></div>
+    <div class="step-phase" id="stphase"></div>
+    <div class="step-quote serif" id="stquote"></div>
+    <div class="step-note" id="stnote"></div>
+    <div class="step-nav">
+      <button id="prevbtn">← Back</button>
+      <button id="nextbtn">Next →</button>
+      <span class="count" id="stcount"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. fix the prompt ============ -->
+<section>
+  <div class="eyebrow">Part 5 · Practice</div>
+  <h2>Fix the prompt</h2>
+  <p class="note">Each situation shows two ways to ask AI for help. Pick the request that keeps the core thinking yours. (These are the moments where most AI use silently turns substitutive.)</p>
+  <div id="fixzone"></div>
+</section>
+
+<!-- ============ 6. pocket card ============ -->
+<section>
+  <div class="eyebrow">Part 6 · Keep this</div>
+  <h2>Your pocket card</h2>
+  <p class="note">Six questions to ask yourself, one per phase. If you can answer all six about a piece of work, your AI use was regulated — and your learning is visible.</p>
+  <div class="pocket">
+    <table>
+      <tr><td class="k a">P</td><td><b>What problem am I solving, and why does it matter?</b></td></tr>
+      <tr><td class="k g">F</td><td><b>What will count as a successful response?</b> — goals, criteria, constraints, assumptions</td></tr>
+      <tr><td class="k g">A</td><td><b>What did I try or create before consulting AI?</b></td></tr>
+      <tr><td class="k b">C</td><td><b>What specific contribution do I need from AI right now?</b> — critique, alternatives, explanation, technical help</td></tr>
+      <tr><td class="k g">E</td><td><b>What criterion or evidence supports my decision</b> to accept, revise, reject, remix, or defer?</td></tr>
+      <tr><td class="k g">T</td><td><b>What changed, and how will I use this strategy elsewhere?</b></td></tr>
+    </table>
+    <div class="supports">
+      <div class="yes"><h4>AI should support</h4><ul><li>alternatives</li><li>critique</li><li>explanation</li><li>technical help</li><li>reflection</li></ul></div>
+      <div class="no"><h4>AI should not replace</h4><ul><li>problem framing</li><li>core reasoning</li><li>judgment</li><li>authorship</li><li>revision &amp; transfer</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  The P-FACET Model © Yupei Duan &amp; Danielle Oprean, University of Missouri. The final question belongs to every learner: <em>who did the thinking?</em>
+</footer>
+</main>
+
+<script>
+/* ---------- reveals ---------- */
+document.querySelectorAll('.reveal-btn').forEach(function(b){
+  b.addEventListener('click', function(){
+    var r = document.getElementById(b.dataset.reveal);
+    var open = r.classList.toggle('open');
+    b.setAttribute('aria-expanded', open);
+    b.textContent = open ? 'Hide' : 'Show what they learned →';
+  });
+});
+
+/* ---------- sorter quiz ---------- */
+var TYPES = ['Mechanical','Supportive','Substitutive','Regulated'];
+var SCEN = [
+  {s:'AI reformats your reference list into APA style. Formatting is not what the assignment teaches.',
+   a:0, why:'Peripheral help — the tool handles a routine demand so your attention stays on the target work. (If the course taught citation style, this same act would be substitutive.)'},
+  {s:'You paste the assignment and ask AI for a finished essay with sources.',
+   a:2, why:'The central work — framing, arguing, judging — happens inside the AI. Fast output, invisible learning.'},
+  {s:'You ask AI to critique the logic of your draft against the rubric, without rewriting it.',
+   a:1, why:'Thinking support: AI challenges work you generated, and the representation stays yours.'},
+  {s:'After drafting your argument, you ask AI for two counterarguments, reject one for lacking evidence, revise a claim, and note why.',
+   a:3, why:'Regulated: you decided what to delegate, evaluated the output against evidence, and can explain every decision. This is the goal state.'},
+  {s:'Stuck on a graph in your lab report, you ask AI what the data means before naming a pattern yourself.',
+   a:2, why:'Interpreting the data is the target cognitive work of the task — delegating it before an attempt replaces the learning. Name the pattern first, then ask AI to challenge it.'},
+  {s:'AI flags a syntax error in your code while the algorithm design stays entirely yours.',
+   a:0, why:'Peripheral help — unless the syntax itself is what the course is teaching. Always judge against the target work.'}
+];
+var answered = 0, correct = 0;
+var zone = document.getElementById('sorter');
+SCEN.forEach(function(sc, i){
+  var card = document.createElement('div'); card.className = 'scenario';
+  var p = document.createElement('p'); p.className='s'; p.textContent = (i+1)+'. '+sc.s; card.appendChild(p);
+  var ch = document.createElement('div'); ch.className='choices';
+  var fb = document.createElement('div'); fb.className='fb';
+  TYPES.forEach(function(t, ti){
+    var b = document.createElement('button'); b.textContent = t;
+    b.addEventListener('click', function(){
+      ch.querySelectorAll('button').forEach(function(x){x.disabled=true});
+      var right = ti === sc.a;
+      b.className = right ? 'picked-right' : 'picked-wrong';
+      if(!right){ ch.children[sc.a].classList.add('actual'); }
+      fb.className = 'fb show ' + (right?'right':'wrong');
+      fb.innerHTML = '<span class="verdict">'+(right?'Correct — '+TYPES[sc.a]+'.':'It’s '+TYPES[sc.a]+'.')+'</span> '+sc.why;
+      answered++; if(right) correct++;
+      document.getElementById('scoreline').textContent =
+        answered===SCEN.length ? 'Score: '+correct+' / '+SCEN.length+(correct===SCEN.length?' — you’ve got the eye.':' — reread the rule below and you’ll catch the rest.')
+        : answered+' of '+SCEN.length+' answered';
+    });
+    ch.appendChild(b);
+  });
+  card.appendChild(ch); card.appendChild(fb); zone.appendChild(card);
+});
+
+/* ---------- wheel ---------- */
+var PHASES = {
+  P:{cls:'a', color:'var(--anchor)', name:'Problem-Centered Challenge', label:'The anchor',
+     you:['Recognize the problem in front of you','Identify why it matters','Set a personal learning goal'],
+     ai:'No AI here. The purpose is yours to own — a problem is a meaningful gap between what you understand and what you’re trying to achieve.',
+     ev:'You can state the problem and the intended outcome in your own words.',
+     ask:'“What problem am I solving, and why does it matter?”'},
+  F:{cls:'g', color:'var(--learner)', name:'Frame', label:'Learner-led',
+     you:['Define goal, audience, criteria, and constraints','Identify knowns, unknowns, and assumptions','Plan an initial approach'],
+     ai:'AI may ask you questions or test your assumptions — it never writes the frame for you. If AI frames the problem, it silently chooses your goals and values.',
+     ev:'Your goals, criteria, assumptions, and plan are written down and visible.',
+     ask:'“What will count as a successful response?”'},
+  A:{cls:'g', color:'var(--learner)', name:'Analogize and Attempt', label:'Learner-led',
+     you:['Recall relevant knowledge and similar examples','Compare patterns or approaches','Create a first draft, solution, model, or plan'],
+     ai:'AI provides examples only after your attempt. Your first try doesn’t need to be good — it reveals your reasoning and gives later feedback something to land on.',
+     ev:'A learner-generated first representation exists before any AI output.',
+     ask:'“What did I try or create before consulting AI?”'},
+  C:{cls:'b', color:'var(--ai)', name:'Consult and Construct', label:'The only direct AI contact',
+     you:['Identify one specific need in your work','Make a bounded AI request','Ask for alternatives, critique, explanation, or technical help'],
+     ai:'AI acts as consultant, critic, or technical helper — never as the author. A good request targets a gap in work you’ve already made; full-task delegation is the move to refuse.',
+     ev:'Your prompt names a specific gap in your own work.',
+     ask:'“What specific contribution do I need from AI right now?”'},
+  E:{cls:'g', color:'var(--learner)', name:'Evaluate and Explain', label:'Learner-led',
+     you:['Compare AI output with your criteria and evidence','Verify claims and test options','Accept, revise, reject, remix, or defer — and say why'],
+     ai:'AI can supply counterarguments and critique — but the verdict is yours. “I checked it” isn’t evaluation; naming the criterion or evidence behind your decision is.',
+     ev:'A justified accept / revise / reject / remix / defer decision.',
+     ask:'“What criterion or evidence supports my decision?”'},
+  T:{cls:'g', color:'var(--learner)', name:'Transform and Transfer', label:'Learner-led',
+     you:['Integrate your decisions into a product you own','Document what changed and why','Apply the strategy in a new context'],
+     ai:'AI can help you compare contexts — where else would this strategy work? The residue that matters is what you can do next time without the same support.',
+     ev:'Revised work, a change rationale, and a strategy for next time.',
+     ask:'“What changed, and how will I use this strategy elsewhere?”'}
+};
+var card = document.getElementById('phasecard');
+function showPhase(k){
+  var p = PHASES[k];
+  ['P','F','A','C','E','T'].forEach(function(x){
+    document.getElementById('node'+x).classList.toggle('active', x===k);
+  });
+  card.innerHTML =
+    '<div class="pl" style="color:'+p.color+'">'+p.label+'</div>'+
+    '<h3>'+k+' · '+p.name+'</h3>'+
+    '<h4>You do</h4><ul><li>'+p.you.join('</li><li>')+'</li></ul>'+
+    '<h4>AI’s role</h4><div class="airole">'+p.ai+'</div>'+
+    '<h4>Evidence it happened</h4><ul><li>'+p.ev+'</li></ul>'+
+    '<div class="askline">Ask yourself: '+p.ask+'</div>';
+}
+['P','F','A','C','E','T'].forEach(function(k){
+  var n = document.getElementById('node'+k);
+  n.addEventListener('click', function(){ showPhase(k); });
+  n.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); showPhase(k);} });
+});
+showPhase('P');
+
+/* ---------- stepper ---------- */
+var STEPS = [
+  {ph:'F · Frame', q:'“Our goal is a feasible, evidence-based recommendation for reducing campus food waste.”',
+   n:'Goal, criteria (feasible, evidence-based), and scope set by the student — before any AI.'},
+  {ph:'A · Attempt', q:'The student identifies two causes and drafts an initial recommendation from course evidence.',
+   n:'The first representation is learner-made. It doesn’t need to be right; it needs to exist.'},
+  {ph:'C · Consult', q:'“Challenge my reasoning and suggest two counterarguments. Do not write the final recommendation.”',
+   n:'A bounded request: AI as critic, with the boundary stated inside the prompt itself.'},
+  {ph:'E · Evaluate', q:'“I rejected one claim because it lacked evidence, and revised another after checking the source.”',
+   n:'A justified decision — the criterion (evidence) is named, and the verdict stays with the learner.'},
+  {ph:'T · Transfer', q:'“Next time, I’ll use AI to test assumptions after drafting — not to produce the conclusion.”',
+   n:'The strategy is now portable. That sentence is the learning residue the whole cycle exists to produce.'}
+];
+var cur = 0;
+var track = document.getElementById('track');
+STEPS.forEach(function(){ track.appendChild(document.createElement('span')); });
+function renderStep(){
+  var s = STEPS[cur];
+  document.getElementById('stphase').textContent = s.ph;
+  document.getElementById('stquote').textContent = s.q;
+  document.getElementById('stnote').textContent = s.n;
+  document.getElementById('stcount').textContent = (cur+1)+' / '+STEPS.length;
+  document.getElementById('prevbtn').disabled = cur===0;
+  document.getElementById('nextbtn').disabled = cur===STEPS.length-1;
+  Array.prototype.forEach.call(track.children, function(sp,i){
+    sp.className = i<cur ? 'done' : (i===cur ? 'cur' : '');
+  });
+}
+document.getElementById('prevbtn').addEventListener('click', function(){ if(cur>0){cur--; renderStep();} });
+document.getElementById('nextbtn').addEventListener('click', function(){ if(cur<STEPS.length-1){cur++; renderStep();} });
+renderStep();
+
+/* ---------- fix the prompt ---------- */
+var FIX = [
+  {ctx:'Writing — an argumentative essay is due.',
+   good:'“Here’s my claim and my three pieces of evidence. Critique the logic and point out weak transitions — don’t rewrite anything.”',
+   bad:'“Write a persuasive essay on this topic with an intro, three body paragraphs, and a conclusion.”',
+   why:'The good prompt hands AI a critic’s role over work you made. The bad one delegates framing, reasoning, and authorship in one line.'},
+  {ctx:'Data analysis — a lab report asks you to interpret a graph.',
+   good:'“I think this graph shows seasonal spikes driven by temperature. Challenge my reading — what other explanations fit the data?”',
+   bad:'“What does this graph mean? Explain the trend for my report.”',
+   why:'Naming the pattern first is the target cognitive work. After your attempt, AI as challenger strengthens the interpretation instead of replacing it.'},
+  {ctx:'Problem set — a multi-step calculation has you stuck.',
+   good:'“Here’s my setup and first two steps. Don’t solve it — tell me whether my setup has an error, and give one hint.”',
+   bad:'“Solve this problem and show all the steps so I can follow along.”',
+   why:'“Show all steps so I can follow” feels like learning but skips the struggle that produces it. An error-check plus one hint keeps the solving yours.'},
+  {ctx:'Design project — the final poster is due Friday.',
+   good:'“Here are my criteria and two rough sketches. Compare them against the criteria — what trade-offs am I missing?”',
+   bad:'“Create a polished final poster for my project. Make it look professional.”',
+   why:'Criteria and alternatives are the designer’s judgment. AI comparing your options against your criteria is support; AI producing the artifact is substitution.'}
+];
+var fz = document.getElementById('fixzone');
+FIX.forEach(function(f, i){
+  var c = document.createElement('div'); c.className='fixcard';
+  var ctx = document.createElement('div'); ctx.className='ctx'; ctx.textContent=(i+1)+'. '+f.ctx; c.appendChild(ctx);
+  var fb = document.createElement('div'); fb.className='fb';
+  var goodFirst = i%2===0;
+  var opts = goodFirst ? [f.good,f.bad] : [f.bad,f.good];
+  opts.forEach(function(txt){
+    var b = document.createElement('button'); b.className='opt'; b.textContent = txt;
+    b.addEventListener('click', function(){
+      c.querySelectorAll('.opt').forEach(function(x){
+        x.disabled = true;
+        x.classList.add(x.textContent===f.good ? 'good' : 'bad');
+      });
+      var right = txt===f.good;
+      fb.className='fb show '+(right?'right':'wrong');
+      fb.innerHTML='<span class="verdict">'+(right?'Right.':'The other one.')+'</span> '+f.why;
+    });
+    c.appendChild(b);
+  });
+  c.appendChild(fb); fz.appendChild(c);
+});
+</script>

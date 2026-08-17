@@ -76,6 +76,7 @@ if ("IntersectionObserver" in window) {
 const searchPages = [
   { path: "", label: "Home" },
   { path: "research/", label: "Research" },
+  { path: "p-facet/", label: "P-FACET" },
   { path: "scholarship/", label: "Scholarship" },
   { path: "teaching/", label: "Teaching" },
   { path: "engagement/", label: "Engagement" },
