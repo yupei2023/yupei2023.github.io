@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "refreshed_at": "2026-08-17T02:41:58+00:00",
+  "refreshed_at": "2026-08-17T02:43:57+00:00",
   "selection_window_days": 45,
   "article_count": 10,
   "articles": [
@@ -89,24 +89,6 @@
       "reason": "Selected for its connection to stem learning and publication in a priority journal."
     },
     {
-      "id": "10.4018/ijgcms.418942",
-      "title": "VR/AR Immersive Training in Dragon and Lion Dance Teaching in Colleges and Universities",
-      "authors": [
-        "Tingting Cai"
-      ],
-      "journal": "International Journal of Gaming and Computer-Mediated Simulations",
-      "issn_l": "1942-3888",
-      "publication_date": "2026-08-14",
-      "doi": "https://doi.org/10.4018/ijgcms.418942",
-      "url": "https://doi.org/10.4018/ijgcms.418942",
-      "access": "Open access",
-      "theme_id": "immersive-learning",
-      "theme": "Immersive learning",
-      "priority_tier": null,
-      "score": 65,
-      "reason": "Selected for its connection to immersive learning."
-    },
-    {
       "id": "10.1016/j.nedt.2026.107332",
       "title": "The impact of virtual reality simulation on developing competence and confidence in non-technical skills in nursing. A scoping review",
       "authors": [
@@ -127,6 +109,24 @@
       "priority_tier": 3,
       "score": 63,
       "reason": "Selected for its connection to immersive learning and publication in a priority journal."
+    },
+    {
+      "id": "10.4018/ijgcms.418942",
+      "title": "VR/AR Immersive Training in Dragon and Lion Dance Teaching in Colleges and Universities",
+      "authors": [
+        "Tingting Cai"
+      ],
+      "journal": "International Journal of Gaming and Computer-Mediated Simulations",
+      "issn_l": "1942-3888",
+      "publication_date": "2026-08-14",
+      "doi": "https://doi.org/10.4018/ijgcms.418942",
+      "url": "https://doi.org/10.4018/ijgcms.418942",
+      "access": "Open access",
+      "theme_id": "immersive-learning",
+      "theme": "Immersive learning",
+      "priority_tier": null,
+      "score": 63,
+      "reason": "Selected for its connection to immersive learning."
     },
     {
       "id": "10.1007/s11423-025-10561-3",
