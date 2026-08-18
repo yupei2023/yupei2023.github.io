@@ -1,0 +1,1092 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GritBuilder</title>
+<style>
+  /* ============ tokens: light (bare :root) ============ */
+  :root {
+    --ground: #EFF3EE;        /* green-biased paper */
+    --surface: #FFFFFF;
+    --surface-2: #F5F8F4;
+    --line: #DCE4DC;
+    --ink: #1E2B24;
+    --ink-2: #59685F;
+    --ink-3: #8A978E;
+    --pine: #1F6B52;          /* brand / primary action */
+    --pine-deep: #14503C;
+    --on-pine: #FFFFFF;
+    --pine-tint: #E3EFE8;
+    --amber: #A96A0E;         /* meaningful spark */
+    --amber-tint: #F6ECD9;
+    --chart-meaningful: #0A8A60;  /* validated */
+    --chart-other: #5E7DC2;       /* validated */
+    --danger: #A63D2F;
+    --shadow: 0 18px 50px rgba(30, 43, 36, 0.16);
+    --focus: #1F6B52;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #0F1613;
+      --surface: #1B2620;
+      --surface-2: #223029;
+      --line: #31423A;
+      --ink: #E7EFE9;
+      --ink-2: #A3B4AA;
+      --ink-3: #71847A;
+      --pine: #3E9C79;
+      --pine-deep: #2E7A5E;
+      --on-pine: #0C1611;
+      --pine-tint: #223A30;
+      --amber: #D9A544;
+      --amber-tint: #37301D;
+      --chart-meaningful: #2F9673;
+      --chart-other: #7590DC;
+      --danger: #D97A6C;
+      --shadow: 0 18px 50px rgba(0, 0, 0, 0.5);
+      --focus: #3E9C79;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #0F1613;
+    --surface: #1B2620;
+    --surface-2: #223029;
+    --line: #31423A;
+    --ink: #E7EFE9;
+    --ink-2: #A3B4AA;
+    --ink-3: #71847A;
+    --pine: #3E9C79;
+    --pine-deep: #2E7A5E;
+    --on-pine: #0C1611;
+    --pine-tint: #223A30;
+    --amber: #D9A544;
+    --amber-tint: #37301D;
+    --chart-meaningful: #2F9673;
+    --chart-other: #7590DC;
+    --danger: #D97A6C;
+    --shadow: 0 18px 50px rgba(0, 0, 0, 0.5);
+    --focus: #3E9C79;
+  }
+
+  /* ============ page scaffold ============ */
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+  .stage {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 32px 16px;
+  }
+  .phone {
+    width: 396px;
+    max-width: 100%;
+    height: 800px;
+    max-height: calc(100vh - 96px);
+    background: var(--surface);
+    border-radius: 34px;
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .stage-caption {
+    font-size: 12.5px;
+    color: var(--ink-3);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  @media (max-width: 480px) {
+    .stage { padding: 0; }
+    .phone {
+      width: 100%;
+      height: 100vh;
+      height: 100dvh;
+      max-height: none;
+      border-radius: 0;
+      border: none;
+      box-shadow: none;
+    }
+    .stage-caption { display: none; }
+  }
+
+  /* ============ app chrome ============ */
+  .screen {
+    flex: 1;
+    overflow-y: auto;
+    padding: 22px 20px 96px;
+  }
+  .tabbar {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    display: flex;
+    background: var(--surface);
+    border-top: 1px solid var(--line);
+    padding: 8px 10px calc(10px + env(safe-area-inset-bottom, 0px));
+  }
+  .tabbar button {
+    flex: 1;
+    background: none;
+    border: none;
+    font: inherit;
+    font-size: 11.5px;
+    letter-spacing: 0.02em;
+    color: var(--ink-3);
+    padding: 6px 0 4px;
+    cursor: pointer;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+  }
+  .tabbar button.active { color: var(--pine); font-weight: 600; }
+  .tabbar svg { width: 22px; height: 22px; }
+
+  /* ============ type ============ */
+  h1, h2, h3 { margin: 0; text-wrap: balance; }
+  .wordmark {
+    font-size: 21px;
+    font-weight: 750;
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .wordmark .spark { color: var(--amber); }
+  .screen-title { font-size: 24px; font-weight: 750; letter-spacing: -0.02em; }
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 650;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--ink-3);
+  }
+  .sub { font-size: 14px; color: var(--ink-2); line-height: 1.5; margin: 0; }
+  .num { font-variant-numeric: tabular-nums; }
+  .data-notice {
+    margin: 0;
+    padding: 10px 12px;
+    border-left: 3px solid var(--amber);
+    border-radius: 0 9px 9px 0;
+    background: var(--amber-tint);
+    color: var(--ink-2);
+    font-size: 12px;
+    line-height: 1.45;
+  }
+
+  /* ============ components ============ */
+  .stack { display: flex; flex-direction: column; gap: 14px; }
+  .row { display: flex; align-items: center; gap: 10px; }
+  .row.spread { justify-content: space-between; }
+  .card {
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 16px;
+  }
+  .card.tappable { cursor: pointer; transition: border-color 0.15s ease; text-align: left; width: 100%; font: inherit; color: inherit; }
+  .card.tappable:hover { border-color: var(--pine); }
+  .btn {
+    font: inherit;
+    font-size: 15px;
+    font-weight: 650;
+    border: none;
+    border-radius: 14px;
+    padding: 14px 18px;
+    cursor: pointer;
+    width: 100%;
+  }
+  .btn-primary { background: var(--pine); color: var(--on-pine); }
+  .btn-primary:hover { background: var(--pine-deep); }
+  .btn-quiet {
+    background: none;
+    border: 1px solid var(--line);
+    color: var(--ink-2);
+  }
+  .btn-quiet:hover { border-color: var(--ink-3); color: var(--ink); }
+  .btn-danger { background: none; border: 1px solid var(--danger); color: var(--danger); }
+  .btn-inline { width: auto; padding: 9px 14px; font-size: 13.5px; border-radius: 11px; }
+  .back-btn {
+    background: none; border: none; cursor: pointer; font: inherit;
+    color: var(--pine); font-weight: 650; font-size: 14.5px;
+    padding: 0; margin-bottom: 14px; display: inline-flex; align-items: center; gap: 4px;
+  }
+  .chip-row { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip {
+    font: inherit; font-size: 13.5px; font-weight: 550;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--ink-2);
+    border-radius: 999px;
+    padding: 8px 14px;
+    cursor: pointer;
+  }
+  .chip[aria-pressed="true"] {
+    background: var(--pine-tint);
+    border-color: var(--pine);
+    color: var(--pine);
+    font-weight: 650;
+  }
+  .chip.ghost { border-style: dashed; color: var(--ink-3); }
+  .field label { display: block; font-size: 13px; font-weight: 650; color: var(--ink-2); margin-bottom: 6px; }
+  .field input[type="text"], .field input[type="number"], .field textarea {
+    width: 100%;
+    font: inherit;
+    font-size: 15px;
+    color: var(--ink);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 12px 14px;
+  }
+  .field textarea { resize: vertical; min-height: 84px; line-height: 1.5; }
+  .field input:focus, .field textarea:focus { outline: 2px solid var(--focus); outline-offset: 1px; border-color: transparent; }
+  :is(button, .chip):focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+  .check-item {
+    display: flex; align-items: flex-start; gap: 12px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 13px 14px;
+    cursor: pointer;
+    font: inherit; text-align: left; width: 100%; color: inherit;
+  }
+  .check-item[aria-pressed="true"] { border-color: var(--amber); background: var(--amber-tint); }
+  .check-item .box {
+    width: 22px; height: 22px; flex: none;
+    border-radius: 7px;
+    border: 2px solid var(--ink-3);
+    display: grid; place-items: center;
+    color: transparent;
+    margin-top: 1px;
+  }
+  .check-item[aria-pressed="true"] .box { border-color: var(--amber); background: var(--amber); color: var(--surface); }
+  .check-item strong { display: block; font-size: 14.5px; font-weight: 650; }
+  .check-item span.hint { display: block; font-size: 12.5px; color: var(--ink-2); margin-top: 2px; line-height: 1.4; }
+
+  .spark-meter { display: flex; align-items: center; gap: 6px; }
+  .spark-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--line); }
+  .spark-dot.lit { background: var(--amber); }
+
+  .pill {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 12px; font-weight: 650;
+    border-radius: 999px; padding: 4px 10px;
+  }
+  .pill-meaningful { background: var(--amber-tint); color: var(--amber); }
+  .pill-plain { background: var(--surface); border: 1px solid var(--line); color: var(--ink-2); }
+  .pill-pending { background: var(--pine-tint); color: var(--pine); }
+
+  .toast {
+    position: absolute;
+    bottom: 84px; left: 16px; right: 16px;
+    background: var(--ink);
+    color: var(--ground);
+    border-radius: 13px;
+    padding: 13px 16px;
+    font-size: 14px;
+    line-height: 1.45;
+    box-shadow: var(--shadow);
+    opacity: 0;
+    transform: translateY(8px);
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    z-index: 40;
+  }
+  .toast.show { opacity: 1; transform: none; }
+
+  .modal-scrim {
+    position: absolute; inset: 0;
+    background: rgba(15, 22, 19, 0.55);
+    display: grid; place-items: center;
+    padding: 24px;
+    z-index: 50;
+  }
+  .modal {
+    background: var(--surface);
+    border-radius: 18px;
+    padding: 20px;
+    width: 100%;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+
+  /* ============ dashboard ============ */
+  .hero-num { font-size: 42px; font-weight: 750; letter-spacing: -0.03em; line-height: 1; }
+  .hero-unit { font-size: 15px; font-weight: 550; color: var(--ink-2); }
+  .ring-wrap { display: flex; align-items: center; gap: 16px; }
+  .barchart {
+    display: flex; align-items: flex-end; gap: 8px;
+    height: 130px;
+    padding-top: 8px;
+  }
+  .barcol { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; height: 100%; justify-content: flex-end; }
+  .barstack { width: 100%; max-width: 30px; display: flex; flex-direction: column; justify-content: flex-end; gap: 2px; flex: 1; }
+  .barseg { width: 100%; border-radius: 3px; min-height: 3px; }
+  .barseg.top-round { border-radius: 4px 4px 3px 3px; }
+  .barseg.meaningful { background: var(--chart-meaningful); }
+  .barseg.other { background: var(--chart-other); }
+  .barcol .day { font-size: 11px; color: var(--ink-3); letter-spacing: 0.03em; }
+  .barcol .day.today { color: var(--pine); font-weight: 700; }
+  .legend { display: flex; gap: 14px; font-size: 12px; color: var(--ink-2); flex-wrap: wrap; }
+  .legend .swatch { width: 10px; height: 10px; border-radius: 3px; display: inline-block; margin-right: 5px; vertical-align: -1px; }
+  .catbar-row { display: flex; align-items: center; gap: 10px; font-size: 13px; }
+  .catbar-label { width: 108px; flex: none; color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .catbar-track { flex: 1; height: 14px; background: var(--surface); border-radius: 4px; overflow: hidden; }
+  .catbar-fill { height: 100%; background: var(--chart-meaningful); border-radius: 4px 4px 4px 4px; min-width: 3px; }
+  .catbar-val { width: 52px; flex: none; text-align: right; color: var(--ink-2); }
+  .chart-tip {
+    position: absolute;
+    background: var(--ink);
+    color: var(--ground);
+    font-size: 12px;
+    line-height: 1.4;
+    border-radius: 8px;
+    padding: 7px 10px;
+    pointer-events: none;
+    z-index: 30;
+    max-width: 180px;
+    display: none;
+  }
+  table.datatable { width: 100%; border-collapse: collapse; font-size: 13px; }
+  table.datatable th, table.datatable td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--line); }
+  table.datatable th { color: var(--ink-3); font-weight: 650; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.06em; }
+  table.datatable td.n { text-align: right; font-variant-numeric: tabular-nums; }
+  .table-wrap { overflow-x: auto; }
+
+  .session-row {
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px 2px;
+    border-bottom: 1px solid var(--line);
+  }
+  .session-row:last-child { border-bottom: none; }
+  .session-main { flex: 1; min-width: 0; }
+  .session-main strong { font-size: 14px; font-weight: 650; display: block; }
+  .session-main span { font-size: 12.5px; color: var(--ink-2); }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="stage">
+  <div class="phone">
+    <div class="screen" id="screen"></div>
+    <nav class="tabbar" id="tabbar" aria-label="Main navigation"></nav>
+    <div class="toast" id="toast" role="status"></div>
+    <div class="chart-tip" id="chartTip"></div>
+    <div id="modalRoot"></div>
+  </div>
+  <div class="stage-caption">GritBuilder · working prototype v1 · research instrument</div>
+</div>
+
+<script>
+"use strict";
+
+/* ================= state ================= */
+const STORE_KEY = "gritbuilder-v1";
+let mem = null;
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STORE_KEY);
+    if (raw) return JSON.parse(raw);
+  } catch (e) { /* storage unavailable in this sandbox */ }
+  return mem || { goals: [], sessions: [] };
+}
+function saveState(s) {
+  mem = s;
+  try { localStorage.setItem(STORE_KEY, JSON.stringify(s)); } catch (e) { /* keep in memory */ }
+}
+let state = loadState();
+const uid = () => Math.random().toString(36).slice(2, 10);
+
+/* Checklist: 4 logged items + reflection = 5 sparks. Meaningful = >= 4. */
+const CHECK_ITEMS = [
+  { key: "clearGoal", label: "Clear goal", hint: "I knew what I was trying to improve in this session." },
+  { key: "focusedEffort", label: "Focused effort", hint: "I was actively engaged, not on autopilot." },
+  { key: "appropriateChallenge", label: "Appropriate challenge", hint: "It stretched me — not too easy, not overwhelming." },
+  { key: "feedback", label: "Feedback received", hint: "I got feedback from a person, a recording, or the result itself." },
+];
+const MEANINGFUL_THRESHOLD = 4;
+
+function sparkCount(s) {
+  let n = CHECK_ITEMS.reduce((a, c) => a + (s.checklist[c.key] ? 1 : 0), 0);
+  if (s.reflection) n += 1;
+  return n;
+}
+const isMeaningful = (s) => sparkCount(s) >= MEANINGFUL_THRESHOLD;
+
+/* ================= time helpers ================= */
+function startOfWeek(d) { // Monday
+  const x = new Date(d); x.setHours(0, 0, 0, 0);
+  const day = (x.getDay() + 6) % 7;
+  x.setDate(x.getDate() - day);
+  return x;
+}
+const weekStartTs = () => startOfWeek(new Date()).getTime();
+function fmtMin(min) {
+  if (min < 60) return min + "m";
+  const h = Math.floor(min / 60), m = min % 60;
+  return m ? h + "h " + m + "m" : h + "h";
+}
+const fmtHours = (min) => (Math.round(min / 60 * 10) / 10).toString();
+function fmtDate(ts) {
+  return new Date(ts).toLocaleDateString(undefined, { weekday: "short", month: "short", day: "numeric" });
+}
+
+/* ================= derived ================= */
+const goalSessions = (gId) => state.sessions.filter(s => s.goalId === gId);
+function weekStats(sessions) {
+  const ws = weekStartTs();
+  const inWeek = sessions.filter(s => s.ts >= ws);
+  return {
+    sessions: inWeek.length,
+    meaningfulMin: inWeek.filter(isMeaningful).reduce((a, s) => a + s.minutes, 0),
+    totalMin: inWeek.reduce((a, s) => a + s.minutes, 0),
+  };
+}
+const pendingReflections = () => state.sessions.filter(s => !s.reflection && s.reflectionDeferred);
+
+/* ================= example data ================= */
+function loadExample() {
+  const now = Date.now(), DAY = 864e5;
+  const g = {
+    id: uid(),
+    name: "Oral English Communication",
+    why: "Become more confident and fluent in academic oral English — conferences, classes, and everyday academic conversation.",
+    weeklyTargetHours: 5,
+    categories: ["Discussion", "Workshop", "Tutoring", "Presentation", "Office hours", "Informal conversation"],
+    createdAt: now - 21 * DAY,
+  };
+  const mk = (daysAgo, cat, min, checks, refl) => ({
+    id: uid(), goalId: g.id, category: cat, minutes: min,
+    checklist: { clearGoal: checks >= 1, focusedEffort: checks >= 2, appropriateChallenge: checks >= 3, feedback: checks >= 4 },
+    reflection: refl ? { text: refl, next: "" } : null,
+    reflectionDeferred: !refl,
+    ts: now - daysAgo * DAY - 3 * 36e5,
+  });
+  state = { goals: [g], sessions: [
+    mk(6, "Workshop", 90, 4, "Asked two questions in front of the group. Understood most answers without asking people to repeat."),
+    mk(5, "Informal conversation", 30, 3, null),
+    mk(4, "Tutoring", 60, 4, "Explained my draft's argument to the tutor. Next: prepare one question in advance instead of improvising."),
+    mk(2, "Discussion", 45, 4, "Joined the seminar discussion twice. Still pausing too long searching for words — try noting key phrases beforehand."),
+    mk(1, "Presentation", 60, 4, null),
+    mk(0, "Office hours", 30, 2, null),
+  ]};
+  saveState(state);
+}
+
+/* ================= navigation ================= */
+let route = { name: "home" };
+let tab = "home";
+function go(r) { route = r; render(); }
+function setTab(t) {
+  tab = t;
+  go(t === "home" ? { name: "home" } : t === "progress" ? { name: "progress" } : { name: "more" });
+}
+
+/* ================= tiny dom helpers ================= */
+const $screen = document.getElementById("screen");
+const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+function toast(msg) {
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  clearTimeout(t._h);
+  t._h = setTimeout(() => t.classList.remove("show"), 2600);
+}
+function confirmModal(title, body, actionLabel, onConfirm, danger) {
+  const root = document.getElementById("modalRoot");
+  root.innerHTML = `
+    <div class="modal-scrim" id="scrim">
+      <div class="modal" role="dialog" aria-label="${esc(title)}">
+        <h3 style="font-size:17px">${esc(title)}</h3>
+        <p class="sub">${esc(body)}</p>
+        <button class="btn ${danger ? "btn-danger" : "btn-primary"}" id="mConfirm">${esc(actionLabel)}</button>
+        <button class="btn btn-quiet" id="mCancel">Cancel</button>
+      </div>
+    </div>`;
+  root.querySelector("#mCancel").onclick = () => (root.innerHTML = "");
+  root.querySelector("#scrim").onclick = (e) => { if (e.target.id === "scrim") root.innerHTML = ""; };
+  root.querySelector("#mConfirm").onclick = () => { root.innerHTML = ""; onConfirm(); };
+}
+
+/* ================= icons ================= */
+const icons = {
+  home: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10.5V20h13v-9.5"/></svg>',
+  progress: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/><path d="M22 20H2"/></svg>',
+  more: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="5" r="1.4" fill="currentColor"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/><circle cx="12" cy="19" r="1.4" fill="currentColor"/></svg>',
+  spark: '<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2c.6 4.8 2.4 7.4 7 9-4.6 1.6-6.4 4.2-7 9-.6-4.8-2.4-7.4-7-9 4.6-1.6 6.4-4.2 7-9z"/></svg>',
+  check: '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12.5 10 18 19.5 6.5"/></svg>',
+};
+
+function renderTabbar() {
+  const bar = document.getElementById("tabbar");
+  bar.innerHTML = ["home", "progress", "more"].map(t => `
+    <button data-tab="${t}" class="${tab === t ? "active" : ""}" aria-current="${tab === t ? "page" : "false"}">
+      ${icons[t]}${t === "home" ? "Home" : t === "progress" ? "Progress" : "More"}
+    </button>`).join("");
+  bar.querySelectorAll("button").forEach(b => b.onclick = () => setTab(b.dataset.tab));
+}
+
+/* ================= screens ================= */
+function render() {
+  renderTabbar();
+  document.getElementById("chartTip").style.display = "none";
+  const r = route;
+  if (r.name === "home") renderHome();
+  else if (r.name === "newGoal") renderNewGoal();
+  else if (r.name === "goal") renderGoal(r.goalId);
+  else if (r.name === "log") renderLog(r.goalId);
+  else if (r.name === "reflect") renderReflect(r.sessionId, r.fresh);
+  else if (r.name === "progress") renderProgress();
+  else if (r.name === "more") renderMore();
+  $screen.scrollTop = 0;
+}
+
+/* ---------- home ---------- */
+function renderHome() {
+  const pending = pendingReflections();
+  if (!state.goals.length) {
+    $screen.innerHTML = `
+      <div class="stack" style="gap:18px; padding-top:32px">
+        <div class="wordmark"><span class="spark">${icons.spark}</span>GritBuilder</div>
+        <h1 class="screen-title">Turn scattered practice into meaningful hours.</h1>
+        <p class="sub">Pick a long-term goal, log each real practice event, and watch effort accumulate — not just time, but sessions with a clear goal, focused effort, real challenge, feedback, and reflection.</p>
+        <button class="btn btn-primary" id="createFirst">Create your first goal</button>
+        <button class="btn btn-quiet" id="loadExample">Explore with example data</button>
+        <p class="data-notice"><strong>Prototype data notice:</strong> Your entries stay only in this browser. They will be permanently erased if you clear cookies, site data, or browser storage. Export anything you want to keep.</p>
+      </div>`;
+    $screen.querySelector("#createFirst").onclick = () => go({ name: "newGoal" });
+    $screen.querySelector("#loadExample").onclick = () => { loadExample(); render(); toast("Example data loaded — Yu's oral English goal."); };
+    return;
+  }
+  const totalWeek = weekStats(state.sessions);
+  $screen.innerHTML = `
+    <div class="stack" style="gap:16px">
+      <div class="row spread">
+        <div class="wordmark"><span class="spark">${icons.spark}</span>GritBuilder</div>
+        <span class="sub" style="font-size:12.5px">${new Date().toLocaleDateString(undefined, { weekday: "long", month: "short", day: "numeric" })}</span>
+      </div>
+      <p class="data-notice"><strong>Local prototype:</strong> Clearing cookies, site data, or browser storage permanently erases your entries. Export anything you want to keep.</p>
+      <div class="card" style="background:var(--pine-tint); border-color:transparent">
+        <span class="eyebrow" style="color:var(--pine)">This week</span>
+        <div class="row" style="gap:6px; margin-top:6px; align-items:baseline">
+          <span class="hero-num num" style="font-size:32px; color:var(--pine)">${fmtHours(totalWeek.meaningfulMin)}</span>
+          <span class="hero-unit">meaningful hours · ${totalWeek.sessions} session${totalWeek.sessions === 1 ? "" : "s"}</span>
+        </div>
+      </div>
+      ${pending.length ? `
+        <button class="card tappable" id="pendingCard" style="border-color:var(--pine)">
+          <div class="row spread">
+            <div><strong style="font-size:14.5px">Reflection waiting</strong>
+            <p class="sub" style="margin-top:2px">${pending.length} session${pending.length === 1 ? "" : "s"} logged without a reflection — finish when you have a minute.</p></div>
+            <span class="pill pill-pending num">${pending.length}</span>
+          </div>
+        </button>` : ""}
+      <span class="eyebrow">Your practice goals</span>
+      ${state.goals.map(g => {
+        const st = weekStats(goalSessions(g.id));
+        return `
+          <button class="card tappable" data-goal="${g.id}">
+            <h3 style="font-size:16.5px">${esc(g.name)}</h3>
+            <p class="sub" style="margin-top:4px">${g.categories.map(esc).join(" · ") || "No categories yet"}</p>
+            <div class="row" style="margin-top:10px; gap:8px">
+              <span class="pill pill-meaningful num">${icons.spark} ${fmtHours(st.meaningfulMin)} h meaningful</span>
+              <span class="pill pill-plain num">${st.sessions} this week</span>
+            </div>
+          </button>`;
+      }).join("")}
+      <button class="btn btn-quiet" id="newGoal">+ New goal</button>
+    </div>`;
+  $screen.querySelectorAll("[data-goal]").forEach(b => b.onclick = () => go({ name: "goal", goalId: b.dataset.goal }));
+  $screen.querySelector("#newGoal").onclick = () => go({ name: "newGoal" });
+  const pc = $screen.querySelector("#pendingCard");
+  if (pc) pc.onclick = () => go({ name: "reflect", sessionId: pending[0].id, fresh: false });
+}
+
+/* ---------- new goal ---------- */
+function renderNewGoal() {
+  let cats = [];
+  $screen.innerHTML = `
+    <button class="back-btn" id="back">‹ Back</button>
+    <div class="stack" style="gap:16px">
+      <h1 class="screen-title">New long-term goal</h1>
+      <p class="sub">Name the ambition, then break it into the concrete situations where you actually practice.</p>
+      <div class="field"><label for="gName">Goal</label>
+        <input type="text" id="gName" placeholder="e.g. Oral English Communication" maxlength="60"></div>
+      <div class="field"><label for="gWhy">Why it matters <span style="font-weight:400; color:var(--ink-3)">(optional)</span></label>
+        <textarea id="gWhy" placeholder="What would success look like a year from now?"></textarea></div>
+      <div class="field"><label>Weekly target (meaningful hours)</label>
+        <div class="chip-row" id="targetChips">
+          ${[2, 3, 5, 7].map(h => `<button class="chip num" data-h="${h}" aria-pressed="${h === 5}">${h} h</button>`).join("")}
+        </div></div>
+      <div class="field"><label for="catInput">Practice categories</label>
+        <div class="chip-row" id="catList" style="margin-bottom:8px"></div>
+        <div class="row">
+          <input type="text" id="catInput" placeholder="e.g. Presentation" maxlength="30" style="flex:1">
+          <button class="btn btn-primary btn-inline" id="catAdd">Add</button>
+        </div></div>
+      <button class="btn btn-primary" id="save">Create goal</button>
+    </div>`;
+  let target = 5;
+  const chips = $screen.querySelectorAll("#targetChips .chip");
+  chips.forEach(c => c.onclick = () => {
+    chips.forEach(x => x.setAttribute("aria-pressed", "false"));
+    c.setAttribute("aria-pressed", "true");
+    target = +c.dataset.h;
+  });
+  const catList = $screen.querySelector("#catList");
+  const drawCats = () => {
+    catList.innerHTML = cats.map((c, i) => `<button class="chip" aria-pressed="true" data-i="${i}" title="Remove">${esc(c)} ✕</button>`).join("") || `<span class="sub" style="font-size:12.5px">None yet — add at least one.</span>`;
+    catList.querySelectorAll(".chip").forEach(b => b.onclick = () => { cats.splice(+b.dataset.i, 1); drawCats(); });
+  };
+  drawCats();
+  const addCat = () => {
+    const v = $screen.querySelector("#catInput").value.trim();
+    if (v && !cats.includes(v)) { cats.push(v); drawCats(); }
+    $screen.querySelector("#catInput").value = "";
+    $screen.querySelector("#catInput").focus();
+  };
+  $screen.querySelector("#catAdd").onclick = addCat;
+  $screen.querySelector("#catInput").addEventListener("keydown", e => { if (e.key === "Enter") addCat(); });
+  $screen.querySelector("#back").onclick = () => go({ name: "home" });
+  $screen.querySelector("#save").onclick = () => {
+    const name = $screen.querySelector("#gName").value.trim();
+    if (!name) { toast("Give the goal a name first."); return; }
+    if (!cats.length) { toast("Add at least one practice category."); return; }
+    const g = { id: uid(), name, why: $screen.querySelector("#gWhy").value.trim(), weeklyTargetHours: target, categories: cats, createdAt: Date.now() };
+    state.goals.push(g);
+    saveState(state);
+    go({ name: "goal", goalId: g.id });
+    toast("Goal created. Log your first practice event when it happens.");
+  };
+}
+
+/* ---------- goal detail ---------- */
+function renderGoal(goalId) {
+  const g = state.goals.find(x => x.id === goalId);
+  if (!g) { go({ name: "home" }); return; }
+  const sess = goalSessions(goalId).sort((a, b) => b.ts - a.ts);
+  const st = weekStats(sess);
+  const pct = Math.min(100, Math.round(st.meaningfulMin / (g.weeklyTargetHours * 60) * 100));
+  $screen.innerHTML = `
+    <button class="back-btn" id="back">‹ Goals</button>
+    <div class="stack" style="gap:16px">
+      <div>
+        <span class="eyebrow">Long-term goal</span>
+        <h1 class="screen-title" style="margin-top:4px">${esc(g.name)}</h1>
+        ${g.why ? `<p class="sub" style="margin-top:6px">${esc(g.why)}</p>` : ""}
+      </div>
+      <div class="card">
+        <div class="row spread">
+          <span class="eyebrow">This week</span>
+          <span class="sub num" style="font-size:12.5px">target ${g.weeklyTargetHours} h</span>
+        </div>
+        <div class="row" style="align-items:baseline; gap:6px; margin-top:6px">
+          <span class="hero-num num" style="font-size:28px">${fmtHours(st.meaningfulMin)}</span>
+          <span class="hero-unit">of ${g.weeklyTargetHours} meaningful hours</span>
+        </div>
+        <div class="catbar-track" style="margin-top:10px"><div class="catbar-fill" style="width:${pct}%"></div></div>
+      </div>
+      <div>
+        <span class="eyebrow">Practice categories</span>
+        <div class="chip-row" style="margin-top:8px" id="catChips">
+          ${g.categories.map(c => `<span class="chip" style="cursor:default" aria-pressed="true">${esc(c)}</span>`).join("")}
+          <button class="chip ghost" id="addCat">+ category</button>
+        </div>
+      </div>
+      <button class="btn btn-primary" id="logBtn">Log a practice event</button>
+      <div>
+        <span class="eyebrow">Recent sessions</span>
+        <div style="margin-top:6px">
+          ${sess.length ? sess.slice(0, 8).map(sessionRow).join("") : `<p class="sub" style="margin-top:6px">Nothing logged yet. After your next real practice event, log it here.</p>`}
+        </div>
+      </div>
+    </div>`;
+  $screen.querySelector("#back").onclick = () => go({ name: "home" });
+  $screen.querySelector("#logBtn").onclick = () => go({ name: "log", goalId });
+  $screen.querySelector("#addCat").onclick = () => {
+    const root = document.getElementById("modalRoot");
+    root.innerHTML = `
+      <div class="modal-scrim" id="scrim"><div class="modal" role="dialog" aria-label="New category">
+        <h3 style="font-size:17px">New practice category</h3>
+        <div class="field"><input type="text" id="ncName" placeholder="e.g. Conference networking" maxlength="30"></div>
+        <button class="btn btn-primary" id="ncAdd">Add category</button>
+        <button class="btn btn-quiet" id="ncCancel">Cancel</button>
+      </div></div>`;
+    root.querySelector("#ncName").focus();
+    root.querySelector("#ncCancel").onclick = () => (root.innerHTML = "");
+    root.querySelector("#ncAdd").onclick = () => {
+      const v = root.querySelector("#ncName").value.trim();
+      if (v && !g.categories.includes(v)) { g.categories.push(v); saveState(state); }
+      root.innerHTML = "";
+      render();
+    };
+  };
+  $screen.querySelectorAll("[data-reflect]").forEach(b => b.onclick = () => go({ name: "reflect", sessionId: b.dataset.reflect, fresh: false }));
+}
+
+function sessionRow(s) {
+  const n = sparkCount(s);
+  return `
+    <div class="session-row">
+      <div class="session-main">
+        <strong>${esc(s.category)} · <span class="num">${fmtMin(s.minutes)}</span></strong>
+        <span>${fmtDate(s.ts)}${s.reflection && s.reflection.text ? " — " + esc(s.reflection.text.slice(0, 60)) + (s.reflection.text.length > 60 ? "…" : "") : ""}</span>
+      </div>
+      ${!s.reflection ? `<button class="btn btn-quiet btn-inline" data-reflect="${s.id}">Reflect</button>` : ""}
+      <span class="pill ${isMeaningful(s) ? "pill-meaningful" : "pill-plain"} num" title="${n} of 5 sparks">${icons.spark} ${n}/5</span>
+    </div>`;
+}
+
+/* ---------- log ---------- */
+function renderLog(goalId) {
+  const g = state.goals.find(x => x.id === goalId);
+  if (!g) { go({ name: "home" }); return; }
+  let cat = null, minutes = 60;
+  const checks = {};
+  CHECK_ITEMS.forEach(c => checks[c.key] = false);
+  $screen.innerHTML = `
+    <button class="back-btn" id="back">‹ ${esc(g.name)}</button>
+    <div class="stack" style="gap:18px">
+      <div>
+        <h1 class="screen-title">Log a practice event</h1>
+        <p class="sub" style="margin-top:4px">Record one real practice event — right after it happens, while it's fresh.</p>
+      </div>
+      <div class="field"><label>What kind of practice?</label>
+        <div class="chip-row" id="cats">
+          ${g.categories.map(c => `<button class="chip" data-cat="${esc(c)}" aria-pressed="false">${esc(c)}</button>`).join("")}
+        </div></div>
+      <div class="field"><label>How long?</label>
+        <div class="chip-row" id="durs">
+          ${[15, 30, 45, 60, 90].map(m => `<button class="chip num" data-m="${m}" aria-pressed="${m === 60}">${m} min</button>`).join("")}
+          <input type="number" id="durCustom" min="1" max="600" placeholder="other" style="width:82px; font:inherit; font-size:13.5px; border:1px solid var(--line); border-radius:999px; padding:8px 12px; background:var(--surface); color:var(--ink)">
+        </div></div>
+      <div class="field"><label>Was it deliberate practice? Tap what was true.</label>
+        <div class="stack" style="gap:8px">
+          ${CHECK_ITEMS.map(c => `
+            <button class="check-item" data-k="${c.key}" aria-pressed="false">
+              <span class="box">${icons.check}</span>
+              <span><strong>${c.label}</strong><span class="hint">${c.hint}</span></span>
+            </button>`).join("")}
+        </div></div>
+      <div class="card" style="display:flex; align-items:center; justify-content:space-between">
+        <div><strong style="font-size:14px">Sparks so far</strong>
+          <p class="sub" style="font-size:12px; margin-top:2px">Reflection adds the 5th. 4 of 5 = a meaningful session.</p></div>
+        <div class="spark-meter" id="meter"></div>
+      </div>
+      <button class="btn btn-primary" id="cont">Continue to reflection</button>
+    </div>`;
+  const drawMeter = () => {
+    const lit = CHECK_ITEMS.reduce((a, c) => a + (checks[c.key] ? 1 : 0), 0);
+    document.getElementById("meter").innerHTML =
+      Array.from({ length: 5 }, (_, i) => `<span class="spark-dot ${i < lit ? "lit" : ""}"></span>`).join("");
+  };
+  drawMeter();
+  $screen.querySelector("#back").onclick = () => go({ name: "goal", goalId });
+  $screen.querySelectorAll("#cats .chip").forEach(b => b.onclick = () => {
+    $screen.querySelectorAll("#cats .chip").forEach(x => x.setAttribute("aria-pressed", "false"));
+    b.setAttribute("aria-pressed", "true");
+    cat = b.dataset.cat;
+  });
+  const durCustom = $screen.querySelector("#durCustom");
+  $screen.querySelectorAll("#durs .chip").forEach(b => b.onclick = () => {
+    $screen.querySelectorAll("#durs .chip").forEach(x => x.setAttribute("aria-pressed", "false"));
+    b.setAttribute("aria-pressed", "true");
+    minutes = +b.dataset.m;
+    durCustom.value = "";
+  });
+  durCustom.addEventListener("input", () => {
+    const v = parseInt(durCustom.value, 10);
+    if (v > 0) {
+      minutes = Math.min(600, v);
+      $screen.querySelectorAll("#durs .chip").forEach(x => x.setAttribute("aria-pressed", "false"));
+    }
+  });
+  $screen.querySelectorAll(".check-item").forEach(b => b.onclick = () => {
+    const k = b.dataset.k;
+    checks[k] = !checks[k];
+    b.setAttribute("aria-pressed", String(checks[k]));
+    drawMeter();
+  });
+  $screen.querySelector("#cont").onclick = () => {
+    if (!cat) { toast("Pick a practice category first."); return; }
+    const s = { id: uid(), goalId, category: cat, minutes, checklist: { ...checks }, reflection: null, reflectionDeferred: false, ts: Date.now() };
+    state.sessions.push(s);
+    saveState(state);
+    go({ name: "reflect", sessionId: s.id, fresh: true });
+  };
+}
+
+/* ---------- reflect ---------- */
+function renderReflect(sessionId, fresh) {
+  const s = state.sessions.find(x => x.id === sessionId);
+  if (!s) { go({ name: "home" }); return; }
+  const g = state.goals.find(x => x.id === s.goalId);
+  const lit = sparkCount(s);
+  $screen.innerHTML = `
+    ${fresh ? "" : `<button class="back-btn" id="back">‹ Back</button>`}
+    <div class="stack" style="gap:16px">
+      <div>
+        <span class="eyebrow">${esc(g ? g.name : "")} · ${esc(s.category)} · <span class="num">${fmtMin(s.minutes)}</span></span>
+        <h1 class="screen-title" style="margin-top:4px">One minute of reflection</h1>
+        <p class="sub" style="margin-top:4px">Reflection is the fifth spark — it turns an experience into learning.</p>
+      </div>
+      <div class="field"><label for="rText">What made this session meaningful — or hard?</label>
+        <textarea id="rText" placeholder="e.g. I explained my argument to the tutor and understood the feedback…"></textarea></div>
+      <div class="field"><label for="rNext">One next step <span style="font-weight:400; color:var(--ink-3)">(optional)</span></label>
+        <input type="text" id="rNext" placeholder="e.g. Prepare one question in advance next time" maxlength="120"></div>
+      <button class="btn btn-primary" id="saveR">Save reflection</button>
+      ${fresh ? `<button class="btn btn-quiet" id="later">Reflect later — save session now</button>
+      <p class="sub" style="font-size:12.5px; color:var(--ink-3)">Tired after practice? Save now and the reflection will wait on your home screen.</p>` : ""}
+    </div>`;
+  const back = $screen.querySelector("#back");
+  if (back) back.onclick = () => go({ name: "home" });
+  $screen.querySelector("#saveR").onclick = () => {
+    const text = $screen.querySelector("#rText").value.trim();
+    if (!text) { toast("Write one sentence — even a short one counts."); return; }
+    s.reflection = { text, next: $screen.querySelector("#rNext").value.trim() };
+    s.reflectionDeferred = false;
+    saveState(state);
+    const n = sparkCount(s);
+    setTab("home");
+    toast(n >= MEANINGFUL_THRESHOLD
+      ? `Logged: ${n}/5 sparks — a meaningful session. ✦`
+      : `Logged: ${n}/5 sparks. Practice still counts — meaningful needs 4 of 5.`);
+  };
+  const later = $screen.querySelector("#later");
+  if (later) later.onclick = () => {
+    s.reflectionDeferred = true;
+    saveState(state);
+    setTab("home");
+    toast(`Session saved (${lit}/5 sparks so far). Reflection is waiting on Home.`);
+  };
+}
+
+/* ---------- progress ---------- */
+let showTable = false;
+function renderProgress() {
+  if (!state.sessions.length) {
+    $screen.innerHTML = `
+      <div class="stack" style="gap:14px; padding-top:24px">
+        <h1 class="screen-title">Progress</h1>
+        <p class="sub">Once you log practice events, this screen shows your meaningful hours accumulating — by week, by day, and by category.</p>
+      </div>`;
+    return;
+  }
+  const all = state.sessions;
+  const totalMeaningfulMin = all.filter(isMeaningful).reduce((a, s) => a + s.minutes, 0);
+  const wk = weekStats(all);
+  const target = state.goals.reduce((a, g) => a + g.weeklyTargetHours, 0) || 5;
+  const pct = Math.min(1, wk.meaningfulMin / (target * 60));
+
+  // last 7 days buckets
+  const days = [];
+  for (let i = 6; i >= 0; i--) {
+    const d = new Date(); d.setHours(0, 0, 0, 0); d.setDate(d.getDate() - i);
+    const start = d.getTime(), end = start + 864e5;
+    const inDay = all.filter(s => s.ts >= start && s.ts < end);
+    days.push({
+      label: d.toLocaleDateString(undefined, { weekday: "narrow" }),
+      full: d.toLocaleDateString(undefined, { weekday: "short", month: "short", day: "numeric" }),
+      meaningful: inDay.filter(isMeaningful).reduce((a, s) => a + s.minutes, 0),
+      other: inDay.filter(s => !isMeaningful(s)).reduce((a, s) => a + s.minutes, 0),
+      today: i === 0,
+    });
+  }
+  const maxDay = Math.max(30, ...days.map(d => d.meaningful + d.other));
+
+  // categories (meaningful minutes, all time)
+  const catMap = {};
+  all.forEach(s => {
+    if (!catMap[s.category]) catMap[s.category] = { meaningful: 0, total: 0 };
+    catMap[s.category].total += s.minutes;
+    if (isMeaningful(s)) catMap[s.category].meaningful += s.minutes;
+  });
+  const cats = Object.entries(catMap).sort((a, b) => b[1].meaningful - a[1].meaningful);
+  const maxCat = Math.max(1, ...cats.map(([, v]) => v.meaningful));
+
+  const R = 34, C = 2 * Math.PI * R;
+  $screen.innerHTML = `
+    <div class="stack" style="gap:16px">
+      <h1 class="screen-title">Progress</h1>
+      <div class="card">
+        <span class="eyebrow">Meaningful hours, all time</span>
+        <div class="row" style="align-items:baseline; gap:8px; margin-top:6px">
+          <span class="hero-num num">${fmtHours(totalMeaningfulMin)}</span>
+          <span class="hero-unit">hours across <span class="num">${all.filter(isMeaningful).length}</span> meaningful sessions</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ring-wrap">
+          <svg width="88" height="88" viewBox="0 0 88 88" role="img" aria-label="Weekly progress ring">
+            <circle cx="44" cy="44" r="${R}" fill="none" stroke="var(--line)" stroke-width="9"/>
+            <circle cx="44" cy="44" r="${R}" fill="none" stroke="var(--chart-meaningful)" stroke-width="9"
+              stroke-linecap="round" stroke-dasharray="${(C * pct).toFixed(1)} ${C.toFixed(1)}"
+              transform="rotate(-90 44 44)"/>
+            <text x="44" y="49" text-anchor="middle" font-size="17" font-weight="700" fill="var(--ink)" class="num">${Math.round(pct * 100)}%</text>
+          </svg>
+          <div>
+            <span class="eyebrow">This week</span>
+            <p style="margin:4px 0 0; font-size:15px; font-weight:650" class="num">${fmtHours(wk.meaningfulMin)} of ${target} h</p>
+            <p class="sub" style="font-size:12.5px; margin-top:2px">meaningful hours vs. weekly target</p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="row spread">
+          <span class="eyebrow">Last 7 days</span>
+          <button class="btn btn-quiet btn-inline" id="tblToggle" style="font-size:12px; padding:6px 10px">${showTable ? "Chart" : "Table"}</button>
+        </div>
+        ${showTable ? `
+          <div class="table-wrap" style="margin-top:10px">
+            <table class="datatable">
+              <thead><tr><th>Day</th><th style="text-align:right">Meaningful</th><th style="text-align:right">Other</th></tr></thead>
+              <tbody>${days.map(d => `<tr><td>${d.full}</td><td class="n">${fmtMin(d.meaningful)}</td><td class="n">${fmtMin(d.other)}</td></tr>`).join("")}</tbody>
+            </table>
+          </div>` : `
+          <div class="barchart" role="img" aria-label="Minutes practiced per day for the last 7 days">
+            ${days.map((d, i) => `
+              <div class="barcol">
+                <div class="barstack" data-day="${i}">
+                  ${d.other ? `<div class="barseg other top-round" style="height:${Math.max(3, d.other / maxDay * 100)}%"></div>` : ""}
+                  ${d.meaningful ? `<div class="barseg meaningful ${!d.other ? "top-round" : ""}" style="height:${Math.max(3, d.meaningful / maxDay * 100)}%"></div>` : ""}
+                  ${!d.other && !d.meaningful ? `<div class="barseg" style="height:3px; background:var(--line)"></div>` : ""}
+                </div>
+                <span class="day ${d.today ? "today" : ""}">${d.label}</span>
+              </div>`).join("")}
+          </div>
+          <div class="legend" style="margin-top:10px">
+            <span><span class="swatch" style="background:var(--chart-meaningful)"></span>Meaningful (≥4 of 5 sparks)</span>
+            <span><span class="swatch" style="background:var(--chart-other)"></span>Other practice</span>
+          </div>`}
+      </div>
+      <div class="card">
+        <span class="eyebrow">Meaningful hours by category</span>
+        <div class="stack" style="gap:9px; margin-top:12px">
+          ${cats.map(([name, v]) => `
+            <div class="catbar-row">
+              <span class="catbar-label" title="${esc(name)}">${esc(name)}</span>
+              <div class="catbar-track"><div class="catbar-fill" style="width:${Math.max(2, v.meaningful / maxCat * 100)}%"></div></div>
+              <span class="catbar-val num">${fmtMin(v.meaningful)}</span>
+            </div>`).join("")}
+        </div>
+      </div>
+      <p class="sub" style="font-size:12.5px; color:var(--ink-3)">A session counts as <strong>meaningful</strong> when it earns at least 4 of 5 sparks: clear goal, focused effort, appropriate challenge, feedback, reflection.</p>
+    </div>`;
+  $screen.querySelector("#tblToggle").onclick = () => { showTable = !showTable; render(); };
+  // hover tooltips on day bars
+  const tip = document.getElementById("chartTip");
+  $screen.querySelectorAll(".barstack").forEach(el => {
+    const d = days[+el.dataset.day];
+    const show = (e) => {
+      tip.innerHTML = `<strong>${d.full}</strong><br>Meaningful: ${fmtMin(d.meaningful)}<br>Other: ${fmtMin(d.other)}`;
+      tip.style.display = "block";
+      const phone = document.querySelector(".phone").getBoundingClientRect();
+      const r = el.getBoundingClientRect();
+      tip.style.left = Math.max(8, Math.min(phone.width - 160, r.left - phone.left - 40)) + "px";
+      tip.style.top = (r.top - phone.top - 64) + "px";
+    };
+    el.addEventListener("mouseenter", show);
+    el.addEventListener("mouseleave", () => (tip.style.display = "none"));
+    el.addEventListener("click", show);
+  });
+}
+
+/* ---------- more ---------- */
+function renderMore() {
+  $screen.innerHTML = `
+    <div class="stack" style="gap:16px">
+      <h1 class="screen-title">More</h1>
+      <div class="card">
+        <span class="eyebrow">About this prototype</span>
+        <p class="sub" style="margin-top:6px">GritBuilder is a working research prototype (v1). It tracks grit-related <em>behaviors</em> — deliberate practice sessions — not grit as a personal score. Grounded in Duckworth et al. (2007) and Ericsson et al. (1993).</p>
+      </div>
+      <div class="card">
+        <span class="eyebrow">Your data</span>
+        <p class="sub" style="margin-top:6px">Everything you log stays in this browser. Nothing is uploaded. Clearing cookies, site data, or browser storage permanently erases these entries. Export anything you want to keep. For diary-study participants: export your log below and send the file to the researcher.</p>
+        <div class="stack" style="gap:8px; margin-top:12px" id="exportBox">
+          <button class="btn btn-quiet" id="expJson">Export data (JSON)</button>
+          <button class="btn btn-quiet" id="expCsv">Export sessions (CSV)</button>
+        </div>
+      </div>
+      <div class="card">
+        <span class="eyebrow">Researcher tools</span>
+        <p class="sub" style="margin-top:6px">Between usability-test participants, reset the prototype to a clean state.</p>
+        <div class="stack" style="gap:8px; margin-top:12px">
+          <button class="btn btn-quiet" id="reloadExample">Load example data (Yu's goal)</button>
+          <button class="btn btn-danger" id="reset">Reset all data</button>
+        </div>
+      </div>
+      <p class="sub" style="font-size:12px; color:var(--ink-3); text-align:center">Designed by Yupei Duan · IS_LT 9460 Mini Project · prototype v1</p>
+    </div>`;
+  $screen.querySelector("#reset").onclick = () =>
+    confirmModal("Reset all data?", "Every goal, session, and reflection in this browser will be deleted. This cannot be undone.", "Delete everything", () => {
+      state = { goals: [], sessions: [] };
+      saveState(state);
+      setTab("home");
+      toast("All data cleared. Ready for the next participant.");
+    }, true);
+  $screen.querySelector("#reloadExample").onclick = () =>
+    confirmModal("Load example data?", "This replaces current data with Yu's example goal and a week of sessions.", "Load example", () => {
+      loadExample();
+      setTab("home");
+      toast("Example data loaded.");
+    });
+  setupExport();
+}
+
+function setupExport() {
+  const box = document.getElementById("exportBox");
+  if (!box) return;
+  const download = (filename, text, mime) => {
+    const url = URL.createObjectURL(new Blob([text], { type: mime }));
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    toast("Export saved to your downloads.");
+  };
+  const stamp = new Date().toISOString().slice(0, 10);
+  box.querySelector("#expJson").onclick = () =>
+    download(`gritbuilder-export-${stamp}.json`, JSON.stringify(state, null, 2), "application/json");
+  box.querySelector("#expCsv").onclick = () => {
+    const rows = [["date", "goal", "category", "minutes", "clear_goal", "focused_effort", "appropriate_challenge", "feedback", "reflection_done", "sparks", "meaningful", "reflection_text", "next_step"]];
+    state.sessions.forEach(s => {
+      const g = state.goals.find(x => x.id === s.goalId);
+      const q = (v) => '"' + String(v == null ? "" : v).replace(/"/g, '""') + '"';
+      rows.push([
+        new Date(s.ts).toISOString(), q(g ? g.name : ""), q(s.category), s.minutes,
+        +!!s.checklist.clearGoal, +!!s.checklist.focusedEffort, +!!s.checklist.appropriateChallenge, +!!s.checklist.feedback,
+        +!!s.reflection, sparkCount(s), +isMeaningful(s),
+        q(s.reflection ? s.reflection.text : ""), q(s.reflection ? s.reflection.next : ""),
+      ]);
+    });
+    download(`gritbuilder-sessions-${stamp}.csv`, rows.map(r => r.join(",")).join("\n"), "text/csv");
+  };
+}
+
+/* ================= boot ================= */
+render();
+</script>
+</body>
+</html>
