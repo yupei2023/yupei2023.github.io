@@ -950,6 +950,9 @@ html[data-language="zh"] .pfacet-page [data-lang="zh"] { display: inline; }
 .language-toggle:hover { background: var(--ink); color: var(--white); }
 .pfacet-hero h1 { max-width: 1050px; }
 .pfacet-hero__actions { position: relative; z-index: 2; display: flex; align-items: center; gap: 1.5rem; margin-top: 2.5rem; }
+.pfacet-introduction { background: var(--paper-deep); }
+.pfacet-introduction .split-heading > p { max-width: 620px; color: var(--muted); }
+.pfacet-introduction__video { max-width: 1180px; margin: 4rem auto 0; }
 .pfacet-thesis { background: var(--surface); }
 .pfacet-thesis .split-heading > p, .pfacet-tools .split-heading > p { max-width: 620px; color: var(--muted); }
 .pfacet-cycle { max-width: 1180px; margin: 4rem auto 0; }
