@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Teaching with P-FACET</title>
+<style>
+  :root{
+    --bg:#F7F5F1; --surface:#FFFFFF; --ink:#26241E; --muted:#6B6659;
+    --line:#E2DDD2; --learner:#2E6B4E; --learner-soft:#E4EEE8;
+    --ai:#4A6FA5; --ai-soft:#E6ECF5; --anchor:#C2892D; --anchor-soft:#F5EAD6;
+    --risk:#A84B3A; --risk-soft:#F3E2DD; --chip:#EFECE4;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#211F1B; --surface:#2A2823; --ink:#EAE6DC; --muted:#A39D8E;
+      --line:#3B382F; --learner:#6FB392; --learner-soft:#26352D;
+      --ai:#8AA7D6; --ai-soft:#28303E; --anchor:#D9A855; --anchor-soft:#3A3122;
+      --risk:#D08A79; --risk-soft:#3C2B26; --chip:#333028;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#211F1B; --surface:#2A2823; --ink:#EAE6DC; --muted:#A39D8E;
+    --line:#3B382F; --learner:#6FB392; --learner-soft:#26352D;
+    --ai:#8AA7D6; --ai-soft:#28303E; --anchor:#D9A855; --anchor-soft:#3A3122;
+    --risk:#D08A79; --risk-soft:#3C2B26; --chip:#333028;
+  }
+  *{box-sizing:border-box}
+  body{margin:0; background:var(--bg); color:var(--ink); line-height:1.6; font-size:16.5px;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+  main{max-width:820px; margin:0 auto; padding:0 20px 80px}
+  header{padding:60px 0 6px}
+  .kicker{font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:14px}
+  h1{font-family:"Iowan Old Style",Palatino,"Palatino Linotype","Book Antiqua",Georgia,serif;
+     font-size:clamp(30px,5.5vw,44px); line-height:1.1; margin:0 0 14px; font-weight:600; text-wrap:balance}
+  h1 em{color:var(--learner); font-style:normal}
+  h2{font-family:"Iowan Old Style",Palatino,Georgia,serif; font-size:24px; font-weight:600; margin:48px 0 6px}
+  .sub{color:var(--muted); font-size:15px; margin:0 0 14px; max-width:62ch}
+  .lede{font-size:17.5px; max-width:60ch}
+  .lede b.g{color:var(--learner)} .lede b.b{color:var(--ai)}
+  .scrollwrap{overflow-x:auto}
+  table{width:100%; border-collapse:collapse; font-size:14px}
+  th, td{border:1px solid var(--line); padding:9px 11px; text-align:left; vertical-align:top}
+  th{background:var(--chip); font-size:13px}
+  td b.m{color:var(--muted)} td b.s{color:var(--learner)} td b.x{color:var(--risk)} td b.r{color:var(--anchor)}
+  .rule{background:var(--anchor-soft); border:1px solid var(--line); border-radius:11px; padding:13px 17px; margin:14px 0; font-size:15px}
+  .rule b{color:var(--anchor)}
+  .moves{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+  @media (max-width:640px){ .moves{grid-template-columns:1fr} }
+  .move{background:var(--surface); border:1px solid var(--line); border-left:5px solid var(--learner); border-radius:10px; padding:12px 15px; font-size:14.5px}
+  .move.p{border-left-color:var(--anchor)} .move.c{border-left-color:var(--ai)}
+  .move .lt{font-family:"Iowan Old Style",Palatino,Georgia,serif; font-weight:700; color:var(--learner); margin-right:8px}
+  .move.p .lt{color:var(--anchor)} .move.c .lt{color:var(--ai)}
+  .cols{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+  @media (max-width:640px){ .cols{grid-template-columns:1fr} }
+  .col{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:14px 18px; font-size:14.5px}
+  .col h3{margin:0 0 6px; font-size:14px}
+  .col.proc h3{color:var(--learner)} .col.prod h3{color:var(--ai)}
+  .col ul{margin:0; padding-left:18px}
+  .checklist{background:var(--surface); border:1px solid var(--line); border-radius:11px; padding:16px 20px; font-size:14.5px}
+  .checklist b{display:block; margin-top:10px; color:var(--anchor); font-size:12.5px; letter-spacing:.08em; text-transform:uppercase}
+  .checklist b:first-child{margin-top:0}
+  .practice{background:var(--learner-soft); border:1px solid var(--line); border-radius:11px; padding:16px 20px; font-size:15px; margin-top:14px}
+  .practice b{color:var(--learner)}
+  .toolrow{margin-top:10px; font-size:15px}
+  a{color:var(--ai)}
+  footer{margin-top:64px; padding-top:18px; border-top:1px solid var(--line); font-size:13.5px; color:var(--muted)}
+  footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="kicker">The P-FACET Model · for instructors</div>
+    <h1>Teaching <em>with</em> P-FACET</h1>
+    <p class="lede">Generative AI redistributes cognitive work among learner, task, and machine. Your
+      distinctive value is no longer holding information — it's <b class="g">defining which thinking must stay
+      with the learner</b> and making that thinking visible. This page holds the working tools: the offloading
+      lens, six talk moves, an observation scaffold, and an implementation checklist.</p>
+  </header>
+
+  <h2>The lens: four kinds of offloading</h2>
+  <p class="sub">Judge AI use against the <i>target cognitive work</i> of your task — the same visible action can be fine in one assignment and corrosive in another.</p>
+  <div class="scrollwrap"><table>
+    <tr><th>Kind</th><th>What the tool does</th><th>Example</th></tr>
+    <tr><td><b class="m">Mechanical</b></td><td>Peripheral help; the target thinking is untouched.</td><td>Formats citations; flags a syntax error.</td></tr>
+    <tr><td><b class="s">Supportive</b></td><td>Thinking support; the learner stays responsible.</td><td>Critiques a learner draft against criteria.</td></tr>
+    <tr><td><b class="x">Substitutive</b></td><td>Performs the central work the learner was meant to practice.</td><td>Writes the main argument before the learner tries.</td></tr>
+    <tr><td><b class="r">Regulated</b></td><td>Not a fourth category — the metacognitive control over the other three.</td><td>The learner explains why they revised AI output.</td></tr>
+  </table></div>
+  <div class="rule"><b>Two questions decide every case:</b> first, what cognitive work did the tool perform —
+    peripheral, supportive, or substitutive? The action doesn't classify itself; the objective does. Then,
+    how did the learner govern the delegation — purpose set, boundary drawn, result evaluated, responsibility
+    kept? Regulation is the learner's control over offloading, not a fourth kind of delegated work.</div>
+
+  <h2>Six talk moves</h2>
+  <p class="sub">Short questions that redirect over-delegation back to learner responsibility. Facilitation, not surveillance.</p>
+  <div class="moves">
+    <div class="move p"><span class="lt">P</span>"What problem are you addressing, and why does it matter?"</div>
+    <div class="move"><span class="lt">F</span>"What are your goals, criteria, and constraints?"</div>
+    <div class="move"><span class="lt">A</span>"What did you try or represent before AI?"</div>
+    <div class="move c"><span class="lt">C</span>"What specific contribution do you need from AI right now?"</div>
+    <div class="move"><span class="lt">E</span>"What evidence supports that decision?"</div>
+    <div class="move"><span class="lt">T</span>"What changed, and how will you use this strategy elsewhere?"</div>
+  </div>
+
+  <h2>Observing evidence, not intentions</h2>
+  <p class="sub">For each phase, record one concrete example and rate it: <b>0</b> substitutive · <b>1</b> emerging, partial · <b>2</b> clear and learner-owned · <b>N/O</b> not observed. Keep 0 and N/O distinct — a missing artifact is absent evidence, never proof of substitution.</p>
+  <div class="cols">
+    <div class="col proc"><h3>Process evidence</h3>
+      <ul><li>framing notes</li><li>the human-first attempt</li><li>bounded AI prompts</li><li>the decision log</li><li>revision rationale</li><li>transfer reflection</li></ul></div>
+    <div class="col prod"><h3>Product evidence</h3>
+      <ul><li>accurate disciplinary content</li><li>coherent reasoning</li><li>meets task criteria</li><li>appropriate evidence</li><li>purposeful communication</li><li>a genuinely revised artifact</li></ul></div>
+  </div>
+  <div class="rule"><b>Assess both, ask both:</b> what did the student produce — and what cognitive work did the student perform?</div>
+
+  <h2>When you see it, say this</h2>
+  <div class="scrollwrap"><table>
+    <tr><th>When you see…</th><th>Try saying…</th></tr>
+    <tr><td>Writing: the student asks AI to draft the full essay.</td><td>"Draft your claim and evidence first; use AI to critique the logic."</td></tr>
+    <tr><td>Science: the student asks AI to interpret the graph.</td><td>"Name the pattern you see before asking AI to challenge it."</td></tr>
+    <tr><td>Math: the student asks AI for all the steps.</td><td>"Show your first strategy; ask AI for a hint or an error check."</td></tr>
+    <tr><td>Design: AI produces the final artifact.</td><td>"Define your criteria and compare alternatives before adopting anything."</td></tr>
+    <tr><td>A peripheral skill is blocking progress.</td><td>"Use AI freely for the technical part — keep the core decision yours."</td></tr>
+    <tr><td>The student accepts everything AI suggests.</td><td>"Pick one suggestion and corroborate it — what evidence backs it?"</td></tr>
+    <tr><td>The student rejects everything AI suggests.</td><td>"Is the skepticism evidence-based? Show me one check you ran."</td></tr>
+    <tr><td>The student can't evaluate the output at all.</td><td>"Let's build the criteria together — what would a good answer have to do?"</td></tr>
+    <tr><td>AI use is an accessibility or language support.</td><td>"The support stays, fully — let's just make sure the final judgment is still yours."</td></tr>
+  </table></div>
+  <p class="sub" style="margin-top:8px"><b>Redirect; don't punish.</b> The goal is regulation, not detection.</p>
+
+  <h2>Implementation checklist</h2>
+  <div class="checklist">
+    <b>Before</b>
+    Choose an authentic task · clarify the target cognitive work · set AI roles and boundaries · prepare framing and decision-log prompts · set privacy, attribution, and access rules
+    <b>During</b>
+    Watch the phases · ask the short questions above · collect process evidence · adapt scaffolding as competence grows
+    <b>After</b>
+    Assess process + product together · debrief the AI-use decisions · ask for a transfer reflection
+  </div>
+
+  <h2>Try it on one of your own assignments</h2>
+  <div class="practice"><b>Twenty-minute exercise:</b> pick one activity — a case analysis, problem set, lab
+    write-up, or essay — and answer three questions: What must students do <i>before</i> AI, <i>with</i> AI,
+    and <i>after</i> AI? The <a href="../assignment-kit/">Assignment Kit</a> walks you through it and exports
+    the result for your syllabus.</div>
+  <p class="toolrow"><b>Assign to your students:</b> the <a href="../quick-start/">Quick Start</a> (3 min) and
+    <a href="../trainer/">Trainer</a> (8 min) teach the routine; the <a href="../request-builder/">Request Builder</a>
+    and <a href="../decision-log/">Decision Log</a> support it during real work; the
+    <a href="../cases/">Case Library</a> shows regulated and substitutive paths side by side.</p>
+
+  <footer>
+    <div>The P-FACET Model © Yupei Duan &amp; Danielle Oprean, University of Missouri</div>
+    <div><a href="../">Model home</a> · <a href="../policy-pack/">AI Policy Pack</a> · <a href="../faq/">FAQ</a></div>
+  </footer>
+</main>
+</body>
+</html>

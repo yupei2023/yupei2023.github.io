@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>P-FACET Assignment Kit</title>
+<style>
+  :root{
+    --bg:#F7F5F1; --surface:#FFFFFF; --ink:#26241E; --muted:#6B6659;
+    --line:#E2DDD2; --learner:#2E6B4E; --learner-soft:#E4EEE8;
+    --ai:#4A6FA5; --ai-soft:#E6ECF5; --anchor:#C2892D; --anchor-soft:#F5EAD6;
+    --risk:#A84B3A; --risk-soft:#F3E2DD; --chip:#EFECE4;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#211F1B; --surface:#2A2823; --ink:#EAE6DC; --muted:#A39D8E;
+      --line:#3B382F; --learner:#6FB392; --learner-soft:#26352D;
+      --ai:#8AA7D6; --ai-soft:#28303E; --anchor:#D9A855; --anchor-soft:#3A3122;
+      --risk:#D08A79; --risk-soft:#3C2B26; --chip:#333028;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#211F1B; --surface:#2A2823; --ink:#EAE6DC; --muted:#A39D8E;
+    --line:#3B382F; --learner:#6FB392; --learner-soft:#26352D;
+    --ai:#8AA7D6; --ai-soft:#28303E; --anchor:#D9A855; --anchor-soft:#3A3122;
+    --risk:#D08A79; --risk-soft:#3C2B26; --chip:#333028;
+  }
+  *{box-sizing:border-box}
+  body{margin:0; background:var(--bg); color:var(--ink); line-height:1.6; font-size:16.5px;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+  main{max-width:800px; margin:0 auto; padding:0 20px 80px}
+  header{padding:60px 0 10px}
+  .kicker{font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:14px}
+  h1{font-family:"Iowan Old Style",Palatino,"Palatino Linotype","Book Antiqua",Georgia,serif;
+     font-size:clamp(30px,5.5vw,44px); line-height:1.1; margin:0 0 14px; font-weight:600; text-wrap:balance}
+  h1 em{color:var(--anchor); font-style:normal}
+  h2{font-family:"Iowan Old Style",Palatino,Georgia,serif; font-size:24px; font-weight:600; margin:46px 0 8px}
+  .lede{font-size:17.5px; max-width:60ch}
+  .lede b.g{color:var(--learner)}
+  .privacy{font-size:13.5px; color:var(--muted); margin-top:10px}
+  label{display:block; font-size:13px; font-weight:650; margin:14px 0 5px}
+  .hintline{font-size:12.5px; color:var(--muted); font-weight:400; margin-left:6px}
+  input[type=text], textarea{width:100%; border:1px solid var(--line); border-radius:9px; background:var(--surface);
+    color:var(--ink); padding:10px 12px; font-size:15.5px; font-family:inherit}
+  textarea{min-height:64px; resize:vertical}
+  input:focus-visible, textarea:focus-visible, button:focus-visible, a:focus-visible, summary:focus-visible{
+    outline:2px solid var(--ai); outline-offset:2px}
+  .element{background:var(--surface); border:1px solid var(--line); border-left:5px solid var(--learner);
+    border-radius:11px; padding:18px 22px 20px; margin-top:16px}
+  .element.ai{border-left-color:var(--ai)}
+  .element.anchor{border-left-color:var(--anchor)}
+  .element .head{display:flex; gap:10px; align-items:baseline}
+  .element .n{font-family:"Iowan Old Style",Palatino,Georgia,serif; font-weight:700; font-size:20px; color:var(--learner)}
+  .element.ai .n{color:var(--ai)} .element.anchor .n{color:var(--anchor)}
+  .element h3{margin:0; font-size:17px; font-weight:650}
+  .element .why{font-size:14px; color:var(--muted); margin:6px 0 2px}
+  .chips{display:flex; flex-wrap:wrap; gap:7px; margin-top:6px}
+  .chips button{border:1px solid var(--line); background:var(--chip); color:var(--ink); border-radius:999px;
+    padding:6px 13px; font-size:13.5px; cursor:pointer}
+  .chips button[aria-pressed="true"]{background:var(--ai-soft); border-color:var(--ai); color:var(--ai); font-weight:650}
+  .desig-note{font-size:13.5px; color:var(--muted); margin-top:8px}
+  .actions{display:flex; flex-wrap:wrap; gap:10px; margin-top:26px}
+  .actions button{border-radius:9px; padding:11px 18px; font-size:15px; font-weight:650; cursor:pointer; border:1px solid var(--line)}
+  #copy{background:var(--learner); border-color:var(--learner); color:#fff}
+  #printBtn{background:var(--surface); color:var(--ink)}
+  #clear{background:none; color:var(--muted); border:none; text-decoration:underline; font-weight:400; font-size:13.5px}
+  #copied{color:var(--learner); font-size:14px; align-self:center; opacity:0; transition:opacity .3s}
+  @media (prefers-reduced-motion: reduce){ #copied{transition:none} }
+  details{background:var(--surface); border:1px solid var(--line); border-radius:11px; margin-top:14px; padding:0}
+  summary{cursor:pointer; padding:15px 20px; font-weight:650; font-size:15.5px}
+  details .body{padding:0 22px 20px; font-size:15px}
+  details .body p{margin:10px 0}
+  details .body .el{margin:12px 0}
+  details .body .el b{color:var(--learner)}
+  details .body .el.ai b{color:var(--ai)}
+  details .body .el.anchor b{color:var(--anchor)}
+  table{width:100%; border-collapse:collapse; margin-top:14px; font-size:14px}
+  th, td{border:1px solid var(--line); padding:9px 11px; text-align:left; vertical-align:top}
+  th{background:var(--chip); font-size:13px}
+  .scrollwrap{overflow-x:auto}
+  footer{margin-top:64px; padding-top:18px; border-top:1px solid var(--line); font-size:13.5px; color:var(--muted)}
+  footer a{color:var(--muted)}
+  @media print{
+    .actions, .privacy, footer .noprint{display:none !important}
+    body{background:#fff; color:#000}
+    details{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="kicker">The P-FACET Model · for instructors</div>
+    <h1>Assignment <em>Redesign</em> Kit</h1>
+    <p class="lede">Most AI policies list permitted tools. P-FACET asks a different design question:
+      <b class="g">which cognitive work must stay with the learner?</b> A P-FACET-aligned assignment makes
+      five things explicit. Fill them in for one of your own assignments, then copy the block straight
+      into your assignment sheet.</p>
+    <p class="privacy">Everything you type stays in this browser — nothing is uploaded. Your draft saves automatically.</p>
+  </header>
+
+  <label for="atitle">Assignment title</label>
+  <input type="text" id="atitle" placeholder="e.g., Position essay — reducing campus food waste">
+
+  <div class="element anchor">
+    <div class="head"><span class="n">1</span><h3>The authentic problem &amp; its purpose</h3></div>
+    <p class="why">Anchor the task in a real problem worth caring about — not “use AI to complete X.”</p>
+    <textarea id="e1" aria-label="The authentic problem and its purpose" placeholder="What meaningful situation, outcome, and constraints define this task? Why does it matter in your discipline?"></textarea>
+  </div>
+
+  <div class="element">
+    <div class="head"><span class="n">2</span><h3>The learner-generated representation required first</h3></div>
+    <p class="why">What must students produce <i>before</i> central work may be delegated? A frame, plan, sketch, prediction, or first draft — calibrated to their expertise.</p>
+    <textarea id="e2" aria-label="The learner-generated representation required first" placeholder="e.g., A one-paragraph problem frame (goal, audience, criteria, assumptions) plus a first-draft recommendation, submitted before any AI consultation."></textarea>
+  </div>
+
+  <div class="element ai">
+    <div class="head"><span class="n">3</span><h3>The bounded roles AI may play</h3></div>
+    <p class="why">Name the permitted roles — critique, alternatives, questions, explanation, technical help — and any that are off-limits for this task.</p>
+    <textarea id="e3" aria-label="The bounded roles AI may play" placeholder="e.g., AI may critique your draft, propose counterarguments, or explain concepts. It may not write or restructure your recommendation."></textarea>
+    <label style="margin-top:14px">AI designation for this assignment</label>
+    <div class="chips" id="desig" role="group" aria-label="AI designation"></div>
+    <p class="desig-note" id="desigNote"></p>
+  </div>
+
+  <div class="element">
+    <div class="head"><span class="n">4</span><h3>The criteria &amp; verification students judge output against</h3></div>
+    <p class="why">What counts as good — and how must AI output be checked before it is used? Verification proportional to risk: claims need sources; calculations need recomputation.</p>
+    <textarea id="e4" aria-label="The criteria and verification students judge output against" placeholder="e.g., Rubric criteria: feasibility, evidence quality, coherence. Every factual claim from AI must be verified against at least one course source before use."></textarea>
+  </div>
+
+  <div class="element">
+    <div class="head"><span class="n">5</span><h3>The evidence of transformation &amp; transfer submitted</h3></div>
+    <p class="why">What proof of learner judgment accompanies the product? Keep it lightweight — visibility, not paperwork.</p>
+    <textarea id="e5" aria-label="The evidence of transformation and transfer submitted" placeholder="e.g., Submit your initial frame and first draft, your AI Decision Log, and a three-sentence transfer note: what will you do differently next time?"></textarea>
+  </div>
+
+  <div class="actions">
+    <button id="copy" type="button">Copy for your assignment sheet</button>
+    <button id="printBtn" type="button">Print / save as PDF</button>
+    <span id="copied" role="status">Copied ✓</span>
+    <button id="clear" type="button">Start over</button>
+  </div>
+
+  <p style="font-size:15px; margin-top:18px"><b style="color:var(--risk)">The failure test:</b> before you ship the assignment, ask — could a learner satisfy every requirement above mechanically, without doing the intended reasoning? If yes, tighten elements 2 and 4.</p>
+
+  <h2>Two completed examples</h2>
+  <details>
+    <summary>Position essay — campus food waste (writing-intensive course)</summary>
+    <div class="body">
+      <div class="el anchor"><b>1 · Problem &amp; purpose.</b> Our campus discards an estimated 40 tons of food per semester. Write a feasible, evidence-based recommendation to dining services. The discipline’s work here: weighing evidence and making a defensible recommendation to a real audience.</div>
+      <div class="el"><b>2 · Required first representation.</b> Before any AI use: a problem frame (goal, stakeholders, success criteria, assumptions) and a full first-draft recommendation built from course readings. Submitted with the final essay.</div>
+      <div class="el ai"><b>3 · Bounded AI roles (Standard designation).</b> AI may critique your draft, generate counterarguments, or simulate a skeptical administrator. It may not draft or redraft any section. Every consultation goes in your Decision Log.</div>
+      <div class="el"><b>4 · Criteria &amp; verification.</b> Rubric: feasibility · evidence quality · counterargument handling · coherence. Any factual claim originating from AI must be verified against a citable source; uncited AI claims are treated as unsupported.</div>
+      <div class="el"><b>5 · Evidence submitted.</b> Final essay + first draft + Decision Log + a three-sentence transfer note. The log is graded on quality of reasoning, not on which decisions were made.</div>
+    </div>
+  </details>
+  <details>
+    <summary>Data interpretation lab — enzyme kinetics (STEM course)</summary>
+    <div class="body">
+      <div class="el anchor"><b>1 · Problem &amp; purpose.</b> Given your team’s experimental data, determine whether the inhibitor is competitive or non-competitive, and justify the call. The target skill: reading evidence from a graph and defending an inference — not producing a polished paragraph.</div>
+      <div class="el"><b>2 · Required first representation.</b> Before AI: annotate the plot by hand, name the pattern you see, and write your preliminary interpretation with its reasoning (three to five sentences, photo or scan accepted).</div>
+      <div class="el ai"><b>3 · Bounded AI roles (Standard designation).</b> AI may challenge your interpretation, suggest alternative explanations for the pattern, or explain the underlying model. It may not interpret the graph for you. Peripheral help (formatting, spreadsheet syntax) is unrestricted.</div>
+      <div class="el"><b>4 · Criteria &amp; verification.</b> Correct mechanistic reasoning · use of the actual data · consideration of at least one alternative explanation. AI-suggested mechanisms must be checked against the textbook’s kinetics chapter before adoption.</div>
+      <div class="el"><b>5 · Evidence submitted.</b> Annotated plot + preliminary interpretation + final report + Decision Log. A revised interpretation with a clear rationale earns full credit — changing your mind well is the skill.</div>
+    </div>
+  </details>
+
+  <h2>Rubric rows for process evidence</h2>
+  <p style="font-size:15px">Add alongside your product criteria. Mastery language: <b>Meets · Developing · Not yet · No evidence</b>. Score a missing artifact as <b>No evidence</b> — absence of a trace is not proof of substitution, and the two must never be conflated.</p>
+  <div class="scrollwrap"><table>
+    <tr><th>Row</th><th>Meets</th><th>Developing</th><th>Not yet</th></tr>
+    <tr><td><b>Framing</b></td><td>Goal, criteria, and assumptions are learner-stated and guide the work.</td><td>Frame exists but is generic or unused.</td><td>No learner frame; task shaped by AI or the prompt.</td></tr>
+    <tr><td><b>First attempt</b></td><td>A substantive learner-made representation precedes AI use.</td><td>Attempt is minimal or partly post-hoc.</td><td>No attempt before delegation.</td></tr>
+    <tr><td><b>Bounded consultation</b></td><td>Requests are specific, role-limited, and tied to the learner’s work.</td><td>Requests are broad but not full-task.</td><td>Full-task delegation.</td></tr>
+    <tr><td><b>Decision quality</b></td><td>Accept/revise/reject choices cite criteria or evidence.</td><td>Decisions logged but reasons thin.</td><td>Output adopted or dismissed without reasons.</td></tr>
+    <tr><td><b>Transformation &amp; transfer</b></td><td>Work is substantively the learner’s; transfer note names a portable strategy.</td><td>Some revision; transfer vague.</td><td>AI output inserted unchanged; no transfer.</td></tr>
+  </table></div>
+
+  <footer>
+    <div>The P-FACET Model © Yupei Duan &amp; Danielle Oprean, University of Missouri</div>
+    <div class="noprint"><a href="../">Model home</a> · <a href="../decision-log/">Decision Log</a> · <a href="../quick-start/">Quick Start</a> · <a href="../trainer/">Trainer</a></div>
+  </footer>
+</main>
+
+<script>
+(function(){
+  var KEY = "pfacet-assignment-kit-v1";
+  var DESIGS = {
+    "Independent": "No AI anywhere — this task is evidence of the learner's own thinking (self-assessments, final reflections).",
+    "Standard": "The default. Human-first attempt, bounded consultation only, Decision Log required.",
+    "Extended": "Deliberately widened AI collaboration (e.g., a full AI draft to examine); evaluation and transformation must be fully shown."
+  };
+  var ids = ["atitle","e1","e2","e3","e4","e5"];
+  var state = load();
+  function load(){
+    try{ var s = JSON.parse(localStorage.getItem(KEY)); if(s) return s; }catch(e){}
+    return {atitle:"",e1:"",e2:"",e3:"",e4:"",e5:"",desig:"Standard"};
+  }
+  function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
+  ids.forEach(function(id){
+    var el = document.getElementById(id);
+    el.value = state[id] || "";
+    el.addEventListener("input", function(){ state[id] = el.value; save(); });
+  });
+  var desigWrap = document.getElementById("desig");
+  var desigNote = document.getElementById("desigNote");
+  function renderDesig(){
+    desigWrap.textContent = "";
+    Object.keys(DESIGS).forEach(function(name){
+      var b = document.createElement("button");
+      b.type = "button"; b.textContent = name;
+      b.setAttribute("aria-pressed", String(state.desig === name));
+      b.addEventListener("click", function(){ state.desig = name; save(); renderDesig(); });
+      desigWrap.appendChild(b);
+    });
+    desigNote.textContent = DESIGS[state.desig] || "";
+  }
+  function exportText(){
+    var L = [];
+    L.push("AI USE & PROCESS EVIDENCE — " + (state.atitle || "(assignment)"));
+    L.push("Designed with the P-FACET Model · yupei2023.github.io/p-facet");
+    L.push("");
+    L.push("THE PROBLEM & WHY IT MATTERS");
+    L.push(state.e1 || "—"); L.push("");
+    L.push("BEFORE ANY AI: YOUR OWN REPRESENTATION");
+    L.push(state.e2 || "—"); L.push("");
+    L.push("AI DESIGNATION: " + state.desig.toUpperCase());
+    L.push(DESIGS[state.desig]); L.push("");
+    L.push("WHAT AI MAY (AND MAY NOT) DO HERE");
+    L.push(state.e3 || "—"); L.push("");
+    L.push("CRITERIA & VERIFICATION");
+    L.push(state.e4 || "—"); L.push("");
+    L.push("EVIDENCE YOU SUBMIT");
+    L.push(state.e5 || "—");
+    return L.join("\n");
+  }
+  document.getElementById("copy").addEventListener("click", function(){
+    var t = exportText();
+    function done(){ var c = document.getElementById("copied"); c.style.opacity = 1; setTimeout(function(){ c.style.opacity = 0; }, 1800); }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(t).then(done, function(){ fb(t); done(); });
+    } else { fb(t); done(); }
+    function fb(text){
+      var ta = document.createElement("textarea");
+      ta.value = text; document.body.appendChild(ta); ta.select();
+      try{ document.execCommand("copy"); }catch(e){}
+      document.body.removeChild(ta);
+    }
+  });
+  document.getElementById("printBtn").addEventListener("click", function(){ window.print(); });
+  document.getElementById("clear").addEventListener("click", function(){
+    if(confirm("Clear the whole kit? This cannot be undone.")){
+      state = {atitle:"",e1:"",e2:"",e3:"",e4:"",e5:"",desig:"Standard"};
+      ids.forEach(function(id){ document.getElementById(id).value = ""; });
+      save(); renderDesig();
+    }
+  });
+  renderDesig();
+})();
+</script>
+</body>
+</html>

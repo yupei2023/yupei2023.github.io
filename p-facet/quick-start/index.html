@@ -78,6 +78,7 @@
   .done-msg.show{display:block}
   .progress{margin-top:12px; font-size:13.5px; color:var(--muted); font-variant-numeric:tabular-nums}
   footer{margin-top:56px; padding-top:20px; border-top:1px solid var(--line); font-size:13px; color:var(--muted); max-width:64ch}
+  footer a{color:var(--ai)}
   input:focus-visible{outline:2px solid var(--anchor); outline-offset:2px}
   @media (prefers-reduced-motion: reduce){*{transition:none !important}}
 </style>
@@ -119,6 +120,7 @@
 <div class="step c">
   <div class="head"><span class="lt">C</span><h2>Consult — with a boundary</h2><span class="who">You + AI</span></div>
   <p class="do">Find the one specific gap in your work, then make a bounded request: critique, alternatives, an explanation, or technical help. Never hand over the whole task.</p>
+  <div class="airule">C is a <b>gateway</b>, not a single moment — whenever a new gap appears in F, E, or T, you pass through here again, then bring the answer back to your own judgment.</div>
   <div class="starters">
     <div class="sl">Prompt starters that keep the thinking yours</div>
     <div class="starter">"Here's my draft. Critique the logic against my criteria — don't rewrite it."</div>
@@ -133,7 +135,7 @@
   <div class="head"><span class="lt">E</span><h2>Evaluate and explain</h2><span class="who">You</span></div>
   <p class="do">Check AI's output against your criteria and real evidence. Then decide — accept, revise, reject, remix, or defer — and write down <em>why</em>. "I checked it" doesn't count; naming your evidence does.</p>
   <div class="airule">AI can offer counterarguments — the verdict is yours.</div>
-  <div class="ask">Ask yourself: "What criterion or evidence supports my decision?"</div>
+  <div class="ask">Ask yourself: "What criterion or evidence supports my decision?" — and if evaluating exposes a gap, loop back to F, A, or C. That's the cycle working.</div>
 </div>
 
 <div class="step">
@@ -150,7 +152,7 @@
   <div class="check">
     <label class="lp"><input type="checkbox"><span><b>P</b> — I can state the problem and why it matters.</span></label>
     <label><input type="checkbox"><span><b>F</b> — My goal, criteria, constraints, and assumptions are written down.</span></label>
-    <label><input type="checkbox"><span><b>A</b> — I made a first attempt before asking AI anything.</span></label>
+    <label><input type="checkbox"><span><b>A</b> — Before AI touched the target work, my own representation existed: a draft, sketch, prediction, or plan.</span></label>
     <label class="lc"><input type="checkbox"><span><b>C</b> — My AI request targets one specific gap and sets a boundary.</span></label>
     <label><input type="checkbox"><span><b>E</b> — I can name the evidence behind what I accepted, revised, or rejected.</span></label>
     <label><input type="checkbox"><span><b>T</b> — I know what changed and where I'll use this strategy next.</span></label>
@@ -161,6 +163,7 @@
 
 <footer>
   The P-FACET Model © Yupei Duan &amp; Danielle Oprean, University of Missouri. One question decides everything: <em>who did the thinking?</em>
+  <div style="margin-top:10px"><b>Keep going:</b> <a href="../trainer/">Trainer</a> · <a href="../request-builder/">Request Builder</a> · <a href="../decision-log/">Decision Log</a> · <a href="../cases/">Case Library</a> · <a href="../">Model home</a></div>
 </footer>
 </main>
 

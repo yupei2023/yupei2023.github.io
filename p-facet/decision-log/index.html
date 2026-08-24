@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>P-FACET Decision Log</title>
+<style>
+  :root{
+    --bg:#F7F5F1; --surface:#FFFFFF; --ink:#26241E; --muted:#6B6659;
+    --line:#E2DDD2; --learner:#2E6B4E; --learner-soft:#E4EEE8;
+    --ai:#4A6FA5; --ai-soft:#E6ECF5; --anchor:#C2892D; --anchor-soft:#F5EAD6;
+    --risk:#A84B3A; --risk-soft:#F3E2DD; --chip:#EFECE4;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#211F1B; --surface:#2A2823; --ink:#EAE6DC; --muted:#A39D8E;
+      --line:#3B382F; --learner:#6FB392; --learner-soft:#26352D;
+      --ai:#8AA7D6; --ai-soft:#28303E; --anchor:#D9A855; --anchor-soft:#3A3122;
+      --risk:#D08A79; --risk-soft:#3C2B26; --chip:#333028;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#211F1B; --surface:#2A2823; --ink:#EAE6DC; --muted:#A39D8E;
+    --line:#3B382F; --learner:#6FB392; --learner-soft:#26352D;
+    --ai:#8AA7D6; --ai-soft:#28303E; --anchor:#D9A855; --anchor-soft:#3A3122;
+    --risk:#D08A79; --risk-soft:#3C2B26; --chip:#333028;
+  }
+  *{box-sizing:border-box}
+  body{margin:0; background:var(--bg); color:var(--ink); line-height:1.6; font-size:16.5px;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+  main{max-width:760px; margin:0 auto; padding:0 20px 80px}
+  header{padding:60px 0 10px}
+  .kicker{font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:14px}
+  h1{font-family:"Iowan Old Style",Palatino,"Palatino Linotype","Book Antiqua",Georgia,serif;
+     font-size:clamp(30px,5.5vw,44px); line-height:1.1; margin:0 0 14px; font-weight:600; text-wrap:balance}
+  h1 em{color:var(--learner); font-style:normal}
+  .lede{font-size:17.5px; max-width:58ch}
+  .lede b.g{color:var(--learner)} .lede b.b{color:var(--ai)}
+  .privacy{font-size:13.5px; color:var(--muted); margin-top:10px}
+  .tip{background:var(--anchor-soft); border:1px solid var(--line); border-radius:11px; padding:14px 18px;
+       margin:22px 0 6px; font-size:15px}
+  .tip b{color:var(--anchor)}
+  label{display:block; font-size:13px; font-weight:650; letter-spacing:.02em; margin:14px 0 5px}
+  input[type=text], textarea{width:100%; border:1px solid var(--line); border-radius:9px; background:var(--surface);
+    color:var(--ink); padding:10px 12px; font-size:15.5px; font-family:inherit}
+  textarea{min-height:64px; resize:vertical}
+  textarea.prompt{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:14.5px;
+    background:var(--ai-soft)}
+  input:focus-visible, textarea:focus-visible, button:focus-visible, a:focus-visible{
+    outline:2px solid var(--ai); outline-offset:2px}
+  .assign{margin-top:26px}
+  .entry{background:var(--surface); border:1px solid var(--line); border-left:5px solid var(--ai);
+    border-radius:11px; padding:20px 22px 22px; margin-top:20px; position:relative}
+  .entry .num{font-family:"Iowan Old Style",Palatino,Georgia,serif; font-weight:700; font-size:17px; color:var(--ai)}
+  .entry .del{position:absolute; top:14px; right:14px; border:1px solid var(--line); background:none; color:var(--muted);
+    border-radius:999px; font-size:12.5px; padding:4px 11px; cursor:pointer}
+  .entry .del:hover{color:var(--risk); border-color:var(--risk)}
+  .why label{color:var(--learner)}
+  .hintline{font-size:12.5px; color:var(--muted); font-weight:400; margin-left:6px}
+  .chips{display:flex; flex-wrap:wrap; gap:7px}
+  .chips button{border:1px solid var(--line); background:var(--chip); color:var(--ink); border-radius:999px;
+    padding:6px 13px; font-size:13.5px; cursor:pointer}
+  .chips button[aria-pressed="true"]{background:var(--learner-soft); border-color:var(--learner);
+    color:var(--learner); font-weight:650}
+  .chips.role button[aria-pressed="true"]{background:var(--ai-soft); border-color:var(--ai); color:var(--ai)}
+  .actions{display:flex; flex-wrap:wrap; gap:10px; margin-top:26px}
+  .actions button{border-radius:9px; padding:11px 18px; font-size:15px; font-weight:650; cursor:pointer; border:1px solid var(--line)}
+  #add{background:var(--learner); border-color:var(--learner); color:#fff}
+  #copy{background:var(--surface); color:var(--ink)}
+  #printBtn{background:var(--surface); color:var(--ink)}
+  #clear{background:none; color:var(--muted); border:none; text-decoration:underline; font-weight:400; font-size:13.5px}
+  #copied{color:var(--learner); font-size:14px; align-self:center; opacity:0; transition:opacity .3s}
+  @media (prefers-reduced-motion: reduce){ #copied{transition:none} }
+  footer{margin-top:64px; padding-top:18px; border-top:1px solid var(--line); font-size:13.5px; color:var(--muted)}
+  footer a{color:var(--muted)}
+  @media print{
+    .actions, .tip, .del, .privacy, footer .noprint{display:none !important}
+    body{background:#fff; color:#000}
+    .entry{border-color:#999; break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="kicker">The P-FACET Model · a tool for the E phase</div>
+    <h1>Decision <em>Log</em></h1>
+    <p class="lede">Every time AI helps you, one question decides whether you learned anything:
+      <b class="g">what did you keep, what did you drop — and why?</b> Log each consultation here as you work.
+      When you're done, copy the log into your assignment — it is the written evidence of
+      <b class="g">your</b> judgment at work. Log the <b class="g">consequential</b> consultations — the ones
+      where a real decision was made — not every exchange.</p>
+    <p class="privacy">Everything you type stays in this browser — nothing is uploaded, ever. Your draft is saved automatically.</p>
+  </header>
+
+  <div class="tip"><b>What good looks like:</b> the quality of your <i>reasons</i> matters more than which
+    decision you made. A well-explained “accept” beats a thoughtless “reject.” Cite the criterion or the
+    evidence that convinced you — and keep it light: one or two consequential entries beat ten routine ones.
+    Your instructor may ask for exactly that.</div>
+
+  <div class="assign">
+    <label for="assign">Assignment / task <span class="hintline">shown at the top of your exported log</span></label>
+    <input type="text" id="assign" placeholder="e.g., Position essay — reducing campus food waste">
+  </div>
+
+  <div id="entries"></div>
+
+  <div class="actions">
+    <button id="add" type="button">＋ Add a consultation</button>
+    <button id="copy" type="button">Copy log for your assignment</button>
+    <button id="printBtn" type="button">Print / save as PDF</button>
+    <span id="copied" role="status">Copied ✓</span>
+    <button id="clear" type="button">Start over</button>
+  </div>
+
+  <footer>
+    <div>The P-FACET Model © Yupei Duan &amp; Danielle Oprean, University of Missouri</div>
+    <div class="noprint"><a href="../">Model home</a> · <a href="../quick-start/">Quick Start</a> · <a href="../trainer/">Trainer</a></div>
+  </footer>
+</main>
+
+<script>
+(function(){
+  var ROLES = ["Critique", "Alternatives", "Explanation", "Questions", "Technical help", "Other"];
+  var DECISIONS = ["Accept", "Revise", "Reject", "Remix", "Defer"];
+  var KEY = "pfacet-decision-log-v1";
+  var state = load();
+
+  function blank(){ return {tool:"", ask:"", role:"", decision:"", why:"", verify:"", change:""}; }
+  function load(){
+    try{
+      var s = JSON.parse(localStorage.getItem(KEY));
+      if(s && s.entries && s.entries.length){
+        s.entries.forEach(function(e){                       // migrate entries saved by older versions
+          ["tool","ask","role","decision","why","verify","change"].forEach(function(k){
+            if(typeof e[k] !== "string") e[k] = "";
+          });
+        });
+        if(typeof s.assign !== "string") s.assign = "";
+        return s;
+      }
+    }catch(e){}
+    return {assign:"", entries:[blank()]};
+  }
+  var fieldSeq = 0;
+  function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
+
+  var entriesEl = document.getElementById("entries");
+  var assignEl = document.getElementById("assign");
+  assignEl.value = state.assign || "";
+  assignEl.addEventListener("input", function(){ state.assign = assignEl.value; save(); });
+
+  function chipRow(list, value, cls, onPick){
+    var wrap = document.createElement("div");
+    wrap.className = "chips " + cls;
+    list.forEach(function(name){
+      var b = document.createElement("button");
+      b.type = "button"; b.textContent = name;
+      b.setAttribute("aria-pressed", String(name === value));
+      b.addEventListener("click", function(){
+        onPick(name === value ? "" : name);
+        render();
+      });
+      wrap.appendChild(b);
+    });
+    return wrap;
+  }
+  function field(labelText, hint, el){
+    var l = document.createElement("label");
+    l.textContent = labelText;
+    if(hint){ var h = document.createElement("span"); h.className="hintline"; h.textContent = hint; l.appendChild(h); }
+    var tag = el.tagName;
+    if(tag === "INPUT" || tag === "TEXTAREA"){                // bind label to control for screen readers
+      var fid = "dlf" + (++fieldSeq);
+      el.id = fid; l.htmlFor = fid;
+    } else {
+      el.setAttribute("aria-label", labelText);
+    }
+    var w = document.createElement("div");
+    w.appendChild(l); w.appendChild(el);
+    return w;
+  }
+  function textInput(kind, value, placeholder, mono, onInput){
+    var el = document.createElement(kind === "input" ? "input" : "textarea");
+    if(kind === "input") el.type = "text";
+    if(mono) el.className = "prompt";
+    el.value = value; el.placeholder = placeholder;
+    el.addEventListener("input", function(){ onInput(el.value); save(); });
+    return el;
+  }
+
+  function render(){
+    entriesEl.textContent = "";
+    state.entries.forEach(function(e, i){
+      var card = document.createElement("section");
+      card.className = "entry";
+      var num = document.createElement("div"); num.className = "num";
+      num.textContent = "Consultation " + (i + 1);
+      card.appendChild(num);
+      if(state.entries.length > 1){
+        var del = document.createElement("button");
+        del.className = "del"; del.type = "button"; del.textContent = "remove";
+        del.addEventListener("click", function(){ state.entries.splice(i,1); save(); render(); });
+        card.appendChild(del);
+      }
+      card.appendChild(field("What did I ask AI to do?", "paste or summarize your request",
+        textInput("textarea", e.ask, "Challenge my reasoning. Give me two counterarguments — do NOT write the final recommendation.", true, function(v){ e.ask=v; })));
+      card.appendChild(field("Which tool?", "",
+        textInput("input", e.tool, "e.g., Claude, ChatGPT, Doubao…", false, function(v){ e.tool=v; })));
+      card.appendChild(field("Intended role", "what job did you give it?",
+        chipRow(ROLES, e.role, "role", function(v){ e.role=v; save(); })));
+      card.appendChild(field("My decision", "",
+        chipRow(DECISIONS, e.decision, "dec", function(v){ e.decision=v; save(); })));
+      var why = document.createElement("div"); why.className = "why";
+      why.appendChild(field("Why? — the part that matters most", "what criterion or evidence decided it?",
+        textInput("textarea", e.why, "I rejected one claim because the source it cited doesn't exist; I kept the second counterargument because it matched our rubric's feasibility criterion.", false, function(v){ e.why=v; })));
+      card.appendChild(why);
+      card.appendChild(field("How I checked it", "the verification method, matched to the stakes: source opened, number recomputed, code tested…",
+        textInput("input", e.verify, "e.g., opened the cited study — it doesn't support the claim", false, function(v){ e.verify=v; })));
+      card.appendChild(field("What changed in my work?", "",
+        textInput("textarea", e.change, "Rewrote the recommendation to address cost; added a citation check.", false, function(v){ e.change=v; })));
+      entriesEl.appendChild(card);
+    });
+    save();
+  }
+
+  function exportText(){
+    var lines = [];
+    lines.push("AI DECISION LOG — " + (state.assign || "(assignment)"));
+    lines.push("P-FACET E-phase evidence · yupei2023.github.io/p-facet");
+    lines.push("");
+    state.entries.forEach(function(e, i){
+      lines.push("Consultation " + (i + 1));
+      lines.push("  I asked" + (e.tool ? " (" + e.tool + ")" : "") + ": " + (e.ask || "—"));
+      lines.push("  Intended role: " + (e.role || "—"));
+      lines.push("  My decision: " + (e.decision || "—"));
+      lines.push("  Why: " + (e.why || "—"));
+      lines.push("  How I checked it: " + (e.verify || "—"));
+      lines.push("  What changed: " + (e.change || "—"));
+      lines.push("");
+    });
+    return lines.join("\n");
+  }
+
+  document.getElementById("add").addEventListener("click", function(){
+    state.entries.push(blank()); save(); render();
+    var cards = entriesEl.querySelectorAll(".entry");
+    var last = cards[cards.length - 1];
+    if(last){ last.scrollIntoView({behavior:"smooth", block:"center"}); var f = last.querySelector("textarea"); if(f) f.focus(); }
+  });
+  document.getElementById("copy").addEventListener("click", function(){
+    var t = exportText();
+    function done(){ var c = document.getElementById("copied"); c.style.opacity = 1; setTimeout(function(){ c.style.opacity = 0; }, 1800); }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(t).then(done, function(){ fallback(t); done(); });
+    } else { fallback(t); done(); }
+    function fallback(text){
+      var ta = document.createElement("textarea");
+      ta.value = text; document.body.appendChild(ta); ta.select();
+      try{ document.execCommand("copy"); }catch(e){}
+      document.body.removeChild(ta);
+    }
+  });
+  document.getElementById("printBtn").addEventListener("click", function(){ window.print(); });
+  document.getElementById("clear").addEventListener("click", function(){
+    if(confirm("Clear the whole log? This cannot be undone.")){
+      state = {assign:"", entries:[blank()]};
+      assignEl.value = ""; save(); render();
+    }
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>

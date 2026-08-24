@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>P-FACET Policy Pack</title>
+<style>
+  :root{
+    --bg:#F7F5F1; --surface:#FFFFFF; --ink:#26241E; --muted:#6B6659;
+    --line:#E2DDD2; --learner:#2E6B4E; --learner-soft:#E4EEE8;
+    --ai:#4A6FA5; --ai-soft:#E6ECF5; --anchor:#C2892D; --anchor-soft:#F5EAD6;
+    --risk:#A84B3A; --risk-soft:#F3E2DD; --chip:#EFECE4;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#211F1B; --surface:#2A2823; --ink:#EAE6DC; --muted:#A39D8E;
+      --line:#3B382F; --learner:#6FB392; --learner-soft:#26352D;
+      --ai:#8AA7D6; --ai-soft:#28303E; --anchor:#D9A855; --anchor-soft:#3A3122;
+      --risk:#D08A79; --risk-soft:#3C2B26; --chip:#333028;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#211F1B; --surface:#2A2823; --ink:#EAE6DC; --muted:#A39D8E;
+    --line:#3B382F; --learner:#6FB392; --learner-soft:#26352D;
+    --ai:#8AA7D6; --ai-soft:#28303E; --anchor:#D9A855; --anchor-soft:#3A3122;
+    --risk:#D08A79; --risk-soft:#3C2B26; --chip:#333028;
+  }
+  *{box-sizing:border-box}
+  body{margin:0; background:var(--bg); color:var(--ink); line-height:1.6; font-size:16.5px;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+  main{max-width:760px; margin:0 auto; padding:0 20px 80px}
+  header{padding:60px 0 6px}
+  .kicker{font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:14px}
+  h1{font-family:"Iowan Old Style",Palatino,"Palatino Linotype","Book Antiqua",Georgia,serif;
+     font-size:clamp(30px,5.5vw,44px); line-height:1.1; margin:0 0 14px; font-weight:600; text-wrap:balance}
+  h1 em{color:var(--anchor); font-style:normal}
+  .lede{font-size:17.5px; max-width:58ch}
+  .lede b.g{color:var(--learner)}
+  .block{background:var(--surface); border:1px solid var(--line); border-radius:11px; margin-top:22px; overflow:hidden}
+  .block .bar{display:flex; align-items:center; gap:10px; padding:12px 18px; border-bottom:1px solid var(--line)}
+  .block .bar h2{margin:0; font-size:15.5px; font-weight:650; flex:1}
+  .block .bar .use{font-size:12.5px; color:var(--muted)}
+  .block .bar button{border:1px solid var(--line); background:var(--chip); color:var(--ink); border-radius:999px;
+    padding:5px 14px; font-size:13px; font-weight:650; cursor:pointer}
+  .block .bar button.copied{background:var(--learner-soft); color:var(--learner); border-color:var(--learner)}
+  .block .txt{padding:16px 20px; font-size:14.5px; white-space:pre-wrap}
+  button:focus-visible, a:focus-visible{outline:2px solid var(--ai); outline-offset:2px}
+  .note{font-size:14px; color:var(--muted); margin-top:18px; max-width:60ch}
+  a{color:var(--ai)}
+  footer{margin-top:64px; padding-top:18px; border-top:1px solid var(--line); font-size:13.5px; color:var(--muted)}
+  footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="kicker">The P-FACET Model · for instructors</div>
+    <h1>AI Policy <em>Pack</em></h1>
+    <p class="lede">Five syllabus-ready blocks. Copy what you need, adapt the bracketed parts, and your course
+      has an AI policy built on <b class="g">cognitive responsibility</b> rather than tool lists. Written for
+      students to read — because a policy only works if they do.</p>
+  </header>
+
+  <div class="block">
+    <div class="bar"><h2>1 · The principle &amp; the routine</h2><span class="use">the policy's opening</span><button data-copy>Copy</button></div>
+    <div class="txt">AI Use in This Course
+
+This course encourages you to learn WITH generative AI — and the principle is simple: AI assists; YOU think. We follow the P-FACET routine (yupei2023.github.io/p-facet):
+
+P — Problem: anchor your work in the real problem and why it matters.
+F — Frame: decide what good looks like — your goals, criteria, constraints.
+A — Analogize &amp; Attempt: connect what you know and try it yourself first. That draft is yours.
+C — Consult &amp; Construct: only now bring in AI — for critique, alternatives, questions, or hints — while you keep building. Never to write for you.
+E — Evaluate &amp; Explain: check what it gave you; decide what you keep, what you drop, and why.
+T — Transform &amp; Transfer: make the work yours, and carry the routine to your next task.
+
+All direct AI consultation passes through one gateway: C. You may return to it from any phase when a specific need emerges — the judgment always comes back to you.</div>
+  </div>
+
+  <div class="block">
+    <div class="bar"><h2>2 · The three designations</h2><span class="use">label every assignment with one</span><button data-copy>Copy</button></div>
+    <div class="txt">Every assignment carries one of three AI designations. If an assignment is unlabeled, ask — no violation will ever be inferred from a missing label.
+
+🚫 INDEPENDENT — No AI anywhere. These tasks are the evidence of your own thinking (e.g., self-assessments, final reflections).
+
+✅ STANDARD (default) — Follow P-FACET: your own attempt first, bounded AI consultation only, and an AI Decision Log (or Consult Note) submitted with the work.
+
+🔬 EXTENDED — Designated tasks deliberately widen the C phase (for example, a full AI draft produced for you to examine). Your evaluation (E) and transformation (T) must be fully shown.</div>
+  </div>
+
+  <div class="block">
+    <div class="bar"><h2>3 · The Consult Note / Decision Log</h2><span class="use">the evidence requirement</span><button data-copy>Copy</button></div>
+    <div class="txt">Whenever you consult AI on an assignment, close your submission with a brief AI Consult Note (2–3 sentences) or an attached Decision Log: which tool you used, what you asked it for, and what you accepted, revised, or rejected — and why. This is the written evidence of your judgment (the E phase), and it is graded on the quality of your reasoning, not on which decisions you made. A well-explained "accept" is worth more than a thoughtless "reject."
+
+A free logging tool: yupei2023.github.io/p-facet/decision-log</div>
+  </div>
+
+  <div class="block">
+    <div class="bar"><h2>4 · Three hard rules</h2><span class="use">the non-negotiables</span><button data-copy>Copy</button></div>
+    <div class="txt">Three rules have no exceptions:
+
+1. Before AI performs an assignment's target cognitive work, a representation of your own thinking must exist — a draft, a sketch, a prediction, a plan, or (in Extended tasks) your criteria for judging the AI's output. Submitting AI's work in place of that thinking is academic dishonesty — see the integrity policy below.
+
+2. AI can be confidently wrong. Verify in proportion to consequence: check explanations against course materials, open and read any source AI cites, recompute calculations, test code, and triangulate important factual claims across independent sources.
+
+3. Never enter your own or anyone else's personal information into an AI tool, and follow each tool's terms of service [adjust for your institution's approved-tool list and age/consent requirements].</div>
+  </div>
+
+  <div class="block">
+    <div class="bar"><h2>5 · Academic integrity clause</h2><span class="use">for the integrity section</span><button data-copy>Copy</button></div>
+    <div class="txt">Cheating includes knowingly submitting work created by someone else — or by AI — as your own: copying shared answers, letting AI perform the cognitive work an assignment targets in your place, providing your answers for others to copy, colluding to submit matching work, or using AI on tasks designated Independent. Plagiarism includes presenting others' original ideas as your own, whether by omitting citation, citing incorrectly, or paraphrasing that changes only a few words.
+
+Extensive AI use is not automatically a violation: what matters is whether the cognitive work this course targets was performed and shown by you. That is what your process evidence — frames, first attempts, decision logs — exists to demonstrate. Sanctions and appeals follow the institution's academic-integrity policy and due process. [Link your institution's policy here.]</div>
+  </div>
+
+  <p class="note">Adapting for your context: pair block 2 with per-assignment labels in your LMS; if your students
+    are minors, add guardian-consent language to block 4. For assignment-level design (roles, criteria,
+    evidence), use the <a href="../assignment-kit/">Assignment Kit</a>; for facilitation language, see
+    <a href="../teach/">Teaching with P-FACET</a>.</p>
+
+  <footer>
+    <div>The P-FACET Model © Yupei Duan &amp; Danielle Oprean, University of Missouri</div>
+    <div><a href="../">Model home</a> · <a href="../teach/">Teach</a> · <a href="../faq/">FAQ</a></div>
+  </footer>
+</main>
+
+<script>
+document.querySelectorAll("[data-copy]").forEach(function(btn){
+  btn.addEventListener("click", function(){
+    var txt = btn.closest(".block").querySelector(".txt").textContent;
+    function done(){
+      btn.textContent = "Copied ✓"; btn.classList.add("copied");
+      setTimeout(function(){ btn.textContent = "Copy"; btn.classList.remove("copied"); }, 1800);
+    }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(txt).then(done, function(){ fb(); done(); });
+    } else { fb(); done(); }
+    function fb(){
+      var ta = document.createElement("textarea");
+      ta.value = txt; document.body.appendChild(ta); ta.select();
+      try{ document.execCommand("copy"); }catch(e){}
+      document.body.removeChild(ta);
+    }
+  });
+});
+</script>
+</body>
+</html>

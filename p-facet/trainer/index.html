@@ -158,7 +158,7 @@
 <main>
 <div class="topbar"><a class="language-switch" href="zh/" lang="zh-Hans">中文</a></div>
 <header class="hero">
-  <div class="kicker">An 8-minute interactive tutorial</div>
+  <div class="kicker">An 8-minute tour — plan ~15 with the practice</div>
   <h1>When AI helps you, <span class="q">who is doing the thinking?</span></h1>
   <p class="lede">AI can draft, solve, analyze, and design. Used one way, it replaces your thinking; used another, it sharpens it.
   <b class="learner">P-FACET</b> is a six-phase routine for keeping the thinking that matters <b class="learner">yours</b> while still getting real help from <b class="ai">AI</b>. This page teaches you the routine by making you use it.</p>
@@ -202,11 +202,11 @@
 <!-- ============ 2. offloading sorter ============ -->
 <section>
   <div class="eyebrow">Part 2 · The core skill</div>
-  <h2>Spot the four types of offloading</h2>
-  <p class="note">Handing work to a tool is called <em>cognitive offloading</em> — and it isn't automatically bad. Notes offload memory; calculators offload computation. What matters is <em>which</em> work you hand over. Classify each scenario: <b>Mechanical</b> (peripheral help), <b>Supportive</b> (thinking support), <b>Substitutive</b> (risky replacement), or <b>Regulated</b> (you govern the delegation and explain your decisions).</p>
+  <h2>Two questions decide every case</h2>
+  <p class="note">Handing work to a tool is called <em>cognitive offloading</em> — and it isn't automatically bad. Notes offload memory; calculators offload computation. Every scenario below is judged by two questions. <b>What work was delegated?</b> — <b>Mechanical</b> (peripheral), <b>Supportive</b> (thinking support), or <b>Substitutive</b> (the task's central work). <b>And how was it governed?</b> — <b>regulated</b> (a purpose, a boundary, an evaluated result the learner stays responsible for) or <b>unregulated</b>. Regulation is your control over the delegation — not a fourth kind of work.</p>
   <div id="sorter"></div>
   <div class="score" id="scoreline"></div>
-  <div class="rule-card"><b>The rule that decides every case:</b> judge the AI's action against the <em>target cognitive work</em>. The same AI action can be mechanical in one task and substitutive in another — it depends on what the task was meant to teach <em>you</em>.</div>
+  <div class="rule-card"><b>The two questions that decide every case:</b> first, judge the AI's action against the <em>target cognitive work</em> — the same action can be mechanical in one task and substitutive in another, depending on what the task was meant to teach <em>you</em>. Then judge the governance: did the learner set a purpose and a boundary, evaluate the result, and keep responsibility for the decision? Regulation is your control over the delegation — not a fourth kind of work.</div>
 </section>
 
 <!-- ============ 3. the wheel ============ -->
@@ -255,7 +255,7 @@
           <text x="310" y="146" text-anchor="middle" font-size="20" font-weight="700" fill="var(--learner)" font-family="Georgia,serif">A</text>
           <text x="310" y="164" text-anchor="middle" font-size="10" fill="var(--learner)">Attempt</text>
         </g>
-        <g id="nodeC" class="node" tabindex="0" role="button" aria-label="Consult and Construct — the only phase with direct AI consultation">
+        <g id="nodeC" class="node" tabindex="0" role="button" aria-label="Consult and Construct — the consultation gateway: all direct AI contact passes through here">
           <circle cx="264" cy="292" r="40" fill="var(--ai-soft)" stroke="var(--ai)" stroke-width="2.5"/>
           <text x="264" y="288" text-anchor="middle" font-size="20" font-weight="700" fill="var(--ai)" font-family="Georgia,serif">C</text>
           <text x="264" y="306" text-anchor="middle" font-size="10" fill="var(--ai)">Consult</text>
@@ -326,6 +326,7 @@
 
 <footer>
   The P-FACET Model © Yupei Duan &amp; Danielle Oprean, University of Missouri. The final question belongs to every learner: <em>who did the thinking?</em>
+  <div style="margin-top:10px"><b>Keep going:</b> <a href="../request-builder/" style="color:var(--ai)">Request Builder</a> · <a href="../decision-log/" style="color:var(--ai)">Decision Log</a> · <a href="../cases/" style="color:var(--ai)">Case Library</a> · <a href="../" style="color:var(--ai)">Model home</a></div>
 </footer>
 </main>
 
@@ -341,20 +342,20 @@ document.querySelectorAll('.reveal-btn').forEach(function(b){
 });
 
 /* ---------- sorter quiz ---------- */
-var TYPES = ['Mechanical','Supportive','Substitutive','Regulated'];
+var TYPES = ['Mechanical + regulated','Supportive + regulated','Supportive + unregulated','Substitutive + unregulated','Substitutive + regulated (by design)'];
 var SCEN = [
-  {s:'AI reformats your reference list into APA style. Formatting is not what the assignment teaches.',
-   a:0, why:'Peripheral help — the tool handles a routine demand so your attention stays on the target work. (If the course taught citation style, this same act would be substitutive.)'},
-  {s:'You paste the assignment and ask AI for a finished essay with sources.',
-   a:2, why:'The central work — framing, arguing, judging — happens inside the AI. Fast output, invisible learning.'},
-  {s:'You ask AI to critique the logic of your draft against the rubric, without rewriting it.',
-   a:1, why:'Thinking support: AI challenges work you generated, and the representation stays yours.'},
+  {s:'AI reformats your reference list into APA style, and you skim the result against the style guide before submitting. Formatting is not what the assignment teaches.',
+   a:0, why:'The delegation is peripheral AND governed: chosen for a reason, checked, owned. (If the course taught citation style, the same act would become substitutive.)'},
+  {s:'You paste the assignment and ask AI for a finished essay with sources, then submit it lightly edited.',
+   a:3, why:'The central work — framing, arguing, judging — happened inside the AI, and no evaluation trail exists. Both dimensions fail at once.'},
+  {s:'You ask AI to critique the logic of your draft against the rubric — then adopt every suggested change without checking a single one.',
+   a:2, why:'The delegation was healthy — critique of your own draft is classic supportive use. The governance failed: accepting everything unexamined is not evaluating. The two dimensions can come apart, and this is what it looks like.'},
   {s:'After drafting your argument, you ask AI for two counterarguments, reject one for lacking evidence, revise a claim, and note why.',
-   a:3, why:'Regulated: you decided what to delegate, evaluated the output against evidence, and can explain every decision. This is the goal state.'},
-  {s:'Stuck on a graph in your lab report, you ask AI what the data means before naming a pattern yourself.',
-   a:2, why:'Interpreting the data is the target cognitive work of the task — delegating it before an attempt replaces the learning. Name the pattern first, then ask AI to challenge it.'},
-  {s:'AI flags a syntax error in your code while the algorithm design stays entirely yours.',
-   a:0, why:'Peripheral help — unless the syntax itself is what the course is teaching. Always judge against the target work.'}
+   a:1, why:'Supportive delegation, fully governed: you chose what to delegate, evaluated against evidence, and can explain every decision. This is the goal state.'},
+  {s:'Stuck on a graph in your lab report, you ask AI what the data means before naming a pattern yourself — and paste its reading into your report.',
+   a:3, why:'Interpreting the data is the target cognitive work, delegated before any representation of your own existed — and adopted unexamined. Name the pattern first, then ask AI to challenge it.'},
+  {s:'Your instructor assigns an Extended task: AI generates a complete lesson plan, and you evaluate it against course criteria, documenting what fails and why.',
+   a:4, why:'The delegated work is central — deliberately. The task’s target thinking is the evaluation itself, and it is fully governed. What makes AI use educational is regulation, not the amount of AI.'}
 ];
 var answered = 0, correct = 0;
 var zone = document.getElementById('sorter');
@@ -401,7 +402,7 @@ var PHASES = {
      ask:'“What did I try or create before consulting AI?”'},
   C:{cls:'b', color:'var(--ai)', name:'Consult and Construct', label:'The only direct AI contact',
      you:['Identify one specific need in your work','Make a bounded AI request','Ask for alternatives, critique, explanation, or technical help'],
-     ai:'AI acts as consultant, critic, or technical helper — never as the author. A good request targets a gap in work you’ve already made; full-task delegation is the move to refuse.',
+     ai:'AI acts as consultant, critic, or technical helper — not as the author (unless an Extended task deliberately widens this for you to evaluate). A good request targets a gap in work you’ve already made, and C is a gateway you can return to whenever a new gap appears.',
      ev:'Your prompt names a specific gap in your own work.',
      ask:'“What specific contribution do I need from AI right now?”'},
   E:{cls:'g', color:'var(--learner)', name:'Evaluate and Explain', label:'Learner-led',
@@ -438,6 +439,8 @@ showPhase('P');
 
 /* ---------- stepper ---------- */
 var STEPS = [
+  {ph:'P · Problem', q:'“Campus food waste raises costs and undermines our sustainability goals. My task: recommend one feasible change dining services could actually adopt.”',
+   n:'The anchor is learner-set — a real problem, a real audience, a reason to care. Every later phase answers to it, and the learner may sharpen it as the cycle turns.'},
   {ph:'F · Frame', q:'“Our goal is a feasible, evidence-based recommendation for reducing campus food waste.”',
    n:'Goal, criteria (feasible, evidence-based), and scope set by the student — before any AI.'},
   {ph:'A · Attempt', q:'The student identifies two causes and drafts an initial recommendation from course evidence.',

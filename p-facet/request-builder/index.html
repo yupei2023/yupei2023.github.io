@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>P-FACET Request Builder</title>
+<style>
+  :root{
+    --bg:#F7F5F1; --surface:#FFFFFF; --ink:#26241E; --muted:#6B6659;
+    --line:#E2DDD2; --learner:#2E6B4E; --learner-soft:#E4EEE8;
+    --ai:#4A6FA5; --ai-soft:#E6ECF5; --anchor:#C2892D; --anchor-soft:#F5EAD6;
+    --risk:#A84B3A; --risk-soft:#F3E2DD; --chip:#EFECE4;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#211F1B; --surface:#2A2823; --ink:#EAE6DC; --muted:#A39D8E;
+      --line:#3B382F; --learner:#6FB392; --learner-soft:#26352D;
+      --ai:#8AA7D6; --ai-soft:#28303E; --anchor:#D9A855; --anchor-soft:#3A3122;
+      --risk:#D08A79; --risk-soft:#3C2B26; --chip:#333028;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#211F1B; --surface:#2A2823; --ink:#EAE6DC; --muted:#A39D8E;
+    --line:#3B382F; --learner:#6FB392; --learner-soft:#26352D;
+    --ai:#8AA7D6; --ai-soft:#28303E; --anchor:#D9A855; --anchor-soft:#3A3122;
+    --risk:#D08A79; --risk-soft:#3C2B26; --chip:#333028;
+  }
+  *{box-sizing:border-box}
+  body{margin:0; background:var(--bg); color:var(--ink); line-height:1.6; font-size:16.5px;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+  main{max-width:760px; margin:0 auto; padding:0 20px 80px}
+  header{padding:60px 0 10px}
+  .kicker{font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:14px}
+  h1{font-family:"Iowan Old Style",Palatino,"Palatino Linotype","Book Antiqua",Georgia,serif;
+     font-size:clamp(30px,5.5vw,44px); line-height:1.1; margin:0 0 14px; font-weight:600; text-wrap:balance}
+  h1 em{color:var(--ai); font-style:normal}
+  .lede{font-size:17.5px; max-width:58ch}
+  .lede b.b{color:var(--ai)} .lede b.g{color:var(--learner)}
+  .privacy{font-size:13.5px; color:var(--muted); margin-top:10px}
+  .step{background:var(--surface); border:1px solid var(--line); border-left:5px solid var(--learner);
+    border-radius:11px; padding:18px 22px 20px; margin-top:16px}
+  .step.blue{border-left-color:var(--ai)}
+  .step .head{display:flex; gap:10px; align-items:baseline; margin-bottom:4px}
+  .step .n{font-family:"Iowan Old Style",Palatino,Georgia,serif; font-weight:700; font-size:20px; color:var(--learner)}
+  .step.blue .n{color:var(--ai)}
+  .step h3{margin:0; font-size:17px; font-weight:650}
+  .step .why{font-size:14px; color:var(--muted); margin:2px 0 8px}
+  textarea, input[type=text]{width:100%; border:1px solid var(--line); border-radius:9px; background:var(--surface);
+    color:var(--ink); padding:10px 12px; font-size:15.5px; font-family:inherit}
+  textarea{min-height:60px; resize:vertical}
+  textarea:focus-visible, input:focus-visible, button:focus-visible, a:focus-visible{
+    outline:2px solid var(--ai); outline-offset:2px}
+  .gate{display:none; margin-top:10px; background:var(--risk-soft); border:1px solid var(--line);
+    border-radius:9px; padding:10px 14px; font-size:14px}
+  .gate b{color:var(--risk)}
+  .chips{display:flex; flex-wrap:wrap; gap:7px; margin-top:4px}
+  .chips button{border:1px solid var(--line); background:var(--chip); color:var(--ink); border-radius:999px;
+    padding:7px 14px; font-size:13.5px; cursor:pointer}
+  .chips button[aria-pressed="true"]{background:var(--ai-soft); border-color:var(--ai); color:var(--ai); font-weight:650}
+  .roleNote{font-size:13.5px; color:var(--muted); margin-top:8px}
+  .out{margin-top:28px}
+  .out h2{font-family:"Iowan Old Style",Palatino,Georgia,serif; font-size:22px; margin:0 0 8px}
+  .preview{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:14px;
+    background:var(--ai-soft); border:1px solid var(--line); border-radius:11px; padding:16px 18px;
+    white-space:pre-wrap; min-height:120px}
+  .actions{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
+  .actions button{border-radius:9px; padding:11px 18px; font-size:15px; font-weight:650; cursor:pointer; border:1px solid var(--line)}
+  #copy{background:var(--ai); border-color:var(--ai); color:#fff}
+  #copied{color:var(--learner); font-size:14px; align-self:center; opacity:0; transition:opacity .3s}
+  @media (prefers-reduced-motion: reduce){ #copied{transition:none} }
+  .after{margin-top:16px; background:var(--learner-soft); border:1px solid var(--line); border-radius:9px;
+    padding:12px 16px; font-size:14.5px}
+  .after b{color:var(--learner)}
+  footer{margin-top:64px; padding-top:18px; border-top:1px solid var(--line); font-size:13.5px; color:var(--muted)}
+  footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="kicker">The P-FACET Model · a tool for the C phase</div>
+    <h1>Bounded <em>Request</em> Builder</h1>
+    <p class="lede">The difference between AI that replaces your thinking and AI that sharpens it is
+      mostly written <b class="b">in the request</b>. Answer three questions about
+      <b class="g">your own work first</b> — this page assembles the bounded prompt.</p>
+    <p class="privacy">Everything stays in this browser — nothing is uploaded. Your draft saves automatically.</p>
+  </header>
+
+  <div class="step">
+    <div class="head"><span class="n">1</span><h3>What have you already attempted?</h3></div>
+    <p class="why">Your draft, plan, sketch, or prediction — in a sentence, or pasted in full. In an Extended task, your criteria for judging the AI's draft count too. This is your A phase.</p>
+    <textarea id="attempt" aria-label="What have you already attempted?" placeholder="e.g., My draft recommendation argues for trayless dining, based on the Kim study and our cafeteria's numbers…"></textarea>
+    <div class="gate" id="gate"><b>Not yet?</b> Then AI isn't the next step — the attempt is. Even a sketch,
+      a prediction, or a list of what you know counts. Try first; this page will be here.</div>
+  </div>
+
+  <div class="step">
+    <div class="head"><span class="n">2</span><h3>What exactly do you need?</h3></div>
+    <p class="why">Name the specific gap — the narrower, the better the help.</p>
+    <textarea id="gap" aria-label="What exactly do you need?" placeholder="e.g., I can't tell if my cost argument would survive pushback from an administrator."></textarea>
+  </div>
+
+  <div class="step blue">
+    <div class="head"><span class="n">3</span><h3>What role should AI play?</h3></div>
+    <p class="why">One job. In Standard tasks, AI consults — it never authors. (An Extended task may deliberately widen this; follow your assignment's designation.)</p>
+    <div class="chips" id="roles" role="group" aria-label="AI role"></div>
+    <p class="roleNote" id="roleNote"></p>
+    <label for="boundary" style="display:block; font-size:13px; font-weight:650; margin:14px 0 5px">The boundary line <span style="font-weight:400; color:var(--muted)">(edit if you like — but keep one)</span></label>
+    <input type="text" id="boundary">
+  </div>
+
+  <div class="out">
+    <h2>Your bounded request</h2>
+    <div class="preview" id="preview"></div>
+    <div class="actions">
+      <button id="copy" type="button">Copy request</button>
+      <span id="copied" role="status">Copied ✓</span>
+    </div>
+    <div class="after"><b>After the reply:</b> judge it — what do you keep, what do you drop, and why?
+      Record it in your <a href="../decision-log/">Decision Log</a>. That's your E phase.</div>
+  </div>
+
+  <footer>
+    <div>The P-FACET Model © Yupei Duan &amp; Danielle Oprean, University of Missouri</div>
+    <div><a href="../">Model home</a> · <a href="../quick-start/">Quick Start</a> · <a href="../trainer/">Trainer</a> · <a href="../decision-log/">Decision Log</a> · <a href="../cases/">Case Library</a></div>
+  </footer>
+</main>
+
+<script>
+(function(){
+  var KEY = "pfacet-request-builder-v1";
+  var ROLES = {
+    "Critique my work": {
+      note: "AI points at weaknesses; you decide which are real.",
+      line: function(gap){ return "Critique my attempt" + (gap ? ", especially this: " + gap : "") + ". Point out the weakest parts and explain why they are weak."; },
+      boundary: "Do not rewrite or complete my work."
+    },
+    "Offer alternatives": {
+      note: "Options to compare against your own — sketches, not products.",
+      line: function(gap){ return "Offer two or three alternative approaches" + (gap ? " to this: " + gap : "") + " — as brief sketches I can compare against my own, not finished work."; },
+      boundary: "Do not produce a finished version."
+    },
+    "Ask me questions": {
+      note: "The most learner-owned consult: AI probes, you answer.",
+      line: function(gap){ return "Ask me the questions I should be able to answer about my attempt" + (gap ? ", focusing on: " + gap : "") + ". Don't answer them for me."; },
+      boundary: "Questions only — no answers, no rewriting."
+    },
+    "Explain a concept": {
+      note: "Understanding transfers; solutions don't.",
+      line: function(gap){ return "Explain " + (gap || "the concept I name below") + " so I can proceed on my own — a concept explanation with an example from a DIFFERENT problem than mine."; },
+      boundary: "Do not apply it to my task for me."
+    },
+    "Give one hint": {
+      note: "For when you're stuck at a specific step.",
+      line: function(gap){ return "I'm stuck here: " + (gap || "(name the exact sticking point)") + ". Give me ONE hint about the next step."; },
+      boundary: "One hint only — do not solve it."
+    },
+    "Technical help": {
+      note: "Fine when the blocker is peripheral to what you're learning.",
+      line: function(gap){ return "Help me fix this technical blocker, which is peripheral to what I'm practicing: " + (gap || "(describe it)") + "."; },
+      boundary: "Help with the tool, not with my actual task."
+    }
+  };
+  var state = load();
+  function load(){
+    try{ var s = JSON.parse(localStorage.getItem(KEY)); if(s) return s; }catch(e){}
+    return {attempt:"", gap:"", role:"Critique my work", boundary:ROLES["Critique my work"].boundary, boundaryTouched:false};
+  }
+  function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
+
+  var attemptEl = document.getElementById("attempt");
+  var gapEl = document.getElementById("gap");
+  var boundaryEl = document.getElementById("boundary");
+  var gateEl = document.getElementById("gate");
+  var previewEl = document.getElementById("preview");
+  var rolesEl = document.getElementById("roles");
+  var roleNoteEl = document.getElementById("roleNote");
+
+  attemptEl.value = state.attempt; gapEl.value = state.gap; boundaryEl.value = state.boundary;
+
+  function renderRoles(){
+    rolesEl.textContent = "";
+    Object.keys(ROLES).forEach(function(name){
+      var b = document.createElement("button");
+      b.type = "button"; b.textContent = name;
+      b.setAttribute("aria-pressed", String(state.role === name));
+      b.addEventListener("click", function(){
+        state.role = name;
+        if(!state.boundaryTouched){ state.boundary = ROLES[name].boundary; boundaryEl.value = state.boundary; }
+        save(); renderRoles(); renderPreview();
+      });
+      rolesEl.appendChild(b);
+    });
+    roleNoteEl.textContent = ROLES[state.role].note;
+  }
+  function renderPreview(){
+    var r = ROLES[state.role];
+    var parts = [];
+    var attempt = state.attempt.trim();
+    var gap = state.gap.trim();
+    gateEl.style.display = attempt ? "none" : "block";
+    if(attempt) parts.push("Here is my attempt:\n" + attempt);
+    else parts.push("[Paste your attempt here — AI comes after your try.]");
+    parts.push(r.line(gap));
+    if(state.boundary.trim()) parts.push(state.boundary.trim());
+    previewEl.textContent = parts.join("\n\n");
+  }
+  attemptEl.addEventListener("input", function(){ state.attempt = attemptEl.value; save(); renderPreview(); });
+  gapEl.addEventListener("input", function(){ state.gap = gapEl.value; save(); renderPreview(); });
+  boundaryEl.addEventListener("input", function(){ state.boundary = boundaryEl.value; state.boundaryTouched = true; save(); renderPreview(); });
+
+  document.getElementById("copy").addEventListener("click", function(){
+    var t = previewEl.textContent;
+    function done(){ var c = document.getElementById("copied"); c.style.opacity = 1; setTimeout(function(){ c.style.opacity = 0; }, 1800); }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(t).then(done, function(){ fb(t); done(); });
+    } else { fb(t); done(); }
+    function fb(text){
+      var ta = document.createElement("textarea");
+      ta.value = text; document.body.appendChild(ta); ta.select();
+      try{ document.execCommand("copy"); }catch(e){}
+      document.body.removeChild(ta);
+    }
+  });
+
+  renderRoles(); renderPreview();
+})();
+</script>
+</body>
+</html>

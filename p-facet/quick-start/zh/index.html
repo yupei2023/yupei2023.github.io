@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>P-FACET 快速指南</title>
+<title>P-FACET 快速上手</title>
 <style>
   :root{
     --bg:#F7F5F1; --surface:#FFFFFF; --ink:#26241E; --muted:#6B6659;
@@ -27,21 +27,21 @@
   }
   *{box-sizing:border-box}
   body{margin:0; background:var(--bg); color:var(--ink); line-height:1.6; font-size:16.5px;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif}
   main{max-width:720px; margin:0 auto; padding:0 20px 80px}
   .topbar{display:flex; justify-content:flex-end; padding-top:20px}
   .language-switch{padding:7px 13px; border:1px solid var(--line); border-radius:999px; color:var(--ink); font-size:13px; font-weight:650; text-decoration:none}
   .language-switch:hover{border-color:var(--muted)}
   header{padding:60px 0 26px}
   .kicker{font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:14px}
-  h1{font-family:"Iowan Old Style",Palatino,"Palatino Linotype","Book Antiqua",Georgia,serif;
+  h1{font-family:"Iowan Old Style",Palatino,"Palatino Linotype","Book Antiqua",Georgia,"Songti SC","STSong",serif;
      font-size:clamp(30px,5.5vw,44px); line-height:1.1; margin:0 0 14px; font-weight:600; text-wrap:balance}
   h1 em{color:var(--anchor); font-style:normal}
   .lede{font-size:17.5px; max-width:56ch}
   .lede b.g{color:var(--learner)} .lede b.b{color:var(--ai)}
   /* strip */
   .strip{display:flex; gap:5px; margin:26px 0 0}
-  .strip span{flex:1; text-align:center; font-family:"Iowan Old Style",Palatino,Georgia,serif; font-weight:700;
+  .strip span{flex:1; text-align:center; font-family:"Iowan Old Style",Palatino,Georgia,"Songti SC","STSong",serif; font-weight:700;
     font-size:17px; padding:9px 0; border-radius:7px; background:var(--learner-soft); color:var(--learner)}
   .strip span.p{background:var(--anchor-soft); color:var(--anchor)}
   .strip span.c{background:var(--ai-soft); color:var(--ai)}
@@ -50,7 +50,7 @@
         border-left:5px solid var(--learner)}
   .step.p{border-left-color:var(--anchor)} .step.c{border-left-color:var(--ai)}
   .step .head{display:flex; align-items:baseline; gap:12px; margin-bottom:8px}
-  .step .lt{font-family:"Iowan Old Style",Palatino,Georgia,serif; font-size:26px; font-weight:700; color:var(--learner)}
+  .step .lt{font-family:"Iowan Old Style",Palatino,Georgia,"Songti SC","STSong",serif; font-size:26px; font-weight:700; color:var(--learner)}
   .step.p .lt{color:var(--anchor)} .step.c .lt{color:var(--ai)}
   .step h2{margin:0; font-size:18.5px; font-weight:650}
   .step .who{margin-left:auto; font-size:11px; letter-spacing:.1em; text-transform:uppercase; font-weight:700; color:var(--learner); white-space:nowrap}
@@ -58,7 +58,7 @@
   .step .do{margin:0 0 10px; font-size:15.5px}
   .airule{font-size:14px; border-left:3px solid var(--ai); background:var(--ai-soft); padding:8px 13px; border-radius:0 7px 7px 0; margin:10px 0}
   .airule.none{border-left-color:var(--risk); background:var(--risk-soft)}
-  .ask{font-family:"Iowan Old Style",Palatino,Georgia,serif; font-style:italic; color:var(--anchor); font-size:15.5px; margin-top:10px}
+  .ask{font-family:"Iowan Old Style",Palatino,Georgia,"Songti SC","STSong",serif; font-style:italic; color:var(--anchor); font-size:15.5px; margin-top:10px}
   .starters{margin-top:12px}
   .starters .sl{font-size:11.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); font-weight:700; margin-bottom:6px}
   .starter{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:12.8px; line-height:1.5;
@@ -66,18 +66,19 @@
   /* checklist */
   section.run{margin-top:52px}
   .eyebrow{font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--anchor); font-weight:700; margin-bottom:8px}
-  h3.rt{font-family:"Iowan Old Style",Palatino,Georgia,serif; font-size:24px; margin:0 0 8px; font-weight:600}
+  h3.rt{font-family:"Iowan Old Style",Palatino,Georgia,"Songti SC","STSong",serif; font-size:24px; margin:0 0 8px; font-weight:600}
   .note{color:var(--muted); max-width:60ch; margin:0 0 18px; font-size:15px}
   .check{background:var(--surface); border:1px solid var(--line); border-radius:11px; padding:20px 22px}
   .check label{display:flex; gap:12px; align-items:flex-start; padding:10px 4px; border-bottom:1px solid var(--line); cursor:pointer; font-size:15px}
   .check label:last-of-type{border-bottom:none}
   .check input{margin-top:4px; width:17px; height:17px; accent-color:var(--learner); flex-shrink:0; cursor:pointer}
-  .check b{font-family:"Iowan Old Style",Palatino,Georgia,serif; font-size:16.5px; color:var(--learner)}
+  .check b{font-family:"Iowan Old Style",Palatino,Georgia,"Songti SC","STSong",serif; font-size:16.5px; color:var(--learner)}
   .check label.lp b{color:var(--anchor)} .check label.lc b{color:var(--ai)}
   .done-msg{display:none; margin-top:14px; padding:13px 16px; border-radius:9px; background:var(--learner-soft); color:var(--learner); font-size:15px; font-weight:600}
   .done-msg.show{display:block}
   .progress{margin-top:12px; font-size:13.5px; color:var(--muted); font-variant-numeric:tabular-nums}
   footer{margin-top:56px; padding-top:20px; border-top:1px solid var(--line); font-size:13px; color:var(--muted); max-width:64ch}
+  footer a{color:var(--ai)}
   input:focus-visible{outline:2px solid var(--anchor); outline-offset:2px}
   @media (prefers-reduced-motion: reduce){*{transition:none !important}}
 </style>
@@ -87,9 +88,9 @@
 <main>
 <div class="topbar"><a class="language-switch" href="../" lang="en">English</a></div>
 <header>
-  <div class="kicker">快速指南 · 3 分钟</div>
-  <h1>如何在使用 AI 时运用 <em>P-FACET</em></h1>
-  <p class="lede">六个行动构成一个循环。<b class="g">绿色阶段由你主导</b>——学习正是在这些阶段发生。<b class="b">蓝色阶段是唯一直接与 AI 对话的阶段</b>，即使在这里，边界仍由你设定。需要时，你可以返回前面的阶段继续调整。</p>
+  <div class="kicker">快速上手 · 3 分钟</div>
+  <h1>与 AI 一起学习时，如何使用 <em>P-FACET</em></h1>
+  <p class="lede">六个环节，循环往复。<b class="g">绿色环节属于你</b>——学习正发生在那里。<b class="b">蓝色是唯一与 AI 对话的环节</b>，而且边界也由你设定。需要时随时折返。</p>
   <div class="strip" aria-hidden="true">
     <span class="p">P</span><span>F</span><span>A</span><span class="c">C</span><span>E</span><span>T</span>
   </div>
@@ -97,70 +98,72 @@
 
 <div class="step p">
   <div class="head"><span class="lt">P</span><h2>从问题出发</h2><span class="who">你</span></div>
-  <p class="do">说明你正在解决什么问题、它为什么重要，以及你希望从中学到什么。</p>
-  <div class="airule none">暂时不要使用 AI——学习目的由你掌握。</div>
-  <div class="ask">问自己：“我正在解决什么问题？它为什么重要？”</div>
+  <p class="do">说清你要解决什么问题、它为什么重要、你自己想从中学到什么。</p>
+  <div class="airule none">此刻还不用 AI——目的必须是你自己的。</div>
+  <div class="ask">问问自己：“我在解决什么问题？它为什么重要？”</div>
 </div>
 
 <div class="step">
-  <div class="head"><span class="lt">F</span><h2>界定问题</h2><span class="who">你</span></div>
-  <p class="do">写下你的目标、服务对象、成功标准、限制条件和基本假设。</p>
-  <div class="airule">AI 可以向你提问或质疑你的假设，但不能替你界定问题。</div>
-  <div class="ask">问自己：“怎样的回答才算成功？”</div>
+  <div class="head"><span class="lt">F</span><h2>界定框架</h2><span class="who">你</span></div>
+  <p class="do">写下你的目标、受众、成功标准、约束条件和你的假设。</p>
+  <div class="airule">AI 可以向你提问、挑战你的假设——但框架永远不由它来写。</div>
+  <div class="ask">问问自己：“怎样才算做好？”</div>
 </div>
 
 <div class="step">
-  <div class="head"><span class="lt">A</span><h2>先进行尝试</h2><span class="who">你</span></div>
-  <p class="do">回忆已有知识，联想相似问题，并完成第一份草稿、草图、解法或计划。它不必完美，但必须先由你产生。</p>
-  <div class="airule">只有在你完成初步尝试<b>之后</b>，AI 才可以提供示例。</div>
-  <div class="ask">问自己：“在咨询 AI 之前，我已经尝试了什么？”</div>
+  <div class="head"><span class="lt">A</span><h2>先自己尝试</h2><span class="who">你</span></div>
+  <p class="do">调用已有的知识，联想相似的问题，先做出初稿、草图、解法或计划。它不必完美——但必须存在。</p>
+  <div class="airule">只有在你尝试<b>之后</b>，AI 才可以给出示例。</div>
+  <div class="ask">问问自己：“在请教 AI 之前，我自己尝试了什么？”</div>
 </div>
 
 <div class="step c">
-  <div class="head"><span class="lt">C</span><h2>有边界地咨询</h2><span class="who">你 + AI</span></div>
-  <p class="do">找出当前作品中的一个具体缺口，再提出有边界的请求，例如批评、替代方案、解释或技术帮助。不要把整个任务交给 AI。</p>
+  <div class="head"><span class="lt">C</span><h2>有界咨询</h2><span class="who">你 + AI</span></div>
+  <p class="do">找出你工作中那个具体的缺口，再提出有边界的请求：批评、备选方案、概念解释或技术帮助。绝不把整个任务交出去。</p>
+  <div class="airule">C 是一道<b>关口</b>，而非一次性的时刻——在 F、E、T 中出现新缺口时，你都会再次经过这里，然后把答案带回你自己的判断。</div>
   <div class="starters">
-    <div class="sl">让思考保持由你主导的提示语开头</div>
-    <div class="starter">“这是我的草稿。请依据我的标准批评其中的逻辑，但不要替我重写。”</div>
-    <div class="starter">“这是我的解释。请质疑它：还有哪些解释也符合现有证据？”</div>
-    <div class="starter">“这是我的解题设置和前几步。不要直接求解；请指出可能的错误，并只给一个提示。”</div>
-    <div class="starter">“这是我的评价标准和两个方案。请比较它们：我忽略了哪些取舍？”</div>
+    <div class="sl">让思考留在你手中的提示语模板</div>
+    <div class="starter">“这是我的草稿。请按我的标准批评它的逻辑——不要替我重写。”</div>
+    <div class="starter">“这是我的解读。请挑战它——还有哪些解释同样成立？”</div>
+    <div class="starter">“这是我的思路和前几步。不要解题——指出错误，并只给一个提示。”</div>
+    <div class="starter">“这是我的标准和两个方案。请比较它们——我漏掉了哪些取舍？”</div>
   </div>
-  <div class="ask">问自己：“此刻我具体需要 AI 提供什么帮助？”</div>
+  <div class="ask">问问自己：“此刻我到底需要 AI 帮什么忙？”</div>
 </div>
 
 <div class="step">
-  <div class="head"><span class="lt">E</span><h2>评估并解释</h2><span class="who">你</span></div>
-  <p class="do">依据你的标准和真实证据核查 AI 的输出。随后决定接受、修改、拒绝、重组或暂缓，并写明<em>理由</em>。“我检查过了”并不充分；你需要说出具体证据。</p>
-  <div class="airule">AI 可以提出反方观点，但最终判断由你作出。</div>
-  <div class="ask">问自己：“哪些标准或证据支持我的决定？”</div>
+  <div class="head"><span class="lt">E</span><h2>评估并说明理由</h2><span class="who">你</span></div>
+  <p class="do">用你的标准和真实证据检验 AI 的输出，然后做出决定——采纳、修改、拒绝、重组或暂缓——并写下<em>为什么</em>。“我检查过了”不算数，说出证据才算。</p>
+  <div class="airule">AI 可以提出反方观点——但裁决权在你。</div>
+  <div class="ask">问问自己：“支持我这个决定的标准或证据是什么？”——若评估暴露了缺口，就折返 F、A 或 C。这正是循环在起作用。</div>
 </div>
 
 <div class="step">
-  <div class="head"><span class="lt">T</span><h2>转化并迁移</h2><span class="who">你</span></div>
-  <p class="do">把你的判断融入由你拥有的作品，记录修改了什么以及为什么修改，并说明今后将在何处再次使用这一策略。</p>
-  <div class="airule">AI 可以帮助你比较不同情境：这一策略还可以用在哪里？</div>
-  <div class="ask">问自己：“发生了什么改变？我将如何在其他情境中使用这一策略？”</div>
+  <div class="head"><span class="lt">T</span><h2>转化与迁移</h2><span class="who">你</span></div>
+  <p class="do">把这些决定融入真正属于你的作品，记下改了什么、为什么改，并想好下次在哪里再用这套方法。</p>
+  <div class="airule">AI 可以帮你比较不同情境——这套方法还能用在哪里？</div>
+  <div class="ask">问问自己：“发生了什么改变？我会把这个策略用到哪里？”</div>
 </div>
 
 <section class="run">
-  <div class="eyebrow">现在就开始使用</div>
-  <h3 class="rt">让一项真实任务走完整个循环</h3>
-  <p class="note">打开你今天正在完成的学习任务。只有当你能够诚实回答对应问题时，才勾选该项——这就是整个方法。</p>
+  <div class="eyebrow">现在就用起来</div>
+  <h3 class="rt">带着一个真实任务走完这个循环</h3>
+  <p class="note">打开你今天正在做的作业。只有当你能诚实回答对应的问题时才打钩——这就是整套方法。</p>
   <div class="check">
-    <label class="lp"><input type="checkbox"><span><b>P</b> — 我能够说明问题是什么，以及它为什么重要。</span></label>
-    <label><input type="checkbox"><span><b>F</b> — 我已经写下目标、标准、限制条件和假设。</span></label>
-    <label><input type="checkbox"><span><b>A</b> — 在向 AI 提问之前，我已经完成初步尝试。</span></label>
-    <label class="lc"><input type="checkbox"><span><b>C</b> — 我对 AI 的请求针对一个具体缺口，并明确设定了边界。</span></label>
-    <label><input type="checkbox"><span><b>E</b> — 我能够说明接受、修改或拒绝某项内容所依据的证据。</span></label>
-    <label><input type="checkbox"><span><b>T</b> — 我知道发生了什么改变，也知道下一次将在何处使用这一策略。</span></label>
-    <div class="progress" id="prog">已完成 0 / 6</div>
-    <div class="done-msg" id="donemsg">六项全部完成——你的 AI 使用受到了有效调节，记录中的思考也由你完成。这就是 P-FACET。</div>
+    <label class="lp"><input type="checkbox"><span><b>P</b> — 我能说清这个问题是什么、为什么重要。</span></label>
+    <label><input type="checkbox"><span><b>F</b> — 我的目标、标准、约束和假设都已写下来。</span></label>
+    <label><input type="checkbox"><span><b>A</b> — 在 AI 触碰核心工作之前，我自己的表征已经存在：初稿、草图、预测或计划。</span></label>
+    <label class="lc"><input type="checkbox"><span><b>C</b> — 我的 AI 请求针对一个具体缺口，并设定了边界。</span></label>
+    <label><input type="checkbox"><span><b>E</b> — 对采纳、修改或拒绝的内容，我都能说出背后的证据。</span></label>
+    <label><input type="checkbox"><span><b>T</b> — 我知道发生了什么改变，也知道下次在哪里再用这套方法。</span></label>
+    <div class="progress" id="prog">0 / 6</div>
+    <div class="done-msg" id="donemsg">六项全中——你的 AI 使用由你调控，记录在案的思考属于你。这就是 P-FACET。</div>
   </div>
 </section>
 
 <footer>
-  P-FACET 模型 © Yupei Duan 与 Danielle Oprean，密苏里大学。一个问题决定一切：<em>究竟是谁在思考？</em>
+  P-FACET 模型 © 段玉佩（Yupei Duan）&amp; Danielle Oprean，密苏里大学。一个问题决定一切：<em>思考是谁完成的？</em>
+  <div style="margin-top:10px"><b>继续学习：</b> <a href="../../trainer/">互动教程</a> · <a href="../../request-builder/">请求生成器</a> · <a href="../../decision-log/">决策日志</a> · <a href="../../cases/">案例库</a> · <a href="../../">模型主页</a></div>
 </footer>
 </main>
 
@@ -169,7 +172,7 @@ var boxes = document.querySelectorAll('.check input');
 function upd(){
   var n = 0;
   boxes.forEach(function(b){ if(b.checked) n++; });
-  document.getElementById('prog').textContent = '已完成 ' + n + ' / 6';
+  document.getElementById('prog').textContent = n + ' / 6';
   document.getElementById('donemsg').classList.toggle('show', n === boxes.length);
 }
 boxes.forEach(function(b){ b.addEventListener('change', upd); });

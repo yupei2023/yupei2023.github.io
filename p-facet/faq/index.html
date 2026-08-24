@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>P-FACET FAQ</title>
+<style>
+  :root{
+    --bg:#F7F5F1; --surface:#FFFFFF; --ink:#26241E; --muted:#6B6659;
+    --line:#E2DDD2; --learner:#2E6B4E; --learner-soft:#E4EEE8;
+    --ai:#4A6FA5; --ai-soft:#E6ECF5; --anchor:#C2892D; --anchor-soft:#F5EAD6;
+    --risk:#A84B3A; --risk-soft:#F3E2DD; --chip:#EFECE4;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#211F1B; --surface:#2A2823; --ink:#EAE6DC; --muted:#A39D8E;
+      --line:#3B382F; --learner:#6FB392; --learner-soft:#26352D;
+      --ai:#8AA7D6; --ai-soft:#28303E; --anchor:#D9A855; --anchor-soft:#3A3122;
+      --risk:#D08A79; --risk-soft:#3C2B26; --chip:#333028;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#211F1B; --surface:#2A2823; --ink:#EAE6DC; --muted:#A39D8E;
+    --line:#3B382F; --learner:#6FB392; --learner-soft:#26352D;
+    --ai:#8AA7D6; --ai-soft:#28303E; --anchor:#D9A855; --anchor-soft:#3A3122;
+    --risk:#D08A79; --risk-soft:#3C2B26; --chip:#333028;
+  }
+  *{box-sizing:border-box}
+  body{margin:0; background:var(--bg); color:var(--ink); line-height:1.6; font-size:16.5px;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+  main{max-width:720px; margin:0 auto; padding:0 20px 80px}
+  header{padding:60px 0 10px}
+  .kicker{font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:14px}
+  h1{font-family:"Iowan Old Style",Palatino,"Palatino Linotype","Book Antiqua",Georgia,serif;
+     font-size:clamp(30px,5.5vw,44px); line-height:1.1; margin:0 0 14px; font-weight:600}
+  h1 em{color:var(--ai); font-style:normal}
+  .lede{font-size:17.5px; max-width:56ch}
+  details{background:var(--surface); border:1px solid var(--line); border-radius:11px; margin-top:14px}
+  summary{cursor:pointer; padding:15px 20px; font-weight:650; font-size:16px;
+    font-family:"Iowan Old Style",Palatino,Georgia,serif}
+  summary:focus-visible, a:focus-visible{outline:2px solid var(--ai); outline-offset:2px}
+  .a{padding:0 20px 18px; font-size:15.5px}
+  .a p{margin:8px 0}
+  .a b.g{color:var(--learner)} .a b.b{color:var(--ai)} .a b.r{color:var(--risk)}
+  a{color:var(--ai)}
+  .closing{margin-top:34px; font-family:"Iowan Old Style",Palatino,Georgia,serif; font-size:21px; font-style:italic; color:var(--ink)}
+  footer{margin-top:56px; padding-top:18px; border-top:1px solid var(--line); font-size:13.5px; color:var(--muted)}
+  footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="kicker">The P-FACET Model</div>
+    <h1>Honest <em>questions</em>, honest answers</h1>
+    <p class="lede">The questions people actually ask about P-FACET — including the skeptical ones.</p>
+  </header>
+
+  <details open>
+    <summary>Is P-FACET anti-AI?</summary>
+    <div class="a"><p>No — the opposite. P-FACET assumes you <b class="b">will</b> use AI and treats learning
+      to use it well as a skill worth teaching. What it refuses is the false choice between banning AI and
+      unrestricted delegation. The model's question is never "did you use AI?" but
+      <b class="g">"who did the thinking?"</b> Extensive AI use with clear judgment can be excellent work;
+      minimal AI use with no thinking shown is still empty.</p></div>
+  </details>
+
+  <details>
+    <summary>Is it a prompt-engineering technique?</summary>
+    <div class="a"><p>No. Better prompts fall out of it — a bounded request is usually a better request —
+      but the model regulates <b class="g">cognition</b>, not wording. A perfectly crafted prompt that asks AI
+      to do your central thinking is still substitution. The educational act isn't writing the prompt; it's the
+      framing, attempting, judging, and revising around it. That's also why copying a template prompt proves
+      nothing by itself.</p></div>
+  </details>
+
+  <details>
+    <summary>Isn't all this offloading just bad for your brain?</summary>
+    <div class="a"><p>Offloading is neither good nor bad — it's how human cognition has always worked. Writing,
+      notes, and calculators all carry parts of our thinking, mostly to our benefit. Offloading turns harmful
+      when the delegated work is <b class="r">the very thing you were meant to practice</b>. That's task-relative:
+      letting AI format your citations is harmless in a design course and a problem in an editing course.
+      P-FACET exists to make that distinction, not to forbid delegation.</p></div>
+  </details>
+
+  <details>
+    <summary>Do I have to do all six phases every time?</summary>
+    <div class="a"><p>The phases are a cycle, not a checklist — you'll loop back, and with practice the routine
+      compresses into habits: <i>try first, ask bounded, verify, make it yours</i>. Early on, the explicit
+      worksheet helps; later, a quick self-check is enough (the <a href="../quick-start/">Quick Start</a> has one).
+      Completing six boxes mechanically protects nothing; the phases matter for what each one makes you do.</p></div>
+  </details>
+
+  <details>
+    <summary>Can AI help before my first attempt?</summary>
+    <div class="a"><p>Sometimes — the rule is more precise than "attempt before AI anything." What P-FACET protects
+      is the task's <b class="g">target cognitive work</b>: before AI performs <i>that</i>, a representation of
+      your own thinking must exist. But AI explaining a prerequisite concept, translating instructions, or
+      unblocking an unfamiliar tool doesn't touch the target work — those consultations are fine early, and they
+      happen through the same C gateway. When in doubt, ask: is this the thinking the task exists to grow?</p></div>
+  </details>
+
+  <details>
+    <summary>What counts as a meaningful attempt?</summary>
+    <div class="a"><p>Less than you might fear, and more than nothing: a prediction, an annotated graph, a partial
+      solution, a claim with one piece of evidence, a sketch, a list of assumptions — even, in an Extended task,
+      your criteria for judging an AI draft. It doesn't need to be complete or correct. It needs to make your
+      current reasoning <b class="g">visible enough to consult on, evaluate against, and revise</b>. The right
+      size depends on your expertise: novices start smaller, and that's the design, not a concession.</p></div>
+  </details>
+
+  <details>
+    <summary>What if AI support is an accessibility accommodation?</summary>
+    <div class="a"><p>Then it stays — fully. Language support, screen-reader workflows, text simplification, and
+      similar uses widen access to the task; they don't perform its target thinking. P-FACET's boundaries apply
+      to the <b class="g">consequential judgment</b> a task is meant to develop, never to the supports someone
+      needs to reach it. If a required tool is inaccessible to you, your instructor should provide an equivalent
+      path — ask.</p></div>
+  </details>
+
+  <details>
+    <summary>Why not just use AI detectors instead?</summary>
+    <div class="a"><p>Detectors guess, and they misfire — including against honest students. P-FACET replaces
+      detection with <b class="g">process evidence</b>: your frame, your first attempt, your bounded prompts,
+      your logged decisions. That trail is more reliable than any detector, and unlike detection, producing it
+      is itself educational. Showing your thinking beats being suspected of hiding it.</p></div>
+  </details>
+
+  <details>
+    <summary>Can instructors use it for their own work too?</summary>
+    <div class="a"><p>Yes — and they should, symmetrically. An instructor can mechanically offload formatting,
+      supportively consult AI for alternative examples, or substitutively accept a generated rubric without
+      checking its alignment. Frame the assessment's purpose, draft the criteria, consult AI for what you
+      missed, evaluate against your objectives, revise, transfer. Students delegating production while
+      instructors delegate judgment is the failure mode P-FACET exists to prevent — on both sides.</p></div>
+  </details>
+
+  <details>
+    <summary>How much documentation is enough?</summary>
+    <div class="a"><p>Less than you'd think. The Decision Log exists to make judgment visible, not to record every
+      keystroke — one or two <b class="g">consequential</b> entries, where a real accept-revise-reject decision
+      happened, say more than ten routine ones. Instructors: consider asking for exactly that, and fading the
+      requirement as regulation becomes habit. If the paperwork ever outweighs the thinking, the paperwork is
+      wrong — the model's goal is judgment, not forms.</p></div>
+  </details>
+
+  <details>
+    <summary>What's the evidence behind it?</summary>
+    <div class="a"><p>An honest answer: P-FACET is a conceptual and design model, built by synthesizing
+      well-established research — cognitive offloading, problem-centered instruction, scaffolding, productive
+      failure, self-regulated learning. The phases stand on that literature; the integrated model's effects are
+      now being studied, beginning with classroom pilots. We'd rather tell you that plainly than claim more
+      than the data supports — the model itself demands nothing less at its E phase.</p></div>
+  </details>
+
+  <details>
+    <summary>Does it only work in school?</summary>
+    <div class="a"><p>The model was built for education, but the routine transfers anywhere thinking matters:
+      writing a report, analyzing data, making a decision at work. Professionals rarely work tool-free — the
+      goal was never independence from tools, but <b class="g">strategic interdependence</b>: using powerful
+      resources while knowing their limits and keeping responsibility for the consequential judgments.
+      T — transfer — is the phase that carries it out of the classroom.</p></div>
+  </details>
+
+  <p class="closing">Every answer here ends in the same place: who did the thinking?</p>
+
+  <footer>
+    <div>The P-FACET Model © Yupei Duan &amp; Danielle Oprean, University of Missouri</div>
+    <div><a href="../">Model home</a> · <a href="../quick-start/">Quick Start</a> · <a href="../trainer/">Trainer</a> · <a href="../teach/">Teach</a></div>
+  </footer>
+</main>
+</body>
+</html>

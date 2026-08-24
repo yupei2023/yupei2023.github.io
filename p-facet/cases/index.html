@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>P-FACET Case Library</title>
+<style>
+  :root{
+    --bg:#F7F5F1; --surface:#FFFFFF; --ink:#26241E; --muted:#6B6659;
+    --line:#E2DDD2; --learner:#2E6B4E; --learner-soft:#E4EEE8;
+    --ai:#4A6FA5; --ai-soft:#E6ECF5; --anchor:#C2892D; --anchor-soft:#F5EAD6;
+    --risk:#A84B3A; --risk-soft:#F3E2DD; --chip:#EFECE4;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#211F1B; --surface:#2A2823; --ink:#EAE6DC; --muted:#A39D8E;
+      --line:#3B382F; --learner:#6FB392; --learner-soft:#26352D;
+      --ai:#8AA7D6; --ai-soft:#28303E; --anchor:#D9A855; --anchor-soft:#3A3122;
+      --risk:#D08A79; --risk-soft:#3C2B26; --chip:#333028;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#211F1B; --surface:#2A2823; --ink:#EAE6DC; --muted:#A39D8E;
+    --line:#3B382F; --learner:#6FB392; --learner-soft:#26352D;
+    --ai:#8AA7D6; --ai-soft:#28303E; --anchor:#D9A855; --anchor-soft:#3A3122;
+    --risk:#D08A79; --risk-soft:#3C2B26; --chip:#333028;
+  }
+  *{box-sizing:border-box}
+  body{margin:0; background:var(--bg); color:var(--ink); line-height:1.6; font-size:16.5px;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+  main{max-width:860px; margin:0 auto; padding:0 20px 80px}
+  header{padding:60px 0 10px}
+  .kicker{font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:14px}
+  h1{font-family:"Iowan Old Style",Palatino,"Palatino Linotype","Book Antiqua",Georgia,serif;
+     font-size:clamp(30px,5.5vw,44px); line-height:1.1; margin:0 0 14px; font-weight:600; text-wrap:balance}
+  h1 em{color:var(--learner); font-style:normal}
+  .lede{font-size:17.5px; max-width:60ch}
+  .lede b.r{color:var(--risk)} .lede b.g{color:var(--learner)}
+  .howto{background:var(--anchor-soft); border:1px solid var(--line); border-radius:11px; padding:14px 18px;
+       margin:22px 0 8px; font-size:15px}
+  .howto b{color:var(--anchor)}
+  details{background:var(--surface); border:1px solid var(--line); border-radius:12px; margin-top:18px}
+  summary{cursor:pointer; padding:16px 20px; font-weight:650; font-size:16.5px;
+    font-family:"Iowan Old Style",Palatino,Georgia,serif}
+  summary .disc{font-size:12.5px; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    font-weight:650; color:var(--muted); letter-spacing:.08em; text-transform:uppercase; margin-right:10px}
+  summary:focus-visible, a:focus-visible{outline:2px solid var(--ai); outline-offset:2px}
+  .case{padding:0 20px 22px}
+  .task{font-size:15px; color:var(--muted); margin:0 0 14px}
+  .paths{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+  @media (max-width:720px){ .paths{grid-template-columns:1fr} }
+  .path{border:1px solid var(--line); border-radius:10px; padding:16px 16px 14px}
+  .path.a{border-top:5px solid var(--risk)} .path.b{border-top:5px solid var(--learner)}
+  .path h3{margin:0 0 10px; font-size:14.5px}
+  .path.a h3{color:var(--risk)} .path.b h3{color:var(--learner)}
+  .stp{margin:9px 0; font-size:14.5px}
+  .stp .ph{display:inline-block; min-width:20px; text-align:center; font-family:"Iowan Old Style",Palatino,Georgia,serif;
+    font-weight:700; font-size:13.5px; border-radius:5px; padding:1px 5px; margin-right:7px;
+    background:var(--learner-soft); color:var(--learner)}
+  .stp .ph.c{background:var(--ai-soft); color:var(--ai)}
+  .stp .ph.x{background:var(--risk-soft); color:var(--risk)}
+  .pr{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:13px;
+    background:var(--ai-soft); border-radius:7px; padding:7px 10px; margin:7px 0; overflow-x:auto}
+  .path.a .pr{background:var(--risk-soft)}
+  .verdict{margin-top:12px; padding-top:10px; border-top:1px dashed var(--line); font-size:14px}
+  .verdict b{font-size:12.5px; letter-spacing:.06em; text-transform:uppercase}
+  .path.a .verdict b{color:var(--risk)} .path.b .verdict b{color:var(--learner)}
+  .reflect{margin-top:14px; background:var(--chip); border-radius:9px; padding:12px 16px; font-size:14.5px}
+  .reflect b{color:var(--anchor)}
+  .closing{margin-top:34px; font-size:16px; max-width:60ch}
+  .closing b{color:var(--learner)}
+  footer{margin-top:64px; padding-top:18px; border-top:1px solid var(--line); font-size:13.5px; color:var(--muted)}
+  footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="kicker">The P-FACET Model · case library</div>
+    <h1>Same assignment, <em>two paths</em></h1>
+    <p class="lede">Four real tasks from four disciplines. In each, <b class="r">Path A</b> hands the thinking
+      to AI; <b class="g">Path B</b> runs the P-FACET routine. The prompts are real enough to reuse —
+      and the difference is visible every time.</p>
+  </header>
+
+  <div class="howto"><b>How to read a case:</b> read Path A first and predict what the instructor will notice.
+    Then read Path B and find the exact step where the two paths part ways. It is always the same step.</div>
+
+  <details open>
+    <summary><span class="disc">Writing</span>Position essay — campus food waste</summary>
+    <div class="case">
+      <p class="task">Task: recommend how the campus should cut food waste, for dining services. Target thinking: weighing evidence, defending a recommendation.</p>
+      <div class="paths">
+        <div class="path a">
+          <h3>Path A — AI as task-completion</h3>
+          <div class="stp"><span class="ph x">✗</span>Opens AI before opening the readings.</div>
+          <div class="pr">Write a 1200-word essay recommending how our campus can reduce food waste. Include citations.</div>
+          <div class="stp"><span class="ph x">✗</span>Smooths the wording, swaps in their name, submits.</div>
+          <div class="verdict"><b>What the instructor sees</b><br>Fluent, generic, no campus specifics — and two citations that don't exist. What the student can do next time: nothing new.</div>
+        </div>
+        <div class="path b">
+          <h3>Path B — the P-FACET routine</h3>
+          <div class="stp"><span class="ph">F</span>Frames it: audience is dining services; criteria are cost, feasibility, evidence.</div>
+          <div class="stp"><span class="ph">A</span>Drafts a recommendation from the course readings first.</div>
+          <div class="stp"><span class="ph c">C</span>Then consults:</div>
+          <div class="pr">Here is my draft recommendation. Challenge my reasoning — give me two counterarguments. Do NOT rewrite it.</div>
+          <div class="stp"><span class="ph">E</span>Rejects one counterargument (its source doesn't check out); accepts the other — it exposes a real cost gap.</div>
+          <div class="stp"><span class="ph">T</span>Revises the cost section; logs the decisions; notes: "next time, stress-test cost first."</div>
+          <div class="verdict"><b>What the instructor sees</b><br>A specific, defended recommendation — plus a decision log showing exactly where judgment happened.</div>
+        </div>
+      </div>
+      <div class="reflect"><b>Look again:</b> both students used AI. Which prompt could only have been written by someone who had already thought?</div>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="disc">STEM</span>Data lab — enzyme kinetics</summary>
+    <div class="case">
+      <p class="task">Task: decide from your team's data whether the inhibitor is competitive or non-competitive. Target thinking: reading evidence from a graph, defending an inference.</p>
+      <div class="paths">
+        <div class="path a">
+          <h3>Path A — AI as task-completion</h3>
+          <div class="stp"><span class="ph x">✗</span>Photographs the plot, uploads it.</div>
+          <div class="pr">Which type of inhibition is this? Write my interpretation section.</div>
+          <div class="stp"><span class="ph x">✗</span>Pastes the answer. It happens to be right.</div>
+          <div class="verdict"><b>What the instructor sees</b><br>A correct answer the student cannot defend at the whiteboard. On the exam, with a new plot, the skill isn't there.</div>
+        </div>
+        <div class="path b">
+          <h3>Path B — the P-FACET routine</h3>
+          <div class="stp"><span class="ph">F</span>Frames it: what would each mechanism predict on this plot?</div>
+          <div class="stp"><span class="ph">A</span>Annotates the axes by hand; writes a preliminary call: competitive, because Vmax looks unchanged.</div>
+          <div class="stp"><span class="ph c">C</span>Then consults:</div>
+          <div class="pr">My read: competitive inhibition, since Vmax appears constant. Argue against me — what else could produce this pattern?</div>
+          <div class="stp"><span class="ph">E</span>AI offers two alternatives; one fails against the intercepts in the actual data, one sends the student back to the textbook.</div>
+          <div class="stp"><span class="ph">T</span>Keeps the call, but rewrites the justification to rule out the alternative — the report is now exam-proof.</div>
+          <div class="verdict"><b>What the instructor sees</b><br>An inference with its rivals considered — the shape of real scientific reasoning.</div>
+        </div>
+      </div>
+      <div class="reflect"><b>Look again:</b> in Path B the AI was wrong twice — and still made the work better. What made that safe?</div>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="disc">Math</span>Problem set — optimization</summary>
+    <div class="case">
+      <p class="task">Task: minimize the material for a cylindrical can of fixed volume. Target thinking: setting up and solving a constrained optimization.</p>
+      <div class="paths">
+        <div class="path a">
+          <h3>Path A — AI as task-completion</h3>
+          <div class="stp"><span class="ph x">✗</span>Types the problem in verbatim.</div>
+          <div class="pr">Solve this step by step and show all work.</div>
+          <div class="stp"><span class="ph x">✗</span>Copies the steps. They look understandable — which feels like understanding.</div>
+          <div class="verdict"><b>What the instructor sees</b><br>Ten perfect homework solutions and a failed midterm. Recognizing steps is not producing them.</div>
+        </div>
+        <div class="path b">
+          <h3>Path B — the P-FACET routine</h3>
+          <div class="stp"><span class="ph">F</span>Frames it: one quantity to minimize, one constraint to use.</div>
+          <div class="stp"><span class="ph">A</span>Attempts it; gets stuck expressing height in terms of radius.</div>
+          <div class="stp"><span class="ph c">C</span>Then consults — for a hint, not a solution:</div>
+          <div class="pr">I'm stuck after writing A = 2πr² + 2πrh with V fixed. Don't solve it — give me one hint about what to do with the constraint.</div>
+          <div class="stp"><span class="ph">E</span>Applies the hint, finishes alone, then recomputes the critical point to verify.</div>
+          <div class="stp"><span class="ph">T</span>Notes the pattern: "constraint first, substitute, then differentiate" — and uses it unaided on the next problem.</div>
+          <div class="verdict"><b>What the instructor sees</b><br>A hint at the true sticking point — the most efficient tutoring there is.</div>
+        </div>
+      </div>
+      <div class="reflect"><b>Look again:</b> Path B's prompt names exactly where the student is stuck. Why does that single sentence protect the learning?</div>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="disc">Design</span>Interactive story — branching narrative</summary>
+    <div class="case">
+      <p class="task">Task: design a six-passage interactive story where choices carry real consequences. Target thinking: designing meaningful choice, not producing text.</p>
+      <div class="paths">
+        <div class="path a">
+          <h3>Path A — AI as task-completion</h3>
+          <div class="stp"><span class="ph x">✗</span>Delegates the whole design:</div>
+          <div class="pr">Generate a complete 6-passage branching story about climate choices, with two choices per passage.</div>
+          <div class="stp"><span class="ph x">✗</span>Pastes it into the tool. It runs.</div>
+          <div class="verdict"><b>What the instructor sees</b><br>Branches that reconverge instantly — choices that change nothing. Asked "why this structure?", the student has no answer: the design decisions were never theirs.</div>
+        </div>
+        <div class="path b">
+          <h3>Path B — the P-FACET routine</h3>
+          <div class="stp"><span class="ph">F</span>Frames it: player is a city planner; a meaningful choice must change information, experience, or outcome.</div>
+          <div class="stp"><span class="ph">A</span>Sketches the branch map on paper first — six passages, two endings.</div>
+          <div class="stp"><span class="ph c">C</span>Then consults:</div>
+          <div class="pr">Here is my branch map. Critique it: where are my choices merely cosmetic? Don't write passages for me.</div>
+          <div class="stp"><span class="ph">E</span>Accepts one critique (a fake choice), rejects another that conflicts with the story's purpose — and says why.</div>
+          <div class="stp"><span class="ph">T</span>Rebuilds one branch so consequences diverge; writes the routine into their design notebook.</div>
+          <div class="verdict"><b>What the instructor sees</b><br>A structure the designer can defend, decision by decision.</div>
+        </div>
+      </div>
+      <div class="reflect"><b>Look again:</b> in which path could the student explain their own artifact? What produced that difference?</div>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="disc">The debate case</span>History seminar — the sophisticated prompt</summary>
+    <div class="case">
+      <p class="task">Task: analyze the causes of a historical event using primary sources. Target thinking: constructing and defending a historical interpretation. <b>This case divides classrooms — that's why it's here.</b></p>
+      <div class="paths">
+        <div class="path a">
+          <h3>Path A — masterful prompting, delegated thinking</h3>
+          <div class="stp"><span class="ph x">✗</span>The student writes a genuinely impressive prompt:</div>
+          <div class="pr">Act as a historian specializing in this period. Using the rubric below and these three exemplar essays, write an analysis of the causes. Cite the primary sources I've attached. [rubric + exemplars + sources follow]</div>
+          <div class="stp"><span class="ph x">✗</span>Iterates six times, tuning the output against the rubric until it reads beautifully.</div>
+          <div class="verdict"><b>The hard question</b><br>This student worked hard, learned real prompt-craft, and produced strong pages. But the interpretation — the weighing of sources, the causal argument — was never theirs. Sophisticated delegation is still delegation.</div>
+        </div>
+        <div class="path b">
+          <h3>Path B — the same craft, aimed at their own thinking</h3>
+          <div class="stp"><span class="ph">F</span>Frames their own tentative thesis and the criteria a strong interpretation must meet.</div>
+          <div class="stp"><span class="ph">A</span>Reads the sources; drafts the causal argument themselves.</div>
+          <div class="stp"><span class="ph c">C</span>Deploys the same prompt-craft — in the other direction:</div>
+          <div class="pr">Act as a skeptical reviewer for this journal. Here is my thesis and evidence. Attack my causal chain — where would a specialist say I've overreached?</div>
+          <div class="stp"><span class="ph">E</span>Concedes one overreach; defends another point with a source the AI hadn't weighed.</div>
+          <div class="stp"><span class="ph">T</span>Notes the transferable move: "aim the persona at my argument, not at the assignment."</div>
+          <div class="verdict"><b>What the instructor sees</b><br>Equal technical skill — and an interpretation the student can defend line by line.</div>
+        </div>
+      </div>
+      <div class="reflect"><b>Debate it:</b> Path A's student clearly learned <i>something</i>. What exactly? And what did they not get the chance to learn? There is a real conversation here — have it in class.</div>
+    </div>
+  </details>
+
+  <p class="closing">Five cases, one pattern: the paths part at the same step every time — <b>whether the
+    learner's own representation exists before AI touches the target thinking</b>. The criteria change with
+    the discipline; the routine doesn't.
+    Ready to run it yourself? Start with the <a href="../quick-start/">Quick Start</a>, and keep the
+    <a href="../decision-log/">Decision Log</a> open while you work.</p>
+
+  <footer>
+    <div>The P-FACET Model © Yupei Duan &amp; Danielle Oprean, University of Missouri</div>
+    <div class="noprint"><a href="../">Model home</a> · <a href="../quick-start/">Quick Start</a> · <a href="../trainer/">Trainer</a> · <a href="../decision-log/">Decision Log</a> · <a href="../assignment-kit/">Assignment Kit</a></div>
+  </footer>
+</main>
+</body>
+</html>
