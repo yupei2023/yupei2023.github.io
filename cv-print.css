@@ -44,6 +44,13 @@ h1 + p + p {
   font-size: 10.3pt;
 }
 
+.contact-icon {
+  width: 0.82em;
+  height: 0.82em;
+  margin-right: 0.28em;
+  vertical-align: -0.08em;
+}
+
 h2 {
   margin: 0.16in 0 0.065in;
   padding-bottom: 0.035in;
