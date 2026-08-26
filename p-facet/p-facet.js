@@ -24,7 +24,7 @@ try {
 } catch (_) {
   savedLanguage = "en";
 }
-setLanguage(savedLanguage);
+setLanguage(languageButton?.hidden ? "en" : savedLanguage);
 
 languageButton?.addEventListener("click", () => {
   setLanguage(document.documentElement.dataset.language === "zh" ? "en" : "zh");
