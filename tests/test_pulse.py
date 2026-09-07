@@ -83,6 +83,10 @@ class PulseTests(unittest.TestCase):
         self.assertEqual(len({item["id"] for item in selected}), 10)
         self.assertLessEqual(max(__import__("collections").Counter(item["theme_id"] for item in selected).values()), 3)
 
+    def test_current_edition_is_detected(self):
+        self.assertTrue(PULSE.pulse_is_current(date(2026, 8, 31)))
+        self.assertFalse(PULSE.pulse_is_current(date(2026, 9, 7)))
+
 
 if __name__ == "__main__":
     unittest.main()

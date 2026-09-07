@@ -335,12 +335,24 @@ def write_outputs(articles: list[dict], topics: dict, today: date):
     DATA_PATH.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
+def pulse_is_current(today: date) -> bool:
+    try:
+        refreshed_at = load_json(DATA_PATH)["refreshed_at"]
+        return datetime.fromisoformat(refreshed_at.replace("Z", "+00:00")).date() == today
+    except (FileNotFoundError, KeyError, TypeError, ValueError, json.JSONDecodeError):
+        return False
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--date", help="Override collection date (YYYY-MM-DD) for testing")
     parser.add_argument("--input", type=Path, help="Use an OpenAlex result fixture instead of the network")
+    parser.add_argument("--skip-if-current", action="store_true", help="Skip a scheduled refresh already completed today")
     args = parser.parse_args()
     today = date.fromisoformat(args.date) if args.date else datetime.now(timezone.utc).date()
+    if args.skip_if_current and pulse_is_current(today):
+        print(f"Pulse is already current for {today.isoformat()}; skipping this backup run.")
+        return 0
     topics, journals = load_json(TOPICS_PATH), load_json(JOURNALS_PATH)
     by_issn, by_name = journal_maps(journals)
 
