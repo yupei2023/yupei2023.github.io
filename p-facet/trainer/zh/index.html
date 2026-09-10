@@ -152,11 +152,13 @@
   footer{margin-top:66px; padding-top:22px; border-top:1px solid var(--line); font-size:13px; color:var(--muted); max-width:70ch}
   @media (prefers-reduced-motion: reduce){*{transition:none !important}}
 </style>
+<link rel="stylesheet" href="../../tutorials.css?v=1">
+<script src="../../tutorials.js?v=1" defer></script>
 </head>
 <body>
 
 <main>
-<div class="topbar"><a class="language-switch" href="../" lang="en">English</a></div>
+<div class="topbar"><a class="tutorial-home" href="../../">← P-FACET</a><a class="language-switch" href="../" lang="en">English</a></div>
 <header class="hero">
   <div class="kicker">8 分钟互动教程</div>
   <h1>当 AI 帮助你时，<span class="q">究竟是谁在思考？</span></h1>
@@ -168,9 +170,16 @@
     <span><span class="dot a"></span>贯穿始终的核心问题</span>
   </div>
 </header>
+<div class="tutorial-choices" id="activities"><h2>选择你的起点</h2><p>按顺序学习，或直接选择你需要的阶段。</p><div class="tutorial-cards"><a class="tutorial-card" data-phase="1" href="#activity-1"><b aria-hidden="true">1</b><span>同一项任务，两种截然不同的学习方式</span></a>
+<a class="tutorial-card" data-phase="2" href="#activity-2"><b aria-hidden="true">2</b><span>识别四种认知卸载</span></a>
+<a class="tutorial-card" data-phase="3" href="#activity-3"><b aria-hidden="true">3</b><span>P-FACET 循环</span></a>
+<a class="tutorial-card" data-phase="4" href="#activity-4"><b aria-hidden="true">4</b><span>一项任务，从开始到完成</span></a>
+<a class="tutorial-card" data-phase="5" href="#activity-5"><b aria-hidden="true">5</b><span>改进提示语</span></a>
+<a class="tutorial-card" data-phase="6" href="#activity-6"><b aria-hidden="true">6</b><span>你的 P-FACET 随身卡片</span></a>
+</div></div><nav class="tutorial-nav" aria-label="教程导航" hidden><label for="tutorial-jump">跳转至</label><select id="tutorial-jump"><option value="activity-1">1 · 同一项任务，两种截然不同的学习方式</option><option value="activity-2">2 · 识别四种认知卸载</option><option value="activity-3">3 · P-FACET 循环</option><option value="activity-4">4 · 一项任务，从开始到完成</option><option value="activity-5">5 · 改进提示语</option><option value="activity-6">6 · 你的 P-FACET 随身卡片</option></select><a href="#activities">所有活动 ↑</a></nav>
 
 <!-- ============ 1. two students ============ -->
-<section>
+<section class="tutorial-unit" id="activity-1" tabindex="-1">
   <div class="eyebrow">第 1 部分 · 两难处境</div>
   <h2>同一项任务，两种截然不同的学习方式</h2>
   <p class="note">两名学生都提交了看似完善的作品。点击卡片，看看教师或未来雇主究竟能从作品中判断出多少真实学习。</p>
@@ -200,7 +209,7 @@
 </section>
 
 <!-- ============ 2. offloading sorter ============ -->
-<section>
+<section class="tutorial-unit" id="activity-2" tabindex="-1">
   <div class="eyebrow">第 2 部分 · 核心能力</div>
   <h2>识别四种认知卸载</h2>
   <p class="note">把一部分工作交给工具称为<em>认知卸载</em>，它并不必然有害。笔记帮助卸载记忆，计算器帮助卸载计算。关键在于你交出了<em>哪一种</em>工作。请判断每个情境属于：<b>机械型</b>（处理外围任务）、<b>支持型</b>（支持思考）、<b>替代型</b>（高风险替代）或<b>调节型</b>（你管理委托过程并解释决定）。</p>
@@ -210,7 +219,7 @@
 </section>
 
 <!-- ============ 3. the wheel ============ -->
-<section>
+<section class="tutorial-unit" id="activity-3" tabindex="-1">
   <div class="eyebrow">第 3 部分 · 模型</div>
   <h2>P-FACET 循环</h2>
   <p class="note"><b style="color:var(--anchor)">问题</b>始终位于中心，成为整个过程的锚点。其他五个阶段围绕它循环展开，你可以在阶段之间往返调整；它是循环，而不是清单。请注意：只有 <b style="color:var(--ai)">C</b> 阶段需要直接与 AI 对话。点击每个阶段查看详情。</p>
@@ -278,7 +287,7 @@
 </section>
 
 <!-- ============ 4. worked example ============ -->
-<section>
+<section class="tutorial-unit" id="activity-4" tabindex="-1">
   <div class="eyebrow">第 4 部分 · 完整示例</div>
   <h2>一项任务，从开始到完成</h2>
   <p class="note">一名学生正在完成真实案例任务——<em>减少校园食物浪费</em>——并且全程都可以使用 AI。逐步查看受调节的 AI 使用是什么样的。</p>
@@ -296,7 +305,7 @@
 </section>
 
 <!-- ============ 5. fix the prompt ============ -->
-<section>
+<section class="tutorial-unit" id="activity-5" tabindex="-1">
   <div class="eyebrow">第 5 部分 · 练习</div>
   <h2>改进提示语</h2>
   <p class="note">每个情境都提供两种向 AI 求助的方式。请选择能够让核心思考仍由你完成的请求。（AI 使用往往正是在这些时刻悄然变成认知替代。）</p>
@@ -304,7 +313,7 @@
 </section>
 
 <!-- ============ 6. pocket card ============ -->
-<section>
+<section class="tutorial-unit" id="activity-6" tabindex="-1">
   <div class="eyebrow">第 6 部分 · 随身卡片</div>
   <h2>你的 P-FACET 随身卡片</h2>
   <p class="note">每个阶段对应一个自我提问，共六个问题。如果你能够针对一项作品回答全部六个问题，你的 AI 使用就是受调节的，你的学习过程也清晰可见。</p>
@@ -324,6 +333,7 @@
   </div>
 </section>
 
+<a class="tutorial-next" href="https://yupei2023.github.io/p-facet-fluid-mechanics/"><strong>在流体力学中实践 →</strong><span>选择起重驳船、供水管道或雨水涵洞情境。在六个阶段中独立尝试、评估 AI 回答，并说明你的判断。（英文）</span></a>
 <footer>
   P-FACET 模型 © Yupei Duan 与 Danielle Oprean，密苏里大学。每位学习者最终都应追问：<em>究竟是谁在思考？</em>
 </footer>

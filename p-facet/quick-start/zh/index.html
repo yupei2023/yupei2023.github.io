@@ -82,11 +82,13 @@
   input:focus-visible{outline:2px solid var(--anchor); outline-offset:2px}
   @media (prefers-reduced-motion: reduce){*{transition:none !important}}
 </style>
+<link rel="stylesheet" href="../../tutorials.css?v=1">
+<script src="../../tutorials.js?v=1" defer></script>
 </head>
 <body>
 
 <main>
-<div class="topbar"><a class="language-switch" href="../" lang="en">English</a></div>
+<div class="topbar"><a class="tutorial-home" href="../../">← P-FACET</a><a class="language-switch" href="../" lang="en">English</a></div>
 <header>
   <div class="kicker">快速上手 · 3 分钟</div>
   <h1>与 AI 一起学习时，如何使用 <em>P-FACET</em></h1>
@@ -95,29 +97,36 @@
     <span class="p">P</span><span>F</span><span>A</span><span class="c">C</span><span>E</span><span>T</span>
   </div>
 </header>
+<div class="tutorial-choices" id="activities"><h2>选择你的起点</h2><p>按顺序学习，或直接选择你需要的阶段。</p><div class="tutorial-cards"><a class="tutorial-card" data-phase="P" href="#activity-1"><b aria-hidden="true">P</b><span>从问题出发</span></a>
+<a class="tutorial-card" data-phase="F" href="#activity-2"><b aria-hidden="true">F</b><span>界定框架</span></a>
+<a class="tutorial-card" data-phase="A" href="#activity-3"><b aria-hidden="true">A</b><span>先自己尝试</span></a>
+<a class="tutorial-card" data-phase="C" href="#activity-4"><b aria-hidden="true">C</b><span>有界咨询</span></a>
+<a class="tutorial-card" data-phase="E" href="#activity-5"><b aria-hidden="true">E</b><span>评估并说明理由</span></a>
+<a class="tutorial-card" data-phase="T" href="#activity-6"><b aria-hidden="true">T</b><span>转化与迁移</span></a>
+</div></div><nav class="tutorial-nav" aria-label="教程导航" hidden><label for="tutorial-jump">跳转至</label><select id="tutorial-jump"><option value="activity-1">P · 从问题出发</option><option value="activity-2">F · 界定框架</option><option value="activity-3">A · 先自己尝试</option><option value="activity-4">C · 有界咨询</option><option value="activity-5">E · 评估并说明理由</option><option value="activity-6">T · 转化与迁移</option></select><a href="#activities">所有活动 ↑</a></nav>
 
-<div class="step p">
+<div class="tutorial-unit step p" id="activity-1" tabindex="-1">
   <div class="head"><span class="lt">P</span><h2>从问题出发</h2><span class="who">你</span></div>
   <p class="do">说清你要解决什么问题、它为什么重要、你自己想从中学到什么。</p>
   <div class="airule none">此刻还不用 AI——目的必须是你自己的。</div>
   <div class="ask">问问自己：“我在解决什么问题？它为什么重要？”</div>
 </div>
 
-<div class="step">
+<div class="tutorial-unit step" id="activity-2" tabindex="-1">
   <div class="head"><span class="lt">F</span><h2>界定框架</h2><span class="who">你</span></div>
   <p class="do">写下你的目标、受众、成功标准、约束条件和你的假设。</p>
   <div class="airule">AI 可以向你提问、挑战你的假设——但框架永远不由它来写。</div>
   <div class="ask">问问自己：“怎样才算做好？”</div>
 </div>
 
-<div class="step">
+<div class="tutorial-unit step" id="activity-3" tabindex="-1">
   <div class="head"><span class="lt">A</span><h2>先自己尝试</h2><span class="who">你</span></div>
   <p class="do">调用已有的知识，联想相似的问题，先做出初稿、草图、解法或计划。它不必完美——但必须存在。</p>
   <div class="airule">只有在你尝试<b>之后</b>，AI 才可以给出示例。</div>
   <div class="ask">问问自己：“在请教 AI 之前，我自己尝试了什么？”</div>
 </div>
 
-<div class="step c">
+<div class="tutorial-unit step c" id="activity-4" tabindex="-1">
   <div class="head"><span class="lt">C</span><h2>有界咨询</h2><span class="who">你 + AI</span></div>
   <p class="do">找出你工作中那个具体的缺口，再提出有边界的请求：批评、备选方案、概念解释或技术帮助。绝不把整个任务交出去。</p>
   <div class="airule">C 是一道<b>关口</b>，而非一次性的时刻——在 F、E、T 中出现新缺口时，你都会再次经过这里，然后把答案带回你自己的判断。</div>
@@ -131,14 +140,14 @@
   <div class="ask">问问自己：“此刻我到底需要 AI 帮什么忙？”</div>
 </div>
 
-<div class="step">
+<div class="tutorial-unit step" id="activity-5" tabindex="-1">
   <div class="head"><span class="lt">E</span><h2>评估并说明理由</h2><span class="who">你</span></div>
   <p class="do">用你的标准和真实证据检验 AI 的输出，然后做出决定——采纳、修改、拒绝、重组或暂缓——并写下<em>为什么</em>。“我检查过了”不算数，说出证据才算。</p>
   <div class="airule">AI 可以提出反方观点——但裁决权在你。</div>
   <div class="ask">问问自己：“支持我这个决定的标准或证据是什么？”——若评估暴露了缺口，就折返 F、A 或 C。这正是循环在起作用。</div>
 </div>
 
-<div class="step">
+<div class="tutorial-unit step" id="activity-6" tabindex="-1">
   <div class="head"><span class="lt">T</span><h2>转化与迁移</h2><span class="who">你</span></div>
   <p class="do">把这些决定融入真正属于你的作品，记下改了什么、为什么改，并想好下次在哪里再用这套方法。</p>
   <div class="airule">AI 可以帮你比较不同情境——这套方法还能用在哪里？</div>
@@ -161,6 +170,7 @@
   </div>
 </section>
 
+<a class="tutorial-next" href="https://yupei2023.github.io/p-facet-fluid-mechanics/"><strong>在流体力学中实践 →</strong><span>选择起重驳船、供水管道或雨水涵洞情境。在六个阶段中独立尝试、评估 AI 回答，并说明你的判断。（英文）</span></a>
 <footer>
   P-FACET 模型 © 段玉佩（Yupei Duan）&amp; Danielle Oprean，密苏里大学。一个问题决定一切：<em>思考是谁完成的？</em>
   <div style="margin-top:10px"><b>继续学习：</b> <a href="../../trainer/">互动教程</a> · <a href="../../request-builder/">请求生成器</a> · <a href="../../decision-log/">决策日志</a> · <a href="../../cases/">案例库</a> · <a href="../../">模型主页</a></div>

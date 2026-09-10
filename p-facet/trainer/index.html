@@ -152,11 +152,13 @@
   footer{margin-top:66px; padding-top:22px; border-top:1px solid var(--line); font-size:13px; color:var(--muted); max-width:70ch}
   @media (prefers-reduced-motion: reduce){*{transition:none !important}}
 </style>
+<link rel="stylesheet" href="../tutorials.css?v=1">
+<script src="../tutorials.js?v=1" defer></script>
 </head>
 <body>
 
 <main>
-<div class="topbar"><a class="language-switch" href="zh/" lang="zh-Hans">中文</a></div>
+<div class="topbar"><a class="tutorial-home" href="../">← P-FACET</a><a class="language-switch" href="zh/" lang="zh-Hans">中文</a></div>
 <header class="hero">
   <div class="kicker">An 8-minute tour — plan ~15 with the practice</div>
   <h1>When AI helps you, <span class="q">who is doing the thinking?</span></h1>
@@ -168,9 +170,16 @@
     <span><span class="dot a"></span>the problem that anchors it all</span>
   </div>
 </header>
+<div class="tutorial-choices" id="activities"><h2>Choose your starting point</h2><p>Follow the sequence, or go straight to the activity you need.</p><div class="tutorial-cards"><a class="tutorial-card" data-phase="1" href="#activity-1"><b aria-hidden="true">1</b><span>Same assignment, two very different learners</span></a>
+<a class="tutorial-card" data-phase="2" href="#activity-2"><b aria-hidden="true">2</b><span>Two questions decide every case</span></a>
+<a class="tutorial-card" data-phase="3" href="#activity-3"><b aria-hidden="true">3</b><span>The P-FACET cycle</span></a>
+<a class="tutorial-card" data-phase="4" href="#activity-4"><b aria-hidden="true">4</b><span>One task, start to finish</span></a>
+<a class="tutorial-card" data-phase="5" href="#activity-5"><b aria-hidden="true">5</b><span>Fix the prompt</span></a>
+<a class="tutorial-card" data-phase="6" href="#activity-6"><b aria-hidden="true">6</b><span>Your pocket card</span></a>
+</div></div><nav class="tutorial-nav" aria-label="Tutorial navigation" hidden><label for="tutorial-jump">Jump to</label><select id="tutorial-jump"><option value="activity-1">1 · Same assignment, two very different learners</option><option value="activity-2">2 · Two questions decide every case</option><option value="activity-3">3 · The P-FACET cycle</option><option value="activity-4">4 · One task, start to finish</option><option value="activity-5">5 · Fix the prompt</option><option value="activity-6">6 · Your pocket card</option></select><a href="#activities">All activities ↑</a></nav>
 
 <!-- ============ 1. two students ============ -->
-<section>
+<section class="tutorial-unit" id="activity-1" tabindex="-1">
   <div class="eyebrow">Part 1 · The dilemma</div>
   <h2>Same assignment, two very different learners</h2>
   <p class="note">Both students hand in polished work. Click each card to see what an instructor — or a future employer — can actually tell about their learning.</p>
@@ -200,7 +209,7 @@
 </section>
 
 <!-- ============ 2. offloading sorter ============ -->
-<section>
+<section class="tutorial-unit" id="activity-2" tabindex="-1">
   <div class="eyebrow">Part 2 · The core skill</div>
   <h2>Two questions decide every case</h2>
   <p class="note">Handing work to a tool is called <em>cognitive offloading</em> — and it isn't automatically bad. Notes offload memory; calculators offload computation. Every scenario below is judged by two questions. <b>What work was delegated?</b> — <b>Mechanical</b> (peripheral), <b>Supportive</b> (thinking support), or <b>Substitutive</b> (the task's central work). <b>And how was it governed?</b> — <b>regulated</b> (a purpose, a boundary, an evaluated result the learner stays responsible for) or <b>unregulated</b>. Regulation is your control over the delegation — not a fourth kind of work.</p>
@@ -210,7 +219,7 @@
 </section>
 
 <!-- ============ 3. the wheel ============ -->
-<section>
+<section class="tutorial-unit" id="activity-3" tabindex="-1">
   <div class="eyebrow">Part 3 · The model</div>
   <h2>The P-FACET cycle</h2>
   <p class="note">The <b style="color:var(--anchor)">Problem</b> anchors everything at the center. The five phases cycle around it — and you'll loop back and forth between them; it's a cycle, not a checklist. Notice: only <b style="color:var(--ai)">C</b> involves talking to AI directly. Click each phase.</p>
@@ -278,7 +287,7 @@
 </section>
 
 <!-- ============ 4. worked example ============ -->
-<section>
+<section class="tutorial-unit" id="activity-4" tabindex="-1">
   <div class="eyebrow">Part 4 · See it run</div>
   <h2>One task, start to finish</h2>
   <p class="note">A student works on a real case task — <em>reduce campus food waste</em> — with AI available the whole time. Step through what regulated use sounds like.</p>
@@ -296,7 +305,7 @@
 </section>
 
 <!-- ============ 5. fix the prompt ============ -->
-<section>
+<section class="tutorial-unit" id="activity-5" tabindex="-1">
   <div class="eyebrow">Part 5 · Practice</div>
   <h2>Fix the prompt</h2>
   <p class="note">Each situation shows two ways to ask AI for help. Pick the request that keeps the core thinking yours. (These are the moments where most AI use silently turns substitutive.)</p>
@@ -304,7 +313,7 @@
 </section>
 
 <!-- ============ 6. pocket card ============ -->
-<section>
+<section class="tutorial-unit" id="activity-6" tabindex="-1">
   <div class="eyebrow">Part 6 · Keep this</div>
   <h2>Your pocket card</h2>
   <p class="note">Six questions to ask yourself, one per phase. If you can answer all six about a piece of work, your AI use was regulated — and your learning is visible.</p>
@@ -324,6 +333,7 @@
   </div>
 </section>
 
+<a class="tutorial-next" href="https://yupei2023.github.io/p-facet-fluid-mechanics/"><strong>Put it into practice: fluid mechanics →</strong><span>Choose a crane barge, water main, or storm culvert scenario. Make your own attempt, check a scripted AI reply, and explain your decisions through all six phases.</span></a>
 <footer>
   The P-FACET Model © Yupei Duan &amp; Danielle Oprean, University of Missouri. The final question belongs to every learner: <em>who did the thinking?</em>
   <div style="margin-top:10px"><b>Keep going:</b> <a href="../request-builder/" style="color:var(--ai)">Request Builder</a> · <a href="../decision-log/" style="color:var(--ai)">Decision Log</a> · <a href="../cases/" style="color:var(--ai)">Case Library</a> · <a href="../" style="color:var(--ai)">Model home</a></div>
