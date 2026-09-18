@@ -1,7 +1,10 @@
 import importlib.util
+import json
+import tempfile
 import unittest
 from datetime import date
 from pathlib import Path
+from unittest import mock
 
 ROOT = Path(__file__).resolve().parents[1]
 SPEC = importlib.util.spec_from_file_location("update_pulse", ROOT / "scripts" / "update_pulse.py")
@@ -84,8 +87,16 @@ class PulseTests(unittest.TestCase):
         self.assertLessEqual(max(__import__("collections").Counter(item["theme_id"] for item in selected).values()), 3)
 
     def test_current_edition_is_detected(self):
-        self.assertTrue(PULSE.pulse_is_current(date(2026, 8, 31)))
-        self.assertFalse(PULSE.pulse_is_current(date(2026, 9, 7)))
+        # Use a temporary data file so the test does not depend on the live
+        # edition date, which the weekly workflow changes every Monday.
+        with tempfile.TemporaryDirectory() as folder:
+            data_path = Path(folder) / "pulse.json"
+            data_path.write_text(json.dumps({"refreshed_at": "2026-08-31T19:08:24+00:00"}), encoding="utf-8")
+            with mock.patch.object(PULSE, "DATA_PATH", data_path):
+                self.assertTrue(PULSE.pulse_is_current(date(2026, 8, 31)))
+                self.assertFalse(PULSE.pulse_is_current(date(2026, 9, 7)))
+                data_path.unlink()
+                self.assertFalse(PULSE.pulse_is_current(date(2026, 8, 31)))
 
 
 if __name__ == "__main__":
