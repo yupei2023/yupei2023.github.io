@@ -9,7 +9,9 @@
   <title>Ph.D. Portfolio · Yupei Duan</title>
   <link rel="icon" href="../assets/site/favicon.ico">
   <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../assets/css/research-iceberg.css">
   <script src="../script.js" defer></script>
+  <script src="../assets/js/research-iceberg.js" defer></script>
 </head>
 <body class="inner-page portfolio-page">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -26,7 +28,7 @@
       <p class="kicker">Ph.D. Portfolio</p>
       <h1>Learning, designing, researching, and contributing as an emerging scholar.</h1>
       <p class="page-deck">This portfolio documents my doctoral development in Information Science and Learning Technologies through coursework, research, professional participation, service, and reflection.</p>
-      <p class="updated-date">Updated August 4, 2026</p>
+      <p class="updated-date">Updated September 18, 2026</p>
     </header>
 
     <nav class="portfolio-nav" aria-label="Portfolio sections">
@@ -162,15 +164,50 @@
       </div>
     </section>
 
-    <section class="page-section reflection-section" id="reflection">
-      <p class="kicker">Research Interest</p>
-      <blockquote>I design, develop, and evaluate AI-driven immersive learning environments that preserve STEM learner agency and strengthen the knowledge, literacy, and judgment needed for independent learning.</blockquote>
-      <div class="reflection-copy">
-        <p>My development as a doctoral scholar has not been a departure from my earlier identity as a science educator and school leader. It has required me to translate practical concerns into researchable questions, make assumptions explicit, and place my ideas within broader scholarly conversations.</p>
-        <p>A central turning point was recognizing that technological sophistication does not produce learning by itself. I now examine what a system directs learners to notice, what reasoning it supports, what productive difficulty it preserves, and whether responsibility gradually transfers from the system to the learner.</p>
-        <p>Coursework in research design, measurement, qualitative inquiry, action research, HCI, cognition, motivation, and resilience has strengthened my mixed-methods orientation. I want to understand not only whether change occurs, but what learners notice, how they act, how they interpret feedback, and what they become able to do independently.</p>
-        <p>This agenda brings together my experience in science education, instructional design, artificial intelligence, and immersive technology. It centers the learner’s capacity to question, interpret evidence, make judgments, and act independently rather than treating technological support as an end in itself.</p>
-        <p>My emerging direction concerns how AI-enhanced immersive learning technologies can improve STEM learning while supporting conceptual understanding, reflection, judgment, and learner agency. The next stage is to define a learner population, theoretical framework, research design, and contribution precise enough for dissertation study.</p>
+    <section class="page-section reflection-section" id="reflection" aria-labelledby="research-interest-heading">
+      <h2 class="kicker" id="research-interest-heading">Research Interest</h2>
+      <blockquote>I work in problem-based learning, serious games, and immersive environments. There I can decide what the AI does, watch what learners keep doing for themselves, and learn whether that makes them better problem solvers.</blockquote>
+      <div class="reflection-layout">
+        <figure class="research-iceberg" aria-labelledby="research-iceberg-title">
+          <figcaption id="research-iceberg-title">What shapes my research</figcaption>
+          <div class="ice-field">
+            <svg class="ice-drawing" aria-hidden="true" focusable="false"></svg>
+            <ol class="ice-layers" reversed aria-label="Iceberg layers, from competencies at the tip to educational values at the base">
+              <li class="ice-layer" data-level="competencies">
+                <h3>Competencies</h3>
+                <p>Science teaching &amp; user experience</p>
+                <p>Learning design &amp; mixed methods</p>
+                <p>Eye tracking · interviews · logs</p>
+              </li>
+              <li class="ice-layer" data-level="research">
+                <h3>Research interest</h3>
+                <p><strong>Regulating AI cognitive offloading</strong></p>
+                <p>Independent STEM problem solving</p>
+                <p>Problem-based learning · serious games · immersive environments</p>
+              </li>
+              <li class="ice-layer" data-level="theory">
+                <h3>Theoretical foundations</h3>
+                <p>Jonassen · Thinking with tools</p>
+                <p>Different problems, different thinking</p>
+                <p>Bjork · Learning beyond performance</p>
+                <p>Mayer · Cognitive Theory of Multimedia Learning</p>
+              </li>
+              <li class="ice-layer" data-level="values">
+                <h3>Educational values</h3>
+                <p>Curiosity &amp; meaningful questions</p>
+                <p>Self-regulation &amp; lifelong learning</p>
+                <p>Exploring “unknown unknowns”</p>
+              </li>
+            </ol>
+          </div>
+        </figure>
+        <div class="reflection-copy">
+          <p>My path as a doctoral student did not start from zero. I was a science teacher and later a school leader, and I brought those years with me. But the questions I care about began even earlier, when I was a student myself. My grades were so-so, but I loved asking questions, and the best answers were not always in class. Books were my best teachers before high-speed internet. Then Google and Wikipedia took over, and they did something books could not: each answer led to another question, and I found myself exploring "unknown unknowns." When I later taught biology, chemistry, and physics, I saw the same thing from the teacher's side. Students' good questions were where learning really started, because science advances by solving problems. The doctoral program asked me to turn what I had seen as a student and as a teacher into questions I could study, state my assumptions clearly, and place my ideas alongside other people's work.</p>
+          <p>The turning point came when I realized that sophisticated technology does not produce learning by itself. I had built immersive environments and problem-based units, and I had seen students perform well in them. But performing well with support is not the same as being able to do it later without support. A learner who solves today's problem with artificial intelligence (AI) but cannot solve tomorrow's has a temporary answer, not the ability to solve problems. So my question shifted from "does this technology help?" to "what is the technology doing for the learner, and what is the learner still doing for themselves?"</p>
+          <p>That question has a name in the literature: cognitive offloading. Handing thinking over to a tool is not good or bad by itself. What matters is which thinking we hand over while someone is still learning, because that is the thinking they will not get to practice. I now study how to regulate AI-mediated cognitive offloading so that students become able to solve problems in science, technology, engineering, and mathematics (STEM). I do this work in problem-based learning, serious games, and immersive environments, because there I can decide what the AI does, watch what learners keep doing for themselves, and learn whether they can then solve new problems without it. From Jonassen, I take the idea that different types of problems require different kinds of thinking, and that technology should be something learners think with. From Bjork, I take the distinction between doing better with support and learning that lasts after the support ends.</p>
+          <p>My coursework in research design, measurement, qualitative inquiry, action research, human-computer interaction (HCI), cognition, motivation, and resilience pushed me toward mixed methods. I want to know not only whether learners changed, but what they noticed, how they acted, how they read feedback, and what they could do afterward on their own. Eye tracking, AI-supported interviews, and interaction logs let me see these things.</p>
+          <p>This work has now taken shape as P-FACET (Problem, Frame, Analogize and Attempt, Consult and Construct, Evaluate and Explain, Transform and Transfer), a model I proposed. It keeps a meaningful problem at the center and gives the learner a repeating cycle of framing, attempting, consulting, evaluating, and transferring, with AI entering at one gateway rather than everywhere. The whole cycle turns on one question, simple to ask and hard to answer: who did the thinking the learning objective was meant to develop? The model is still conceptual, and I am interested in testing it across many different learning scenarios: learners of different ages, different subjects, languages, and cultural backgrounds, formal and informal settings, newcomers and learners who already know a good deal, learning alone and learning in groups, and problems that range from well-defined to messy. I want to do this with immersive learning technologies, serious games, and other learning technologies. Behind all of this is the learner I hope to produce: one who plans, monitors, and adjusts their own learning, keeps going after the course ends, and is willing to explore "unknown unknowns," the things they do not yet know they do not know.</p>
+        </div>
       </div>
     </section>
   </main>

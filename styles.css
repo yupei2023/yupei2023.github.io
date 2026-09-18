@@ -1222,12 +1222,18 @@ html[data-language="zh"] .pfacet-page [data-lang="zh"] { display: inline; }
 .evidence-strip article:last-child { border-right: 0; }
 .evidence-strip strong { display: block; margin-bottom: 1rem; font-family: var(--serif); font-size: 1.3rem; font-weight: 400; }
 .evidence-strip span { color: var(--muted); font-size: .78rem; }
-.reflection-section { background: var(--green-deep); color: var(--white); }
+.reflection-section { padding-inline: clamp(1.25rem, 5vw, 6rem); background: var(--green-deep); color: var(--white); }
 .reflection-section .kicker { color: var(--sage); }
-.reflection-section blockquote { max-width: 1050px; margin: 0 0 3rem; font-family: var(--serif); font-size: clamp(2rem, 4.3vw, 4.5rem); letter-spacing: -.04em; line-height: 1.08; }
+.reflection-section blockquote { max-width: 1200px; margin: 0 0 3rem; font-family: var(--serif); font-size: clamp(1.75rem, 3.2vw, 3rem); letter-spacing: -.03em; line-height: 1.25; }
 .reflection-section > p:last-child { max-width: 760px; color: rgba(255,255,255,.72); }
-.reflection-copy { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem 3rem; max-width: 1100px; }
-.reflection-copy p { margin: 0; color: rgba(255,255,255,.78); }
+.reflection-layout { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); grid-template-areas: "narrative iceberg"; align-items: start; gap: clamp(2rem, 4vw, 4rem); max-width: 1440px; }
+.reflection-copy { grid-area: narrative; display: grid; gap: 1.5rem; min-width: 0; max-width: 68ch; }
+.reflection-copy p { margin: 0; color: rgba(255,255,255,.86); line-height: 1.85; }
+.reflection-layout > .research-iceberg { grid-area: iceberg; }
+@media (max-width: 1100px) {
+  .reflection-layout { grid-template-columns: minmax(0, 1fr); grid-template-areas: "iceberg" "narrative"; gap: 2.5rem; }
+  .reflection-layout > .research-iceberg { width: 100%; max-width: 680px; }
+}
 .link-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); }
 .link-cards a { display: flex; min-height: 180px; padding: 2rem; background: var(--surface); flex-direction: column; justify-content: space-between; text-decoration: none; transition: background .2s ease, color .2s ease; }
 .link-cards a:hover, .link-cards a:focus-visible { background: var(--green-deep); color: var(--white); }
