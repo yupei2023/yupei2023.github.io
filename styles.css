@@ -1102,6 +1102,7 @@ html[data-language="zh"] .pfacet-page [data-lang="zh"] { display: inline; }
 .updated-date { position: relative; z-index: 1; margin: 1.25rem 0 0; color: var(--muted); font-size: .875rem; }
 .page-section { padding: clamp(5rem, 9vw, 8rem) clamp(1.25rem, 8vw, 9rem); }
 .page-section[id] { scroll-margin-top: 140px; }
+.pfacet-page #model-title { scroll-margin-top: 140px; }
 .section-intro, .journey-context { max-width: 900px; color: var(--muted); font-size: 1rem; }
 .journey-context { margin: 2rem auto 0; text-align: center; }
 .page-section > .section-heading h2, .page-cta h2 {
@@ -1234,6 +1235,8 @@ html[data-language="zh"] .pfacet-page [data-lang="zh"] { display: inline; }
 .reflection-copy p { margin: 0; color: rgba(255,255,255,.87); font-size: clamp(1rem, 1.2vw, 1.125rem); font-weight: 300; line-height: 1.85; }
 .reflection-copy p + p { margin-top: 1.25em; }
 .reflection-copy strong { color: var(--white); font-weight: 500; }
+.reflection-copy a { color: var(--white); text-decoration-thickness: 1px; text-underline-offset: .2em; }
+.reflection-copy a:hover, .reflection-copy a:focus-visible { color: var(--sage); }
 .reflection-layout > .research-iceberg { width: 100%; max-width: 900px; margin: clamp(1.5rem, 4vw, 3rem) auto 0; padding-top: clamp(2rem, 5vw, 4rem); border-top: 1px solid rgba(194,213,231,.25); }
 @media (max-width: 760px) {
   .reflection-chapter { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
