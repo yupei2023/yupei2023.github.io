@@ -5,29 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>P-FACET Trainer</title>
 <style>
-  :root{
-    --bg:#F7F5F1; --surface:#FFFFFF; --ink:#26241E; --muted:#6B6659;
-    --line:#E2DDD2; --learner:#2E6B4E; --learner-soft:#E4EEE8;
-    --ai:#4A6FA5; --ai-soft:#E6ECF5; --anchor:#C2892D; --anchor-soft:#F5EAD6;
-    --risk:#A84B3A; --risk-soft:#F3E2DD; --ok:#2E6B4E;
-    --chip:#EFECE4;
-  }
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      --bg:#211F1B; --surface:#2A2823; --ink:#EAE6DC; --muted:#A39D8E;
-      --line:#3B382F; --learner:#6FB392; --learner-soft:#26352D;
-      --ai:#8AA7D6; --ai-soft:#28303E; --anchor:#D9A855; --anchor-soft:#3A3122;
-      --risk:#D08A79; --risk-soft:#3C2B26; --ok:#6FB392;
-      --chip:#333028;
-    }
-  }
-  :root[data-theme="dark"]{
-    --bg:#211F1B; --surface:#2A2823; --ink:#EAE6DC; --muted:#A39D8E;
-    --line:#3B382F; --learner:#6FB392; --learner-soft:#26352D;
-    --ai:#8AA7D6; --ai-soft:#28303E; --anchor:#D9A855; --anchor-soft:#3A3122;
-    --risk:#D08A79; --risk-soft:#3C2B26; --ok:#6FB392;
-    --chip:#333028;
-  }
   *{box-sizing:border-box}
   body{
     margin:0; background:var(--bg); color:var(--ink);
@@ -154,11 +131,34 @@
 </style>
 <link rel="stylesheet" href="../tutorials.css?v=1">
 <script src="../tutorials.js?v=1" defer></script>
+<link rel="preload" href="../../assets/fonts/Lora.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="../../assets/fonts/Geologica.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="../resources.css?v=1">
 </head>
-<body>
+<body class="resource-page resource-trainer">
+<a class="resource-skip" href="#resource-main">Skip to content</a>
+<header class="resource-header">
+  <a class="resource-brand" href="../"><strong>P-FACET</strong><span>Learning resources</span></a>
+  <nav class="resource-navigation" aria-label="P-FACET navigation">
+    <a href="../">Model overview</a>
+    <details class="resource-menu">
+      <summary>All resources</summary>
+      <div class="resource-menu-links"><a href="../quick-start/">Quick Start</a>
+<a href="../trainer/" aria-current="page">Trainer</a>
+<a href="../request-builder/">Request Builder</a>
+<a href="../decision-log/">Decision Log</a>
+<a href="../cases/">Case Library</a>
+<a href="../teach/">Teaching Guide</a>
+<a href="../assignment-kit/">Assignment Kit</a>
+<a href="../policy-pack/">Policy Pack</a>
+<a href="../faq/">FAQ</a></div>
+    </details>
+    <a class="language-switch" href="zh/" lang="zh-Hans" hidden>中文</a>
+  </nav>
+</header>
 
-<main>
-<div class="topbar"><a class="tutorial-home" href="../">← P-FACET</a><a class="language-switch" href="zh/" lang="zh-Hans" hidden>中文</a></div>
+<main id="resource-main" tabindex="-1">
+
 <header class="hero">
   <div class="kicker">An 8-minute tour — plan ~15 with the practice</div>
   <h1>When AI helps you, <span class="q">who is doing the thinking?</span></h1>
