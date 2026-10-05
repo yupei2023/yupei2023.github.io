@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "refreshed_at": "2026-09-28T11:44:00+00:00",
+  "refreshed_at": "2026-10-05T12:19:13+00:00",
   "selection_window_days": 45,
   "article_count": 10,
   "articles": [
@@ -21,7 +21,7 @@
       "theme_id": "immersive-learning",
       "theme": "Immersive learning",
       "priority_tier": 2,
-      "score": 87,
+      "score": 83,
       "reason": "Selected for its connection to immersive learning and publication in a priority journal."
     },
     {
@@ -40,29 +40,148 @@
       "theme_id": "immersive-learning",
       "theme": "Immersive learning",
       "priority_tier": 2,
-      "score": 81,
+      "score": 77,
       "reason": "Selected for its connection to immersive learning and publication in a priority journal."
     },
     {
-      "id": "10.1111/bjet.70088",
-      "title": "Unpacking student interactions in GenAI ‐assisted social annotation: An epistemic network analysis of cognitive and social presence",
+      "id": "10.1111/bjet.70093",
+      "title": "Multidimensional engagement effects of generative AI adoption among minority ethnic international students in UK higher education",
       "authors": [
-        "Mengru Pan",
-        "Chun Yip Lai",
-        "Kai Guo",
-        "Chin‐Hsi Lin"
+        "Olatunji David Adekoya",
+        "Hakeem Adeniyi Ajonbadi",
+        "Chima Mordi"
       ],
       "journal": "British Journal of Educational Technology",
       "issn_l": "0007-1013",
-      "publication_date": "2026-09-24",
-      "doi": "https://doi.org/10.1111/bjet.70088",
-      "url": "https://doi.org/10.1111/bjet.70088",
+      "publication_date": "2026-10-04",
+      "doi": "https://doi.org/10.1111/bjet.70093",
+      "url": "https://doi.org/10.1111/bjet.70093",
       "access": "Open access",
       "theme_id": "ai-literacy",
       "theme": "AI literacy",
       "priority_tier": 1,
-      "score": 67,
+      "score": 74,
       "reason": "Selected for its connection to ai literacy and publication in a priority journal."
+    },
+    {
+      "id": "10.1111/bjet.70089",
+      "title": "Many hands make light work? Individual and collaborative interaction with a GenAI ‐powered multi‐agent system: Effects on learning performance and critical thinking",
+      "authors": [
+        "Xiaoyan Chu",
+        "Hongzhu Dai",
+        "Xuesong Zhai"
+      ],
+      "journal": "British Journal of Educational Technology",
+      "issn_l": "0007-1013",
+      "publication_date": "2026-09-29",
+      "doi": "https://doi.org/10.1111/bjet.70089",
+      "url": "https://doi.org/10.1111/bjet.70089",
+      "access": "Open access",
+      "theme_id": "learning-design",
+      "theme": "Learning design",
+      "priority_tier": 1,
+      "score": 71,
+      "reason": "Selected for its connection to learning design and publication in a priority journal."
+    },
+    {
+      "id": "10.1016/j.compedu.2026.105757",
+      "title": "Agency and Adaptation in Human–Technology Configurations: A Fifty-Year Analysis of Computers & Education",
+      "authors": [
+        "Yuan‐Hsuan Lee",
+        "Candace Walkington",
+        "Jiun‐Yu Wu"
+      ],
+      "journal": "Computers & Education",
+      "issn_l": "0360-1315",
+      "publication_date": "2026-10-01",
+      "doi": "https://doi.org/10.1016/j.compedu.2026.105757",
+      "url": "https://doi.org/10.1016/j.compedu.2026.105757",
+      "access": "Open access",
+      "theme_id": "learner-agency",
+      "theme": "Learner agency",
+      "priority_tier": 1,
+      "score": 69,
+      "reason": "Selected for its connection to learner agency and publication in a priority journal."
+    },
+    {
+      "id": "10.1002/tea.70074",
+      "title": "The Potential Impact of a Socioscientific Issues Programme on Elementary School Students' Scientific Literacy",
+      "authors": [
+        "Nicola Broderick",
+        "Paul van Kampen"
+      ],
+      "journal": "Journal of Research in Science Teaching",
+      "issn_l": "0022-4308",
+      "publication_date": "2026-10-02",
+      "doi": "https://doi.org/10.1002/tea.70074",
+      "url": "https://doi.org/10.1002/tea.70074",
+      "access": "Open access",
+      "theme_id": "stem-learning",
+      "theme": "STEM learning",
+      "priority_tier": 1,
+      "score": 67,
+      "reason": "Selected for its connection to stem learning and publication in a priority journal."
+    },
+    {
+      "id": "10.1007/s10956-026-10354-0",
+      "title": "The Influence of Augmented Reality on Learner-generated Explanations During Chemical Hands-on Experiments",
+      "authors": [
+        "Hendrik Peeters",
+        "Sebastian Habig",
+        "Sabine Fechner"
+      ],
+      "journal": "Journal of Science Education and Technology",
+      "issn_l": "1059-0145",
+      "publication_date": "2026-09-29",
+      "doi": "https://doi.org/10.1007/s10956-026-10354-0",
+      "url": "https://doi.org/10.1007/s10956-026-10354-0",
+      "access": "Open access",
+      "theme_id": "immersive-learning",
+      "theme": "Immersive learning",
+      "priority_tier": 2,
+      "score": 66,
+      "reason": "Selected for its connection to immersive learning and publication in a priority journal."
+    },
+    {
+      "id": "10.1007/s11423-026-10727-7",
+      "title": "What does it mean to be “career ready”? A study of competencies important for instructional designers and educational technologists",
+      "authors": [
+        "Marisa Exter",
+        "Iryna Ashby"
+      ],
+      "journal": "Educational Technology Research and Development",
+      "issn_l": "1042-1629",
+      "publication_date": "2026-09-30",
+      "doi": "https://doi.org/10.1007/s11423-026-10727-7",
+      "url": "https://doi.org/10.1007/s11423-026-10727-7",
+      "access": "Open access",
+      "theme_id": "learning-design",
+      "theme": "Learning design",
+      "priority_tier": 2,
+      "score": 66,
+      "reason": "Selected for its connection to learning design and publication in a priority journal."
+    },
+    {
+      "id": "10.1007/s10798-026-10128-0",
+      "title": "Measuring AI literacy in design education: development and validation of the artificial intelligence literacy scale for design students",
+      "authors": [
+        "Li Chen Gu",
+        "Xun Gao",
+        "Rong Li",
+        "Zaixing Liu",
+        "Yong Li"
+      ],
+      "journal": "International Journal of Technology and Design Education",
+      "issn_l": "0957-7572",
+      "publication_date": "2026-10-05",
+      "doi": "https://doi.org/10.1007/s10798-026-10128-0",
+      "url": "https://doi.org/10.1007/s10798-026-10128-0",
+      "access": "Open access",
+      "theme_id": "ai-literacy",
+      "theme": "AI literacy",
+      "priority_tier": null,
+      "score": 63,
+      "reason": "Selected for its connection to ai literacy."
     },
     {
       "id": "10.1002/sce.70103",
@@ -84,132 +203,8 @@
       "theme_id": "stem-learning",
       "theme": "STEM learning",
       "priority_tier": 1,
-      "score": 66,
+      "score": 62,
       "reason": "Selected for its connection to stem learning and publication in a priority journal."
-    },
-    {
-      "id": "10.1002/tea.70070",
-      "title": "Toward a Multidimensional Science Content Knowledge Framework: An Expert Science Teacher's Uneven Development of Pedagogical Content Knowledge Through Classroom Teaching Experiences",
-      "authors": [
-        "Kennedy Kam Ho Chan",
-        "Steven Ka Kit Yu",
-        "Su‐Chi Fang",
-        "Lihua Xu"
-      ],
-      "journal": "Journal of Research in Science Teaching",
-      "issn_l": "0022-4308",
-      "publication_date": "2026-09-21",
-      "doi": "https://doi.org/10.1002/tea.70070",
-      "url": "https://doi.org/10.1002/tea.70070",
-      "access": "Open access",
-      "theme_id": "stem-learning",
-      "theme": "STEM learning",
-      "priority_tier": 1,
-      "score": 65,
-      "reason": "Selected for its connection to stem learning and publication in a priority journal."
-    },
-    {
-      "id": "10.1016/j.nedt.2026.107383",
-      "title": "Immersive learning in nursing - VR simulation and its impact on culturally and linguistically diverse nursing students' clinical reasoning, psychological stress and satisfaction",
-      "authors": [
-        "Paula Ropponen",
-        "Sari Pramila‐Savukoski",
-        "Heli‐Maria Kuivila",
-        "Márta Sobocinski",
-        "Joel Koutonen",
-        "Sanna Järvelä",
-        "Kristina Mikkonen"
-      ],
-      "journal": "Nurse Education Today",
-      "issn_l": "0260-6917",
-      "publication_date": "2026-08-28",
-      "doi": "https://doi.org/10.1016/j.nedt.2026.107383",
-      "url": "https://doi.org/10.1016/j.nedt.2026.107383",
-      "access": "Open access",
-      "theme_id": "immersive-learning",
-      "theme": "Immersive learning",
-      "priority_tier": 3,
-      "score": 61,
-      "reason": "Selected for its connection to immersive learning and publication in a priority journal."
-    },
-    {
-      "id": "10.1002/ase.70366",
-      "title": "Guidelines for designing and implementing game‐based learning in comparative anatomy education",
-      "authors": [
-        "A H Lau",
-        "Renato L. Previdelli"
-      ],
-      "journal": "Anatomical Sciences Education",
-      "issn_l": "1935-9772",
-      "publication_date": "2026-09-25",
-      "doi": "https://doi.org/10.1002/ase.70366",
-      "url": "https://doi.org/10.1002/ase.70366",
-      "access": "Open access",
-      "theme_id": "stem-learning",
-      "theme": "STEM learning",
-      "priority_tier": null,
-      "score": 61,
-      "reason": "Selected for its connection to stem learning."
-    },
-    {
-      "id": "10.1002/sce.70101",
-      "title": "A Mixed‐Methods Study of a Short‐Term Professional Development as an Entry Point to School‐Based Participatory Science",
-      "authors": [
-        "Ho Yeong Yu",
-        "Ho Choi",
-        "Jae Geun Kim"
-      ],
-      "journal": "Science Education",
-      "issn_l": "0036-8326",
-      "publication_date": "2026-09-01",
-      "doi": "https://doi.org/10.1002/sce.70101",
-      "url": "https://doi.org/10.1002/sce.70101",
-      "access": "Open access",
-      "theme_id": "learning-design",
-      "theme": "Learning design",
-      "priority_tier": 1,
-      "score": 59,
-      "reason": "Selected for its connection to learning design and publication in a priority journal."
-    },
-    {
-      "id": "10.1007/s10956-026-10359-9",
-      "title": "Situated AI Literacy Change Through GenAI-Supported Simulation in Secondary Physics: Field Evidence from Curriculum-Integrated Inquiry",
-      "authors": [
-        "Natthawin Cho",
-        "H Li",
-        "Xiangling Zhang",
-        "Yanyan Li"
-      ],
-      "journal": "Journal of Science Education and Technology",
-      "issn_l": "1059-0145",
-      "publication_date": "2026-09-17",
-      "doi": "https://doi.org/10.1007/s10956-026-10359-9",
-      "url": "https://doi.org/10.1007/s10956-026-10359-9",
-      "access": "Publisher page",
-      "theme_id": "ai-literacy",
-      "theme": "AI literacy",
-      "priority_tier": 2,
-      "score": 59,
-      "reason": "Selected for its connection to ai literacy and publication in a priority journal."
-    },
-    {
-      "id": "10.59828/ijsrmst.v5i9.459",
-      "title": "Critical Evaluation of AI-Generated Academic Information in Higher Education: Empirical Evidence on Trust, AI-Related Digital Literacy and Verification Behaviour",
-      "authors": [
-        "Dr. Kuldeep Kaur",
-        "Prof. Pramendra Singh Pundir"
-      ],
-      "journal": "International Journal of Scientific Research in Modern Science and Technology",
-      "issn_l": "2583-7605",
-      "publication_date": "2026-09-26",
-      "doi": "https://doi.org/10.59828/ijsrmst.v5i9.459",
-      "url": "https://doi.org/10.59828/ijsrmst.v5i9.459",
-      "access": "Open access",
-      "theme_id": "ai-literacy",
-      "theme": "AI literacy",
-      "priority_tier": null,
-      "score": 58,
-      "reason": "Selected for its connection to ai literacy."
     }
   ]
 }
