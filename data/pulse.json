@@ -1,28 +1,29 @@
 {
   "schema_version": 1,
-  "refreshed_at": "2026-10-05T12:19:13+00:00",
+  "refreshed_at": "2026-10-12T13:13:14+00:00",
   "selection_window_days": 45,
   "article_count": 10,
   "articles": [
     {
-      "id": "10.1002/jcal.70324",
-      "title": "Virtual Reality and Augmented Reality Technology for Safety Training in High‐Risk Environments: A Systematic Literature Review on Perspectives and Challenges",
+      "id": "10.1007/s11423-026-10736-6",
+      "title": "A multimodal e-learning platform integrating artificial intelligence, game-based learning, and augmented reality to enhance reading comprehension in secondary language learning",
       "authors": [
-        "Xintian Li",
-        "Yihui Zheng",
-        "Jianyu Chen"
+        "Esti Swatika Sari",
+        "Ella Wulandari",
+        "Ratna Wardani",
+        "Bima Mhd Ghaluh"
       ],
-      "journal": "Journal of Computer Assisted Learning",
-      "issn_l": "0266-4909",
-      "publication_date": "2026-09-15",
-      "doi": "https://doi.org/10.1002/jcal.70324",
-      "url": "https://doi.org/10.1002/jcal.70324",
-      "access": "Open access",
-      "theme_id": "immersive-learning",
-      "theme": "Immersive learning",
+      "journal": "Educational Technology Research and Development",
+      "issn_l": "1042-1629",
+      "publication_date": "2026-10-05",
+      "doi": "https://doi.org/10.1007/s11423-026-10736-6",
+      "url": "https://doi.org/10.1007/s11423-026-10736-6",
+      "access": "Publisher page",
+      "theme_id": "stem-learning",
+      "theme": "STEM learning",
       "priority_tier": 2,
-      "score": 83,
-      "reason": "Selected for its connection to immersive learning and publication in a priority journal."
+      "score": 75,
+      "reason": "Selected for its connection to stem learning and publication in a priority journal."
     },
     {
       "id": "10.1002/jcal.70335",
@@ -40,7 +41,27 @@
       "theme_id": "immersive-learning",
       "theme": "Immersive learning",
       "priority_tier": 2,
-      "score": 77,
+      "score": 73,
+      "reason": "Selected for its connection to immersive learning and publication in a priority journal."
+    },
+    {
+      "id": "10.1007/s11423-026-10676-1",
+      "title": "The impact of high-immersion virtual reality on anatomy learning, enjoyment, presence, and cognitive load",
+      "authors": [
+        "Regina Kaplan‐Rakowski",
+        "Samantha Norton",
+        "Tomasz Wojdyński"
+      ],
+      "journal": "Educational Technology Research and Development",
+      "issn_l": "1042-1629",
+      "publication_date": "2026-10-06",
+      "doi": "https://doi.org/10.1007/s11423-026-10676-1",
+      "url": "https://doi.org/10.1007/s11423-026-10676-1",
+      "access": "Open access",
+      "theme_id": "immersive-learning",
+      "theme": "Immersive learning",
+      "priority_tier": 2,
+      "score": 71,
       "reason": "Selected for its connection to immersive learning and publication in a priority journal."
     },
     {
@@ -60,8 +81,26 @@
       "theme_id": "ai-literacy",
       "theme": "AI literacy",
       "priority_tier": 1,
-      "score": 74,
+      "score": 69,
       "reason": "Selected for its connection to ai literacy and publication in a priority journal."
+    },
+    {
+      "id": "10.1016/j.learninstruc.2026.102486",
+      "title": "Beyond think-aloud: Toward a representational–recursive agenda for multimodal process-tracing research in learning and instruction",
+      "authors": [
+        "Anthony John Onwuegbuzie"
+      ],
+      "journal": "Learning and Instruction",
+      "issn_l": "0959-4752",
+      "publication_date": "2026-10-07",
+      "doi": "https://doi.org/10.1016/j.learninstruc.2026.102486",
+      "url": "https://doi.org/10.1016/j.learninstruc.2026.102486",
+      "access": "Open access",
+      "theme_id": "learning-design",
+      "theme": "Learning design",
+      "priority_tier": 1,
+      "score": 68,
+      "reason": "Selected for its connection to learning design and publication in a priority journal."
     },
     {
       "id": "10.1111/bjet.70089",
@@ -80,12 +119,74 @@
       "theme_id": "learning-design",
       "theme": "Learning design",
       "priority_tier": 1,
-      "score": 71,
+      "score": 67,
       "reason": "Selected for its connection to learning design and publication in a priority journal."
     },
     {
+      "id": "10.1002/sce.70109",
+      "title": "Learning to Live Well With Places: Socio‐Ecological Systems Modeling for Just and Sustainable Futures",
+      "authors": [
+        "Jordan Sherry-Wagner",
+        "Christa Haverly",
+        "Veronica Cassone McGowan",
+        "Megan Bang",
+        "Carrie Tzou",
+        "Mary L. Starr"
+      ],
+      "journal": "Science Education",
+      "issn_l": "0036-8326",
+      "publication_date": "2026-10-08",
+      "doi": "https://doi.org/10.1002/sce.70109",
+      "url": "https://doi.org/10.1002/sce.70109",
+      "access": "Open access",
+      "theme_id": "stem-learning",
+      "theme": "STEM learning",
+      "priority_tier": 1,
+      "score": 67,
+      "reason": "Selected for its connection to stem learning and publication in a priority journal."
+    },
+    {
+      "id": "10.1002/jcal.70352",
+      "title": "Ethical Generative AI Use in Higher Education: An Action Research Study Using the Think Aloud Method",
+      "authors": [
+        "Suha Karaki",
+        "Sandra Baroudi"
+      ],
+      "journal": "Journal of Computer Assisted Learning",
+      "issn_l": "0266-4909",
+      "publication_date": "2026-10-09",
+      "doi": "https://doi.org/10.1002/jcal.70352",
+      "url": "https://doi.org/10.1002/jcal.70352",
+      "access": "Publisher page",
+      "theme_id": "ai-literacy",
+      "theme": "AI literacy",
+      "priority_tier": 2,
+      "score": 67,
+      "reason": "Selected for its connection to ai literacy and publication in a priority journal."
+    },
+    {
+      "id": "10.1002/sce.70106",
+      "title": "What Do We Mean When We Say Epistemic Agency? How Considering Multiple Facets of Epistemic Cognition Can Clarify a Murky Theoretical Construct",
+      "authors": [
+        "Brie A. Bradshaw",
+        "Andrew Elby",
+        "Ryan L. Stowe"
+      ],
+      "journal": "Science Education",
+      "issn_l": "0036-8326",
+      "publication_date": "2026-10-07",
+      "doi": "https://doi.org/10.1002/sce.70106",
+      "url": "https://doi.org/10.1002/sce.70106",
+      "access": "Open access",
+      "theme_id": "stem-learning",
+      "theme": "STEM learning",
+      "priority_tier": 1,
+      "score": 66,
+      "reason": "Selected for its connection to stem learning and publication in a priority journal."
+    },
+    {
       "id": "10.1016/j.compedu.2026.105757",
-      "title": "Agency and Adaptation in Human–Technology Configurations: A Fifty-Year Analysis of Computers & Education",
+      "title": "Agency and adaptation in human–technology configurations: A fifty-year analysis of Computers & Education",
       "authors": [
         "Yuan‐Hsuan Lee",
         "Candace Walkington",
@@ -100,111 +201,8 @@
       "theme_id": "learner-agency",
       "theme": "Learner agency",
       "priority_tier": 1,
-      "score": 69,
+      "score": 65,
       "reason": "Selected for its connection to learner agency and publication in a priority journal."
-    },
-    {
-      "id": "10.1002/tea.70074",
-      "title": "The Potential Impact of a Socioscientific Issues Programme on Elementary School Students' Scientific Literacy",
-      "authors": [
-        "Nicola Broderick",
-        "Paul van Kampen"
-      ],
-      "journal": "Journal of Research in Science Teaching",
-      "issn_l": "0022-4308",
-      "publication_date": "2026-10-02",
-      "doi": "https://doi.org/10.1002/tea.70074",
-      "url": "https://doi.org/10.1002/tea.70074",
-      "access": "Open access",
-      "theme_id": "stem-learning",
-      "theme": "STEM learning",
-      "priority_tier": 1,
-      "score": 67,
-      "reason": "Selected for its connection to stem learning and publication in a priority journal."
-    },
-    {
-      "id": "10.1007/s10956-026-10354-0",
-      "title": "The Influence of Augmented Reality on Learner-generated Explanations During Chemical Hands-on Experiments",
-      "authors": [
-        "Hendrik Peeters",
-        "Sebastian Habig",
-        "Sabine Fechner"
-      ],
-      "journal": "Journal of Science Education and Technology",
-      "issn_l": "1059-0145",
-      "publication_date": "2026-09-29",
-      "doi": "https://doi.org/10.1007/s10956-026-10354-0",
-      "url": "https://doi.org/10.1007/s10956-026-10354-0",
-      "access": "Open access",
-      "theme_id": "immersive-learning",
-      "theme": "Immersive learning",
-      "priority_tier": 2,
-      "score": 66,
-      "reason": "Selected for its connection to immersive learning and publication in a priority journal."
-    },
-    {
-      "id": "10.1007/s11423-026-10727-7",
-      "title": "What does it mean to be “career ready”? A study of competencies important for instructional designers and educational technologists",
-      "authors": [
-        "Marisa Exter",
-        "Iryna Ashby"
-      ],
-      "journal": "Educational Technology Research and Development",
-      "issn_l": "1042-1629",
-      "publication_date": "2026-09-30",
-      "doi": "https://doi.org/10.1007/s11423-026-10727-7",
-      "url": "https://doi.org/10.1007/s11423-026-10727-7",
-      "access": "Open access",
-      "theme_id": "learning-design",
-      "theme": "Learning design",
-      "priority_tier": 2,
-      "score": 66,
-      "reason": "Selected for its connection to learning design and publication in a priority journal."
-    },
-    {
-      "id": "10.1007/s10798-026-10128-0",
-      "title": "Measuring AI literacy in design education: development and validation of the artificial intelligence literacy scale for design students",
-      "authors": [
-        "Li Chen Gu",
-        "Xun Gao",
-        "Rong Li",
-        "Zaixing Liu",
-        "Yong Li"
-      ],
-      "journal": "International Journal of Technology and Design Education",
-      "issn_l": "0957-7572",
-      "publication_date": "2026-10-05",
-      "doi": "https://doi.org/10.1007/s10798-026-10128-0",
-      "url": "https://doi.org/10.1007/s10798-026-10128-0",
-      "access": "Open access",
-      "theme_id": "ai-literacy",
-      "theme": "AI literacy",
-      "priority_tier": null,
-      "score": 63,
-      "reason": "Selected for its connection to ai literacy."
-    },
-    {
-      "id": "10.1002/sce.70103",
-      "title": "Localizable Climate Change Education in Schools: Examining Impacts on Students' Environmental Science Agency",
-      "authors": [
-        "Lindsey Mohan",
-        "Emily Harris",
-        "Jeffrey Snowden",
-        "Candice Guy‐Gaytán",
-        "Audrey Mohan",
-        "Dennis Lee"
-      ],
-      "journal": "Science Education",
-      "issn_l": "0036-8326",
-      "publication_date": "2026-09-22",
-      "doi": "https://doi.org/10.1002/sce.70103",
-      "url": "https://doi.org/10.1002/sce.70103",
-      "access": "Open access",
-      "theme_id": "stem-learning",
-      "theme": "STEM learning",
-      "priority_tier": 1,
-      "score": 62,
-      "reason": "Selected for its connection to stem learning and publication in a priority journal."
     }
   ]
 }
