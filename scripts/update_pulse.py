@@ -264,7 +264,7 @@ def render_feed(articles: list[dict], refreshed: date, language: str = "en") -> 
             theme = ZH_THEMES.get(article["theme_id"], article["theme"])
             access = ZH_ACCESS.get(article["access"], article["access"])
             tier_label = f"重点期刊 · 第 {article['priority_tier']} 级" if article["priority_tier"] else "领域检索发现"
-            reason = f"入选依据：主题与「{theme}」相关" + ("，并发表于优先关注的期刊。" if article["priority_tier"] else "。")
+            reason = f"自动归类：「{theme}」" + ("；刊于优先关注的期刊。" if article["priority_tier"] else "。")
             view, open_label = "阅读原文", "打开论文："
             authors = ", ".join(article["authors"][:5]) + (", et al." if len(article["authors"]) > 5 else "") if article["authors"] else "暂无作者信息"
         else:
@@ -286,8 +286,8 @@ def render_feed(articles: list[dict], refreshed: date, language: str = "en") -> 
           <div class="pulse-article__source"><span>{html.escape(tier_label)}</span><a href="{html.escape(article['url'], quote=True)}" aria-label="{open_label}{html.escape(article['title'], quote=True)}">{view} <i aria-hidden="true">↗</i></a></div>
         </article>''')
     edition = "本期更新" if chinese else "Latest edition"
-    heading = "十篇文章，看看研究正在往哪里走。" if chinese else "Ten signals from the research landscape."
-    explanation = "依据主题相关性、发表时间、期刊优先级和书目记录质量排序，并标注文章的获取方式。论文题名、作者和期刊保留原文，便于检索。" if chinese else "Ranked for relevance, recency, journal priority, and record quality. Access labels distinguish freely available versions from publisher pages."
+    heading = "本周的十条阅读线索。" if chinese else "Ten signals from the research landscape."
+    explanation = "按主题关联、发表时间、期刊优先级及书目记录质量排序。每篇均保留原题、作者与期刊信息，并标明获取方式，便于从索引进入原文。" if chinese else "Ranked for relevance, recency, journal priority, and record quality. Access labels distinguish freely available versions from publisher pages."
     return f'''{START_MARKER}
     <section class="pulse-feed" aria-labelledby="pulse-feed-title">
       <div class="pulse-feed__heading">

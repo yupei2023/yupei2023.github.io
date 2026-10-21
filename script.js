@@ -1,8 +1,8 @@
 document.documentElement.classList.add("js");
 const isChinese = document.documentElement.lang.toLowerCase().startsWith("zh");
 const chineseUI = {
-  "Open navigation": "打开导航", "Close navigation": "关闭导航",
-  "Explore the website": "浏览网站", "Search Yupei Duan’s work": "查找段玉佩的工作",
+  "Open navigation": "打开导航", "Close navigation": "收起导航",
+  "Explore the website": "浏览网站", "Search Yupei Duan’s work": "查找我的研究、教学与写作",
   "Close search": "关闭搜索", "Search this website": "搜索本站",
   "Search research, publications, teaching…": "搜索研究、论文、教学……",
   "Start typing to search across the website.": "输入关键词，查找本站内容。",
@@ -90,6 +90,7 @@ if ("IntersectionObserver" in window) {
 // Site-wide search is built in the browser from the public HTML pages. This
 // keeps the GitHub Pages site dependency-free and avoids collecting queries.
 const searchPages = isChinese ? [
+  { path: "zh/", label: "首页" },
   { path: "research/zh/", label: "研究" },
   { path: "scholarship/zh/", label: "学术成果" },
   { path: "teaching/zh/", label: "教学" },

@@ -1,9 +1,10 @@
 # Chinese pages
 
-The six paired sections use `/research/zh/`, `/scholarship/zh/`, `/teaching/zh/`,
+The Chinese homepage is `/zh/`. The six paired sections use `/research/zh/`, `/scholarship/zh/`, `/teaching/zh/`,
 `/engagement/zh/`, `/pulse/zh/`, and `/about/zh/`. Each has its own static HTML,
 canonical URL, reciprocal English/Chinese language links, and `lang="zh-Hans"`.
-The homepage remains English. The portfolio remains available by direct URL and
+The homepage and all six sections have paired English and Chinese versions.
+The portfolio remains available by direct URL and
 is not added to either language's navigation or search index.
 
 ## Voice and evidence
@@ -11,8 +12,11 @@ is not added to either language's navigation or search index.
 The Chinese prose draws on Yupei's teaching essays “做厨师一样的教师” and
 “做一盘好课”, alongside his youth science writing “为什么 AI 很好玩？” and
 “AI 正在改变世界”. Use the adult teacher/researcher voice: begin with a concrete
-question or experience, explain ideas plainly, and let curiosity lead into the
-research. Use everyday metaphors sparingly. Do not transfer the children's
+question or experience, explain ideas with conceptual precision, and let curiosity
+lead into the research. Develop the reasoning within each paragraph rather than
+flattening it into a list or summary. Aim for graceful, varied cadence and memorable
+phrasing that clarifies an idea. Use everyday metaphors sparingly; avoid decorative
+lyricism, institutional jargon, and repeated formulaic questions. Do not transfer the children's
 articles' exhortations or playful particles into academic claims.
 
 Keep the scope of authorship, proposed evaluations, conceptual models, publication
@@ -27,12 +31,12 @@ The Chinese About page uses the user's confirmed status, 博士候选人.
 
 Edit paired pages together when facts or project descriptions change. Preserve
 matching section IDs so incoming links still work. Chinese navigation links should
-lead to the six Chinese sections; links to untranslated projects and the homepage
-intentionally lead to English. PDF and external evidence URLs remain identical.
+lead to the Chinese homepage and six Chinese sections. Links to untranslated
+projects intentionally lead to English. PDF and external evidence URLs remain identical.
 
 `assets/css/chinese.css` supplies Chinese font fallbacks and typography. Shared
 navigation and localized search are in `script.js`; Chinese queries retain Unicode
-letters, and Chinese pages search the six Chinese sections.
+letters, and Chinese pages search the Chinese homepage and six Chinese sections.
 
 Pulse is generated in both languages by `scripts/update_pulse.py` from the same
 `data/pulse.json`. Do not manually translate the weekly article feed. Titles,
