@@ -1,0 +1,18 @@
+/* Research overview with the existing research iceberg. */
+.research-interests-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(2rem, 4vw, 4rem);
+}
+.research-interests-copy { min-width: 0; }
+.research-interests-copy h2 { margin-top: 0; }
+.research-interests-copy p:not(.kicker) { max-width: 62ch; line-height: 1.85; }
+.research-interests-copy .text-link { display: inline-block; margin-top: 1rem; }
+.research-interests .research-iceberg { padding: clamp(1.25rem, 2.5vw, 2rem); }
+#research-development .reflection-intro h2 { color: var(--white); margin: 0 0 2.5rem; }
+#research-interests, #research-development { scroll-margin-top: 6rem; }
+@media (max-width: 960px) {
+  .research-interests-layout { grid-template-columns: minmax(0, 1fr); }
+  .research-interests .research-iceberg { width: 100%; max-width: 700px; justify-self: center; }
+}

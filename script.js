@@ -82,7 +82,6 @@ const searchPages = [
   { path: "teaching/", label: "Teaching" },
   { path: "engagement/", label: "Engagement" },
   { path: "pulse/", label: "Pulse" },
-  { path: "portfolio/", label: "Ph.D. Portfolio" },
   { path: "about/", label: "About" }
 ];
 
