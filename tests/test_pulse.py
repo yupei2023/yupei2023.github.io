@@ -86,6 +86,45 @@ class PulseTests(unittest.TestCase):
         self.assertEqual(len({item["id"] for item in selected}), 10)
         self.assertLessEqual(max(__import__("collections").Counter(item["theme_id"] for item in selected).values()), 3)
 
+    def test_chinese_feed_preserves_titles_and_localizes_labels(self):
+        article = PULSE.article_from_work(self.work(2), self.topics["themes"], {"immersive-learning"}, self.by_issn, self.by_name, date(2026, 8, 16))
+        article["title"] = 'VR <script>alert("x")</script> & learning'
+        rendered = PULSE.render_feed([article], date(2026, 10, 21), "zh-Hans")
+        self.assertIn("沉浸式学习", rendered)
+        self.assertIn("开放获取", rendered)
+        self.assertIn("2026 年 10 月 21 日", rendered)
+        self.assertIn("&lt;script&gt;", rendered)
+        self.assertNotIn('<script>alert', rendered)
+        self.assertIn(article["url"], rendered)
+        self.assertNotIn("View article", rendered)
+
+    def test_chinese_feed_tolerates_new_metadata_labels(self):
+        article = PULSE.article_from_work(self.work(2), self.topics["themes"], {"immersive-learning"}, self.by_issn, self.by_name, date(2026, 8, 16))
+        article.update(theme_id="new-theme", theme="New theme", access="New access label")
+        rendered = PULSE.render_feed([article], date(2026, 10, 21), "zh-Hans")
+        self.assertIn("New theme", rendered)
+        self.assertIn("New access label", rendered)
+        self.assertIn('lang="en"', rendered)
+
+    def test_refresh_updates_both_languages_and_preserves_switch(self):
+        article = PULSE.article_from_work(self.work(2), self.topics["themes"], {"immersive-learning"}, self.by_issn, self.by_name, date(2026, 8, 16))
+        with tempfile.TemporaryDirectory() as folder:
+            en, zh, data = [Path(folder) / name for name in ("en.html", "zh.html", "data.json")]
+            shell = '<a class="site-language-switch">Language</a>\n' + PULSE.START_MARKER + '\nold\n' + PULSE.END_MARKER
+            en.write_text(shell); zh.write_text(shell)
+            with mock.patch.object(PULSE, "PAGE_PATH", en), mock.patch.object(PULSE, "ZH_PAGE_PATH", zh), mock.patch.object(PULSE, "DATA_PATH", data):
+                PULSE.write_outputs([article], self.topics, date(2026, 10, 21))
+                self.assertIn("Latest edition", en.read_text())
+                self.assertIn("本期更新", zh.read_text())
+                for page in (en, zh):
+                    self.assertIn("site-language-switch", page.read_text())
+                    self.assertIn(article["title"], page.read_text())
+                before = en.read_text()
+                zh.write_text("missing markers")
+                with self.assertRaises(ValueError):
+                    PULSE.write_outputs([article], self.topics, date(2026, 10, 22))
+                self.assertEqual(before, en.read_text())
+
     def test_current_edition_is_detected(self):
         # Use a temporary data file so the test does not depend on the live
         # edition date, which the weekly workflow changes every Monday.

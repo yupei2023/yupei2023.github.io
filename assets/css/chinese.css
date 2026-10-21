@@ -1,0 +1,23 @@
+/* Chinese typography; keep the shared page layouts and visual identity. */
+html[lang="zh-Hans"] {
+  --sans: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  --serif: "Songti SC", "Noto Serif CJK SC", "SimSun", serif;
+  line-break: strict;
+}
+html[lang="zh-Hans"] body { font-family: var(--sans); }
+html[lang="zh-Hans"] :is(h1,h2,h3,h4) { letter-spacing: .01em; line-height: 1.5; }
+html[lang="zh-Hans"] :is(p,li,dd) { line-height: 1.9; }
+html[lang="zh-Hans"] :is(.kicker,.eyebrow,.status-label) { letter-spacing: .06em; }
+html[lang="zh-Hans"] .page-deck { line-height: 1.9; }
+html[lang="zh-Hans"] .research-iceberg { --sans: "PingFang SC", "Microsoft YaHei", sans-serif; }
+html[lang="zh-Hans"] .research-iceberg .ice-layer p { font-family: var(--sans); line-height: 1.65; }
+html[lang="zh-Hans"] .wordmark strong { white-space: nowrap; }
+html[lang="zh-Hans"] :is(.publication-list h3,.pulse-article h3) { overflow-wrap: anywhere; }
+html[lang="zh-Hans"] :is([lang="en"],.pulse-article__authors,.pulse-article__venue) { line-break: auto; }
+@media (max-width: 650px) {
+  html[lang="zh-Hans"] :is(.page-hero,.about-hero) h1 { font-size: clamp(2rem, 7vw, 3rem); }
+  html[lang="zh-Hans"] .site-header { padding-inline: 1rem; }
+}
+
+html[lang="zh-Hans"] em:lang(zh-Hans) { font-style: normal; }
+.course-original-title { display: block; margin-top: .5rem; font-family: var(--sans); font-size: .75em; font-weight: 400; line-height: 1.6; }

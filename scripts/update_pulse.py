@@ -22,6 +22,7 @@ TOPICS_PATH = ROOT / "config" / "pulse-topics.json"
 JOURNALS_PATH = ROOT / "config" / "pulse-journals.json"
 DATA_PATH = ROOT / "data" / "pulse.json"
 PAGE_PATH = ROOT / "pulse" / "index.html"
+ZH_PAGE_PATH = ROOT / "pulse" / "zh" / "index.html"
 API_URL = "https://api.openalex.org/works"
 START_MARKER = "    <!-- PULSE_FEED_START -->"
 END_MARKER = "    <!-- PULSE_FEED_END -->"
@@ -241,28 +242,57 @@ def author_line(authors: list[str]) -> str:
     return ", ".join(authors[:5]) + (", et al." if len(authors) > 5 else "")
 
 
-def render_feed(articles: list[dict], refreshed: date) -> str:
+ZH_THEMES = {
+    "ai-literacy": "AI 素养", "learner-agency": "学习者能动性",
+    "immersive-learning": "沉浸式学习", "stem-learning": "STEM 学习",
+    "learning-design": "学习设计"
+}
+ZH_ACCESS = {
+    "Open access": "开放获取", "Repository copy": "机构知识库版本",
+    "Publisher page": "出版方页面", "Scholarly record": "学术记录"
+}
+
+
+def render_feed(articles: list[dict], refreshed: date, language: str = "en") -> str:
+    chinese = language == "zh-Hans"
+    def date_label(value):
+        return f"{value.year} 年 {value.month} 月 {value.day} 日" if chinese else value.strftime("%B %-d, %Y")
     cards = []
     for index, article in enumerate(articles, 1):
-        published = date.fromisoformat(article["publication_date"]).strftime("%B %-d, %Y")
-        tier_label = f"Priority journal · Tier {article['priority_tier']}" if article["priority_tier"] else "Field discovery"
+        published = date_label(date.fromisoformat(article["publication_date"]))
+        if chinese:
+            theme = ZH_THEMES.get(article["theme_id"], article["theme"])
+            access = ZH_ACCESS.get(article["access"], article["access"])
+            tier_label = f"重点期刊 · 第 {article['priority_tier']} 级" if article["priority_tier"] else "领域检索发现"
+            reason = f"入选依据：主题与「{theme}」相关" + ("，并发表于优先关注的期刊。" if article["priority_tier"] else "。")
+            view, open_label = "阅读原文", "打开论文："
+            authors = ", ".join(article["authors"][:5]) + (", et al." if len(article["authors"]) > 5 else "") if article["authors"] else "暂无作者信息"
+        else:
+            theme, access, reason = article["theme"], article["access"], article["reason"]
+            tier_label = f"Priority journal · Tier {article['priority_tier']}" if article["priority_tier"] else "Field discovery"
+            view, open_label = "View article", "Open "
+            authors = author_line(article["authors"])
+        original_lang = ' lang="en"' if chinese else ""
+        authors_lang = original_lang if article["authors"] else ""
         cards.append(f'''        <article class="pulse-article">
           <div class="pulse-article__number" aria-hidden="true">{index:02d}</div>
           <div class="pulse-article__body">
-            <div class="pulse-article__labels"><span>{html.escape(article['theme'])}</span><span>{html.escape(article['access'])}</span></div>
-            <h3><a href="{html.escape(article['url'], quote=True)}">{html.escape(article['title'])}</a></h3>
-            <p class="pulse-article__authors">{html.escape(author_line(article['authors']))}</p>
-            <p class="pulse-article__venue"><strong>{html.escape(article['journal'])}</strong> · {published}</p>
-            <p class="pulse-article__reason">{html.escape(article['reason'])}</p>
+            <div class="pulse-article__labels"><span>{html.escape(theme)}</span><span>{html.escape(access)}</span></div>
+            <h3{original_lang}><a href="{html.escape(article['url'], quote=True)}">{html.escape(article['title'])}</a></h3>
+            <p class="pulse-article__authors"{authors_lang}>{html.escape(authors)}</p>
+            <p class="pulse-article__venue"><strong{original_lang}>{html.escape(article['journal'])}</strong> · {published}</p>
+            <p class="pulse-article__reason">{html.escape(reason)}</p>
           </div>
-          <div class="pulse-article__source"><span>{html.escape(tier_label)}</span><a href="{html.escape(article['url'], quote=True)}" aria-label="Open {html.escape(article['title'], quote=True)}">View article <i aria-hidden="true">↗</i></a></div>
+          <div class="pulse-article__source"><span>{html.escape(tier_label)}</span><a href="{html.escape(article['url'], quote=True)}" aria-label="{open_label}{html.escape(article['title'], quote=True)}">{view} <i aria-hidden="true">↗</i></a></div>
         </article>''')
-    refreshed_label = refreshed.strftime("%B %-d, %Y")
+    edition = "本期更新" if chinese else "Latest edition"
+    heading = "十篇文章，看看研究正在往哪里走。" if chinese else "Ten signals from the research landscape."
+    explanation = "依据主题相关性、发表时间、期刊优先级和书目记录质量排序，并标注文章的获取方式。论文题名、作者和期刊保留原文，便于检索。" if chinese else "Ranked for relevance, recency, journal priority, and record quality. Access labels distinguish freely available versions from publisher pages."
     return f'''{START_MARKER}
     <section class="pulse-feed" aria-labelledby="pulse-feed-title">
       <div class="pulse-feed__heading">
-        <div><p class="kicker">Latest edition · {refreshed_label}</p><h2 id="pulse-feed-title">Ten signals from the research landscape.</h2></div>
-        <p>Ranked for relevance, recency, journal priority, and record quality. Access labels distinguish freely available versions from publisher pages.</p>
+        <div><p class="kicker">{edition} · {date_label(refreshed)}</p><h2 id="pulse-feed-title">{heading}</h2></div>
+        <p>{explanation}</p>
       </div>
       <div class="pulse-article-list">
 {chr(10).join(cards)}
@@ -324,13 +354,17 @@ def write_outputs(articles: list[dict], topics: dict, today: date):
         "article_count": len(articles),
         "articles": articles
     }
-    current_page = PAGE_PATH.read_text(encoding="utf-8")
-    if START_MARKER not in current_page or END_MARKER not in current_page:
-        raise ValueError("Pulse feed markers are missing from pulse/index.html")
-    before, remainder = current_page.split(START_MARKER, 1)
-    _, after = remainder.split(END_MARKER, 1)
-    rendered = render_feed(articles, today)
-    PAGE_PATH.write_text(before + rendered + after, encoding="utf-8")
+    # Validate and render both editions before changing either output.
+    pages = []
+    for path, language in ((PAGE_PATH, "en"), (ZH_PAGE_PATH, "zh-Hans")):
+        current_page = path.read_text(encoding="utf-8")
+        if current_page.count(START_MARKER) != 1 or current_page.count(END_MARKER) != 1:
+            raise ValueError(f"Pulse feed markers are missing or duplicated in {path}")
+        before, remainder = current_page.split(START_MARKER, 1)
+        _, after = remainder.split(END_MARKER, 1)
+        pages.append((path, before + render_feed(articles, today, language) + after))
+    for path, content in pages:
+        path.write_text(content, encoding="utf-8")
     DATA_PATH.parent.mkdir(parents=True, exist_ok=True)
     DATA_PATH.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 

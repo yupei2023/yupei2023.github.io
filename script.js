@@ -1,4 +1,19 @@
 document.documentElement.classList.add("js");
+const isChinese = document.documentElement.lang.toLowerCase().startsWith("zh");
+const chineseUI = {
+  "Open navigation": "打开导航", "Close navigation": "关闭导航",
+  "Explore the website": "浏览网站", "Search Yupei Duan’s work": "查找段玉佩的工作",
+  "Close search": "关闭搜索", "Search this website": "搜索本站",
+  "Search research, publications, teaching…": "搜索研究、论文、教学……",
+  "Start typing to search across the website.": "输入关键词，查找本站内容。",
+  "Search runs entirely in your browser. No query data is collected.": "搜索在你的浏览器中完成，不收集搜索内容。",
+  "Search website": "搜索本站", "Search": "搜索",
+  "Search could not load. Please use the main navigation to explore the site.": "搜索暂时无法加载，请通过主导航浏览。",
+  "Enter at least two characters.": "请至少输入两个字或字符。", "Searching…": "正在查找……",
+  "Try a broader term": "试试更宽泛的词",
+  "For example: AI literacy, VirtualGeo, teaching, publications, or coursework.": "例如：AI 素养、VirtualGeo、教学、论文或科普。"
+};
+const ui = text => isChinese ? (chineseUI[text] || text) : text;
 
 // Local design comparison: append ?theme=dark to preview the archived navy palette.
 if (new URLSearchParams(window.location.search).get("theme") === "dark") {
@@ -16,7 +31,7 @@ menuButton?.addEventListener("click", () => {
   const isOpen = menuButton.getAttribute("aria-expanded") === "true";
   menuButton.setAttribute("aria-expanded", String(!isOpen));
   navigation.classList.toggle("is-open", !isOpen);
-  if (menuLabel) menuLabel.textContent = isOpen ? "Open navigation" : "Close navigation";
+  if (menuLabel) menuLabel.textContent = isOpen ? ui("Open navigation") : ui("Close navigation");
   if (!isOpen) navigation?.querySelector("a")?.focus();
 });
 
@@ -24,6 +39,7 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && navigation?.classList.contains("is-open")) {
     navigation.classList.remove("is-open");
     menuButton?.setAttribute("aria-expanded", "false");
+    if (menuLabel) menuLabel.textContent = ui("Open navigation");
     menuButton?.focus();
   }
 });
@@ -32,7 +48,7 @@ navigation?.querySelectorAll("a").forEach((link) => {
   link.addEventListener("click", () => {
     navigation.classList.remove("is-open");
     menuButton?.setAttribute("aria-expanded", "false");
-    if (menuLabel) menuLabel.textContent = "Open navigation";
+    if (menuLabel) menuLabel.textContent = ui("Open navigation");
   });
 });
 
@@ -41,7 +57,7 @@ const resetMobileNavigation = (event) => {
   if (!event.matches) return;
   navigation?.classList.remove("is-open");
   menuButton?.setAttribute("aria-expanded", "false");
-  if (menuLabel) menuLabel.textContent = "Open navigation";
+  if (menuLabel) menuLabel.textContent = ui("Open navigation");
 };
 desktopNavigation.addEventListener?.("change", resetMobileNavigation);
 
@@ -73,7 +89,14 @@ if ("IntersectionObserver" in window) {
 
 // Site-wide search is built in the browser from the public HTML pages. This
 // keeps the GitHub Pages site dependency-free and avoids collecting queries.
-const searchPages = [
+const searchPages = isChinese ? [
+  { path: "research/zh/", label: "研究" },
+  { path: "scholarship/zh/", label: "学术成果" },
+  { path: "teaching/zh/", label: "教学" },
+  { path: "engagement/zh/", label: "科普与服务" },
+  { path: "pulse/zh/", label: "研究动态" },
+  { path: "about/zh/", label: "关于我" }
+] : [
   { path: "", label: "Home" },
   { path: "research/", label: "Research" },
   { path: "p-facet/", label: "P-FACET" },
@@ -90,13 +113,15 @@ const siteRoot = new URL("./", scriptUrl);
 let searchIndexPromise;
 let searchReturnFocus;
 
-const normalizeSearchText = (value) =>
-  value
-    .toLocaleLowerCase()
-    .normalize("NFKD")
+const normalizeSearchText = (value) => {
+  const normalized = value.toLocaleLowerCase().normalize("NFKD")
     .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^a-z0-9]+/g, " ")
-    .trim();
+    .replace(/[^\p{L}\p{N}]+/gu, " ").trim();
+  // Match common mixed queries such as AI素养 against prose written as AI 素养.
+  return isChinese ? normalized
+    .replace(/([\p{Script=Han}])([\p{Script=Latin}\p{N}])/gu, "$1 $2")
+    .replace(/([\p{Script=Latin}\p{N}])([\p{Script=Han}])/gu, "$1 $2") : normalized;
+};
 
 const buildSearchIndex = async () => {
   const pageDocuments = await Promise.all(
@@ -149,20 +174,20 @@ searchShell.innerHTML = `
   <section class="site-search__panel" role="dialog" aria-modal="true" aria-labelledby="site-search-title">
     <div class="site-search__heading">
       <div>
-        <p>Explore the website</p>
-        <h2 id="site-search-title">Search Yupei Duan’s work</h2>
+        <p>${ui("Explore the website")}</p>
+        <h2 id="site-search-title">${ui("Search Yupei Duan’s work")}</h2>
       </div>
-      <button class="site-search__close" type="button" data-search-close aria-label="Close search">×</button>
+      <button class="site-search__close" type="button" data-search-close aria-label="${ui("Close search")}">×</button>
     </div>
     <form class="site-search__form" role="search">
       <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4 4"></path></svg>
-      <label class="sr-only" for="site-search-input">Search this website</label>
-      <input id="site-search-input" type="search" inputmode="search" autocomplete="off" spellcheck="false" placeholder="Search research, publications, teaching…">
+      <label class="sr-only" for="site-search-input">${ui("Search this website")}</label>
+      <input id="site-search-input" type="search" inputmode="search" autocomplete="off" spellcheck="false" placeholder="${ui("Search research, publications, teaching…")}">
       <span class="site-search__shortcut" aria-hidden="true">ESC</span>
     </form>
-    <p class="site-search__status" role="status" aria-live="polite">Start typing to search across the website.</p>
+    <p class="site-search__status" role="status" aria-live="polite">${ui("Start typing to search across the website.")}</p>
     <div class="site-search__results" tabindex="-1"></div>
-    <p class="site-search__privacy">Search runs entirely in your browser. No query data is collected.</p>
+    <p class="site-search__privacy">${ui("Search runs entirely in your browser. No query data is collected.")}</p>
   </section>`;
 document.body.append(searchShell);
 
@@ -173,11 +198,11 @@ const searchStatus = searchShell.querySelector(".site-search__status");
 const searchButton = document.createElement("button");
 searchButton.className = "nav-search";
 searchButton.type = "button";
-searchButton.setAttribute("aria-label", "Search website");
+searchButton.setAttribute("aria-label", ui("Search website"));
 searchButton.setAttribute("aria-haspopup", "dialog");
 searchButton.innerHTML = `
   <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="5.75"></circle><path d="m15 15 4.5 4.5"></path></svg>
-  <span>Search</span><kbd>⌘K</kbd>`;
+  <span>${ui("Search")}</span><kbd>⌘K</kbd>`;
 navigation?.append(searchButton);
 
 const openSearch = () => {
@@ -190,9 +215,10 @@ const openSearch = () => {
   document.body.classList.add("search-open");
   navigation?.classList.remove("is-open");
   menuButton?.setAttribute("aria-expanded", "false");
+  if (menuLabel) menuLabel.textContent = ui("Open navigation");
   window.requestAnimationFrame(() => searchInput.focus());
   getSearchIndex().catch(() => {
-    searchStatus.textContent = "Search could not load. Please use the main navigation to explore the site.";
+    searchStatus.textContent = ui("Search could not load. Please use the main navigation to explore the site.");
   });
 };
 
@@ -212,11 +238,11 @@ const renderSearchResults = async () => {
   const query = normalizeSearchText(searchInput.value);
   if (query.length < 2) {
     searchResults.replaceChildren();
-    searchStatus.textContent = query ? "Enter at least two characters." : "Start typing to search across the website.";
+    searchStatus.textContent = query ? ui("Enter at least two characters.") : ui("Start typing to search across the website.");
     return;
   }
 
-  searchStatus.textContent = "Searching…";
+  searchStatus.textContent = ui("Searching…");
   try {
     const index = await getSearchIndex();
     const terms = query.split(" ").filter(Boolean);
@@ -236,8 +262,8 @@ const renderSearchResults = async () => {
       .slice(0, 12);
 
     searchStatus.textContent = matches.length
-      ? `${matches.length} ${matches.length === 1 ? "result" : "results"} for “${searchInput.value.trim()}”`
-      : `No results for “${searchInput.value.trim()}”`;
+      ? (isChinese ? `找到 ${matches.length} 条与“${searchInput.value.trim()}”相关的结果` : `${matches.length} ${matches.length === 1 ? "result" : "results"} for “${searchInput.value.trim()}”`)
+      : (isChinese ? `没有找到与“${searchInput.value.trim()}”相关的结果` : `No results for “${searchInput.value.trim()}”`);
     searchResults.innerHTML = matches.length
       ? matches
           .map(
@@ -249,10 +275,10 @@ const renderSearchResults = async () => {
             </a>`
           )
           .join("")
-      : `<div class="site-search__empty"><strong>Try a broader term</strong><p>For example: AI literacy, VirtualGeo, teaching, publications, or coursework.</p></div>`;
+      : `<div class="site-search__empty"><strong>${ui("Try a broader term")}</strong><p>${ui("For example: AI literacy, VirtualGeo, teaching, publications, or coursework.")}</p></div>`;
   } catch {
     searchResults.replaceChildren();
-    searchStatus.textContent = "Search could not load. Please use the main navigation to explore the site.";
+    searchStatus.textContent = ui("Search could not load. Please use the main navigation to explore the site.");
   }
 };
 

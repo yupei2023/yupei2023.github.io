@@ -47,16 +47,18 @@ def main():
         if parsed.scheme not in {"http", "https"} or not parsed.netloc:
             raise SystemExit("Pulse includes an unsafe article URL")
 
-    page = PAGE_PATH.read_text(encoding="utf-8")
-    parser = PulseParser()
-    parser.feed(page)
-    if parser.article_count != 10:
-        raise SystemExit(f"Rendered Pulse page contains {parser.article_count} article cards")
-    if parser.beacon_count != 1:
-        raise SystemExit("Rendered Pulse page must contain one analytics beacon")
-    if len(re.findall(r'<!-- PULSE_FEED_(?:START|END) -->', page)) != 2:
-        raise SystemExit("Pulse feed markers are invalid")
-    print("Pulse data and rendered page validation passed.")
+    for path in (PAGE_PATH, PAGE_PATH.parent / "zh" / "index.html"):
+        page = path.read_text(encoding="utf-8")
+        parser = PulseParser()
+        parser.feed(page)
+        if parser.article_count != 10:
+            raise SystemExit(f"{path}: expected ten article cards, found {parser.article_count}")
+        if parser.beacon_count != 1:
+            raise SystemExit(f"{path}: expected one analytics beacon")
+        if len(re.findall(r'<!-- PULSE_FEED_(?:START|END) -->', page)) != 2:
+            raise SystemExit(f"{path}: invalid feed markers")
+    print("Pulse data and both language editions passed validation.")
+
 
 
 if __name__ == "__main__":
