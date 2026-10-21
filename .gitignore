@@ -1,3 +1,6 @@
 .DS_Store
 .Rhistory
 *.docx.md
+
+# Keep private academic records out of the public website.
+/assets/documents/official-transcript*.pdf
