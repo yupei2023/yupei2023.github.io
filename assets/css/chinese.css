@@ -1,26 +1,112 @@
-/* Chinese typography; keep the shared page layouts and visual identity. */
+/* Chinese editorial typography. Font files and licenses are hosted locally. */
 html[lang="zh-Hans"] {
-  --sans: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
-  --serif: "Songti SC", "Noto Serif CJK SC", "SimSun", serif;
+  --sans: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --serif: "Noto Serif SC", "Source Han Serif SC", "Songti SC", serif;
   line-break: strict;
 }
-html[lang="zh-Hans"] body { font-family: var(--sans); }
-html[lang="zh-Hans"] :is(h1,h2,h3,h4) { letter-spacing: .01em; line-height: 1.5; }
-html[lang="zh-Hans"] :is(p,li,dd) { line-height: 1.9; }
-html[lang="zh-Hans"] :is(.kicker,.eyebrow,.status-label) { letter-spacing: .06em; }
-html[lang="zh-Hans"] .page-deck { line-height: 1.9; }
-html[lang="zh-Hans"] .research-iceberg { --sans: "PingFang SC", "Microsoft YaHei", sans-serif; }
-html[lang="zh-Hans"] .research-iceberg .ice-layer p { font-family: var(--sans); line-height: 1.65; }
-html[lang="zh-Hans"] .wordmark strong { white-space: nowrap; }
-html[lang="zh-Hans"] :is(.publication-list h3,.pulse-article h3) { overflow-wrap: anywhere; }
-html[lang="zh-Hans"] :is([lang="en"],.pulse-article__authors,.pulse-article__venue) { line-break: auto; }
-@media (max-width: 650px) {
-  html[lang="zh-Hans"] :is(.page-hero,.about-hero) h1 { font-size: clamp(2rem, 7vw, 3rem); }
-  html[lang="zh-Hans"] .site-header { padding-inline: 1rem; }
+html[lang="zh-Hans"] body {
+  font-family: var(--sans);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.9;
+  letter-spacing: normal;
 }
+html[lang="zh-Hans"] :is(h1, h2, h3, h4) {
+  font-weight: 500;
+  letter-spacing: .01em;
+  line-height: 1.5;
+}
+html[lang="zh-Hans"] :is(p, li, dd) { line-height: 1.9; }
+html[lang="zh-Hans"] :is(strong, b) { font-weight: 600; }
 
-html[lang="zh-Hans"] em:lang(zh-Hans) { font-style: normal; }
-.course-original-title { display: block; margin-top: .5rem; font-family: var(--sans); font-size: .75em; font-weight: 400; line-height: 1.6; }
+/* Clear utility type; wider spacing belongs to short labels, not prose. */
+html[lang="zh-Hans"] :is(.kicker, .eyebrow, .status-label) {
+  font-size: .8125rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+}
+html[lang="zh-Hans"] :is(
+  .pulse-article__labels span, .pulse-article__source span, .entry-facts span,
+  .site-search__result > span, .pulse-label, .pulse-preview__lanes span,
+  .pulse-theme-grid span, .pulse-hero__meta, .timeline span,
+  .record-list li > span, .record-list b, .translation-list article > div p
+) {
+  font-size: .8125rem;
+  letter-spacing: .04em;
+}
+html[lang="zh-Hans"] .wordmark strong { white-space: nowrap; }
+html[lang="zh-Hans"] .site-header nav a { font-weight: 500; }
+html[lang="zh-Hans"] :is(.hero-note, .portrait-wrap p) { font-size: .8125rem; }
+
+/* Song-style display type, with enough space for the Chinese character box. */
+html[lang="zh-Hans"] :is(.page-hero, .about-hero) h1 {
+  font-size: clamp(2.5rem, 5.2vw, 5.5rem);
+  line-height: 1.4;
+}
+html[lang="zh-Hans"] .pulse-hero h1 {
+  font-size: clamp(3rem, 7vw, 6rem);
+  letter-spacing: .02em;
+  line-height: 1.2;
+}
+html[lang="zh-Hans"] .page-section > .section-heading h2 {
+  font-size: clamp(2rem, 3.8vw, 3.8rem);
+  font-weight: 500;
+  letter-spacing: .01em;
+  line-height: 1.5;
+}
+html[lang="zh-Hans"] :is(.page-deck, .hero-intro, .entry-lede) {
+  font-weight: 400;
+  line-height: 1.9;
+}
+html[lang="zh-Hans"] .pulse-hero__lede { line-height: 1.7; }
+html[lang="zh-Hans"] :is(.teaching-quote, .reflection-section) blockquote {
+  font-weight: 500;
+  letter-spacing: .01em;
+  line-height: 1.6;
+}
+html[lang="zh-Hans"] .teaching-quote blockquote { font-size: clamp(2rem, 4vw, 4.2rem); }
+html[lang="zh-Hans"] .bio-lead p { letter-spacing: normal; line-height: 1.65; }
+html[lang="zh-Hans"] .cycle-center { line-height: 1.5; }
+html[lang="zh-Hans"] :is(.cycle-node small, .doctoral-journey span b) {
+  font-size: .75rem;
+  letter-spacing: normal;
+  line-height: 1.6;
+}
+html[lang="zh-Hans"] .research-iceberg > figcaption {
+  font-weight: 500;
+  letter-spacing: normal;
+  line-height: 1.5;
+}
+html[lang="zh-Hans"] .research-iceberg .ice-layer p { line-height: 1.65; }
+
+/* Avoid the inherited light and slanted styles in Chinese reading passages. */
+html[lang="zh-Hans"] .reflection-copy p { font-weight: 400; }
+html[lang="zh-Hans"] .reflection-copy strong { font-weight: 600; }
+html[lang="zh-Hans"] :is(em:lang(zh-Hans), .pulse-article__reason) { font-style: normal; }
+html[lang="zh-Hans"] :is(.publication-list h3, .pulse-article h3) { overflow-wrap: anywhere; }
+html[lang="zh-Hans"] :is([lang="en"], .pulse-article__authors, .pulse-article__venue) { line-break: auto; }
+/* Retain the site's existing English typefaces in original-language citations. */
+html[lang="zh-Hans"] [lang="en"] {
+  --sans: "Geologica", "Helvetica Neue", "Noto Sans SC", sans-serif;
+  --serif: "Lora", Georgia, "Noto Serif SC", serif;
+  font-family: var(--sans);
+}
+html[lang="zh-Hans"] :is(h1, h2, h3, h4)[lang="en"],
+html[lang="zh-Hans"] :is(h1, h2, h3, h4) em[lang="en"] { font-family: var(--serif); }
+html[lang="zh-Hans"] .article-download-list [lang="zh-CN"] { font-family: var(--serif); }
+html[lang="zh-Hans"] .reflection-card-list p { font-size: .9375rem; }
+html[lang="zh-Hans"] .reflection-card-list :is(p strong, small, time) {
+  font-size: .8125rem;
+  letter-spacing: .02em;
+}
+html[lang="zh-Hans"] .course-original-title {
+  display: block;
+  margin-top: .5rem;
+  font-family: var(--sans);
+  font-size: .75em;
+  font-weight: 400;
+  line-height: 1.6;
+}
 
 /* Chinese homepage heading and supporting text. */
 html[lang="zh-Hans"] .chinese-home .hero h1 {
@@ -28,10 +114,10 @@ html[lang="zh-Hans"] .chinese-home .hero h1 {
   line-height: 1.35;
   letter-spacing: .01em;
 }
-html[lang="zh-Hans"] .chinese-home .hero-intro { line-height: 1.9; }
+html[lang="zh-Hans"] .chinese-home .hero h1 em { font-weight: inherit; }
 html[lang="zh-Hans"] .chinese-home .hero-note p { line-height: 1.7; }
-
 html[lang="zh-Hans"] .chinese-home .statement blockquote {
+  font-weight: 500;
   line-height: 1.55;
   letter-spacing: .01em;
 }
@@ -43,4 +129,8 @@ html[lang="zh-Hans"] .chinese-home .statement blockquote {
     gap: .5rem 1rem;
     flex-wrap: wrap;
   }
+}
+@media (max-width: 650px) {
+  html[lang="zh-Hans"] :is(.page-hero, .about-hero) h1 { font-size: clamp(2rem, 7vw, 3rem); }
+  html[lang="zh-Hans"] .site-header { padding-inline: 1rem; }
 }

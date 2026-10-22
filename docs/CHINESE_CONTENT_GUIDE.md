@@ -34,7 +34,17 @@ matching section IDs so incoming links still work. Chinese navigation links shou
 lead to the Chinese homepage and six Chinese sections. Links to untranslated
 projects intentionally lead to English. PDF and external evidence URLs remain identical.
 
-`assets/css/chinese.css` supplies Chinese font fallbacks and typography. Shared
+Chinese display headings, leads, and quotations use locally hosted Noto Serif SC;
+body text, navigation, and metadata use Noto Sans SC. `assets/css/chinese-fonts.css`
+declares the variable WOFF2 subsets; their original licenses and provenance are in
+`assets/fonts/chinese/`. Keep both stylesheets on all seven Chinese pages. Unicode
+ranges let the browser fetch only the subsets a page needs, including new Pulse
+content. `assets/css/chinese.css` supplies the hierarchy, Chinese spacing, and
+system font fallbacks. Use regular 400 for prose, 500 for display headings, and 600
+for emphasis; avoid very light weights and slanted Chinese.
+English pages retain their existing fonts. Original-language citations marked
+`lang="en"` on Chinese pages also retain Lora and Geologica; do not replace those
+English typefaces as part of Chinese typography maintenance. Shared
 navigation and localized search are in `script.js`; Chinese queries retain Unicode
 letters, and Chinese pages search the Chinese homepage and six Chinese sections.
 
