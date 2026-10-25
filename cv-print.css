@@ -94,6 +94,17 @@ table {
   font-size: 9.9pt;
 }
 
+/* Give long course and qualification titles room without squeezing dates. */
+#education + table col:nth-child(1) { width: 21% !important; }
+#education + table col:nth-child(2) { width: 52% !important; }
+#education + table col:nth-child(3) { width: 27% !important; }
+#university-of-missouri + table col:nth-child(1) { width: 18% !important; }
+#university-of-missouri + table col:nth-child(2) { width: 64% !important; }
+#university-of-missouri + table col:nth-child(3) { width: 18% !important; }
+table col:first-child:nth-last-child(2) { width: 78% !important; }
+table col:nth-child(2):last-child { width: 22% !important; }
+tr { break-inside: avoid; }
+
 th,
 td {
   padding: 0.033in 0.05in;
