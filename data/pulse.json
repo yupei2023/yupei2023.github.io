@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "refreshed_at": "2026-11-09T16:27:50+00:00",
+  "refreshed_at": "2026-11-10T00:17:59+00:00",
   "selection_window_days": 45,
   "article_count": 10,
   "articles": [
@@ -54,7 +54,7 @@
       "theme_id": "stem-learning",
       "theme": "STEM learning",
       "priority_tier": 2,
-      "score": 70,
+      "score": 69,
       "reason": "Selected for its connection to stem learning and publication in a priority journal."
     },
     {
@@ -101,7 +101,7 @@
       "theme_id": "stem-learning",
       "theme": "STEM learning",
       "priority_tier": 1,
-      "score": 65,
+      "score": 64,
       "reason": "Selected for its connection to stem learning and publication in a priority journal."
     },
     {
@@ -211,7 +211,7 @@
       "theme_id": "immersive-learning",
       "theme": "Immersive learning",
       "priority_tier": null,
-      "score": 59,
+      "score": 58,
       "reason": "Selected for its connection to immersive learning."
     },
     {
