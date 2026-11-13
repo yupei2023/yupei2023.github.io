@@ -1448,6 +1448,8 @@ html[data-language="zh"] .pfacet-page [data-lang="zh"] { display: inline; }
 .record-list li { padding: .85rem 0; border-top: 1px solid var(--line); color: var(--muted); font-size: .78rem; }
 .record-list li > span { display: block; color: var(--green); font-size: .64rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
 .record-list a { color: var(--ink); text-underline-offset: .2em; }
+.record-list .credential-badge-link { display: inline-flex; align-items: center; gap: .65rem; }
+.credential-badge-link img { width: 3rem; height: 3rem; object-fit: contain; flex: 0 0 auto; }
 .record-list b { display: inline-block; margin-left: .4rem; color: var(--green); font-size: .62rem; }
 .professional-development { margin-top: 1px; }
 .service-record-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; background: transparent; }
