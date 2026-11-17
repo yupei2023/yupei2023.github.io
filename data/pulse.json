@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "refreshed_at": "2026-11-16T15:52:57+00:00",
+  "refreshed_at": "2026-11-17T00:17:36+00:00",
   "selection_window_days": 45,
   "article_count": 10,
   "articles": [
@@ -94,7 +94,7 @@
       "theme_id": "stem-learning",
       "theme": "STEM learning",
       "priority_tier": 2,
-      "score": 66,
+      "score": 65,
       "reason": "Selected for its connection to stem learning and publication in a priority journal."
     },
     {
@@ -136,7 +136,7 @@
       "theme_id": "learning-design",
       "theme": "Learning design",
       "priority_tier": 2,
-      "score": 63,
+      "score": 62,
       "reason": "Selected for its connection to learning design and publication in a priority journal."
     },
     {
@@ -159,8 +159,28 @@
       "theme_id": "immersive-learning",
       "theme": "Immersive learning",
       "priority_tier": 3,
-      "score": 62,
+      "score": 61,
       "reason": "Selected for its connection to immersive learning and publication in a priority journal."
+    },
+    {
+      "id": "10.1007/s11423-026-10753-5",
+      "title": "Developing and validating the human-AI collaboration competency scale",
+      "authors": [
+        "Hyeeun Kim",
+        "Eun Hye Ham",
+        "Young Hoan Cho"
+      ],
+      "journal": "Educational Technology Research and Development",
+      "issn_l": "1042-1629",
+      "publication_date": "2026-11-13",
+      "doi": "https://doi.org/10.1007/s11423-026-10753-5",
+      "url": "https://doi.org/10.1007/s11423-026-10753-5",
+      "access": "Open access",
+      "theme_id": "ai-literacy",
+      "theme": "AI literacy",
+      "priority_tier": 2,
+      "score": 60,
+      "reason": "Selected for its connection to ai literacy and publication in a priority journal."
     },
     {
       "id": "10.1002/jcal.70367",
@@ -181,27 +201,7 @@
       "theme_id": "ai-literacy",
       "theme": "AI literacy",
       "priority_tier": 2,
-      "score": 60,
-      "reason": "Selected for its connection to ai literacy and publication in a priority journal."
-    },
-    {
-      "id": "10.1007/s11423-026-10753-5",
-      "title": "Developing and validating the human-AI collaboration competency scale",
-      "authors": [
-        "Hyeeun Kim",
-        "Eun Hye Ham",
-        "Young Hoan Cho"
-      ],
-      "journal": "Educational Technology Research and Development",
-      "issn_l": "1042-1629",
-      "publication_date": "2026-11-13",
-      "doi": "https://doi.org/10.1007/s11423-026-10753-5",
-      "url": "https://doi.org/10.1007/s11423-026-10753-5",
-      "access": "Open access",
-      "theme_id": "ai-literacy",
-      "theme": "AI literacy",
-      "priority_tier": 2,
-      "score": 60,
+      "score": 59,
       "reason": "Selected for its connection to ai literacy and publication in a priority journal."
     },
     {
