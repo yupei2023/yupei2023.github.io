@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "refreshed_at": "2026-11-23T18:16:30+00:00",
+  "refreshed_at": "2026-11-24T02:56:43+00:00",
   "selection_window_days": 45,
   "article_count": 10,
   "articles": [
@@ -20,7 +20,7 @@
       "theme_id": "stem-learning",
       "theme": "STEM learning",
       "priority_tier": 1,
-      "score": 75,
+      "score": 74,
       "reason": "Selected for its connection to stem learning and publication in a priority journal."
     },
     {
@@ -92,7 +92,7 @@
       "theme_id": "learner-agency",
       "theme": "Learner agency",
       "priority_tier": 1,
-      "score": 67,
+      "score": 66,
       "reason": "Selected for its connection to learner agency and publication in a priority journal."
     },
     {
@@ -137,34 +137,6 @@
       "reason": "Selected for its connection to learning design and publication in a priority journal."
     },
     {
-      "id": "10.1016/j.ecns.2026.102102",
-      "title": "The effect of virtual reality simulation on nursing students’ competence in measuring central venous pressure for critically ill patients",
-      "authors": [
-        "Jenjiratchaya Thanapholsart",
-        "Panarut Wisawatapnimit",
-        "Nantiwa Nantagonpitak",
-        "Ubol Suttineam",
-        "Vidaporn Dhabdhimsri",
-        "Srisuntra Jermworapipat",
-        "Jintana Buathongjun",
-        "Ladapha Demile",
-        "Natthamon Puangsri",
-        "Prampree Nantawong",
-        "Tanapa Rittiwong"
-      ],
-      "journal": "Clinical Simulation in Nursing",
-      "issn_l": "1876-1399",
-      "publication_date": "2026-11-21",
-      "doi": "https://doi.org/10.1016/j.ecns.2026.102102",
-      "url": "https://doi.org/10.1016/j.ecns.2026.102102",
-      "access": "Publisher page",
-      "theme_id": "immersive-learning",
-      "theme": "Immersive learning",
-      "priority_tier": 3,
-      "score": 63,
-      "reason": "Selected for its connection to immersive learning and publication in a priority journal."
-    },
-    {
       "id": "10.1016/j.compedu.2026.105781",
       "title": "Automatic mind wandering detection in educational settings: A systematic review and multimodal benchmarking",
       "authors": [
@@ -192,6 +164,34 @@
       "reason": "Selected for its connection to learning design and publication in a priority journal."
     },
     {
+      "id": "10.1016/j.ecns.2026.102102",
+      "title": "The effect of virtual reality simulation on nursing students’ competence in measuring central venous pressure for critically ill patients",
+      "authors": [
+        "Jenjiratchaya Thanapholsart",
+        "Panarut Wisawatapnimit",
+        "Nantiwa Nantagonpitak",
+        "Ubol Suttineam",
+        "Vidaporn Dhabdhimsri",
+        "Srisuntra Jermworapipat",
+        "Jintana Buathongjun",
+        "Ladapha Demile",
+        "Natthamon Puangsri",
+        "Prampree Nantawong",
+        "Tanapa Rittiwong"
+      ],
+      "journal": "Clinical Simulation in Nursing",
+      "issn_l": "1876-1399",
+      "publication_date": "2026-11-21",
+      "doi": "https://doi.org/10.1016/j.ecns.2026.102102",
+      "url": "https://doi.org/10.1016/j.ecns.2026.102102",
+      "access": "Publisher page",
+      "theme_id": "immersive-learning",
+      "theme": "Immersive learning",
+      "priority_tier": 3,
+      "score": 62,
+      "reason": "Selected for its connection to immersive learning and publication in a priority journal."
+    },
+    {
       "id": "10.1016/j.cexr.2026.100190",
       "title": "From immersion to educational world-making: applying secondary world theory to AI-supported XR design in teacher education",
       "authors": [
@@ -206,7 +206,7 @@
       "theme_id": "immersive-learning",
       "theme": "Immersive learning",
       "priority_tier": null,
-      "score": 61,
+      "score": 60,
       "reason": "Selected for its connection to immersive learning."
     },
     {
@@ -226,7 +226,7 @@
       "theme_id": "learning-design",
       "theme": "Learning design",
       "priority_tier": 2,
-      "score": 59,
+      "score": 58,
       "reason": "Selected for its connection to learning design and publication in a priority journal."
     }
   ]
